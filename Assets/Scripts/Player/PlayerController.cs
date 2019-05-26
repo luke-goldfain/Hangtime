@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour
         // If the player has grappled (is not on ground or in default jump), clamp magnitude by speed limit plus a ratio based on the number of consecutive grapples
         if (consecutiveGrapples > 0 && rb.velocity.y >= 0)
         {
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, this.SpeedLimit + (this.SpeedLimit * 0.5f * (consecutiveGrapples - 1)));
+            ClampSpeedToLimit();
         }
 
         // debug reset position
@@ -236,13 +236,16 @@ public class PlayerController : MonoBehaviour
             moveDir = Vector3.Slerp(moveDir, -cameraTransform.up, .12f);
         }
 
-        // Add force inverse to the length of the grapple (low length = high force). If distance is high enough that the force is below 15, default to 15.
-        rb.AddForce(moveDir * Mathf.Max(GrappleForce - Vector3.Distance(GrappleHitPosition, this.transform.position), 15f));
+        // Add force inverse to the length of the grapple (low length = high force). 
+        // If distance is high enough that the force is below 15 * consecutiveGrapples, default to that.
+        rb.AddForce(moveDir * Mathf.Max(GrappleForce - Vector3.Distance(GrappleHitPosition, this.transform.position), 15f * (consecutiveGrapples + 1)));
         
         // If the player has traveled 1.5 times the original length of the grapple (a ways past or away from the grapple point), break off the grapple automatically.
         if (Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(GrappleHitPosition, grappleStartPosition) * 1.5)
         {
             this.currentState = State.inAir;
+
+            ClampSpeedToLimit();
         }
     }
 
@@ -311,23 +314,30 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
+            this.transform.position += Vector3.up; // Messy brute-force to get player out of the ground --
+                                                   // jumping does not work correctly if player is colliding with the ground when the next line is executed.
+
             // To jump off of a surface based on angle and magnitude of incidence, the angle must be straighter than 75 degrees (which is almost flat to the
             //  surface), they must have been against the surface for < angleJumpCooldown seconds, and the velocity of the incidence must be high enough.
             if (Vector3.Angle(incidenceVelocity, collisionNormal) < 75f && groundTimer < angleJumpCooldown && incidenceVelocity.magnitude > 10f)
             {
-                rb.velocity = incidenceVelocity;
+                rb.velocity = Vector3.ClampMagnitude(incidenceVelocity, SpeedLimit);
             }
             // If the previous parameters are not met, jump velocity is given by current velocity alongside the default jump force.
             else
             {
-                this.transform.position += Vector3.up; // Messy brute-force to get player out of the ground --
-                                                       // jumping does not work correctly if player is colliding with the ground when the next line is executed.
+                
 
                 rb.velocity += (transform.forward * vAxis * JumpForce) + (transform.right * hAxis * JumpForce) + (transform.up * JumpForce);
             }
 
             this.currentState = State.inAir;
         }
+    }
+
+    private void ClampSpeedToLimit()
+    {
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, this.SpeedLimit + (this.SpeedLimit * 0.5f * (consecutiveGrapples - 1)));
     }
 
     private void CastGrapple()
