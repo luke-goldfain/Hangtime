@@ -18,6 +18,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject reticle;
 
+    [SerializeField]
+    public int PlayerNumber;
+
+    private int numberOfPlayers;
+    
+    private string playerFireButton;
+    private string playerJumpButton;
+    private string playerSlideButton;
+    private string playerVerticalAxis;
+    private string playerHorizontalAxis;
+
     private List<GameObject> ropeSections;
 
     private Rigidbody rb;
@@ -65,6 +76,13 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // DEBUGGY BRUTEFORCEY
+        numberOfPlayers = GameObject.FindGameObjectsWithTag("Player").Length; // TODO: Change this to reference a global variable, set via menu input.
+
+        StartAssignInputButtons();
+
+        StartSetReticlePosition();
+
         rb = this.GetComponent<Rigidbody>();
 
         ropeSections = new List<GameObject>();
@@ -109,12 +127,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown(playerFireButton))
         {
             CastGrapple();
         }
 
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp(playerFireButton))
         {
             currentState = State.inAir;
         }
@@ -154,7 +172,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
 
-        // Escape to lock/unlock cursor
+        // Debug escape to lock/unlock cursor
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // Conditional operator: if cursor unlocked, lock cursor, otherwise unlock cursor
@@ -216,22 +234,22 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDir = Vector3.Slerp(cameraTransform.forward, grappleDir, 0.9f);
 
         // If player is holding a direction (thumbstick, WASD) while they grapple, it slightly affects the direction of their grapple.
-        if (Input.GetAxis("Horizontal") < 0)
+        if (Input.GetAxis(playerHorizontalAxis) < 0)
         {
             moveDir = Vector3.Slerp(moveDir, -cameraTransform.right, .12f);
         }
 
-        if (Input.GetAxis("Horizontal") > 0)
+        if (Input.GetAxis(playerHorizontalAxis) > 0)
         {
             moveDir = Vector3.Slerp(moveDir, cameraTransform.right, .12f);
         }
 
-        if (Input.GetAxis("Vertical") > 0)
+        if (Input.GetAxis(playerVerticalAxis) > 0)
         {
             moveDir = Vector3.Slerp(moveDir, cameraTransform.up, .12f);
         }
 
-        if (Input.GetAxis("Vertical") < 0)
+        if (Input.GetAxis(playerVerticalAxis) < 0)
         {
             moveDir = Vector3.Slerp(moveDir, -cameraTransform.up, .12f);
         }
@@ -251,8 +269,8 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateMoveAir()
     {
-        float hAxis = Input.GetAxisRaw("Horizontal");
-        float vAxis = Input.GetAxisRaw("Vertical");
+        float hAxis = Input.GetAxisRaw(playerHorizontalAxis);
+        float vAxis = Input.GetAxisRaw(playerVerticalAxis);
 
         rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * 2f);
 
@@ -261,7 +279,7 @@ public class PlayerController : MonoBehaviour
 
         // Reassign air velocity if the player jumps, allowing for air jumping (once per inAir-state)
         // The velocity assignment for air-jumping takes current velocity into account, albeit not weighing it heavily.
-        if (Input.GetButtonDown("Jump") && !hasAirDashed)
+        if (Input.GetButtonDown(playerJumpButton) && !hasAirDashed)
         {
             rb.velocity = Vector3.Slerp(rb.velocity, (transform.forward * vAxis * JumpForce) + (transform.right * hAxis * JumpForce) + (transform.up * JumpForce), 0.9f);
 
@@ -273,15 +291,15 @@ public class PlayerController : MonoBehaviour
     {
         groundTimer += Time.deltaTime;
 
-        float hAxis = Input.GetAxisRaw("Horizontal");
-        float vAxis = Input.GetAxisRaw("Vertical");
+        float hAxis = Input.GetAxisRaw(playerHorizontalAxis);
+        float vAxis = Input.GetAxisRaw(playerVerticalAxis);
         
-        if (Input.GetButtonDown("Slide"))
+        if (Input.GetButtonDown(playerSlideButton))
         {
             slideTimer = 0f;
         }
 
-        if (Input.GetButton("Slide") && slideTimer < slideMaxTime) // Sliding behavior
+        if (Input.GetButton(playerSlideButton) && slideTimer < slideMaxTime) // Sliding behavior
         {
             this.GetComponent<Collider>().material.dynamicFriction = slideFriction;
 
@@ -304,7 +322,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, RunSpeed);
         }
 
-        if (Input.GetButtonUp("Slide") || slideTimer >= slideMaxTime) // What happens when a slide "ends"
+        if (Input.GetButtonUp(playerSlideButton) || slideTimer >= slideMaxTime) // What happens when a slide "ends"
         {
             this.GetComponent<Collider>().material.dynamicFriction = defaultFriction;
 
@@ -312,7 +330,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown(playerJumpButton))
         {
             this.transform.position += Vector3.up; // Messy brute-force to get player out of the ground --
                                                    // jumping does not work correctly if player is colliding with the ground when the next line is executed.
@@ -377,5 +395,45 @@ public class PlayerController : MonoBehaviour
         {
             reticle.GetComponent<Image>().color = new Color(0.9f, 0.3f, 0.3f);
         }
+    }
+
+    private void StartAssignInputButtons()
+    {
+        playerFireButton = "P" + PlayerNumber + "Fire1";
+        playerJumpButton = "P" + PlayerNumber + "Jump";
+        playerSlideButton = "P" + PlayerNumber + "Slide";
+        playerVerticalAxis = "P" + PlayerNumber + "Vertical";
+        playerHorizontalAxis = "P" + PlayerNumber + "Horizontal";
+    }
+
+    private void StartSetReticlePosition()
+    {
+        float reticleX = Screen.width / 2;
+        float reticleY = Screen.height / 2; 
+
+        switch (PlayerNumber)
+        {
+            case 1:
+                if (numberOfPlayers == 1) reticleX = Screen.width / 2;
+                else reticleX = Screen.width / 4;
+                if (numberOfPlayers < 3) reticleY = Screen.height / 2;
+                else reticleY = Screen.height / 4;
+                break;
+            case 2:
+                reticleX = Screen.width * (3f/4f);
+                if (numberOfPlayers < 3) reticleY = Screen.height / 2;
+                else reticleY = Screen.height / 4;
+                break;
+            case 3:
+                reticleX = Screen.width / 4;
+                reticleY = Screen.height * (3f/4f);
+                break;
+            case 4:
+                reticleX = Screen.width * (3f/4f);
+                reticleY = Screen.height * (3f/4f);
+                break;
+        }
+
+        reticle.transform.position = new Vector2(reticleX, reticleY);
     }
 }

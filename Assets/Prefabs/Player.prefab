@@ -117,6 +117,8 @@ MonoBehaviour:
   ropeSectionPrefab: {fileID: 6702158368456008991, guid: 5ced27e9f366695499962e9fa2a86f94,
     type: 3}
   reticle: {fileID: 0}
+  PlayerNumber: 1
+  NumberOfPlayers: 0
   GrappleHitPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &5705682671031744630
 SphereCollider:
@@ -144,7 +146,7 @@ GameObject:
   - component: {fileID: 5705682671271820578}
   - component: {fileID: 5705682671271820607}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Player 1 Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,4 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa87ec6c169c974d8a0bbde2edb89e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLookHorizontalAxis: P1 Alt Horizontal
+  playerLookVerticalAxis: P1 Alt Vertical
   LookSensitivity: 3
