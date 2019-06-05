@@ -16,7 +16,10 @@ public class PlayerController : MonoBehaviour
     private GameObject ropeSectionPrefab;
 
     [SerializeField]
-    private GameObject reticle;
+    public GameObject Reticle;
+
+    [SerializeField]
+    public GameObject Speedometer;
 
     [SerializeField]
     public int PlayerNumber;
@@ -76,12 +79,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // DEBUGGY BRUTEFORCEY
-        numberOfPlayers = GameObject.FindGameObjectsWithTag("Player").Length; // TODO: Change this to reference a global variable, set via menu input.
+        numberOfPlayers = GameStats.NumOfPlayers;
 
         StartAssignInputButtons();
 
         StartSetReticlePosition();
+        StartSetSpeedometerPosition();
 
         rb = this.GetComponent<Rigidbody>();
 
@@ -112,6 +115,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         cameraTransform = this.GetComponentInChildren<PlayerCameraController>().transform;
+
+        Speedometer.GetComponent<Text>().text = Mathf.RoundToInt(this.rb.velocity.magnitude).ToString();
 
         UpdateCheckGrapplability();
 
@@ -389,11 +394,11 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(this.transform.position, cameraTransform.TransformDirection(Vector3.forward), out hit, GrappleDistance, ~(1 << 8)))
         {
-            reticle.GetComponent<Image>().color = new Color(0.2f, 0.6f, 1f);
+            Reticle.GetComponent<Image>().color = new Color(0.2f, 0.6f, 1f);
         }
         else
         {
-            reticle.GetComponent<Image>().color = new Color(0.9f, 0.3f, 0.3f);
+            Reticle.GetComponent<Image>().color = new Color(0.9f, 0.3f, 0.3f);
         }
     }
 
@@ -417,23 +422,53 @@ public class PlayerController : MonoBehaviour
                 if (numberOfPlayers == 1) reticleX = Screen.width / 2;
                 else reticleX = Screen.width / 4;
                 if (numberOfPlayers < 3) reticleY = Screen.height / 2;
-                else reticleY = Screen.height / 4;
+                else reticleY = Screen.height * (3f/4f);
                 break;
             case 2:
                 reticleX = Screen.width * (3f/4f);
                 if (numberOfPlayers < 3) reticleY = Screen.height / 2;
-                else reticleY = Screen.height / 4;
+                else reticleY = Screen.height * (3f / 4f);
                 break;
             case 3:
                 reticleX = Screen.width / 4;
-                reticleY = Screen.height * (3f/4f);
+                reticleY = Screen.height / 4;
                 break;
             case 4:
                 reticleX = Screen.width * (3f/4f);
-                reticleY = Screen.height * (3f/4f);
+                reticleY = Screen.height / 4;
                 break;
         }
 
-        reticle.transform.position = new Vector2(reticleX, reticleY);
+        Reticle.transform.position = new Vector2(reticleX, reticleY);
+    }
+
+    private void StartSetSpeedometerPosition()
+    {
+        float spedX = Screen.width / 8;
+        float spedY = Screen.height / 8;
+
+        switch (PlayerNumber)
+        {
+            case 1:
+                spedX = Screen.width / 8;
+                if (numberOfPlayers < 3) spedY = Screen.height / 8;
+                else spedY = Screen.height * (5f/8f);
+                break;
+            case 2:
+                spedX = Screen.width * (5f / 8f);
+                if (numberOfPlayers < 3) spedY = Screen.height / 8;
+                else spedY = Screen.height * (5f / 8f);
+                break;
+            case 3:
+                spedX = Screen.width / 8;
+                spedY = Screen.height / 8;
+                break;
+            case 4:
+                spedX = Screen.width * (5f / 8f);
+                spedY = Screen.height / 8;
+                break;
+        }
+
+        Speedometer.transform.position = new Vector2(spedX, spedY);
     }
 }
