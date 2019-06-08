@@ -398,6 +398,8 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(this.transform.position, cameraTransform.TransformDirection(Vector3.forward), out hit, GrappleDistance, ~(1 << 8)))
         {
+            ResetReticlePosition();
+
             Reticle.GetComponent<Image>().color = new Color(0.2f, 0.6f, 1f);
 
             lastGrapplableRaycastPoint = hit.point;
