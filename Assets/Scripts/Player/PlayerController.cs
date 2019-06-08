@@ -36,6 +36,10 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
 
+    private Vector3 lastGrapplableRaycastPoint;
+    private float grapplableTimer;
+    private readonly float grapplableMaxTime = 0.25f; // The amount of time in seconds a "passed" grapple point is still grapplable.
+
     public Vector3 GrappleHitPosition;
 
     private Vector3 grappleStartPosition;
@@ -83,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
         StartAssignInputButtons();
 
-        StartSetReticlePosition();
+        ResetReticlePosition();
         StartSetSpeedometerPosition();
 
         rb = this.GetComponent<Rigidbody>();
@@ -369,7 +373,7 @@ public class PlayerController : MonoBehaviour
 
         Debug.DrawRay(transform.position, cameraTransform.TransformDirection(Vector3.forward) * GrappleDistance, Color.blue, 1f);
 
-        if (Physics.Raycast(this.transform.position, cameraTransform.TransformDirection(Vector3.forward), out hit, GrappleDistance, ~(1 << 8)))
+        if (Physics.Raycast(this.transform.position, lastGrapplableRaycastPoint - cameraTransform.position, out hit, GrappleDistance, ~(1 << 8)))
         {
             currentState = State.grappling;
 
@@ -395,9 +399,22 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(this.transform.position, cameraTransform.TransformDirection(Vector3.forward), out hit, GrappleDistance, ~(1 << 8)))
         {
             Reticle.GetComponent<Image>().color = new Color(0.2f, 0.6f, 1f);
+
+            lastGrapplableRaycastPoint = hit.point;
+
+            grapplableTimer = 0f;
+        }
+        else if (grapplableTimer < grapplableMaxTime)
+        {
+            Reticle.GetComponent<Image>().color = new Color(0.2f, 0.6f, 1f);
+            Reticle.transform.position = this.GetComponentInChildren<Camera>().WorldToScreenPoint(lastGrapplableRaycastPoint);
+
+            grapplableTimer += Time.deltaTime;
         }
         else
         {
+            ResetReticlePosition();
+
             Reticle.GetComponent<Image>().color = new Color(0.9f, 0.3f, 0.3f);
         }
     }
@@ -411,7 +428,7 @@ public class PlayerController : MonoBehaviour
         playerHorizontalAxis = "P" + PlayerNumber + "Horizontal";
     }
 
-    private void StartSetReticlePosition()
+    private void ResetReticlePosition()
     {
         float reticleX = Screen.width / 2;
         float reticleY = Screen.height / 2; 
