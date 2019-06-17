@@ -467,34 +467,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
         type: 3}
-      propertyPath: SpeedLimit
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: GrappleForce
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: GrappleDistance
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: RunSpeed
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: JumpForce
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: reticle
+      propertyPath: Reticle
       value: 
       objectReference: {fileID: 1847634015}
+    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
+        type: 3}
+      propertyPath: Speedometer
+      value: 
+      objectReference: {fileID: 1340921425}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2be4c5636f0e9e04683355fdc5dcc6dc, type: 3}
 --- !u!1001 &1237520945
@@ -621,6 +601,12 @@ PrefabInstance:
       objectReference: {fileID: 1636773088}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8b1268a99a2ead468f13465f6a1e81e, type: 3}
+--- !u!1 &1340921425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2225747635407618848, guid: b8b1268a99a2ead468f13465f6a1e81e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1237520945}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1455835557
 GameObject:
   m_ObjectHideFlags: 0

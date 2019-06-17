@@ -2425,130 +2425,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563206463}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1616339942
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5705682671031744628, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: m_Name
-      value: Player (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744627, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 11.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744627, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744627, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744627, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744627, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744627, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744627, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744627, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744627, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744627, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744627, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: reticle
-      value: 
-      objectReference: {fileID: 1533938991}
-    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: GrappleForce
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: playerFireButton
-      value: P2Fire1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: playerJumpButton
-      value: P2Jump
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: playerSlideButton
-      value: P2Slide
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: playerVerticalAxis
-      value: P2Vertical
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: playerHorizontalAxis
-      value: P2Horizontal
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671271820605, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671271820605, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.width
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671271820607, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: playerLookHorizontalAxis
-      value: P2 Alt Horizontal
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671271820607, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
-        type: 3}
-      propertyPath: playerLookVerticalAxis
-      value: P2 Alt Vertical
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2be4c5636f0e9e04683355fdc5dcc6dc, type: 3}
 --- !u!1 &1684720044
 GameObject:
   m_ObjectHideFlags: 0
@@ -3161,8 +3037,8 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
+  m_HorizontalAxis: P1Horizontal
+  m_VerticalAxis: P1Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
@@ -3742,6 +3618,16 @@ PrefabInstance:
       propertyPath: playerHorizontalAxis
       value: P1Horizontal
       objectReference: {fileID: 0}
+    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
+        type: 3}
+      propertyPath: Reticle
+      value: 
+      objectReference: {fileID: 1533938991}
+    - target: {fileID: 5705682671031744626, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
+        type: 3}
+      propertyPath: Speedometer
+      value: 
+      objectReference: {fileID: 21130499}
     - target: {fileID: 5705682671271820605, guid: 2be4c5636f0e9e04683355fdc5dcc6dc,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.width

@@ -373,7 +373,8 @@ public class PlayerController : MonoBehaviour
 
         Debug.DrawRay(transform.position, cameraTransform.TransformDirection(Vector3.forward) * GrappleDistance, Color.blue, 1f);
 
-        if (Physics.Raycast(this.transform.position, lastGrapplableRaycastPoint - cameraTransform.position, out hit, GrappleDistance, ~(1 << 8)))
+        if (Physics.Raycast(this.transform.position, lastGrapplableRaycastPoint - cameraTransform.position, out hit, GrappleDistance, ~(1 << 8)) &&
+            grapplableTimer < grapplableMaxTime)
         {
             currentState = State.grappling;
 
