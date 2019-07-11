@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
         // debug reset position
         if (Vector3.Distance(Vector3.zero, this.transform.position) > 100f && this.transform.position.y < -20)
         {
-            this.transform.position = Vector3.zero;
+            this.transform.position = GameObject.Find("SpawnManager").GetComponent<SpawnManager>().InitialSpawnPoints[PlayerNumber - 1];
             rb.velocity = Vector3.zero;
         }
 
@@ -373,7 +373,8 @@ public class PlayerController : MonoBehaviour
 
         Debug.DrawRay(transform.position, cameraTransform.TransformDirection(Vector3.forward) * GrappleDistance, Color.blue, 1f);
 
-        if (Physics.Raycast(this.transform.position, lastGrapplableRaycastPoint - cameraTransform.position, out hit, GrappleDistance, ~(1 << 8)))
+        if (Physics.Raycast(this.transform.position, lastGrapplableRaycastPoint - cameraTransform.position, out hit, GrappleDistance, ~(1 << 8)) &&
+            grapplableTimer < grapplableMaxTime)
         {
             currentState = State.grappling;
 
