@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Level Test.unity
+- path: Assets/Scenes/Test Scenes/Tim/VFX Sand Storm.unity
   isLoaded: 1
   isActive: 1
