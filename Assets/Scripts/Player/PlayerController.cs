@@ -9,8 +9,9 @@ public class PlayerController : MonoBehaviour
     public float GrappleDistance = 30f; // limit on the distance of the grappling hook.
     public float SpeedLimit = 30f; // SOFT speed limit, multiplied by number of consecutive grapples in the air.
     public float GrappleForce = 30f; // the force with which the grappling hook pulls the player.
-    public float RunSpeed = 7f; // the maximum speed at which the player can move while on the ground (barring sliding from a jump).
+    public float DefaultRunSpeed = 7f; // the default speed at which the player can move while on the ground. Sliding and landing while moving quickly circumvent this.
     public float JumpForce = 10f; // The force with which the player jumps. Self-explanatory.
+    public float MaxJumpForce = 30f;
 
     [SerializeField]
     private GameObject ropeSectionPrefab;
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour
     private List<GameObject> ropeSections;
 
     private Rigidbody rb;
+
+    private float currentRunSpeed; // The current running speed of the player, changed on the fly (literally) and lerping towards DefaultRunSpeed while on the ground.
 
     private Vector3 lastGrapplableRaycastPoint;
     private float grapplableTimer;
@@ -274,6 +277,9 @@ public class PlayerController : MonoBehaviour
 
             ClampSpeedToLimit();
         }
+
+        // Update currentRunSpeed so that when the player hits the ground, they are running relative to how fast they were grappling
+        currentRunSpeed = rb.velocity.magnitude * 0.5f;
     }
 
     private void UpdateMoveAir()
@@ -294,6 +300,9 @@ public class PlayerController : MonoBehaviour
 
             hasAirDashed = true;
         }
+
+        // Update currentRunSpeed so that when the player hits the ground, they are running relative to how fast they were flying
+        currentRunSpeed = rb.velocity.magnitude * 0.8f;
     }
 
     private void UpdateMoveGround()
@@ -317,7 +326,7 @@ public class PlayerController : MonoBehaviour
 
             // If the player is not on a flat surface and they are moving faster than the default run speed,
             // presume they are sliding downhill and refresh the slide timer.
-            if (rb.velocity.magnitude > RunSpeed && collisionNormal.y != 1)
+            if (rb.velocity.magnitude > currentRunSpeed && collisionNormal.y != 1)
             {
                 slideTimer = 0f;
             }
@@ -326,16 +335,20 @@ public class PlayerController : MonoBehaviour
         }
         else if (Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, 2f, ~(1 << 8))) // Normal running behavior
         {
-            rb.velocity = Vector3.ProjectOnPlane((transform.forward * vAxis * RunSpeed) + (transform.right * hAxis * RunSpeed), hit.normal);
+            // Decrease currentRunSpeed gradually until it matches DefaultRunSpeed.
+            currentRunSpeed = Mathf.Lerp(currentRunSpeed, DefaultRunSpeed, 0.02f); // Lerp towards DefaultRunSpeed.
+            currentRunSpeed = Mathf.Max(currentRunSpeed, DefaultRunSpeed); // Mathf.Max to ensure [currentRunSpeed >= DefaultRunSpeed]
 
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, RunSpeed);
+            rb.velocity = Vector3.ProjectOnPlane((transform.forward * vAxis * currentRunSpeed) + (transform.right * hAxis * currentRunSpeed), hit.normal);
+
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, currentRunSpeed);
         }
 
         if (Input.GetButtonUp(playerSlideButton) || slideTimer >= slideMaxTime) // What happens when a slide "ends"
         {
             this.GetComponent<Collider>().material.dynamicFriction = defaultFriction;
 
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, RunSpeed);
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, currentRunSpeed);
         }
 
 
@@ -351,11 +364,12 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = Vector3.ClampMagnitude(incidenceVelocity, SpeedLimit);
             }
             // If the previous parameters are not met, jump velocity is given by current velocity alongside the default jump force.
+            // Note: When jumping off of a wall, this may feel unnatural as the player will jump straight up instead of jumping "off" the wall.
             else
             {
-                
+                float tempJumpForce = Mathf.Max(JumpForce, Mathf.Min(rb.velocity.magnitude, MaxJumpForce));
 
-                rb.velocity += (transform.forward * vAxis * JumpForce) + (transform.right * hAxis * JumpForce) + (transform.up * JumpForce);
+                rb.velocity += (transform.forward * vAxis * tempJumpForce) + (transform.right * hAxis * tempJumpForce) + (transform.up * tempJumpForce);
             }
 
             this.currentState = State.inAir;
