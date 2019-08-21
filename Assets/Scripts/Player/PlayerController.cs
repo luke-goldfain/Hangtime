@@ -292,6 +292,13 @@ public class PlayerController : MonoBehaviour
         // Assign airVelocity variable, used primarily for checking collision angles
         airVelocity = rb.velocity;
 
+        // Allow the player to fall suddenly with the slide button.
+        // Think of this as "fast-falling", like in Super Smash Bros.
+        if (Input.GetButtonDown(playerSlideButton) && rb.velocity.y > -10f)
+        {
+            rb.velocity = Vector3.Slerp(rb.velocity, Vector3.down * 15f, 0.7f);
+        }
+
         // Reassign air velocity if the player jumps, allowing for air jumping (once per inAir-state)
         // The velocity assignment for air-jumping takes current velocity into account, albeit not weighing it heavily.
         if (Input.GetButtonDown(playerJumpButton) && !hasAirDashed)
@@ -361,7 +368,7 @@ public class PlayerController : MonoBehaviour
             //  surface), they must have been against the surface for < angleJumpCooldown seconds, and the velocity of the incidence must be high enough.
             if (Vector3.Angle(incidenceVelocity, collisionNormal) < 75f && groundTimer < angleJumpCooldown && incidenceVelocity.magnitude > 10f)
             {
-                rb.velocity = Vector3.ClampMagnitude(incidenceVelocity, SpeedLimit);
+                rb.velocity = Vector3.ClampMagnitude(incidenceVelocity, MaxJumpForce);
             }
             // If the previous parameters are not met, jump velocity is given by current velocity alongside the default jump force.
             // Note: When jumping off of a wall, this may feel unnatural as the player will jump straight up instead of jumping "off" the wall.
@@ -369,7 +376,7 @@ public class PlayerController : MonoBehaviour
             {
                 float tempJumpForce = Mathf.Max(JumpForce, Mathf.Min(rb.velocity.magnitude, MaxJumpForce));
 
-                rb.velocity += (transform.forward * vAxis * tempJumpForce) + (transform.right * hAxis * tempJumpForce) + (transform.up * tempJumpForce);
+                rb.velocity = (transform.forward * vAxis * tempJumpForce) + (transform.right * hAxis * tempJumpForce) + (transform.up * tempJumpForce * 0.75f);
             }
 
             this.currentState = State.inAir;
