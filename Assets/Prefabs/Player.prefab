@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5705682671031744631}
   - component: {fileID: 5705682671031744626}
   - component: {fileID: 5705682671031744630}
+  - component: {fileID: 3854785532966682490}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -120,6 +121,10 @@ MonoBehaviour:
   Reticle: {fileID: 0}
   Speedometer: {fileID: 0}
   PlayerNumber: 1
+  GrapplableMask:
+    serializedVersion: 2
+    m_Bits: 1
+  AcceptsInput: 1
   GrappleHitPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &5705682671031744630
 SphereCollider:
@@ -134,6 +139,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3854785532966682490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5705682671031744628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64b7cda7d1b6d341b2c014f92e5d38f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CheckpointsRequired: 2
 --- !u!1 &5705682671271820579
 GameObject:
   m_ObjectHideFlags: 0

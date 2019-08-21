@@ -25,6 +25,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public int PlayerNumber;
 
+    [SerializeField]
+    public LayerMask GrapplableMask;
+
+    public bool AcceptsInput = true;
+
     private int numberOfPlayers;
     
     private string playerFireButton;
@@ -74,6 +79,7 @@ public class PlayerController : MonoBehaviour
     // bool necessary because there is no method for no collision.
     private bool colliding;
 
+    // TODO: Add a "finished" state that zooms camera out and displays player character in third person
     private enum State
     {
         inAir,
@@ -139,12 +145,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown(playerFireButton))
+        if (Input.GetButtonDown(playerFireButton) && AcceptsInput)
         {
             CastGrapple();
         }
 
-        if (Input.GetButtonUp(playerFireButton))
+        if (Input.GetButtonUp(playerFireButton) && AcceptsInput)
         {
             currentState = State.inAir;
         }
@@ -158,6 +164,7 @@ public class PlayerController : MonoBehaviour
 
         //Debug.Log(currentState);
 
+        // TODO: Add a "finished" state that zooms camera out and displays player character in third person
         switch (currentState)
         {
             case State.inAir:
@@ -246,24 +253,27 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDir = Vector3.Slerp(cameraTransform.forward, grappleDir, 0.9f);
 
         // If player is holding a direction (thumbstick, WASD) while they grapple, it slightly affects the direction of their grapple.
-        if (Input.GetAxis(playerHorizontalAxis) < 0)
+        if (AcceptsInput)
         {
-            moveDir = Vector3.Slerp(moveDir, -cameraTransform.right, .12f);
-        }
+            if (Input.GetAxis(playerHorizontalAxis) < 0)
+            {
+                moveDir = Vector3.Slerp(moveDir, -cameraTransform.right, .12f);
+            }
 
-        if (Input.GetAxis(playerHorizontalAxis) > 0)
-        {
-            moveDir = Vector3.Slerp(moveDir, cameraTransform.right, .12f);
-        }
+            if (Input.GetAxis(playerHorizontalAxis) > 0)
+            {
+                moveDir = Vector3.Slerp(moveDir, cameraTransform.right, .12f);
+            }
 
-        if (Input.GetAxis(playerVerticalAxis) > 0)
-        {
-            moveDir = Vector3.Slerp(moveDir, cameraTransform.up, .12f);
-        }
+            if (Input.GetAxis(playerVerticalAxis) > 0)
+            {
+                moveDir = Vector3.Slerp(moveDir, cameraTransform.up, .12f);
+            }
 
-        if (Input.GetAxis(playerVerticalAxis) < 0)
-        {
-            moveDir = Vector3.Slerp(moveDir, -cameraTransform.up, .12f);
+            if (Input.GetAxis(playerVerticalAxis) < 0)
+            {
+                moveDir = Vector3.Slerp(moveDir, -cameraTransform.up, .12f);
+            }
         }
 
         // Add force inverse to the length of the grapple (low length = high force). 
@@ -284,28 +294,31 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateMoveAir()
     {
-        float hAxis = Input.GetAxisRaw(playerHorizontalAxis);
-        float vAxis = Input.GetAxisRaw(playerVerticalAxis);
-
-        rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * 2f);
-
-        // Assign airVelocity variable, used primarily for checking collision angles
-        airVelocity = rb.velocity;
-
-        // Allow the player to fall suddenly with the slide button.
-        // Think of this as "fast-falling", like in Super Smash Bros.
-        if (Input.GetButtonDown(playerSlideButton) && rb.velocity.y > -10f)
+        if (AcceptsInput)
         {
-            rb.velocity = Vector3.Slerp(rb.velocity, Vector3.down * 15f, 0.7f);
-        }
+            float hAxis = Input.GetAxisRaw(playerHorizontalAxis);
+            float vAxis = Input.GetAxisRaw(playerVerticalAxis);
 
-        // Reassign air velocity if the player jumps, allowing for air jumping (once per inAir-state)
-        // The velocity assignment for air-jumping takes current velocity into account, albeit not weighing it heavily.
-        if (Input.GetButtonDown(playerJumpButton) && !hasAirDashed)
-        {
-            rb.velocity = Vector3.Slerp(rb.velocity, (transform.forward * vAxis * JumpForce) + (transform.right * hAxis * JumpForce) + (transform.up * JumpForce), 0.9f);
+            rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * 2f);
 
-            hasAirDashed = true;
+            // Assign airVelocity variable, used primarily for checking collision angles
+            airVelocity = rb.velocity;
+
+            // Allow the player to fall suddenly with the slide button.
+            // Think of this as "fast-falling", like in Super Smash Bros.
+            if (Input.GetButtonDown(playerSlideButton) && rb.velocity.y > -10f)
+            {
+                rb.velocity = Vector3.Slerp(rb.velocity, Vector3.down * 15f, 0.7f);
+            }
+
+            // Reassign air velocity if the player jumps, allowing for air jumping (once per inAir-state)
+            // The velocity assignment for air-jumping takes current velocity into account, albeit not weighing it heavily.
+            if (Input.GetButtonDown(playerJumpButton) && !hasAirDashed)
+            {
+                rb.velocity = Vector3.Slerp(rb.velocity, (transform.forward * vAxis * JumpForce) + (transform.right * hAxis * JumpForce) + (transform.up * JumpForce), 0.9f);
+
+                hasAirDashed = true;
+            }
         }
 
         // Update currentRunSpeed so that when the player hits the ground, they are running relative to how fast they were flying
@@ -316,70 +329,73 @@ public class PlayerController : MonoBehaviour
     {
         groundTimer += Time.deltaTime;
 
-        float hAxis = Input.GetAxisRaw(playerHorizontalAxis);
-        float vAxis = Input.GetAxisRaw(playerVerticalAxis);
-        
-        if (Input.GetButtonDown(playerSlideButton))
+        if (AcceptsInput)
         {
-            slideTimer = 0f;
-        }
+            float hAxis = Input.GetAxisRaw(playerHorizontalAxis);
+            float vAxis = Input.GetAxisRaw(playerVerticalAxis);
 
-        if (Input.GetButton(playerSlideButton) && slideTimer < slideMaxTime) // Sliding behavior
-        {
-            this.GetComponent<Collider>().material.dynamicFriction = slideFriction;
-
-            rb.AddForce(((transform.forward * vAxis) + (transform.right * hAxis)) * 3f);
-            rb.AddForce(-transform.up * 3f);
-
-            // If the player is not on a flat surface and they are moving faster than the default run speed,
-            // presume they are sliding downhill and refresh the slide timer.
-            if (rb.velocity.magnitude > currentRunSpeed && collisionNormal.y != 1)
+            if (Input.GetButtonDown(playerSlideButton))
             {
                 slideTimer = 0f;
             }
 
-            slideTimer += Time.deltaTime;
-        }
-        else if (Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, 2f, ~(1 << 8))) // Normal running behavior
-        {
-            // Decrease currentRunSpeed gradually until it matches DefaultRunSpeed.
-            currentRunSpeed = Mathf.Lerp(currentRunSpeed, DefaultRunSpeed, 0.02f); // Lerp towards DefaultRunSpeed.
-            currentRunSpeed = Mathf.Max(currentRunSpeed, DefaultRunSpeed); // Mathf.Max to ensure [currentRunSpeed >= DefaultRunSpeed]
-
-            rb.velocity = Vector3.ProjectOnPlane((transform.forward * vAxis * currentRunSpeed) + (transform.right * hAxis * currentRunSpeed), hit.normal);
-
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, currentRunSpeed);
-        }
-
-        if (Input.GetButtonUp(playerSlideButton) || slideTimer >= slideMaxTime) // What happens when a slide "ends"
-        {
-            this.GetComponent<Collider>().material.dynamicFriction = defaultFriction;
-
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, currentRunSpeed);
-        }
-
-
-        if (Input.GetButtonDown(playerJumpButton))
-        {
-            this.transform.position += Vector3.up; // Messy brute-force to get player out of the ground --
-                                                   // jumping does not work correctly if player is colliding with the ground when the next line is executed.
-
-            // To jump off of a surface based on angle and magnitude of incidence, the angle must be straighter than 75 degrees (which is almost flat to the
-            //  surface), they must have been against the surface for < angleJumpCooldown seconds, and the velocity of the incidence must be high enough.
-            if (Vector3.Angle(incidenceVelocity, collisionNormal) < 75f && groundTimer < angleJumpCooldown && incidenceVelocity.magnitude > 10f)
+            if (Input.GetButton(playerSlideButton) && slideTimer < slideMaxTime) // Sliding behavior
             {
-                rb.velocity = Vector3.ClampMagnitude(incidenceVelocity, MaxJumpForce);
+                this.GetComponent<Collider>().material.dynamicFriction = slideFriction;
+
+                rb.AddForce(((transform.forward * vAxis) + (transform.right * hAxis)) * 3f);
+                rb.AddForce(-transform.up * 3f);
+
+                // If the player is not on a flat surface and they are moving faster than the default run speed,
+                // presume they are sliding downhill and refresh the slide timer.
+                if (rb.velocity.magnitude > currentRunSpeed && collisionNormal.y != 1)
+                {
+                    slideTimer = 0f;
+                }
+
+                slideTimer += Time.deltaTime;
             }
-            // If the previous parameters are not met, jump velocity is given by current velocity alongside the default jump force.
-            // Note: When jumping off of a wall, this may feel unnatural as the player will jump straight up instead of jumping "off" the wall.
-            else
+            else if (Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, 2f, ~(1 << 8))) // Normal running behavior
             {
-                float tempJumpForce = Mathf.Max(JumpForce, Mathf.Min(rb.velocity.magnitude, MaxJumpForce));
+                // Decrease currentRunSpeed gradually until it matches DefaultRunSpeed.
+                currentRunSpeed = Mathf.Lerp(currentRunSpeed, DefaultRunSpeed, 0.02f); // Lerp towards DefaultRunSpeed.
+                currentRunSpeed = Mathf.Max(currentRunSpeed, DefaultRunSpeed); // Mathf.Max to ensure [currentRunSpeed >= DefaultRunSpeed]
 
-                rb.velocity = (transform.forward * vAxis * tempJumpForce) + (transform.right * hAxis * tempJumpForce) + (transform.up * tempJumpForce * 0.75f);
+                rb.velocity = Vector3.ProjectOnPlane((transform.forward * vAxis * currentRunSpeed) + (transform.right * hAxis * currentRunSpeed), hit.normal);
+
+                rb.velocity = Vector3.ClampMagnitude(rb.velocity, currentRunSpeed);
             }
 
-            this.currentState = State.inAir;
+            if (Input.GetButtonUp(playerSlideButton) || slideTimer >= slideMaxTime) // What happens when a slide "ends"
+            {
+                this.GetComponent<Collider>().material.dynamicFriction = defaultFriction;
+
+                rb.velocity = Vector3.ClampMagnitude(rb.velocity, currentRunSpeed);
+            }
+
+
+            if (Input.GetButtonDown(playerJumpButton))
+            {
+                this.transform.position += Vector3.up; // Messy brute-force to get player out of the ground --
+                                                       // jumping does not work correctly if player is colliding with the ground when the next line is executed.
+
+                // To jump off of a surface based on angle and magnitude of incidence, the angle must be straighter than 75 degrees (which is almost flat to the
+                //  surface), they must have been against the surface for < angleJumpCooldown seconds, and the velocity of the incidence must be high enough.
+                if (Vector3.Angle(incidenceVelocity, collisionNormal) < 75f && groundTimer < angleJumpCooldown && incidenceVelocity.magnitude > 10f)
+                {
+                    rb.velocity = Vector3.ClampMagnitude(incidenceVelocity, MaxJumpForce);
+                }
+                // If the previous parameters are not met, jump velocity is given by current velocity alongside the default jump force.
+                // Note: When jumping off of a wall, this may feel unnatural as the player will jump straight up instead of jumping "off" the wall.
+                else
+                {
+                    float tempJumpForce = Mathf.Max(JumpForce, Mathf.Min(rb.velocity.magnitude, MaxJumpForce));
+
+                    rb.velocity = (transform.forward * vAxis * tempJumpForce) + (transform.right * hAxis * tempJumpForce) + (transform.up * tempJumpForce * 0.75f);
+                }
+
+                this.currentState = State.inAir;
+            }
         }
     }
 
@@ -418,7 +434,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(this.transform.position, cameraTransform.TransformDirection(Vector3.forward), out hit, GrappleDistance, ~(1 << 8)))
+        if (Physics.Raycast(this.transform.position, cameraTransform.TransformDirection(Vector3.forward), out hit, GrappleDistance, GrapplableMask))
         {
             ResetReticlePosition();
 
