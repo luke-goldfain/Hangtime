@@ -35,8 +35,11 @@ public class PlayerController : MonoBehaviour
     private string playerFireButton;
     private string playerJumpButton;
     private string playerSlideButton;
+    private string playerGSwitchButton;
     private string playerVerticalAxis;
     private string playerHorizontalAxis;
+
+    private bool isPulling; // Determines whether to pull or swing when grappling. Player-switchable via playerGSwitchButton at (nearly) any time.
 
     private List<GameObject> ropeSections;
 
@@ -53,6 +56,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 grappleStartPosition;
 
     private Vector3 grappleDir;
+
+    private float currentGrappleDistance;
+
+    private Vector3 currentGrappleNormal;
 
     private Transform cameraTransform;
 
@@ -104,6 +111,8 @@ public class PlayerController : MonoBehaviour
         ropeSections = new List<GameObject>();
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        isPulling = true;
     }
 
     // Collect variables for jump-off angle when colliding with an object
@@ -143,6 +152,11 @@ public class PlayerController : MonoBehaviour
             {
                 currentState = State.inAir;
             }
+        }
+
+        if (Input.GetButtonDown(playerGSwitchButton) && AcceptsInput)
+        {
+            isPulling = !isPulling;
         }
 
         if (Input.GetButtonDown(playerFireButton) && AcceptsInput)
@@ -205,6 +219,7 @@ public class PlayerController : MonoBehaviour
         {
             case State.inAir:
                 {
+
                     hasAirDashed = false;
 
                     this.GetComponent<Collider>().material.dynamicFriction = defaultFriction;
@@ -239,6 +254,17 @@ public class PlayerController : MonoBehaviour
                     this.GetComponent<Collider>().material.dynamicFriction = defaultFriction;
 
                     if (consecutiveGrapples < 4) consecutiveGrapples++;
+                    
+                    currentGrappleDistance = Vector3.Distance(this.transform.position, GrappleHitPosition);
+
+                    if (this.transform.position.y - GrappleHitPosition.y >= 15f)
+                    {
+                        currentGrappleNormal = cameraTransform.right;
+                    }
+                    else
+                    {
+                        currentGrappleNormal = -cameraTransform.right;
+                    }
 
                     break;
                 }
@@ -247,10 +273,19 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateMoveGrappling()
     {
-        // Movement direction is  a spherical interpolation of the forward-facing direction and the direction of the grapple.
-        // The last argument in this function determines the relative "strength" of the two Vector3's, with the grapple direction
-        // remaining the strongest factor in movement direction.
-        Vector3 moveDir = Vector3.Slerp(cameraTransform.forward, grappleDir, 0.9f);
+        Vector3 moveDir = Vector3.up; // Default -- always overwritten
+
+        if (isPulling)
+        {
+            // Movement direction is  a spherical interpolation of the forward-facing direction and the direction of the grapple.
+            // The last argument in this function determines the relative "strength" of the two Vector3's, with the grapple direction
+            // remaining the strongest factor in movement direction.
+            moveDir = Vector3.Slerp(cameraTransform.forward, grappleDir, 0.9f);
+        }
+        else
+        {
+            moveDir = Vector3.Cross(GrappleHitPosition - this.transform.position, currentGrappleNormal);
+        }
 
         // If player is holding a direction (thumbstick, WASD) while they grapple, it slightly affects the direction of their grapple.
         if (AcceptsInput)
@@ -276,12 +311,30 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // Add force inverse to the length of the grapple (low length = high force). 
-        // If distance is high enough that the force is below 15 * consecutiveGrapples, default to that.
-        rb.AddForce(moveDir * Mathf.Max(GrappleForce - Vector3.Distance(GrappleHitPosition, this.transform.position), 15f * (consecutiveGrapples + 1)));
-        
-        // If the player has traveled 1.5 times the original length of the grapple (a ways past or away from the grapple point), break off the grapple automatically.
-        if (Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(GrappleHitPosition, grappleStartPosition) * 1.5)
+        if (isPulling) // if player is pulling, increase their grapple force based on number of consecutive grapples and distance from grapple point.
+        {
+            // Add force inverse to the length of the grapple (low length = high force). 
+            // If distance is high enough that the force is below 15 * consecutiveGrapples, default to that.
+            rb.AddForce(moveDir * Mathf.Max(GrappleForce - Vector3.Distance(GrappleHitPosition, this.transform.position), 15f * (consecutiveGrapples + 1)));
+        }
+        else // if player is not pulling, rotate them around the grapple point at a soft-fixed speed, ala spider man.
+        {
+            rb.AddForce(moveDir * GrappleForce * 0.1f);
+
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, GrappleForce * 2f);
+
+            // This would force the swinging grapple to maintain a constant length, but it conflicts with the velocity too much and causes jittery nonsense to unfold.
+            /*if (Vector3.Distance(GrappleHitPosition, this.transform.position) > currentGrappleDistance * 1.1f)
+            {
+                
+                this.transform.position = Vector3.Slerp(this.transform.position, GrappleHitPosition + Vector3.ClampMagnitude((this.transform.position - GrappleHitPosition).normalized * currentGrappleDistance, currentGrappleDistance * 1.1f), 0.1f);
+            }*/
+        }
+
+        // If the player is pulling and has traveled 1.5 times the original length of the grapple (a ways past or away from the grapple point), break off the grapple automatically.
+        // If the player is swinging and has traveled 2.4 times original grapple length, same deal.
+        if ((Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(GrappleHitPosition, grappleStartPosition) * 1.5f && isPulling) ||
+            (Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(GrappleHitPosition, grappleStartPosition) * 2.4f && !isPulling))
         {
             this.currentState = State.inAir;
 
@@ -289,7 +342,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Update currentRunSpeed so that when the player hits the ground, they are running relative to how fast they were grappling
-        currentRunSpeed = rb.velocity.magnitude * 0.5f;
+        currentRunSpeed = rb.velocity.magnitude * 0.7f;
     }
 
     private void UpdateMoveAir()
@@ -410,12 +463,12 @@ public class PlayerController : MonoBehaviour
 
         Debug.DrawRay(transform.position, cameraTransform.TransformDirection(Vector3.forward) * GrappleDistance, Color.blue, 1f);
 
-        if (Physics.Raycast(this.transform.position, lastGrapplableRaycastPoint - cameraTransform.position, out hit, GrappleDistance, ~(1 << 8)) &&
+        if (Physics.Raycast(this.transform.position, lastGrapplableRaycastPoint - cameraTransform.position, out hit, GrappleDistance, GrapplableMask) &&
             grapplableTimer < grapplableMaxTime)
         {
-            currentState = State.grappling;
-
             GrappleHitPosition = hit.point;
+
+            currentState = State.grappling;
 
             grappleStartPosition = this.transform.position;
 
@@ -464,6 +517,7 @@ public class PlayerController : MonoBehaviour
         playerFireButton = "P" + PlayerNumber + "Fire1";
         playerJumpButton = "P" + PlayerNumber + "Jump";
         playerSlideButton = "P" + PlayerNumber + "Slide";
+        playerGSwitchButton = "P" + PlayerNumber + "GrappleSwitch";
         playerVerticalAxis = "P" + PlayerNumber + "Vertical";
         playerHorizontalAxis = "P" + PlayerNumber + "Horizontal";
     }
