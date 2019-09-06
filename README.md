@@ -1,5 +1,8 @@
 # Hangtime Prototype
 
+Several characters, each with their own motivations, gather to compete in an interplanetary grappling-hook competition. Grappling, jumping,
+and sliding through robust environments, players take the role of their chosen character and compete to be #1! Hangtime is a multiplayer racing and platformer game that requires players to capture a certain number of checkpoints before crossing the finish line.
+
 **Unity Version:** 2018.3.13f1
 
 **Controls:**
