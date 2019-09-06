@@ -8,3 +8,4 @@
 - **Jump:** Space bar / A button
 - **Slide:** Left shift / X button
 - **Grapple:** Mouse 1 / Right bumper
+- **Switch Swing Mode:** Q / Left bumper
