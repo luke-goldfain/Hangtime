@@ -17,10 +17,7 @@ public class PlayerController : MonoBehaviour
     private GameObject ropeSectionPrefab;
 
     [SerializeField]
-    public GameObject Reticle;
-
-    [SerializeField]
-    public GameObject Speedometer;
+    public GameObject Reticle, Speedometer, CheckpointMeter, CheckpointMeterFill;
 
     [SerializeField]
     public int PlayerNumber;
@@ -105,6 +102,7 @@ public class PlayerController : MonoBehaviour
 
         ResetReticlePosition();
         StartSetSpeedometerPosition();
+        StartSetCheckpointMeterPosition();
 
         rb = this.GetComponent<Rigidbody>();
 
@@ -257,7 +255,11 @@ public class PlayerController : MonoBehaviour
                     
                     currentGrappleDistance = Vector3.Distance(this.transform.position, GrappleHitPosition);
 
-                    if (this.transform.position.y - GrappleHitPosition.y >= 15f)
+                    // Change the current grapple's normal based on whether the player is high enough above their grapple,
+                    // as well as more vertical than horizontal to their grapple.
+                    if ((this.transform.position.y - GrappleHitPosition.y >= 8f) &&
+                        (this.transform.position.y - GrappleHitPosition.y >= (new Vector2(this.transform.position.x, this.transform.position.z) -
+                                                                              new Vector2(GrappleHitPosition.x, GrappleHitPosition.z)).magnitude))
                     {
                         currentGrappleNormal = cameraTransform.right;
                     }
@@ -555,31 +557,73 @@ public class PlayerController : MonoBehaviour
 
     private void StartSetSpeedometerPosition()
     {
-        float spedX = Screen.width / 8;
-        float spedY = Screen.height / 8;
+        float spedX = Screen.width / 10;
+        float spedY = Screen.height / 10;
 
         switch (PlayerNumber)
         {
             case 1:
-                spedX = Screen.width / 8;
-                if (numberOfPlayers < 3) spedY = Screen.height / 8;
-                else spedY = Screen.height * (5f/8f);
+                spedX = Screen.width / 10;
+                if (numberOfPlayers < 3) spedY = Screen.height / 10;
+                else spedY = Screen.height * (3f/5f);
                 break;
             case 2:
-                spedX = Screen.width * (5f / 8f);
-                if (numberOfPlayers < 3) spedY = Screen.height / 8;
-                else spedY = Screen.height * (5f / 8f);
+                spedX = Screen.width * (3f/5f);
+                if (numberOfPlayers < 3) spedY = Screen.height / 10;
+                else spedY = Screen.height * (3f/5f);
                 break;
             case 3:
-                spedX = Screen.width / 8;
-                spedY = Screen.height / 8;
+                spedX = Screen.width / 10;
+                spedY = Screen.height / 10;
                 break;
             case 4:
-                spedX = Screen.width * (5f / 8f);
-                spedY = Screen.height / 8;
+                spedX = Screen.width * (3f/5f);
+                spedY = Screen.height / 10;
                 break;
         }
 
         Speedometer.transform.position = new Vector2(spedX, spedY);
+
+        if (numberOfPlayers < 3)
+        {
+            Speedometer.transform.localScale *= 2;
+        }
+    }
+    
+    private void StartSetCheckpointMeterPosition()
+    {
+        float cmX = 0, cmY = 0;
+
+        switch (PlayerNumber)
+        {
+            case 1:
+                if (numberOfPlayers < 2) cmX = Screen.width;
+                else cmX = Screen.width / 2f;
+                if (numberOfPlayers < 3) cmY = Screen.height / 2f;
+                else cmY = Screen.height * (3f/4f);
+                break;
+            case 2:
+                cmX = Screen.width;
+                if (numberOfPlayers < 3) cmY = Screen.height / 2f;
+                else cmY = Screen.height * (3f/4f);
+                break;
+            case 3:
+                cmX = Screen.width / 2f;
+                cmY = Screen.height / 4f;
+                break;
+            case 4:
+                cmX = Screen.width;
+                cmY = Screen.height / 4f;
+                break;
+        }
+
+        CheckpointMeter.transform.position = new Vector2(cmX, cmY);
+        CheckpointMeterFill.transform.position = new Vector2(cmX, cmY);
+
+        if (numberOfPlayers > 2)
+        {
+            CheckpointMeter.transform.localScale *= 0.8f;
+            CheckpointMeterFill.transform.localScale *= 0.8f;
+        }
     }
 }
