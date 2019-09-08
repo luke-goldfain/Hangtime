@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CheckpointController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class CheckpointController : MonoBehaviour
     private List<GameObject> checkpointsHit;
 
     private bool finishable;
+
+    private GameObject CheckpointMeterFill;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,13 @@ public class CheckpointController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckpointMeterFill = this.gameObject.GetComponent<PlayerController>().CheckpointMeterFill;
+
+        if (checkpointsHit.Count > 0)
+        {
+            CheckpointMeterFill.GetComponent<Image>().fillAmount = (float)checkpointsHit.Count / CheckpointsRequired;
+        }
+
         if (checkpointsHit.Count >= CheckpointsRequired)
         {
             finishable = true;

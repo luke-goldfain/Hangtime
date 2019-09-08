@@ -120,6 +120,8 @@ MonoBehaviour:
     type: 3}
   Reticle: {fileID: 0}
   Speedometer: {fileID: 0}
+  CheckpointMeter: {fileID: 0}
+  CheckpointMeterFill: {fileID: 0}
   PlayerNumber: 1
   GrapplableMask:
     serializedVersion: 2

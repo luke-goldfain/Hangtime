@@ -49,8 +49,12 @@ MonoBehaviour:
     type: 3}
   SpeedometerPrefab: {fileID: 5203139242332602169, guid: d0922f855e0b8364b8b8110313d6bc1c,
     type: 3}
+  CheckpointMeterPrefab: {fileID: 3437996580380733618, guid: 6926b2e32dcdea645aa3ddb9820c6616,
+    type: 3}
+  CheckpointMeterFillPrefab: {fileID: 3271252651349302588, guid: 2613d970202fbdc44b479f0b1afbfef3,
+    type: 3}
   InitialSpawnPoints:
-  - {x: 300, y: 200, z: 1250}
-  - {x: 302, y: 200, z: 1250}
-  - {x: 304, y: 200, z: 1250}
-  - {x: 306, y: 200, z: 1250}
+  - {x: 302, y: 202, z: 1260}
+  - {x: 304, y: 202, z: 1260}
+  - {x: 302, y: 202, z: 1264}
+  - {x: 304, y: 202, z: 1264}
