@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test Scenes/Luke/NonLinearRaceTest.unity
     guid: fe162d8bf08b71f4791923745ab671dc
+  - enabled: 1
+    path: Assets/Scenes/Test Scenes/Luke/LukeHUDImplement.unity
+    guid: 5f77a67c88699f14c9844cf2fc9915b3
   m_configObjects: {}

@@ -17,7 +17,10 @@ public class PlayerController : MonoBehaviour
     private GameObject ropeSectionPrefab;
 
     [SerializeField]
-    public GameObject Reticle, Speedometer, CheckpointMeter, CheckpointMeterFill;
+    public GameObject HUD;
+    //public GameObject Reticle, Speedometer, CheckpointMeter, CheckpointMeterFill;
+
+    public GameObject Reticle, Speedometer, SpeedometerText, PCompass, CheckpointMeter, CheckpointMeterFill;
 
     [SerializeField]
     public int PlayerNumber;
@@ -60,6 +63,8 @@ public class PlayerController : MonoBehaviour
 
     private Transform cameraTransform;
 
+    private float cameraX, cameraY, cameraW, cameraH;
+
     private Vector3 airVelocity;
     private Vector3 incidenceVelocity;
     private Vector3 collisionNormal;
@@ -100,9 +105,12 @@ public class PlayerController : MonoBehaviour
 
         StartAssignInputButtons();
 
-        ResetReticlePosition();
-        StartSetSpeedometerPosition();
-        StartSetCheckpointMeterPosition();
+        Reticle = HUD.transform.Find("Reticle").gameObject;
+        Speedometer = HUD.transform.Find("Speedometer").gameObject;
+        SpeedometerText = HUD.transform.Find("Speedometer (UI)").gameObject;
+        PCompass = HUD.transform.Find("Compass").gameObject;
+        CheckpointMeter = HUD.transform.Find("CheckpointMeter").gameObject;
+        CheckpointMeterFill = HUD.transform.Find("CheckpointMeterFill").gameObject;
 
         rb = this.GetComponent<Rigidbody>();
 
@@ -136,7 +144,7 @@ public class PlayerController : MonoBehaviour
     {
         cameraTransform = this.GetComponentInChildren<PlayerCameraController>().transform;
 
-        Speedometer.GetComponent<Text>().text = Mathf.RoundToInt(this.rb.velocity.magnitude).ToString();
+        SpeedometerText.GetComponent<Text>().text = Mathf.RoundToInt(this.rb.velocity.magnitude).ToString();
 
         UpdateCheckGrapplability();
 
@@ -319,18 +327,11 @@ public class PlayerController : MonoBehaviour
             // If distance is high enough that the force is below 15 * consecutiveGrapples, default to that.
             rb.AddForce(moveDir * Mathf.Max(GrappleForce - Vector3.Distance(GrappleHitPosition, this.transform.position), 15f * (consecutiveGrapples + 1)));
         }
-        else // if player is not pulling, rotate them around the grapple point at a soft-fixed speed, ala spider man.
+        else if (this.transform.position.y <= GrappleHitPosition.y) // if player is not pulling, rotate them around the grapple point at a soft-fixed speed, ala spider man.
         {
             rb.AddForce(moveDir * GrappleForce * 0.1f);
 
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, GrappleForce * 2f);
-
-            // This would force the swinging grapple to maintain a constant length, but it conflicts with the velocity too much and causes jittery nonsense to unfold.
-            /*if (Vector3.Distance(GrappleHitPosition, this.transform.position) > currentGrappleDistance * 1.1f)
-            {
-                
-                this.transform.position = Vector3.Slerp(this.transform.position, GrappleHitPosition + Vector3.ClampMagnitude((this.transform.position - GrappleHitPosition).normalized * currentGrappleDistance, currentGrappleDistance * 1.1f), 0.1f);
-            }*/
         }
 
         // If the player is pulling and has traveled 1.5 times the original length of the grapple (a ways past or away from the grapple point), break off the grapple automatically.
@@ -524,106 +525,98 @@ public class PlayerController : MonoBehaviour
         playerHorizontalAxis = "P" + PlayerNumber + "Horizontal";
     }
 
-    private void ResetReticlePosition()
+    internal void GetCameraPosition(float camX, float camY, float camW, float camH)
     {
-        float reticleX = Screen.width / 2;
-        float reticleY = Screen.height / 2; 
+        cameraX = camX;
+        cameraY = camY;
+        cameraW = camW;
+        cameraH = camH;
+    }
+
+    internal void ResetReticlePosition()
+    {
+        float reticleX = Screen.width * (cameraW / 2);
+        float reticleY = Screen.height * (cameraH / 2); 
 
         switch (PlayerNumber)
         {
             case 1:
-                if (numberOfPlayers == 1) reticleX = Screen.width / 2;
-                else reticleX = Screen.width / 4;
-                if (numberOfPlayers < 3) reticleY = Screen.height / 2;
-                else reticleY = Screen.height * (3f/4f);
+                if (numberOfPlayers > 2) reticleY += (Screen.height / 2);
                 break;
             case 2:
-                reticleX = Screen.width * (3f/4f);
-                if (numberOfPlayers < 3) reticleY = Screen.height / 2;
-                else reticleY = Screen.height * (3f / 4f);
+                reticleX += (Screen.width / 2);
+                if (numberOfPlayers > 2) reticleY += (Screen.height / 2);
                 break;
             case 3:
-                reticleX = Screen.width / 4;
-                reticleY = Screen.height / 4;
+
                 break;
             case 4:
-                reticleX = Screen.width * (3f/4f);
-                reticleY = Screen.height / 4;
+                reticleX += (Screen.width / 2);
                 break;
         }
 
         Reticle.transform.position = new Vector2(reticleX, reticleY);
     }
 
-    private void StartSetSpeedometerPosition()
+    internal void StartSetSpeedometerPosition()
     {
-        float spedX = Screen.width / 10;
-        float spedY = Screen.height / 10;
-
-        switch (PlayerNumber)
-        {
-            case 1:
-                spedX = Screen.width / 10;
-                if (numberOfPlayers < 3) spedY = Screen.height / 10;
-                else spedY = Screen.height * (3f/5f);
-                break;
-            case 2:
-                spedX = Screen.width * (3f/5f);
-                if (numberOfPlayers < 3) spedY = Screen.height / 10;
-                else spedY = Screen.height * (3f/5f);
-                break;
-            case 3:
-                spedX = Screen.width / 10;
-                spedY = Screen.height / 10;
-                break;
-            case 4:
-                spedX = Screen.width * (3f/5f);
-                spedY = Screen.height / 10;
-                break;
-        }
+        float spedX = (Screen.width * cameraX);
+        float spedY = (Screen.height * cameraY);
 
         Speedometer.transform.position = new Vector2(spedX, spedY);
 
-        if (numberOfPlayers < 3)
+        SpeedometerText.transform.position = Speedometer.transform.position;
+
+        if (numberOfPlayers > 2)
         {
-            Speedometer.transform.localScale *= 2;
+            Speedometer.transform.localScale *= 0.6f;
+            SpeedometerText.transform.localScale *= 0.6f;
         }
     }
     
-    private void StartSetCheckpointMeterPosition()
+    internal void StartSetCheckpointMeterPosition()
     {
-        float cmX = 0, cmY = 0;
+        float cmX = Screen.width * cameraW;
+        float cmY = Screen.height * cameraH / 2;
 
         switch (PlayerNumber)
         {
             case 1:
-                if (numberOfPlayers < 2) cmX = Screen.width;
-                else cmX = Screen.width / 2f;
-                if (numberOfPlayers < 3) cmY = Screen.height / 2f;
-                else cmY = Screen.height * (3f/4f);
+                if (numberOfPlayers > 2) cmY += (Screen.height * cameraY);
                 break;
             case 2:
-                cmX = Screen.width;
-                if (numberOfPlayers < 3) cmY = Screen.height / 2f;
-                else cmY = Screen.height * (3f/4f);
+                cmX += (Screen.width * cameraX);
+                if (numberOfPlayers > 2) cmY += (Screen.height * cameraY);
                 break;
             case 3:
-                cmX = Screen.width / 2f;
-                cmY = Screen.height / 4f;
                 break;
             case 4:
-                cmX = Screen.width;
-                cmY = Screen.height / 4f;
+                cmX += (Screen.width * cameraX);
                 break;
         }
 
         CheckpointMeter.transform.position = new Vector2(cmX, cmY);
         CheckpointMeterFill.transform.position = new Vector2(cmX, cmY);
 
-        if (numberOfPlayers > 2)
+        if (numberOfPlayers < 3)
         {
-            CheckpointMeter.transform.localScale *= 0.8f;
-            CheckpointMeterFill.transform.localScale *= 0.8f;
+            CheckpointMeter.transform.localScale *= 0.5f;
+            CheckpointMeterFill.transform.localScale *= 0.5f;
         }
+        else
+        {
+            CheckpointMeter.transform.localScale *= 0.3f;
+            CheckpointMeterFill.transform.localScale *= 0.3f;
+        }
+    }
+
+    internal void StartSetCompassPosition()
+    {
+        PCompass.GetComponent<Compass>().playerTransform = this.transform;
+
+        float compX = (Screen.width * cameraW) + (Screen.width * cameraX) - (PCompass.GetComponent<RectTransform>().rect.width);
+        float compY = (Screen.height * cameraY) + (PCompass.GetComponent<RectTransform>().rect.height);
+
+        PCompass.transform.position = new Vector2(compX, compY);
     }
 }

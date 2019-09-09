@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
-    public GameObject PlayerPrefab, ReticlePrefab, SpeedometerPrefab, CheckpointMeterPrefab, CheckpointMeterFillPrefab;
+    public GameObject PlayerPrefab, HUDPrefab;
+    //public GameObject PlayerPrefab, ReticlePrefab, SpeedometerPrefab, CheckpointMeterPrefab, CheckpointMeterFillPrefab;
 
     [SerializeField]
     public List<Vector3> InitialSpawnPoints = new List<Vector3>();
@@ -22,10 +23,13 @@ public class SpawnManager : MonoBehaviour
         {
             GameObject currentPlayer = Instantiate(PlayerPrefab, InitialSpawnPoints[i - 1], Quaternion.identity);
             currentPlayer.GetComponent<PlayerController>().PlayerNumber = i;
-            currentPlayer.GetComponent<PlayerController>().Reticle = Instantiate(ReticlePrefab, FindObjectOfType<Canvas>().transform);
+
+            currentPlayer.GetComponent<PlayerController>().HUD = Instantiate(HUDPrefab, Vector3.zero, Quaternion.identity);
+
+            /*currentPlayer.GetComponent<PlayerController>().Reticle = Instantiate(ReticlePrefab, FindObjectOfType<Canvas>().transform);
             currentPlayer.GetComponent<PlayerController>().Speedometer = Instantiate(SpeedometerPrefab, FindObjectOfType<Canvas>().transform);
             currentPlayer.GetComponent<PlayerController>().CheckpointMeter = Instantiate(CheckpointMeterPrefab, FindObjectOfType<Canvas>().transform);
-            currentPlayer.GetComponent<PlayerController>().CheckpointMeterFill = Instantiate(CheckpointMeterFillPrefab, FindObjectOfType<Canvas>().transform);
+            currentPlayer.GetComponent<PlayerController>().CheckpointMeterFill = Instantiate(CheckpointMeterFillPrefab, FindObjectOfType<Canvas>().transform);*/
         }
     }
 

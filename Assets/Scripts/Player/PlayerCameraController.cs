@@ -71,6 +71,13 @@ public class PlayerCameraController : MonoBehaviour
         }
 
         this.GetComponent<Camera>().rect = new Rect(cameraX, cameraY, cameraW, cameraH);
+
+        this.GetComponentInParent<PlayerController>().GetCameraPosition(cameraX, cameraY, cameraW, cameraH);
+        
+        this.GetComponentInParent<PlayerController>().ResetReticlePosition();
+        this.GetComponentInParent<PlayerController>().StartSetSpeedometerPosition();
+        this.GetComponentInParent<PlayerController>().StartSetCheckpointMeterPosition();
+        this.GetComponentInParent<PlayerController>().StartSetCompassPosition();
     }
 
     // Update is called once per frame

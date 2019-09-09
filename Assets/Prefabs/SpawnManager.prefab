@@ -45,13 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 5705682671031744628, guid: 66f0638ade4aa8747a72498e48c0fab3,
     type: 3}
-  ReticlePrefab: {fileID: 3562292956135917284, guid: e2ee6c37ad9473d48a61bd505bcb0bc8,
-    type: 3}
-  SpeedometerPrefab: {fileID: 5203139242332602169, guid: d0922f855e0b8364b8b8110313d6bc1c,
-    type: 3}
-  CheckpointMeterPrefab: {fileID: 3437996580380733618, guid: 6926b2e32dcdea645aa3ddb9820c6616,
-    type: 3}
-  CheckpointMeterFillPrefab: {fileID: 3271252651349302588, guid: 2613d970202fbdc44b479f0b1afbfef3,
+  HUDPrefab: {fileID: 1780708271061067862, guid: c95830fe6ace4f5489f6877dd0a326af,
     type: 3}
   InitialSpawnPoints:
   - {x: 302, y: 202, z: 1260}
