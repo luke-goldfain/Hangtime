@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public GameObject HUD;
     //public GameObject Reticle, Speedometer, CheckpointMeter, CheckpointMeterFill;
 
-    public GameObject Reticle, Speedometer, SpeedometerText, PCompass, CheckpointMeter, CheckpointMeterFill;
+    public GameObject Reticle, Speedometer, SpeedometerText, SpeedometerNeedle, PCompass, CheckpointMeter, CheckpointMeterFill;
 
     [SerializeField]
     public int PlayerNumber;
@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
         Reticle = HUD.transform.Find("Reticle").gameObject;
         Speedometer = HUD.transform.Find("Speedometer").gameObject;
         SpeedometerText = HUD.transform.Find("Speedometer (UI)").gameObject;
+        SpeedometerNeedle = Speedometer.transform.Find("Needle").gameObject;
         PCompass = HUD.transform.Find("Compass").gameObject;
         CheckpointMeter = HUD.transform.Find("CheckpointMeter").gameObject;
         CheckpointMeterFill = HUD.transform.Find("CheckpointMeterFill").gameObject;
@@ -144,7 +145,7 @@ public class PlayerController : MonoBehaviour
     {
         cameraTransform = this.GetComponentInChildren<PlayerCameraController>().transform;
 
-        SpeedometerText.GetComponent<Text>().text = Mathf.RoundToInt(this.rb.velocity.magnitude).ToString();
+        UpdateSpeedometer();
 
         UpdateCheckGrapplability();
 
@@ -201,7 +202,7 @@ public class PlayerController : MonoBehaviour
         // If the player has grappled (is not on ground or in default jump), clamp magnitude by speed limit plus a ratio based on the number of consecutive grapples
         if (consecutiveGrapples > 0 && rb.velocity.y >= 0)
         {
-            ClampSpeedToLimit();
+            LerpSpeedToLimit();
         }
 
         // debug reset position
@@ -217,6 +218,14 @@ public class PlayerController : MonoBehaviour
             // Conditional operator: if cursor unlocked, lock cursor, otherwise unlock cursor
             Cursor.lockState = (Cursor.lockState == CursorLockMode.Locked)? CursorLockMode.None : CursorLockMode.Locked;
         }
+    }
+
+    private void UpdateSpeedometer()
+    {
+        SpeedometerNeedle.GetComponent<SpeedConverter>().ShowSpeed(this.rb.velocity.magnitude, 0f, 100f);
+
+        SpeedometerText.GetComponent<Text>().text = Mathf.RoundToInt(this.rb.velocity.magnitude).ToString();
+
     }
 
     private void UpdateOneTimeStateActions()
@@ -341,7 +350,7 @@ public class PlayerController : MonoBehaviour
         {
             this.currentState = State.inAir;
 
-            ClampSpeedToLimit();
+            LerpSpeedToLimit();
         }
 
         // Update currentRunSpeed so that when the player hits the ground, they are running relative to how fast they were grappling
@@ -360,11 +369,11 @@ public class PlayerController : MonoBehaviour
             // Assign airVelocity variable, used primarily for checking collision angles
             airVelocity = rb.velocity;
 
-            // Allow the player to fall suddenly with the slide button.
+            // Allow the player to fall faster with the slide button.
             // Think of this as "fast-falling", like in Super Smash Bros.
-            if (Input.GetButtonDown(playerSlideButton) && rb.velocity.y > -10f)
+            if (Input.GetButton(playerSlideButton) && rb.velocity.y > -20f)
             {
-                rb.velocity = Vector3.Slerp(rb.velocity, Vector3.down * 15f, 0.7f);
+                rb.AddForce(Vector3.down * 10f);
             }
 
             // Reassign air velocity if the player jumps, allowing for air jumping (once per inAir-state)
@@ -455,9 +464,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ClampSpeedToLimit()
+    private void LerpSpeedToLimit()
     {
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, this.SpeedLimit + (this.SpeedLimit * 0.5f * (consecutiveGrapples - 1)));
+        rb.velocity = Vector3.Slerp(rb.velocity, Vector3.ClampMagnitude(rb.velocity, this.SpeedLimit + (this.SpeedLimit * 0.5f * (consecutiveGrapples - 1))), 0.4f);
     }
 
     private void CastGrapple()
