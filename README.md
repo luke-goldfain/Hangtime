@@ -10,5 +10,5 @@ and sliding through robust environments, players take the role of their chosen c
 - **Look:** Mouse drag / Right thumbstick
 - **Jump:** Space bar / A button
 - **Slide:** Left shift / X button
-- **Grapple:** Mouse 1 / Right bumper
+- **Grapple:** Mouse 1 / Right trigger
 - **Switch Swing Mode:** Q / Left bumper
