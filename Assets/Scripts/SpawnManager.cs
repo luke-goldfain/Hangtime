@@ -19,12 +19,15 @@ public class SpawnManager : MonoBehaviour
             InitialSpawnPoints.Add(new Vector3(1 * InitialSpawnPoints.Count, 2, 0));
         }
 
-        for (int i = 1; i <= GameStats.NumOfPlayers; i++)
+        for (int i = 1; i <= GameStats.PlayersReady.Length; i++)
         {
-            GameObject currentPlayer = Instantiate(PlayerPrefab, InitialSpawnPoints[i - 1], Quaternion.identity);
-            currentPlayer.GetComponent<PlayerController>().PlayerNumber = i;
+            if (GameStats.PlayersReady[i - 1] == true)
+            {
+                GameObject currentPlayer = Instantiate(PlayerPrefab, InitialSpawnPoints[i - 1], Quaternion.identity);
+                currentPlayer.GetComponent<PlayerController>().PlayerNumber = i;
 
-            currentPlayer.GetComponent<PlayerController>().HUD = Instantiate(HUDPrefab, Vector3.zero, Quaternion.identity);
+                currentPlayer.GetComponent<PlayerController>().HUD = Instantiate(HUDPrefab, Vector3.zero, Quaternion.identity);
+            }
 
             /*currentPlayer.GetComponent<PlayerController>().Reticle = Instantiate(ReticlePrefab, FindObjectOfType<Canvas>().transform);
             currentPlayer.GetComponent<PlayerController>().Speedometer = Instantiate(SpeedometerPrefab, FindObjectOfType<Canvas>().transform);
