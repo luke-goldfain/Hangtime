@@ -39,6 +39,10 @@ public class PlayerController : MonoBehaviour
     private string playerVerticalAxis;
     private string playerHorizontalAxis;
 
+    private bool triggerPressed;
+    private bool playerFiring;
+    private bool playerStoppedFiring;
+
     private bool isPulling; // Determines whether to pull or swing when grappling. Player-switchable via playerGSwitchButton at (nearly) any time.
 
     private List<GameObject> ropeSections;
@@ -147,6 +151,29 @@ public class PlayerController : MonoBehaviour
 
         UpdateSpeedometer();
 
+        // In lieu of a GetAxisDown and GetAxisUp function, the next couple of if statements simulate them.
+        if (Input.GetAxis(playerFireButton) <= 0 && triggerPressed)
+        {
+            triggerPressed = false;
+
+            playerStoppedFiring = true;
+        }
+        else
+        {
+            playerStoppedFiring = false;
+        }
+
+        if (Input.GetAxis(playerFireButton) > 0 && !triggerPressed)
+        {
+            triggerPressed = true;
+
+            playerFiring = true;
+        }
+        else
+        {
+            playerFiring = false;
+        }
+
         UpdateCheckGrapplability();
 
         if (currentState != State.grappling)
@@ -166,12 +193,12 @@ public class PlayerController : MonoBehaviour
             isPulling = !isPulling;
         }
 
-        if (Input.GetButtonDown(playerFireButton) && AcceptsInput)
+        if ((Input.GetButtonDown(playerFireButton) || playerFiring) && AcceptsInput)
         {
             CastGrapple();
         }
 
-        if (Input.GetButtonUp(playerFireButton) && AcceptsInput)
+        if ((Input.GetButtonUp(playerFireButton) || playerStoppedFiring) && AcceptsInput)
         {
             currentState = State.inAir;
         }
@@ -526,6 +553,9 @@ public class PlayerController : MonoBehaviour
 
     private void StartAssignInputButtons()
     {
+        triggerPressed = false;
+        playerFiring = true;
+
         playerFireButton = "P" + PlayerNumber + "Fire1";
         playerJumpButton = "P" + PlayerNumber + "Jump";
         playerSlideButton = "P" + PlayerNumber + "Slide";
