@@ -118,8 +118,13 @@ MonoBehaviour:
   MaxJumpForce: 30
   ropeSectionPrefab: {fileID: 6702158368456008991, guid: 5ced27e9f366695499962e9fa2a86f94,
     type: 3}
+  HUD: {fileID: 0}
   Reticle: {fileID: 0}
   Speedometer: {fileID: 0}
+  SpeedometerText: {fileID: 0}
+  PCompass: {fileID: 0}
+  CheckpointMeter: {fileID: 0}
+  CheckpointMeterFill: {fileID: 0}
   PlayerNumber: 1
   GrapplableMask:
     serializedVersion: 2

@@ -17,10 +17,10 @@ public class PlayerController : MonoBehaviour
     private GameObject ropeSectionPrefab;
 
     [SerializeField]
-    public GameObject Reticle;
+    public GameObject HUD;
+    //public GameObject Reticle, Speedometer, CheckpointMeter, CheckpointMeterFill;
 
-    [SerializeField]
-    public GameObject Speedometer;
+    public GameObject Reticle, Speedometer, SpeedometerText, SpeedometerNeedle, PCompass, CheckpointMeter, CheckpointMeterFill;
 
     [SerializeField]
     public int PlayerNumber;
@@ -38,6 +38,10 @@ public class PlayerController : MonoBehaviour
     private string playerGSwitchButton;
     private string playerVerticalAxis;
     private string playerHorizontalAxis;
+
+    private bool triggerPressed;
+    private bool playerFiring;
+    private bool playerStoppedFiring;
 
     private bool isPulling; // Determines whether to pull or swing when grappling. Player-switchable via playerGSwitchButton at (nearly) any time.
 
@@ -62,6 +66,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 currentGrappleNormal;
 
     private Transform cameraTransform;
+
+    private float cameraX, cameraY, cameraW, cameraH;
 
     private Vector3 airVelocity;
     private Vector3 incidenceVelocity;
@@ -103,8 +109,13 @@ public class PlayerController : MonoBehaviour
 
         StartAssignInputButtons();
 
-        ResetReticlePosition();
-        StartSetSpeedometerPosition();
+        Reticle = HUD.transform.Find("Reticle").gameObject;
+        Speedometer = HUD.transform.Find("Speedometer").gameObject;
+        SpeedometerText = HUD.transform.Find("Speedometer (UI)").gameObject;
+        SpeedometerNeedle = Speedometer.transform.Find("Needle").gameObject;
+        PCompass = HUD.transform.Find("Compass").gameObject;
+        CheckpointMeter = HUD.transform.Find("CheckpointMeter").gameObject;
+        CheckpointMeterFill = HUD.transform.Find("CheckpointMeterFill").gameObject;
 
         rb = this.GetComponent<Rigidbody>();
 
@@ -138,7 +149,30 @@ public class PlayerController : MonoBehaviour
     {
         cameraTransform = this.GetComponentInChildren<PlayerCameraController>().transform;
 
-        Speedometer.GetComponent<Text>().text = Mathf.RoundToInt(this.rb.velocity.magnitude).ToString();
+        UpdateSpeedometer();
+
+        // In lieu of a GetAxisDown and GetAxisUp function, the next couple of if statements simulate them.
+        if (Input.GetAxis(playerFireButton) <= 0 && triggerPressed)
+        {
+            triggerPressed = false;
+
+            playerStoppedFiring = true;
+        }
+        else
+        {
+            playerStoppedFiring = false;
+        }
+
+        if (Input.GetAxis(playerFireButton) > 0 && !triggerPressed)
+        {
+            triggerPressed = true;
+
+            playerFiring = true;
+        }
+        else
+        {
+            playerFiring = false;
+        }
 
         UpdateCheckGrapplability();
 
@@ -159,12 +193,12 @@ public class PlayerController : MonoBehaviour
             isPulling = !isPulling;
         }
 
-        if (Input.GetButtonDown(playerFireButton) && AcceptsInput)
+        if ((Input.GetButtonDown(playerFireButton) || playerFiring) && AcceptsInput)
         {
             CastGrapple();
         }
 
-        if (Input.GetButtonUp(playerFireButton) && AcceptsInput)
+        if ((Input.GetButtonUp(playerFireButton) || playerStoppedFiring) && AcceptsInput)
         {
             currentState = State.inAir;
         }
@@ -195,7 +229,7 @@ public class PlayerController : MonoBehaviour
         // If the player has grappled (is not on ground or in default jump), clamp magnitude by speed limit plus a ratio based on the number of consecutive grapples
         if (consecutiveGrapples > 0 && rb.velocity.y >= 0)
         {
-            ClampSpeedToLimit();
+            LerpSpeedToLimit();
         }
 
         // debug reset position
@@ -211,6 +245,14 @@ public class PlayerController : MonoBehaviour
             // Conditional operator: if cursor unlocked, lock cursor, otherwise unlock cursor
             Cursor.lockState = (Cursor.lockState == CursorLockMode.Locked)? CursorLockMode.None : CursorLockMode.Locked;
         }
+    }
+
+    private void UpdateSpeedometer()
+    {
+        SpeedometerNeedle.GetComponent<SpeedConverter>().ShowSpeed(this.rb.velocity.magnitude, 0f, 100f);
+
+        SpeedometerText.GetComponent<Text>().text = Mathf.RoundToInt(this.rb.velocity.magnitude).ToString();
+
     }
 
     private void UpdateOneTimeStateActions()
@@ -257,7 +299,11 @@ public class PlayerController : MonoBehaviour
                     
                     currentGrappleDistance = Vector3.Distance(this.transform.position, GrappleHitPosition);
 
-                    if (this.transform.position.y - GrappleHitPosition.y >= 15f)
+                    // Change the current grapple's normal based on whether the player is high enough above their grapple,
+                    // as well as more vertical than horizontal to their grapple.
+                    if ((this.transform.position.y - GrappleHitPosition.y >= 8f) &&
+                        (this.transform.position.y - GrappleHitPosition.y >= (new Vector2(this.transform.position.x, this.transform.position.z) -
+                                                                              new Vector2(GrappleHitPosition.x, GrappleHitPosition.z)).magnitude))
                     {
                         currentGrappleNormal = cameraTransform.right;
                     }
@@ -317,18 +363,11 @@ public class PlayerController : MonoBehaviour
             // If distance is high enough that the force is below 15 * consecutiveGrapples, default to that.
             rb.AddForce(moveDir * Mathf.Max(GrappleForce - Vector3.Distance(GrappleHitPosition, this.transform.position), 15f * (consecutiveGrapples + 1)));
         }
-        else // if player is not pulling, rotate them around the grapple point at a soft-fixed speed, ala spider man.
+        else if (this.transform.position.y <= GrappleHitPosition.y) // if player is not pulling, rotate them around the grapple point at a soft-fixed speed, ala spider man.
         {
             rb.AddForce(moveDir * GrappleForce * 0.1f);
 
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, GrappleForce * 2f);
-
-            // This would force the swinging grapple to maintain a constant length, but it conflicts with the velocity too much and causes jittery nonsense to unfold.
-            /*if (Vector3.Distance(GrappleHitPosition, this.transform.position) > currentGrappleDistance * 1.1f)
-            {
-                
-                this.transform.position = Vector3.Slerp(this.transform.position, GrappleHitPosition + Vector3.ClampMagnitude((this.transform.position - GrappleHitPosition).normalized * currentGrappleDistance, currentGrappleDistance * 1.1f), 0.1f);
-            }*/
         }
 
         // If the player is pulling and has traveled 1.5 times the original length of the grapple (a ways past or away from the grapple point), break off the grapple automatically.
@@ -338,7 +377,7 @@ public class PlayerController : MonoBehaviour
         {
             this.currentState = State.inAir;
 
-            ClampSpeedToLimit();
+            LerpSpeedToLimit();
         }
 
         // Update currentRunSpeed so that when the player hits the ground, they are running relative to how fast they were grappling
@@ -357,11 +396,11 @@ public class PlayerController : MonoBehaviour
             // Assign airVelocity variable, used primarily for checking collision angles
             airVelocity = rb.velocity;
 
-            // Allow the player to fall suddenly with the slide button.
+            // Allow the player to fall faster with the slide button.
             // Think of this as "fast-falling", like in Super Smash Bros.
-            if (Input.GetButtonDown(playerSlideButton) && rb.velocity.y > -10f)
+            if (Input.GetButton(playerSlideButton) && rb.velocity.y > -20f)
             {
-                rb.velocity = Vector3.Slerp(rb.velocity, Vector3.down * 15f, 0.7f);
+                rb.AddForce(Vector3.down * 10f);
             }
 
             // Reassign air velocity if the player jumps, allowing for air jumping (once per inAir-state)
@@ -452,9 +491,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ClampSpeedToLimit()
+    private void LerpSpeedToLimit()
     {
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, this.SpeedLimit + (this.SpeedLimit * 0.5f * (consecutiveGrapples - 1)));
+        rb.velocity = Vector3.Slerp(rb.velocity, Vector3.ClampMagnitude(rb.velocity, this.SpeedLimit + (this.SpeedLimit * 0.5f * (consecutiveGrapples - 1))), 0.4f);
     }
 
     private void CastGrapple()
@@ -514,6 +553,9 @@ public class PlayerController : MonoBehaviour
 
     private void StartAssignInputButtons()
     {
+        triggerPressed = false;
+        playerFiring = true;
+
         playerFireButton = "P" + PlayerNumber + "Fire1";
         playerJumpButton = "P" + PlayerNumber + "Jump";
         playerSlideButton = "P" + PlayerNumber + "Slide";
@@ -522,64 +564,98 @@ public class PlayerController : MonoBehaviour
         playerHorizontalAxis = "P" + PlayerNumber + "Horizontal";
     }
 
-    private void ResetReticlePosition()
+    internal void GetCameraPosition(float camX, float camY, float camW, float camH)
     {
-        float reticleX = Screen.width / 2;
-        float reticleY = Screen.height / 2; 
+        cameraX = camX;
+        cameraY = camY;
+        cameraW = camW;
+        cameraH = camH;
+    }
+
+    internal void ResetReticlePosition()
+    {
+        float reticleX = Screen.width * (cameraW / 2);
+        float reticleY = Screen.height * (cameraH / 2); 
 
         switch (PlayerNumber)
         {
             case 1:
-                if (numberOfPlayers == 1) reticleX = Screen.width / 2;
-                else reticleX = Screen.width / 4;
-                if (numberOfPlayers < 3) reticleY = Screen.height / 2;
-                else reticleY = Screen.height * (3f/4f);
+                if (numberOfPlayers > 2) reticleY += (Screen.height / 2);
                 break;
             case 2:
-                reticleX = Screen.width * (3f/4f);
-                if (numberOfPlayers < 3) reticleY = Screen.height / 2;
-                else reticleY = Screen.height * (3f / 4f);
+                reticleX += (Screen.width / 2);
+                if (numberOfPlayers > 2) reticleY += (Screen.height / 2);
                 break;
             case 3:
-                reticleX = Screen.width / 4;
-                reticleY = Screen.height / 4;
+
                 break;
             case 4:
-                reticleX = Screen.width * (3f/4f);
-                reticleY = Screen.height / 4;
+                reticleX += (Screen.width / 2);
                 break;
         }
 
         Reticle.transform.position = new Vector2(reticleX, reticleY);
     }
 
-    private void StartSetSpeedometerPosition()
+    internal void StartSetSpeedometerPosition()
     {
-        float spedX = Screen.width / 8;
-        float spedY = Screen.height / 8;
+        float spedX = (Screen.width * cameraX);
+        float spedY = (Screen.height * cameraY);
+
+        Speedometer.transform.position = new Vector2(spedX, spedY);
+
+        SpeedometerText.transform.position = Speedometer.transform.position;
+
+        if (numberOfPlayers > 2)
+        {
+            Speedometer.transform.localScale *= 0.6f;
+            SpeedometerText.transform.localScale *= 0.6f;
+        }
+    }
+    
+    internal void StartSetCheckpointMeterPosition()
+    {
+        float cmX = Screen.width * cameraW;
+        float cmY = Screen.height * cameraH / 2;
 
         switch (PlayerNumber)
         {
             case 1:
-                spedX = Screen.width / 8;
-                if (numberOfPlayers < 3) spedY = Screen.height / 8;
-                else spedY = Screen.height * (5f/8f);
+                if (numberOfPlayers > 2) cmY += (Screen.height * cameraY);
                 break;
             case 2:
-                spedX = Screen.width * (5f / 8f);
-                if (numberOfPlayers < 3) spedY = Screen.height / 8;
-                else spedY = Screen.height * (5f / 8f);
+                cmX += (Screen.width * cameraX);
+                if (numberOfPlayers > 2) cmY += (Screen.height * cameraY);
                 break;
             case 3:
-                spedX = Screen.width / 8;
-                spedY = Screen.height / 8;
                 break;
             case 4:
-                spedX = Screen.width * (5f / 8f);
-                spedY = Screen.height / 8;
+                cmX += (Screen.width * cameraX);
                 break;
         }
 
-        Speedometer.transform.position = new Vector2(spedX, spedY);
+        CheckpointMeter.transform.position = new Vector2(cmX, cmY);
+        CheckpointMeterFill.transform.position = new Vector2(cmX, cmY);
+
+        if (numberOfPlayers < 3)
+        {
+            CheckpointMeter.transform.localScale *= 0.5f;
+            CheckpointMeterFill.transform.localScale *= 0.5f;
+        }
+        else
+        {
+            CheckpointMeter.transform.localScale *= 0.3f;
+            CheckpointMeterFill.transform.localScale *= 0.3f;
+        }
+    }
+
+    internal void StartSetCompassPosition()
+    {
+        PCompass.GetComponent<Compass>().playerTransform = this.transform;
+
+        float compX = (Screen.width * cameraW) + (Screen.width * cameraX) - (PCompass.GetComponent<RectTransform>().rect.width);
+        float compY = (Screen.height * cameraY) + (PCompass.GetComponent<RectTransform>().rect.height);
+
+        PCompass.transform.position = new Vector2(compX, compY);
     }
 }
