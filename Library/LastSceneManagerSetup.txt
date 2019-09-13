@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Test Scenes/Tim/Sand Storm.unity
+- path: Assets/Scenes/In-Build/DesertLevel.unity
   isLoaded: 1
   isActive: 1
