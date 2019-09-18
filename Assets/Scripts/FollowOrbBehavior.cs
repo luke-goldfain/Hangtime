@@ -9,8 +9,17 @@ public class FollowOrbBehavior : MonoBehaviour
     public float minSpeed;
     private float speed;
     private float speedToLerp;
+    
+    public List<List<Vector3>> RndCheckpointLists;
 
-    public List<Vector3> CheckpointPositions;
+    // Hard-coding the lists isn't ideal, but the Unity editor isn't ideal either. This will have to do.
+    public List<Vector3> CheckptList1;
+    public List<Vector3> CheckptList2;
+    public List<Vector3> CheckptList3;
+
+    private int listChoice;
+
+    private List<Vector3> ChosenCheckpointList;
     public int CurrentCheckptTarget;
 
     private float currentHeight;
@@ -25,9 +34,22 @@ public class FollowOrbBehavior : MonoBehaviour
 
     private bool finishPlaced;
 
-    // Start is called before the first frame update
+    // Start
     void Start()
     {
+        RndCheckpointLists = new List<List<Vector3>>
+        {
+            CheckptList1,
+            CheckptList2,
+            CheckptList3
+        };
+
+        listChoice = UnityEngine.Random.Range(0, 3);
+
+        Debug.Log("listChoice: " + listChoice);
+
+        ChosenCheckpointList = RndCheckpointLists[listChoice];
+
         finishPlaced = false;
 
         rb = GetComponent<Rigidbody>();
@@ -43,15 +65,15 @@ public class FollowOrbBehavior : MonoBehaviour
 
         UpdateMovePreferringHighAltitude();
 
-        if (Vector3.Distance(this.transform.position, CheckpointPositions[CurrentCheckptTarget]) <= 40f &&
-            Vector3.Distance(this.transform.position, CheckpointPositions[CurrentCheckptTarget]) > 2f)
+        if (Vector3.Distance(this.transform.position, ChosenCheckpointList[CurrentCheckptTarget]) <= 40f &&
+            Vector3.Distance(this.transform.position, ChosenCheckpointList[CurrentCheckptTarget]) > 2f)
         {
             speedToLerp = minSpeed;
         }
 
-        if (Vector3.Distance(this.transform.position, CheckpointPositions[CurrentCheckptTarget]) <= 2f)
+        if (Vector3.Distance(this.transform.position, ChosenCheckpointList[CurrentCheckptTarget]) <= 2f)
         {
-            if (CheckpointPositions.Count > CurrentCheckptTarget + 1)
+            if (ChosenCheckpointList.Count > CurrentCheckptTarget + 1)
             {
                 DropCheckpoint();
 
@@ -70,7 +92,7 @@ public class FollowOrbBehavior : MonoBehaviour
 
     private void UpdateMovePreferringHighAltitude()
     {
-        Vector3 moveTarget = CheckpointPositions[CurrentCheckptTarget];
+        Vector3 moveTarget = ChosenCheckpointList[CurrentCheckptTarget];
 
         prevHeight = currentHeight;
 
@@ -83,13 +105,13 @@ public class FollowOrbBehavior : MonoBehaviour
 
             if (currentHeight < prevHeight)
             {
-                Vector3 tallestHeight = CheckpointPositions[CurrentCheckptTarget]; // Default to continuing to move to checkpoint
+                Vector3 tallestHeight = ChosenCheckpointList[CurrentCheckptTarget]; // Default to continuing to move to checkpoint
                 float tempCurrentHeight = currentHeight;
 
                 if (Physics.Raycast(this.transform.position + (Vector3.left * 4) + (Vector3.down * 4), Vector3.down, out RaycastHit leftHit, Mathf.Infinity, CheckpointMask))
                 {
                     if (Vector3.Distance(this.transform.position + (Vector3.left * 4) + (Vector3.down * 4), leftHit.point) > tempCurrentHeight &&
-                        Vector3.Distance(this.transform.position + (Vector3.left * 4), CheckpointPositions[CurrentCheckptTarget]) < Vector3.Distance(this.transform.position, CheckpointPositions[CurrentCheckptTarget]))
+                        Vector3.Distance(this.transform.position + (Vector3.left * 4), ChosenCheckpointList[CurrentCheckptTarget]) < Vector3.Distance(this.transform.position, ChosenCheckpointList[CurrentCheckptTarget]))
                     {
                         tallestHeight = this.transform.position + (Vector3.left * 4);
 
@@ -100,7 +122,7 @@ public class FollowOrbBehavior : MonoBehaviour
                 if (Physics.Raycast(this.transform.position + (Vector3.right * 4) + (Vector3.down * 4), Vector3.down, out RaycastHit rightHit, Mathf.Infinity, CheckpointMask))
                 {
                     if (Vector3.Distance(this.transform.position + (Vector3.right * 4) + (Vector3.down * 4), rightHit.point) > tempCurrentHeight &&
-                        Vector3.Distance(this.transform.position + (Vector3.right * 4), CheckpointPositions[CurrentCheckptTarget]) < Vector3.Distance(this.transform.position, CheckpointPositions[CurrentCheckptTarget]))
+                        Vector3.Distance(this.transform.position + (Vector3.right * 4), ChosenCheckpointList[CurrentCheckptTarget]) < Vector3.Distance(this.transform.position, ChosenCheckpointList[CurrentCheckptTarget]))
                     {
                         tallestHeight = this.transform.position + (Vector3.right * 4);
 
@@ -111,7 +133,7 @@ public class FollowOrbBehavior : MonoBehaviour
                 if (Physics.Raycast(this.transform.position + (Vector3.forward * 4) + (Vector3.down * 4), Vector3.down, out RaycastHit forwardHit, Mathf.Infinity, CheckpointMask))
                 {
                     if (Vector3.Distance(this.transform.position + (Vector3.forward * 4) + (Vector3.down * 4), forwardHit.point) > tempCurrentHeight &&
-                        Vector3.Distance(this.transform.position + (Vector3.forward * 4), CheckpointPositions[CurrentCheckptTarget]) < Vector3.Distance(this.transform.position, CheckpointPositions[CurrentCheckptTarget]))
+                        Vector3.Distance(this.transform.position + (Vector3.forward * 4), ChosenCheckpointList[CurrentCheckptTarget]) < Vector3.Distance(this.transform.position, ChosenCheckpointList[CurrentCheckptTarget]))
                     {
                         tallestHeight = this.transform.position + (Vector3.forward * 4);
 
@@ -122,7 +144,7 @@ public class FollowOrbBehavior : MonoBehaviour
                 if (Physics.Raycast(this.transform.position + (Vector3.back * 4) + (Vector3.down * 4), Vector3.down, out RaycastHit backHit, Mathf.Infinity, CheckpointMask))
                 {
                     if (Vector3.Distance(this.transform.position + (Vector3.back * 4) + (Vector3.down * 4), backHit.point) > tempCurrentHeight &&
-                        Vector3.Distance(this.transform.position + (Vector3.back * 4), CheckpointPositions[CurrentCheckptTarget]) < Vector3.Distance(this.transform.position, CheckpointPositions[CurrentCheckptTarget]))
+                        Vector3.Distance(this.transform.position + (Vector3.back * 4), ChosenCheckpointList[CurrentCheckptTarget]) < Vector3.Distance(this.transform.position, ChosenCheckpointList[CurrentCheckptTarget]))
                     {
                         tallestHeight = this.transform.position + (Vector3.back * 4);
 
