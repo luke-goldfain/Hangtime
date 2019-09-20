@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Reticle
   - Checkpoint
+  - Setup Manager
   layers:
   - Default
   - TransparentFX
