@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public GameObject HUD;
     //public GameObject Reticle, Speedometer, CheckpointMeter, CheckpointMeterFill;
 
-    public GameObject Reticle, Speedometer, SpeedometerText, SpeedometerNeedle, PCompass, CheckpointMeter, CheckpointMeterFill;
+    public GameObject Reticle, Speedometer, SpeedometerText, SpeedometerNeedle, PCompass, CheckpointMeter, CheckpointMeterFill, PlacementText, CheckpointText;
 
     [SerializeField]
     public int PlayerNumber;
@@ -109,13 +109,9 @@ public class PlayerController : MonoBehaviour
 
         StartAssignInputButtons();
 
-        Reticle = HUD.transform.Find("Reticle").gameObject;
-        Speedometer = HUD.transform.Find("Speedometer").gameObject;
-        SpeedometerText = HUD.transform.Find("Speedometer (UI)").gameObject;
-        SpeedometerNeedle = Speedometer.transform.Find("Needle").gameObject;
-        PCompass = HUD.transform.Find("Compass").gameObject;
-        CheckpointMeter = HUD.transform.Find("CheckpointMeter").gameObject;
-        CheckpointMeterFill = HUD.transform.Find("CheckpointMeterFill").gameObject;
+        StartAssignHUDObjects();
+
+        PlacementText.SetActive(false);
 
         rb = this.GetComponent<Rigidbody>();
 
@@ -124,6 +120,19 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         isPulling = true;
+    }
+
+    private void StartAssignHUDObjects()
+    {
+        Reticle = HUD.transform.Find("Reticle").gameObject;
+        Speedometer = HUD.transform.Find("Speedometer").gameObject;
+        SpeedometerText = HUD.transform.Find("Speedometer (UI)").gameObject;
+        SpeedometerNeedle = Speedometer.transform.Find("Needle").gameObject;
+        PCompass = HUD.transform.Find("Compass").gameObject;
+        CheckpointMeter = HUD.transform.Find("CheckpointMeter").gameObject;
+        CheckpointMeterFill = HUD.transform.Find("CheckpointMeterFill").gameObject;
+        PlacementText = HUD.transform.Find("PlacementText").gameObject;
+        CheckpointText = CheckpointMeter.transform.Find("CheckpointText").gameObject;
     }
 
     // Collect variables for jump-off angle when colliding with an object
@@ -595,6 +604,8 @@ public class PlayerController : MonoBehaviour
         }
 
         Reticle.transform.position = new Vector2(reticleX, reticleY);
+
+        PlacementText.transform.position = new Vector2(reticleX, reticleY);
     }
 
     internal void StartSetSpeedometerPosition()

@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/In-Build/StartScreen.unity
     guid: 339470c8800886d419fcdcfd6bd4d62a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/In-Build/PlayerSelection.unity
     guid: 1fcd3580b40303647a94e30518e15794
   - enabled: 1

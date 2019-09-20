@@ -14,17 +14,23 @@ public class PlayerSelectPanel : MonoBehaviour
     [SerializeField]
     private GameObject playerConfirmedText;
 
+    [SerializeField]
+    private GameObject controlsPanel;
+
     private bool panelActive;
+    private bool acceptsInput;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("P" + playerNumber + "Jump") && !panelActive)
+        acceptsInput = !controlsPanel.activeInHierarchy;
+
+        if (Input.GetButtonDown("P" + playerNumber + "Jump") && !panelActive && acceptsInput)
         {
             ActivatePlayerPanel();
         }
 
-        if (Input.GetButtonDown("P" + playerNumber + "Cancel") && panelActive)
+        if (Input.GetButtonDown("P" + playerNumber + "Cancel") && panelActive && acceptsInput)
         {
             DeactivatePlayerPanel();
         }
