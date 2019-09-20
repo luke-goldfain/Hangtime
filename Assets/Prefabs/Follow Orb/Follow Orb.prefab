@@ -88,7 +88,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4729881213892204355}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -107,13 +107,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 2
   minSpeed: 0.2
-  CheckpointPositions:
-  - {x: 280, y: 220, z: 1030}
-  - {x: 160, y: 180, z: 700}
-  - {x: 50, y: 220, z: 622}
-  - {x: 325, y: 200, z: 405}
-  - {x: 200, y: 120, z: 200}
-  - {x: 360, y: 200, z: 45}
+  CheckptList1: []
+  CheckptList2: []
+  CheckptList3: []
   CurrentCheckptTarget: 0
   CheckpointPrefab: {fileID: 4853432026528436902, guid: e72b0f845bf3e7c449cff6ae98aae4a3,
     type: 3}

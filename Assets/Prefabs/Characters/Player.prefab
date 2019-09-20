@@ -113,7 +113,7 @@ MonoBehaviour:
   GrappleDistance: 40
   SpeedLimit: 30
   GrappleForce: 30
-  DefaultRunSpeed: 7
+  DefaultRunSpeed: 15
   JumpForce: 10
   MaxJumpForce: 30
   ropeSectionPrefab: {fileID: 6702158368456008991, guid: 5ced27e9f366695499962e9fa2a86f94,
@@ -126,6 +126,8 @@ MonoBehaviour:
   PCompass: {fileID: 0}
   CheckpointMeter: {fileID: 0}
   CheckpointMeterFill: {fileID: 0}
+  PlacementText: {fileID: 0}
+  CheckpointText: {fileID: 0}
   PlayerNumber: 1
   GrapplableMask:
     serializedVersion: 2
