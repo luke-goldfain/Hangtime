@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     public float DefaultRunSpeed = 7f; // the default speed at which the player can move while on the ground. Sliding and landing while moving quickly circumvent this.
     public float JumpForce = 10f; // The force with which the player jumps. Self-explanatory.
     public float MaxJumpForce = 30f;
+    public float GrappleTravelTime = 0.3f;
+
+    [SerializeField]
+    private GameObject grapplingHookPrefab;
 
     [SerializeField]
     private GameObject ropeSectionPrefab;
@@ -44,6 +48,8 @@ public class PlayerController : MonoBehaviour
     private bool playerStoppedFiring;
 
     private bool isPulling; // Determines whether to pull or swing when grappling. Player-switchable via playerGSwitchButton at (nearly) any time.
+
+    private GameObject grapplingHook;
 
     private List<GameObject> ropeSections;
 
@@ -83,6 +89,10 @@ public class PlayerController : MonoBehaviour
     private readonly float slideFriction = 0.05f;
 
     private bool hasAirDashed;
+
+    private bool grappleCasted;
+
+    private float currentGrappleTravelTime;
 
     // consecutiveGrapples keeps track of how many times the player has
     // grappled since they touched a surface. Max Speed increases multiplicatively  
@@ -207,9 +217,42 @@ public class PlayerController : MonoBehaviour
             CastGrapple();
         }
 
+        if (grappleCasted)
+        {
+            currentGrappleTravelTime += Time.deltaTime;
+
+            // Make the grappling hook travel from the player to the grapple point over the time it takes for the grapple to "travel".
+            grapplingHook.transform.position = this.transform.position + (GrappleHitPosition - this.transform.position) * (currentGrappleTravelTime / GrappleTravelTime);
+        }
+
+        if (currentGrappleTravelTime >= GrappleTravelTime && (Input.GetButton(playerFireButton) || triggerPressed))
+        {
+            currentGrappleTravelTime = 0f;
+
+            grappleCasted = false;
+
+            currentState = State.grappling;
+
+            grappleStartPosition = this.transform.position;
+
+            grappleDir = Vector3.Normalize(GrappleHitPosition - this.transform.position);
+
+            // create rope sections
+            for (int i = 1; i <= 3; i++)
+            {
+                ropeSections.Add(Instantiate(ropeSectionPrefab, this.transform.position + (((GrappleHitPosition - this.transform.position) / i) * (currentGrappleTravelTime / GrappleTravelTime)), Quaternion.identity, this.transform));
+
+                ropeSections[i - 1].GetComponent<RopeSectionPositioner>().SectionNumber = i;
+            }
+        }
+
         if ((Input.GetButtonUp(playerFireButton) || playerStoppedFiring) && AcceptsInput)
         {
             currentState = State.inAir;
+
+            grappleCasted = false;
+
+            Destroy(grapplingHook);
         }
 
         if (prevState != currentState)
@@ -218,8 +261,6 @@ public class PlayerController : MonoBehaviour
 
             prevState = currentState;
         }
-
-        //Debug.Log(currentState);
 
         // TODO: Add a "finished" state that zooms camera out and displays player character in third person
         switch (currentState)
@@ -442,6 +483,9 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButton(playerSlideButton) && slideTimer < slideMaxTime) // Sliding behavior
             {
+                // Move the camera down to give the player feedback that they are sliding.
+                cameraTransform.position = Vector3.Slerp(cameraTransform.position, this.transform.position + (Vector3.down * 0.8f), 0.2f);
+
                 this.GetComponent<Collider>().material.dynamicFriction = slideFriction;
 
                 rb.AddForce(((transform.forward * vAxis) + (transform.right * hAxis)) * 3f);
@@ -472,6 +516,9 @@ public class PlayerController : MonoBehaviour
                 this.GetComponent<Collider>().material.dynamicFriction = defaultFriction;
 
                 rb.velocity = Vector3.ClampMagnitude(rb.velocity, currentRunSpeed);
+
+                // Move the camera back to give the player feedback that they are finished sliding.
+                cameraTransform.position = this.transform.position;
             }
 
 
@@ -516,18 +563,11 @@ public class PlayerController : MonoBehaviour
         {
             GrappleHitPosition = hit.point;
 
-            currentState = State.grappling;
+            grappleCasted = true;
 
-            grappleStartPosition = this.transform.position;
+            currentGrappleTravelTime = 0f;
 
-            grappleDir = Vector3.Normalize(hit.point - this.transform.position);
-
-            for(int i = 1; i <= 3; i++)
-            {
-                ropeSections.Add(Instantiate(ropeSectionPrefab, this.transform.position + ((hit.point - this.transform.position) / i), Quaternion.identity, this.transform));
-
-                ropeSections[i-1].GetComponent<RopeSectionPositioner>().SectionNumber = i;
-            }
+            grapplingHook = Instantiate(grapplingHookPrefab, this.transform.position, this.cameraTransform.rotation);
         }
     }
 

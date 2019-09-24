@@ -116,6 +116,9 @@ MonoBehaviour:
   DefaultRunSpeed: 15
   JumpForce: 10
   MaxJumpForce: 30
+  GrappleTravelTime: 0.3
+  grapplingHookPrefab: {fileID: 1772408175462317669, guid: 6b1745b14708d584caf415149fda3c1f,
+    type: 3}
   ropeSectionPrefab: {fileID: 6702158368456008991, guid: 5ced27e9f366695499962e9fa2a86f94,
     type: 3}
   HUD: {fileID: 0}
