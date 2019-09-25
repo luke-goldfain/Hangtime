@@ -131,6 +131,9 @@ MonoBehaviour:
   CheckpointMeterFill: {fileID: 0}
   PlacementText: {fileID: 0}
   CheckpointText: {fileID: 0}
+  ModeIndicator: {fileID: 0}
+  pullIcon: {fileID: 21300000, guid: dfb07526d7205f14ab33cfb19d97623d, type: 3}
+  swingIcon: {fileID: 21300000, guid: e6dfdcdcaa29bff4ba4a1b5368e64087, type: 3}
   PlayerNumber: 1
   GrapplableMask:
     serializedVersion: 2

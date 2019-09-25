@@ -24,7 +24,13 @@ public class PlayerController : MonoBehaviour
     public GameObject HUD;
     //public GameObject Reticle, Speedometer, CheckpointMeter, CheckpointMeterFill;
 
-    public GameObject Reticle, Speedometer, SpeedometerText, SpeedometerNeedle, PCompass, CheckpointMeter, CheckpointMeterFill, PlacementText, CheckpointText;
+    public GameObject Reticle, Speedometer, SpeedometerText, 
+                      SpeedometerNeedle, PCompass, CheckpointMeter, 
+                      CheckpointMeterFill, PlacementText, CheckpointText,
+                      ModeIndicator;
+
+    [SerializeField]
+    private Sprite pullIcon, swingIcon;
 
     [SerializeField]
     public int PlayerNumber;
@@ -143,6 +149,7 @@ public class PlayerController : MonoBehaviour
         CheckpointMeterFill = HUD.transform.Find("CheckpointMeterFill").gameObject;
         PlacementText = HUD.transform.Find("PlacementText").gameObject;
         CheckpointText = CheckpointMeter.transform.Find("CheckpointText").gameObject;
+        ModeIndicator = HUD.transform.Find("ModeIndicator").gameObject;
     }
 
     // Collect variables for jump-off angle when colliding with an object
@@ -210,6 +217,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown(playerGSwitchButton) && AcceptsInput)
         {
             isPulling = !isPulling;
+
+            // Change the mode indicator icon to indicate which mode the player is in: swing or pull.
+            if (ModeIndicator.GetComponent<Image>().sprite == pullIcon)
+            {
+                ModeIndicator.GetComponent<Image>().sprite = swingIcon;
+            }
+            else
+            {
+                ModeIndicator.GetComponent<Image>().sprite = pullIcon;
+            }
         }
 
         if ((Input.GetButtonDown(playerFireButton) || playerFiring) && AcceptsInput)
@@ -588,6 +605,7 @@ public class PlayerController : MonoBehaviour
         else if (grapplableTimer < grapplableMaxTime)
         {
             Reticle.GetComponent<Image>().color = new Color(0.2f, 0.6f, 1f);
+
             Reticle.transform.position = this.GetComponentInChildren<Camera>().WorldToScreenPoint(lastGrapplableRaycastPoint);
 
             grapplableTimer += Time.deltaTime;
@@ -648,7 +666,7 @@ public class PlayerController : MonoBehaviour
         PlacementText.transform.position = new Vector2(reticleX, reticleY);
     }
 
-    internal void StartSetSpeedometerPosition()
+    internal void StartSetSpeedometerAndIndicatorPositions()
     {
         float spedX = (Screen.width * cameraX);
         float spedY = (Screen.height * cameraY);
@@ -662,6 +680,10 @@ public class PlayerController : MonoBehaviour
             Speedometer.transform.localScale *= 0.6f;
             SpeedometerText.transform.localScale *= 0.6f;
         }
+
+        ModeIndicator.transform.position = new Vector2(spedX + (Speedometer.GetComponent<RectTransform>().rect.width * 2), spedY);
+
+        ModeIndicator.GetComponent<Image>().sprite = pullIcon;
     }
     
     internal void StartSetCheckpointMeterPosition()

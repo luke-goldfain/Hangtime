@@ -75,7 +75,7 @@ public class PlayerCameraController : MonoBehaviour
         this.GetComponentInParent<PlayerController>().GetCameraPosition(cameraX, cameraY, cameraW, cameraH);
         
         this.GetComponentInParent<PlayerController>().ResetReticlePosition();
-        this.GetComponentInParent<PlayerController>().StartSetSpeedometerPosition();
+        this.GetComponentInParent<PlayerController>().StartSetSpeedometerAndIndicatorPositions();
         this.GetComponentInParent<PlayerController>().StartSetCheckpointMeterPosition();
         this.GetComponentInParent<PlayerController>().StartSetCompassPosition();
     }
