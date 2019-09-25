@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditorInternal;
 
 public class FollowOrbBehavior : MonoBehaviour
 {
@@ -9,13 +10,15 @@ public class FollowOrbBehavior : MonoBehaviour
     public float minSpeed;
     private float speed;
     private float speedToLerp;
-    
-    public List<List<Vector3>> RndCheckpointLists;
+
+    /*public List<List<Vector3>> RndCheckpointLists;
 
     // Hard-coding the lists isn't ideal, but the Unity editor isn't ideal either. This will have to do.
     public List<Vector3> CheckptList1;
     public List<Vector3> CheckptList2;
-    public List<Vector3> CheckptList3;
+    public List<Vector3> CheckptList3;*/
+
+    public List<ListWrapper> RndCheckpointLists;
 
     private int listChoice;
 
@@ -37,18 +40,13 @@ public class FollowOrbBehavior : MonoBehaviour
     // Start
     void Start()
     {
-        RndCheckpointLists = new List<List<Vector3>>
-        {
-            CheckptList1,
-            CheckptList2,
-            CheckptList3
-        };
+        RndCheckpointLists = this.gameObject.GetComponent<CheckpointLists>().CheckpointListsList;
 
-        listChoice = UnityEngine.Random.Range(0, 3);
+        listChoice = UnityEngine.Random.Range(0, RndCheckpointLists.Count);
 
         Debug.Log("listChoice: " + listChoice);
 
-        ChosenCheckpointList = RndCheckpointLists[listChoice];
+        ChosenCheckpointList = RndCheckpointLists[listChoice].Vector3List;
 
         finishPlaced = false;
 

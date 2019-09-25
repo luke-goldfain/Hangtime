@@ -122,7 +122,6 @@ F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bi
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.Analytics.Tracker.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.CollabProxy.Editor.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.Locator.dll
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.PackageManagerUI.Editor.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.TextMeshPro.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.TextMeshPro.Editor.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEditor.dll
@@ -132,7 +131,6 @@ F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bi
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.ARModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.AssetBundleModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.AudioModule.dll
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.BaselibModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.ClothModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.ClusterInputModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.ClusterRendererModule.dll
@@ -142,7 +140,6 @@ F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bi
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.FileSystemHttpModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.GameCenterModule.dll
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.GoogleAudioSpatializer.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.GridModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.HotReloadModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.ImageConversionModule.dll
@@ -150,7 +147,6 @@ F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bi
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.InputModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.JSONSerializeModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.LocalizationModule.dll
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.Networking.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.ParticleSystemModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.PerformanceReportingModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.Physics2DModule.dll
@@ -170,8 +166,6 @@ F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bi
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.TextCoreModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.TextRenderingModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.TilemapModule.dll
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.Timeline.dll
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.TimelineModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.TLSModule.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.UI.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.UIElementsModule.dll
@@ -197,15 +191,11 @@ F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bi
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.DataContract.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\ExCSS.Unity.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.Legacy.NRefactory.dll
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.UNetWeaver.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.IvyParser.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.CecilTools.dll
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.Cecil.Pdb.dll
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.Cecil.Mdb.dll
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEditor.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.TextMeshPro.Editor.pdb
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.PackageManagerUI.Editor.pdb
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.CollabProxy.Editor.pdb
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.TextMeshPro.pdb
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.Analytics.DataPrivacy.pdb
@@ -215,7 +205,6 @@ F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bi
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.AnimationModule.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.AssetBundleModule.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.AudioModule.xml
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.BaselibModule.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.ClothModule.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.ClusterInputModule.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.ClusterRendererModule.xml
@@ -249,7 +238,6 @@ F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bi
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.TextCoreModule.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.TextRenderingModule.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.TilemapModule.xml
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.TimelineModule.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.UIModule.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.UIElementsModule.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.UNETModule.xml
@@ -271,10 +259,6 @@ F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bi
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.UI.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.TestRunner.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\nunit.framework.xml
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.Timeline.xml
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.Networking.xml
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.GoogleAudioSpatializer.xml
-F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
 F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\obj\Debug\Assembly-CSharp.csproj.CopyComplete
@@ -562,3 +546,20 @@ D:\Documents\Unity projects\LG-AI-SpringBreakBuild\Hangtime-Prototype\obj\Debug\
 D:\Documents\Unity projects\LG-AI-SpringBreakBuild\Hangtime-Prototype\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 D:\Documents\Unity projects\LG-AI-SpringBreakBuild\Hangtime-Prototype\obj\Debug\Assembly-CSharp.dll
 D:\Documents\Unity projects\LG-AI-SpringBreakBuild\Hangtime-Prototype\obj\Debug\Assembly-CSharp.pdb
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\com.unity.multiplayer-hlapi.Editor.dll
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\com.unity.multiplayer-hlapi.Runtime.dll
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\com.unity.multiplayer-weaver.Editor.dll
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.Timeline.dll
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.Timeline.Editor.dll
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEditor.SpatialTracking.dll
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEditor.XR.LegacyInputHelpers.dll
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.XR.LegacyInputHelpers.dll
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.Timeline.Editor.pdb
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\com.unity.multiplayer-hlapi.Editor.pdb
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\Unity.Timeline.pdb
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\com.unity.multiplayer-weaver.Editor.pdb
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.XR.LegacyInputHelpers.pdb
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEditor.SpatialTracking.pdb
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEngine.SpatialTracking.pdb
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\UnityEditor.XR.LegacyInputHelpers.pdb
+F:\Users\Luke\Documents\Unity projects\Hangtime Proto\Hangtime-Prototype\Temp\bin\Debug\com.unity.multiplayer-hlapi.Runtime.pdb
