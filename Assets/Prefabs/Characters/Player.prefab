@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ea5a694854c6f3347a9af415b63080b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   JumpForce: 10
   MaxJumpForce: 30
   GrappleTravelTime: 0.3
+  RespawnHeight: -20
   grapplingHookPrefab: {fileID: 1772408175462317669, guid: 6b1745b14708d584caf415149fda3c1f,
     type: 3}
   ropeSectionPrefab: {fileID: 6702158368456008991, guid: 5ced27e9f366695499962e9fa2a86f94,
@@ -139,7 +140,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   AcceptsInput: 1
-  GrappleHitPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &5705682671031744630
 SphereCollider:
   m_ObjectHideFlags: 0
