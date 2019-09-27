@@ -11,13 +11,6 @@ public class FollowOrbBehavior : MonoBehaviour
     private float speed;
     private float speedToLerp;
 
-    /*public List<List<Vector3>> RndCheckpointLists;
-
-    // Hard-coding the lists isn't ideal, but the Unity editor isn't ideal either. This will have to do.
-    public List<Vector3> CheckptList1;
-    public List<Vector3> CheckptList2;
-    public List<Vector3> CheckptList3;*/
-
     public List<ListWrapper> RndCheckpointLists;
 
     private int listChoice;
@@ -88,15 +81,17 @@ public class FollowOrbBehavior : MonoBehaviour
         }
     }
 
+
+
+    // This function basically raycasts downwards from four points in the cardinal directions from the follow orb.
+    // If the orb detects that it's moving uphill, it will correct to a direction wherein the raycast down returns a 
+    // higher distance, meaning the orb will trend towards a higher altitude.
     private void UpdateMovePreferringHighAltitude()
     {
         Vector3 moveTarget = ChosenCheckpointList[CurrentCheckptTarget];
 
         prevHeight = currentHeight;
 
-        // Dear god. So this basically raycasts downwards from four points in the cardinal directions from the follow orb.
-        // If the orb detects that it's moving uphill, it will correct to a direction wherein the raycast down returns a 
-        // higher distance, meaning the orb will trend towards a higher altitude.
         if (Physics.Raycast(this.transform.position + (Vector3.down * 4), Vector3.down, out RaycastHit hit, Mathf.Infinity, CheckpointMask))
         {
             currentHeight = Vector3.Distance(this.transform.position, hit.point);
@@ -162,7 +157,7 @@ public class FollowOrbBehavior : MonoBehaviour
 
         if (Physics.Raycast(this.transform.position + (Vector3.down * 4), Vector3.down, out RaycastHit hit, Mathf.Infinity, CheckpointMask))
         {
-            Instantiate(CheckpointPrefab, hit.point, Quaternion.identity);
+            Instantiate(CheckpointPrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
         }
     }
 
@@ -171,7 +166,7 @@ public class FollowOrbBehavior : MonoBehaviour
 
         if (Physics.Raycast(this.transform.position + (Vector3.down * 4), Vector3.down, out RaycastHit hit, Mathf.Infinity, CheckpointMask))
         {
-            Instantiate(FinishZonePrefab, hit.point, Quaternion.identity);
+            Instantiate(FinishZonePrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
         }
     }
 }
