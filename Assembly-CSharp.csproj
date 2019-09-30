@@ -101,8 +101,20 @@
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
       <HintPath>C:/Users/timot/Desktop/NDA Interactive/Hangtime-Prototype/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/timot/Desktop/NDA Interactive/Hangtime-Prototype/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Lightweight.Runtime">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Lightweight.Editor">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>C:/Users/timot/Desktop/NDA Interactive/Hangtime-Prototype/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
@@ -110,17 +122,32 @@
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>C:/Users/timot/Desktop/NDA Interactive/Hangtime-Prototype/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="com.unity.multiplayer-weaver.Editor">
       <HintPath>C:/Users/timot/Desktop/NDA Interactive/Hangtime-Prototype/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
       <HintPath>C:/Users/timot/Desktop/NDA Interactive/Hangtime-Prototype/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
       <HintPath>C:/Users/timot/Desktop/NDA Interactive/Hangtime-Prototype/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Users/timot/Desktop/NDA Interactive/Hangtime-Prototype/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/timot/Desktop/NDA Interactive/Hangtime-Prototype/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

@@ -6,13 +6,22 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public float GrappleDistance = 30f; // limit on the distance of the grappling hook.
-    public float SpeedLimit = 30f; // SOFT speed limit, multiplied by number of consecutive grapples in the air.
-    public float GrappleForce = 30f; // the force with which the grappling hook pulls the player.
-    public float DefaultRunSpeed = 7f; // the default speed at which the player can move while on the ground. Sliding and landing while moving quickly circumvent this.
-    public float JumpForce = 10f; // The force with which the player jumps. Self-explanatory.
-    public float MaxJumpForce = 30f;
-    public float GrappleTravelTime = 0.3f;
+    [Tooltip("Limit on the distance of the grappling hook.")]
+    public float GrappleDistance = 30f;
+    [Tooltip("SOFT airborne speed limit, increased by the number of consecutive grapples in the air.")]
+    public float SpeedLimit = 30f; 
+    [Tooltip("The force with which the grappling hook pulls the player.")]
+    public float GrappleForce = 30f; 
+    [Tooltip("The default speed at which the player can move while on the ground. Sliding and landing while moving quickly temporarily circumvent this.")]
+    public float DefaultRunSpeed = 7f;
+    [Tooltip("The force with which the player jumps.")]
+    public float JumpForce = 10f; 
+    [Tooltip("The maximum force with which the player can jump, applicable only to \"rebound\" jumps.")]
+    public float MaxJumpForce = 30f; 
+    [Tooltip("The time the grappling hook takes to travel to its destination.")]
+    public float GrappleTravelTime = 0.3f; 
+    [Tooltip("The height at which the player will respawn at their last reached checkpoint.")]
+    public float RespawnHeight = -20f; 
 
     [SerializeField]
     private GameObject grapplingHookPrefab;
@@ -67,7 +76,7 @@ public class PlayerController : MonoBehaviour
     private float grapplableTimer;
     private readonly float grapplableMaxTime = 0.25f; // The amount of time in seconds a "passed" grapple point is still grapplable.
 
-    public Vector3 GrappleHitPosition;
+    public Vector3 GrappleHitPosition { get; private set; }
 
     private Vector3 grappleStartPosition;
 
@@ -86,7 +95,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 collisionNormal;
 
     private float groundTimer; // The active timer determining how long the player has been on the ground.
-    private readonly float angleJumpCooldown = 0.25f; // The amount of time in seconds the player has to jump angularly out of a collision.
+    private readonly float angleJumpCooldown = 0.25f; // The amount of time in seconds the player has to "rebound" jump angularly out of a collision.
 
     private float slideTimer;
     private readonly float slideMaxTime = 1f; // The amount of time in seconds the player may slide for.
@@ -214,6 +223,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        // Change the grapple mode (pull or swing) with the assigned button.
         if (Input.GetButtonDown(playerGSwitchButton) && AcceptsInput)
         {
             isPulling = !isPulling;
@@ -299,10 +309,21 @@ public class PlayerController : MonoBehaviour
             LerpSpeedToLimit();
         }
 
-        // debug reset position
-        if (Vector3.Distance(Vector3.zero, this.transform.position) > 100f && this.transform.position.y < -20)
+        // Reset position if player falls out of the world (the value of RespawnHeight should be set accordingly).
+        if (Vector3.Distance(Vector3.zero, this.transform.position) > 100f && this.transform.position.y < RespawnHeight)
         {
-            this.transform.position = GameObject.Find("SpawnManager").GetComponent<SpawnManager>().InitialSpawnPoints[PlayerNumber - 1];
+            List<GameObject> cpHit = this.GetComponent<CheckpointController>().CheckpointsHit;
+
+            // Reset player to their last hit checkpoint, or to the starting point.
+            if (cpHit.Count == 0)
+            {
+                this.transform.position = GameObject.Find("SpawnManager").GetComponent<SpawnManager>().InitialSpawnPoints[PlayerNumber - 1];
+            }
+            else
+            {
+                this.transform.position = cpHit[cpHit.Count - 1].transform.position + (Vector3.up * 3);
+            }
+
             rb.velocity = Vector3.zero;
         }
 
@@ -535,9 +556,14 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = Vector3.ClampMagnitude(rb.velocity, currentRunSpeed);
 
                 // Move the camera back to give the player feedback that they are finished sliding.
-                cameraTransform.position = this.transform.position;
+                //cameraTransform.position = this.transform.position;
             }
 
+            // If the player is not sliding and the camera is not back at default position, return it there.
+            if ((slideTimer == 0f || slideTimer > slideMaxTime || !Input.GetButton(playerSlideButton)) && cameraTransform.position != this.transform.position)
+            {
+                cameraTransform.position = Vector3.Slerp(cameraTransform.position, this.transform.position, 0.3f);
+            }
 
             if (Input.GetButtonDown(playerJumpButton))
             {

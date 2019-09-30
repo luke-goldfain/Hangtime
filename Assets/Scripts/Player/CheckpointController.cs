@@ -9,7 +9,7 @@ public class CheckpointController : MonoBehaviour
 {
     public int CheckpointsRequired;
 
-    private List<GameObject> checkpointsHit;
+    public List<GameObject> CheckpointsHit { get; private set; }
 
     private bool finishable;
     public bool Finished { get; private set; }
@@ -19,7 +19,7 @@ public class CheckpointController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        checkpointsHit = new List<GameObject>();
+        CheckpointsHit = new List<GameObject>();
 
         finishable = false;
 
@@ -29,16 +29,16 @@ public class CheckpointController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.GetComponent<PlayerController>().CheckpointText.GetComponent<TextMeshProUGUI>().text = checkpointsHit.Count + " / " + CheckpointsRequired;
+        this.gameObject.GetComponent<PlayerController>().CheckpointText.GetComponent<TextMeshProUGUI>().text = CheckpointsHit.Count + " / " + CheckpointsRequired;
 
         CheckpointMeterFill = this.gameObject.GetComponent<PlayerController>().CheckpointMeterFill;
 
-        if (checkpointsHit.Count > 0)
+        if (CheckpointsHit.Count > 0)
         {
-            CheckpointMeterFill.GetComponent<Image>().fillAmount = (float)checkpointsHit.Count / CheckpointsRequired;
+            CheckpointMeterFill.GetComponent<Image>().fillAmount = (float)CheckpointsHit.Count / CheckpointsRequired;
         }
 
-        if (checkpointsHit.Count >= CheckpointsRequired)
+        if (CheckpointsHit.Count >= CheckpointsRequired)
         {
             finishable = true;
         }
@@ -48,9 +48,9 @@ public class CheckpointController : MonoBehaviour
     {
         if (other.tag == "Checkpoint")
         {
-            if (!checkpointsHit.Contains(other.gameObject))
+            if (!CheckpointsHit.Contains(other.gameObject))
             {
-                checkpointsHit.Add(other.gameObject);
+                CheckpointsHit.Add(other.gameObject);
             }
         }
 
