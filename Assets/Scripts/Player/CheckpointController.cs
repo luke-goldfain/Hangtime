@@ -11,6 +11,8 @@ public class CheckpointController : MonoBehaviour
 
     private int playerNumber;
 
+    public GameObject[] CheckpointsTotalPlaced { get; private set; }
+
     public List<GameObject> CheckpointsHit { get; private set; }
 
     private bool finishable;
@@ -33,6 +35,8 @@ public class CheckpointController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckpointsTotalPlaced = GameObject.FindGameObjectsWithTag("Checkpoint");
+
         this.gameObject.GetComponent<PlayerController>().CheckpointText.GetComponent<TextMeshProUGUI>().text = CheckpointsHit.Count + " / " + CheckpointsRequired;
 
         CheckpointMeterFill = this.gameObject.GetComponent<PlayerController>().CheckpointMeterFill;

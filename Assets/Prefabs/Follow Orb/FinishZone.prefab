@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1022799146596713895}
   - component: {fileID: 1022799146596713896}
   - component: {fileID: 1022799146596713897}
+  - component: {fileID: 8151480604839385142}
   m_Layer: 2
   m_Name: FinishZone
   m_TagString: Finish
@@ -82,6 +83,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &8151480604839385142
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022799146596713899}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1094081656062395796
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +200,7 @@ GameObject:
   - component: {fileID: 8379443798833509829}
   m_Layer: 13
   m_Name: P4Mesh
-  m_TagString: Finish
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -263,7 +277,7 @@ GameObject:
   - component: {fileID: 2359597818153290605}
   m_Layer: 11
   m_Name: P2Mesh
-  m_TagString: Finish
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -340,7 +354,7 @@ GameObject:
   - component: {fileID: 3067354474040427868}
   m_Layer: 12
   m_Name: P3Mesh
-  m_TagString: Finish
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -417,7 +431,7 @@ GameObject:
   - component: {fileID: 8505319673616845064}
   m_Layer: 10
   m_Name: P1Mesh
-  m_TagString: Finish
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

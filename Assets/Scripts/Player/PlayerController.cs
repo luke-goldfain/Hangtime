@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Reticle, Speedometer, SpeedometerText, 
                       SpeedometerNeedle, PCompass, CheckpointMeter, 
                       CheckpointMeterFill, PlacementText, CheckpointText,
-                      ModeIndicator;
+                      ModeIndicator, ObjectiveIndicator;
 
     [SerializeField]
     private Sprite pullIcon, swingIcon;
@@ -159,6 +159,7 @@ public class PlayerController : MonoBehaviour
         PlacementText = HUD.transform.Find("PlacementText").gameObject;
         CheckpointText = CheckpointMeter.transform.Find("CheckpointText").gameObject;
         ModeIndicator = HUD.transform.Find("ModeIndicator").gameObject;
+        ObjectiveIndicator = HUD.transform.Find("ObjectiveParent").gameObject;
     }
 
     // Collect variables for jump-off angle when colliding with an object
@@ -756,5 +757,10 @@ public class PlayerController : MonoBehaviour
         float compY = (Screen.height * cameraY) + (PCompass.GetComponent<RectTransform>().rect.height);
 
         PCompass.transform.position = new Vector2(compX, compY);
+    }
+
+    internal void StartSetObjectiveReference()
+    {
+        ObjectiveIndicator.GetComponent<TargetManager>().playerReference = this.gameObject.transform;
     }
 }
