@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         StartAssignInputButtons();
 
         ResetReticlePosition();
-        StartSetSpeedometerPosition();
+      //  StartSetSpeedometerPosition();
 
         rb = this.GetComponent<Rigidbody>();
 

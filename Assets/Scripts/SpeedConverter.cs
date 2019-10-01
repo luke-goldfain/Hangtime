@@ -14,7 +14,6 @@ public class SpeedConverter : MonoBehaviour
         thisSpeedo = this;
     }
 
-    // Update is called once per frame
     public static void ShowSpeed(float speed, float min, float max)
     {
         float ang = Mathf.Lerp(minAngle, maxAngle, Mathf.InverseLerp(min, max, speed));
