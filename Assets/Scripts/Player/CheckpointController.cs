@@ -9,6 +9,8 @@ public class CheckpointController : MonoBehaviour
 {
     public int CheckpointsRequired;
 
+    private int playerNumber;
+
     public List<GameObject> CheckpointsHit { get; private set; }
 
     private bool finishable;
@@ -19,6 +21,8 @@ public class CheckpointController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerNumber = this.gameObject.GetComponent<PlayerController>().PlayerNumber;
+
         CheckpointsHit = new List<GameObject>();
 
         finishable = false;
@@ -51,6 +55,16 @@ public class CheckpointController : MonoBehaviour
             if (!CheckpointsHit.Contains(other.gameObject))
             {
                 CheckpointsHit.Add(other.gameObject);
+            }
+
+            MeshRenderer[] meshes = other.gameObject.GetComponentsInChildren<MeshRenderer>();
+
+            foreach (MeshRenderer pv in meshes)
+            {
+                if (pv.gameObject.layer == LayerMask.NameToLayer("P" + playerNumber + "View"))
+                {
+                    pv.gameObject.SetActive(false);
+                }
             }
         }
 
