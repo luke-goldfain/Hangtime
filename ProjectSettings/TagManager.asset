@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Reticle
   - Checkpoint
+  - Lava
+  - spawner
   layers:
   - Default
   - TransparentFX
