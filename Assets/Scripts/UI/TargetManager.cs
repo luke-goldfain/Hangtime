@@ -89,7 +89,15 @@ public class TargetManager : MonoBehaviour
                
                 textReference.text = LinearDistance(playerReference.position, targetList[index].position) + "m";
 
-                indicatorReference.transform.position = playerReference.GetComponentInChildren<Camera>().WorldToScreenPoint(targetList[index].position + (Vector3.up * 10f));
+                // Heading variable prevents checkpoint marker to appear in the opposite direction.
+                // This is a workaround for Unity's WolrdToScreenPoint silliness.
+                Vector3 heading = targetList[index].transform.position - playerReference.transform.position;
+
+                // If the player is facing towards the checkpoint, display the indicator on their screen.
+                if (Vector3.Dot(playerReference.GetComponentInChildren<Camera>().transform.forward, heading) > 0)
+                {
+                    indicatorReference.transform.position = playerReference.GetComponentInChildren<Camera>().WorldToScreenPoint(targetList[index].position + (Vector3.up * 10f));
+                }
 
                 //indicatorVector = indicatorReference.rectTransform.anchorMin;
                 //indicatorVector.x = Camera.main.WorldToViewportPoint(targetList[index].position).x;

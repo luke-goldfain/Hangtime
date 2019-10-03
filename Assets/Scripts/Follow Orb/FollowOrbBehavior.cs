@@ -11,7 +11,7 @@ public class FollowOrbBehavior : MonoBehaviour
     private float speed;
     private float speedToLerp;
 
-    public List<ListWrapper> RndCheckpointLists;
+    public List<ListWrapper> RndCheckpointLists { get; private set; }
 
     private int listChoice;
 
