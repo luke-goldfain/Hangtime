@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
         numberOfPlayers = GameStats.NumOfPlayers;
 
         StartAssignInputButtons();
-
+        
         StartAssignHUDObjects();
 
         PlacementText.SetActive(false);
