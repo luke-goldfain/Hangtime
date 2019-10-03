@@ -1,0 +1,244 @@
+﻿Character Design Document
+Hawkman
+
+
+
+
+Name: Something with a tie to his avian pathos, perhaps very wind based? Possible ideas: Hawk Swiftwing, Ace Songbird, etc etc. Perhaps he has a ‘stage’ name and a ‘real’ name.
+
+
+Real Name - Streak Featherton
+Stage Name - Songbird
+
+
+Character Summary: 
+
+
+Flashy, flamboyant, feathered, he has it all. The Flashing Eagle is the pinnacle of showmanship and ‘style’ in the games, everything he does drips personality and a sense of innate ‘cool.’ Look to circus performers and grand magicians, people who know how to play the crowd to their favor. He has made his career as the ‘too cool for school’ socialite of the games. In protecting his brand, he tries to keep his lower-class upbringing under wraps, focusing instead on a vibrant stage persona. 
+
+
+Background:
+
+
+Streak Featherton was born in the slums of Aves II. Penniless, he spent his days fluttering along the bustling streets, admiring those of the upper stratosphere, so free, flying across their breezy planet with wild abandon. He watched their colored plumage and exuberant personalities, dreaming one day he would gain the same privilege as they.
+
+
+When the Hangtime competition began pulling members of his race to compete, he knew he had his chance. After a lackluster audition, he reinvented himself as the Flashing Eagle, the flamboyant, elegant racer, donning himself in the eclectic colors of his homeworld. The audience loves him, and if he wins he will retire to the life of luxury that he has so often admired.
+
+
+Physical Description: 
+
+
+Sleek, colorful, the Hawkman has it all. He is slender, lithe, his feathers glisten and glow wherever he struts, for that the world is all the more interesting. His racing outfit and equipment flaunt style over substance, with lots of bright accents and strobing lights to make up for their less than high quality.
+
+
+Place in World:
+
+
+The Flashing Eagle may not be the most favored in odds, but shines the most in audience attention and sponsorships; in many ways he represents the commercial aspect of the galactic competition, his fan club is the biggest, corporate sponsors the most extravagant, and personality the most noticeable among his peers. Win or lose, his goal is to make a lot of money in the process.
+
+
+Place in Plot:
+
+
+The Flashing Eagle is not a champion, but he’s not new around the block. He’s not in it to ‘win’ exactly, more to enjoy the fame and glory that comes from playing.
+
+
+Influences:
+
+
+Think Cirque du Soleil and big Drag performances, lots of colors, lots of style and strutting. Look towards peacock and bright bird colorings for schemes, barnum bailey’s style.
+
+
+Abilities :
+
+
+Being a bird, the Flashing Eagle possesses the best gliding and coasting abilities among the cast, he’s the easiest character to remain airborne with. Furthermore, his affinity with the crowd means that he speeds up quickly when performing a lot of correct actions consecutively, but slows much, much more upon mistakes.
+
+
+Game Feel:
+
+
+The Flashing Eagle is a good beginner character in some ways. His gliding and air movement are exemplary, allowing for players to worry less about hitting the ground and more about focusing on successful actions and swinging.
+
+
+Notes:
+
+
+* This character’s run animations are reminiscent of prancing or skipping.
+
+
+[[Throughout the document include concept art, character in motion, turn around, multiple iterations & coloring/ color codes]] 
+
+
+Character Design Document
+Fishman
+
+
+
+
+Name: Bokrug Olmstead
+
+
+Character Summary:
+
+
+Slippery, slimey, Bokrug is...a mystery. The committee of racer selection doesn’t super remember giving him a ticket, but he has one, so he’s racing anyways. Bokrug is the tricky character who is centered around impeding others to get ahead as opposed to straight skill. He has a tendency to swipe power-ups from others and even get the best powers at unlikely times. Low to the ground, shifty and always up to something.
+
+
+Background:
+
+
+Bokrug Olmstead hatched under the oceans of Sarnath, it was said he could pick a pocket before he could float. He scurried along the underbelly of the whales, the schools of fish and hung around the bad fish and turned his back to the Cod.  He never turned down an oppor-tuna-ty, always ready to Coral some a quick buck.
+
+
+One day, while Eeling around the pockets of some upper-fishmen, he pulled himself a ticket to the games. A lesser thief wouldn’t go, but he was experiences, ready to make a Krilling. The gamesmen aren’t ones to turn down a good show, and sometimes a good, shifty player can be fun, just for the Halibut.
+
+
+Physical Description:
+
+
+Slimy, slippery, draw a lot of inspiration from those nasty fish on the deep end. Bokrug isn’t built for life above water, he breaths through a ventilation system of saltwater, his racing gear is jangling with pockets for anything he can swipe from his foes. Look at eels, deep sea octopus and traditional fishmen (Abe Sapien).
+
+
+Place in World:
+
+
+Bokrug is the character that the audience loves to hate. They boo, hiss and holler at him, but nobody can deny he has a certain slippery charm, a charm that sells. Everyone who really, really loves the games has one or two of his figures lying around, or perhaps one of the ill fated dolls, when you pull the string, he yells. “I’ll bleed ya dry!”
+
+
+Place in Plot:
+
+
+Bokrug doesn’t want to win, he wants to make profit. Whomever stands to make him the most money, he allies with.
+
+
+Influences:
+
+
+Swiper, Lovecraft, Nuclear Throne, “Trick” characters in Mario Tennis.
+
+
+Abilities:
+
+
+With his many pockets and sleazy attitude, Bokrug can hold multiple items at once, and even swipe some from foes he bumps into. Sure, he isn’t the fastest or the best at gliding, but he always has a trick up his sleeve. He is the only character that begins the race with an item in hand.
+
+
+Game Feel:
+
+
+Bokrug is about opportunity, waiting for the right moment and bleeding his foes dry. Players who use Bokrug will horde their items, steal from their friends and leave deadly surprises for their foes.
+
+
+[[Throughout the document include concept art, character in motion, turn around, multiple iterations & coloring/ color codes]] 
+
+
+Character Design Document
+Champ
+
+
+
+
+Name: Chase Hookman
+
+
+Character Summary: 
+
+
+This is him. THE champ, the alpha, he’s won so manner times, we’ve stopped counting. Beloved by many, he’s a toyline, a breakfast cereal, a COMIC BOOK. The champ is overconfidence personified, every kid wants to be the champ, and he knows it. Sure, it’s a little weird when he refers to himself in the third person, or signs fans faces before they ask, but what are you gonna do? Look to the classic ‘frat guy’ persona, perhaps with a dash of superhero (all might perhaps?). Everything this guy does just drips confidence, it’s not that he won’t lose, it’s that he can’t.
+
+
+Background:
+
+
+Chase has it all. He graduated with a swingman scholarship from Swington university, top of his class. Literally, he was above everyone else. He swung higher, faster and better than everyone else, when the Galactic Competition started, he was a shoe in. He’s won the past 3 competitions, first place, gold medals, all the touchdowns and every home run. Some say he’s getting old, but he’s still at the top of his game.
+
+
+Physical Description:
+
+
+Buff, burly, the epitome of the stereotypical ‘sports frat guy’. Chase is broad shouldered, thick armed, and decked out in the best equipment money and fame can buy. He is plastered with blues, greens and whites (his planet’s home colors).
+
+
+Place in World:
+
+
+He’s the fan favorite, the champ. There are some who’d want to see him go down, but almost everyone at the very least respects his skill at the game. He doesn’t cheat, he doesn’t need to, he just works to play better than everyone else. When he wins, the ladies swoon, the men swoon too, everyone swoons.
+
+
+Place in Plot:
+
+
+He’s here to play, nothing else. He craves another victory, he trains as hard as he can, and he won’t stop until the finish line is flying behind him.
+
+
+Influences:
+
+
+Western superheroes, bright colors, bulging muscles. Look at the ‘natural’ character in sports movies and animated childrens material, the design should radiate a sense of natural talent.
+
+
+Abilities: The Champ is adept at almost everything, he doesn’t stand out in anything in particular, but he has all the tools needed to win with his own power. His top speed, acceleration, range, they’re all powerful tools that tend to outclass other fighters, even if he doesn’t excel particularly in any.
+
+
+Game Feel: Jack of all trades, master of none, The Champ is an all arounder, other characters may outclass him in specific qualities, but he has the best general stats of any available player. 
+
+
+
+
+[[Throughout the document include concept art, character in motion, turn around, multiple iterations & coloring/ color codes]] 
+
+
+Character Design Document
+Pinky
+
+
+
+
+Name: Maeve
+
+
+Character Summary:
+
+
+Pinky is the grappling world’s biggest fan. When she was growing up, she had ALL the toys, the lunchboxes, the cereals, the energy drinks that have since been recalled (NOTE, one of these brands should be the sponsor). Ever since she was little, she knew she wanted to be a hangtime racer.
+
+
+Now that she’s here, she’s never been more excited in her life. 
+
+
+Background: 
+
+
+Physical Description: 
+
+
+Human, mid-20’s. Real “Eager” vibe, very excited. Corporate Sponsor (Energy Drinks??) Pink hair/outfit.
+
+
+Place in World:
+
+
+Pinky is the first human to be recognized by the Hangtime recruiters.
+
+
+Place in Plot:
+
+
+Influences:
+
+
+D.V.A, Ochako Uraraka, Zero Suit Samus, Rey.
+
+
+Abilities:
+
+
+Game Feel:
+Pinky is the “introductory” character, or an All Arounder. She has no specific boons or abilities, but is satisfactory on all levels.
+
+
+
+
+[[Throughout the document include concept art, character in motion, turn around, multiple iterations & coloring/ color codes]]
