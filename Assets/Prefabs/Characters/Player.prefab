@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ea5a694854c6f3347a9af415b63080b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,19 +113,34 @@ MonoBehaviour:
   GrappleDistance: 40
   SpeedLimit: 30
   GrappleForce: 30
-  DefaultRunSpeed: 7
+  DefaultRunSpeed: 15
   JumpForce: 10
   MaxJumpForce: 30
+  GrappleTravelTime: 0.3
+  RespawnHeight: -20
+  grapplingHookPrefab: {fileID: 1772408175462317669, guid: 6b1745b14708d584caf415149fda3c1f,
+    type: 3}
   ropeSectionPrefab: {fileID: 6702158368456008991, guid: 5ced27e9f366695499962e9fa2a86f94,
     type: 3}
+  HUD: {fileID: 0}
   Reticle: {fileID: 0}
   Speedometer: {fileID: 0}
+  SpeedometerText: {fileID: 0}
+  SpeedometerNeedle: {fileID: 0}
+  PCompass: {fileID: 0}
+  CheckpointMeter: {fileID: 0}
+  CheckpointMeterFill: {fileID: 0}
+  PlacementText: {fileID: 0}
+  CheckpointText: {fileID: 0}
+  ModeIndicator: {fileID: 0}
+  ObjectiveIndicator: {fileID: 0}
+  pullIcon: {fileID: 21300000, guid: dfb07526d7205f14ab33cfb19d97623d, type: 3}
+  swingIcon: {fileID: 21300000, guid: e6dfdcdcaa29bff4ba4a1b5368e64087, type: 3}
   PlayerNumber: 1
   GrapplableMask:
     serializedVersion: 2
     m_Bits: 1
   AcceptsInput: 1
-  GrappleHitPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &5705682671031744630
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -151,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64b7cda7d1b6d341b2c014f92e5d38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckpointsRequired: 3
+  CheckpointsRequired: 5
 --- !u!1 &5705682671271820579
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,9 +212,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2

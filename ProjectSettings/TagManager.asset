@@ -8,6 +8,7 @@ TagManager:
   - Checkpoint
   - Lava
   - spawner
+  - Setup Manager
   layers:
   - Default
   - TransparentFX
@@ -19,10 +20,10 @@ TagManager:
   - 
   - PostProcessing
   - Agents
-  - 
-  - 
-  - 
-  - 
+  - P1View
+  - P2View
+  - P3View
+  - P4View
   - 
   - 
   - 

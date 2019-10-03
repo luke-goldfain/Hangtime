@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/In-Build/StartScreen.unity
+    guid: 339470c8800886d419fcdcfd6bd4d62a
+  - enabled: 0
+    path: Assets/Scenes/In-Build/PlayerSelection.unity
+    guid: 1fcd3580b40303647a94e30518e15794
+  - enabled: 1
+    path: Assets/Scenes/In-Build/DesertLevel.unity
+    guid: ba36e464198595742892e4b7329c8661
+  - enabled: 1
+    path: Assets/Scenes/In-Build/MultiplayerSelection.unity
+    guid: fb30e8a280ca2684db50f01ab4a160a5
+  - enabled: 1
     path: Assets/Scenes/Test Scenes/Luke/MultiplayerSelect.unity
     guid: 01903bae676eb97439613a3180a1a50d
   - enabled: 1
@@ -14,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test Scenes/Luke/MainPlayerTest.unity
     guid: 706f6bed9281b574f89c407105bfb2d6
+  - enabled: 1
+    path: Assets/Scenes/Test Scenes/Luke/NonLinearRaceTest.unity
+    guid: fe162d8bf08b71f4791923745ab671dc
+  - enabled: 1
+    path: Assets/Scenes/Test Scenes/Luke/LukeHUDImplement.unity
+    guid: 5f77a67c88699f14c9844cf2fc9915b3
   m_configObjects: {}
