@@ -150,10 +150,10 @@ public class PlayerController : MonoBehaviour
     private void StartAssignHUDObjects()
     {
         Reticle = HUD.transform.Find("Reticle").gameObject;
-        Speedometer = HUD.transform.Find("Speedometer").gameObject;
-        SpeedometerText = HUD.transform.Find("Speedometer (UI)").gameObject;
-        SpeedometerNeedle = Speedometer.transform.Find("Needle").gameObject;
-        PCompass = HUD.transform.Find("Compass").gameObject;
+        Speedometer = HUD.transform.Find("SpeedometerV2").gameObject;
+        SpeedometerText = Speedometer.transform.Find("Speed").gameObject;
+        SpeedometerNeedle = Speedometer.transform.Find("MainBody").transform.Find("Needle").gameObject;
+        PCompass = Speedometer.transform.Find("Compass").gameObject;
         CheckpointMeter = HUD.transform.Find("CheckpointMeter").gameObject;
         CheckpointMeterFill = HUD.transform.Find("CheckpointMeterFill").gameObject;
         PlacementText = HUD.transform.Find("PlacementText").gameObject;
@@ -695,12 +695,12 @@ public class PlayerController : MonoBehaviour
 
     internal void StartSetSpeedometerAndIndicatorPositions()
     {
-        float spedX = (Screen.width * cameraX);
-        float spedY = (Screen.height * cameraY);
+        float spedX = (Screen.width * cameraX) + 20;
+        float spedY = (Screen.height * cameraY) + 10;
 
         Speedometer.transform.position = new Vector2(spedX, spedY);
 
-        SpeedometerText.transform.position = Speedometer.transform.position;
+        //SpeedometerText.transform.position = Speedometer.transform.position;
 
         if (numberOfPlayers > 2)
         {
@@ -711,6 +711,8 @@ public class PlayerController : MonoBehaviour
         ModeIndicator.transform.position = new Vector2(spedX + (Speedometer.GetComponent<RectTransform>().rect.width * 2), spedY);
 
         ModeIndicator.GetComponent<Image>().sprite = pullIcon;
+
+        PCompass.GetComponent<Compass>().playerTransform = this.transform;
     }
     
     internal void StartSetCheckpointMeterPosition()
@@ -749,7 +751,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    internal void StartSetCompassPosition()
+    /*internal void StartSetCompassPosition()
     {
         PCompass.GetComponent<Compass>().playerTransform = this.transform;
 
@@ -757,7 +759,7 @@ public class PlayerController : MonoBehaviour
         float compY = (Screen.height * cameraY) + (PCompass.GetComponent<RectTransform>().rect.height);
 
         PCompass.transform.position = new Vector2(compX, compY);
-    }
+    }*/
 
     internal void StartSetObjectiveReference()
     {
