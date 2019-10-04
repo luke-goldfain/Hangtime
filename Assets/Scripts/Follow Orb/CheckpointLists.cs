@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class CheckpointLists : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField, Tooltip("The list of lists of checkpoints that the follow orb will pick between.")]
     public List<ListWrapper> CheckpointListsList = new List<ListWrapper>();
 }

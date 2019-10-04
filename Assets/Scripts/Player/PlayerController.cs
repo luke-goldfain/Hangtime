@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Reticle, Speedometer, SpeedometerText, 
                       SpeedometerNeedle, PCompass, CheckpointMeter, 
                       CheckpointMeterFill, PlacementText, CheckpointText,
-                      ModeIndicator;
+                      ModeIndicator, ObjectiveIndicator;
 
     [SerializeField]
     private Sprite pullIcon, swingIcon;
@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
         numberOfPlayers = GameStats.NumOfPlayers;
 
         StartAssignInputButtons();
-
+        
         StartAssignHUDObjects();
 
         PlacementText.SetActive(false);
@@ -150,15 +150,16 @@ public class PlayerController : MonoBehaviour
     private void StartAssignHUDObjects()
     {
         Reticle = HUD.transform.Find("Reticle").gameObject;
-        Speedometer = HUD.transform.Find("Speedometer").gameObject;
-        SpeedometerText = HUD.transform.Find("Speedometer (UI)").gameObject;
-        SpeedometerNeedle = Speedometer.transform.Find("Needle").gameObject;
-        PCompass = HUD.transform.Find("Compass").gameObject;
+        Speedometer = HUD.transform.Find("SpeedometerV2").gameObject;
+        SpeedometerText = Speedometer.transform.Find("Speed").gameObject;
+        SpeedometerNeedle = Speedometer.transform.Find("MainBody").transform.Find("Needle").gameObject;
+        PCompass = Speedometer.transform.Find("Compass").gameObject;
         CheckpointMeter = HUD.transform.Find("CheckpointMeter").gameObject;
         CheckpointMeterFill = HUD.transform.Find("CheckpointMeterFill").gameObject;
         PlacementText = HUD.transform.Find("PlacementText").gameObject;
         CheckpointText = CheckpointMeter.transform.Find("CheckpointText").gameObject;
         ModeIndicator = HUD.transform.Find("ModeIndicator").gameObject;
+        ObjectiveIndicator = HUD.transform.Find("ObjectiveParent").gameObject;
     }
 
     // Collect variables for jump-off angle when colliding with an object
@@ -694,12 +695,12 @@ public class PlayerController : MonoBehaviour
 
     internal void StartSetSpeedometerAndIndicatorPositions()
     {
-        float spedX = (Screen.width * cameraX);
-        float spedY = (Screen.height * cameraY);
+        float spedX = (Screen.width * cameraX) + 20;
+        float spedY = (Screen.height * cameraY) + 10;
 
         Speedometer.transform.position = new Vector2(spedX, spedY);
 
-        SpeedometerText.transform.position = Speedometer.transform.position;
+        //SpeedometerText.transform.position = Speedometer.transform.position;
 
         if (numberOfPlayers > 2)
         {
@@ -710,6 +711,8 @@ public class PlayerController : MonoBehaviour
         ModeIndicator.transform.position = new Vector2(spedX + (Speedometer.GetComponent<RectTransform>().rect.width * 2), spedY);
 
         ModeIndicator.GetComponent<Image>().sprite = pullIcon;
+
+        PCompass.GetComponent<Compass>().playerTransform = this.transform;
     }
     
     internal void StartSetCheckpointMeterPosition()
@@ -748,7 +751,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    internal void StartSetCompassPosition()
+    /*internal void StartSetCompassPosition()
     {
         PCompass.GetComponent<Compass>().playerTransform = this.transform;
 
@@ -756,5 +759,10 @@ public class PlayerController : MonoBehaviour
         float compY = (Screen.height * cameraY) + (PCompass.GetComponent<RectTransform>().rect.height);
 
         PCompass.transform.position = new Vector2(compX, compY);
+    }*/
+
+    internal void StartSetObjectiveReference()
+    {
+        ObjectiveIndicator.GetComponent<TargetManager>().playerReference = this.gameObject.transform;
     }
 }
