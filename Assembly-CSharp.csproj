@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
@@ -62,6 +62,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\FiL\DebrisDespawn.cs" />
+    <Compile Include="Assets\Scripts\FiL\DebrisSpawner.cs" />
+    <Compile Include="Assets\Scripts\FiL\LavaGameManager.cs" />
+    <Compile Include="Assets\Scripts\FiL\StartingPlatform.cs" />
+    <Compile Include="Assets\Scripts\FollowOrbBehavior.cs" />
+    <Compile Include="Assets\Scripts\Global\GameStats.cs" />
     <Compile Include="Assets\Scripts\Follow Orb\CheckpointLists.cs" />
     <Compile Include="Assets\Scripts\Follow Orb\FollowOrbBehavior.cs" />
     <Compile Include="Assets\Scripts\Global\GameStats.cs" />
@@ -75,6 +81,8 @@
     <Compile Include="Assets\Scripts\SetupManager.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\UI\Compass.cs" />
+    <Compile Include="Assets\Scripts\UI\ObjectiveArrowUI.cs" />
+    <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\UI\SpeedConverter.cs" />
     <Compile Include="Assets\Scripts\UI\SpeedometerReference.cs" />
     <Compile Include="Assets\Scripts\UI\TargetManager.cs" />
@@ -98,6 +106,43 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-hlapi.Editor">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.CollabProxy.Editor">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-weaver.Editor">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.XR.LegacyInputHelpers">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-hlapi.Runtime">
+      <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+      <HintPath>C:/Users/timot/Desktop/NDA Interactive/Hangtime-Prototype/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
       <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
