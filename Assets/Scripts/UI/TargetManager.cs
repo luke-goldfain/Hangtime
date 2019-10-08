@@ -56,6 +56,18 @@ public class TargetManager : MonoBehaviour
             }
         }
 
+        // Add the finish line to the list if the player is able to finish
+        if (playerReference.GetComponent<CheckpointController>().Finishable)
+        {
+            foreach (GameObject fl in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
+            {
+                if (!TargetList.Contains(fl.transform))
+                {
+                    TargetList.Add(fl.transform);
+                }
+            }
+        }
+
         // Correct each frame for checkpoints that have just been hit by player
         if (TargetList.Count > playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced.Length - playerReference.GetComponent<CheckpointController>().CheckpointsHit.Count)
         {
@@ -67,6 +79,19 @@ public class TargetManager : MonoBehaviour
                 }
             }
         }
+
+        // Set the target to the checkpoint closest to the player
+        Transform closestCheckpoint = TargetList[targetIndex];
+
+        foreach(GameObject cp in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
+        {
+            if (Vector3.Distance(cp.transform.position, playerReference.transform.position) < Vector3.Distance(closestCheckpoint.position, playerReference.transform.position))
+            {
+                closestCheckpoint = cp.transform;
+            }
+        }
+
+        targetIndex = TargetList.IndexOf(closestCheckpoint);
 
         targetValidated = TargetList.Count > 0;
     }
