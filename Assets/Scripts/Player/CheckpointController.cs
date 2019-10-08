@@ -37,6 +37,11 @@ public class CheckpointController : MonoBehaviour
     {
         CheckpointsTotalPlaced = GameObject.FindGameObjectsWithTag("Checkpoint");
 
+        if (finishable)
+        {
+            CheckpointsTotalPlaced = GameObject.FindGameObjectsWithTag("Finish");
+        }
+
         this.gameObject.GetComponent<PlayerController>().CheckpointText.GetComponent<TextMeshProUGUI>().text = CheckpointsHit.Count + " / " + CheckpointsRequired;
 
         CheckpointMeterFill = this.gameObject.GetComponent<PlayerController>().CheckpointMeterFill;

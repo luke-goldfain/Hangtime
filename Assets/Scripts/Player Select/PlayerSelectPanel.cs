@@ -35,6 +35,28 @@ public class PlayerSelectPanel : MonoBehaviour
             DeactivatePlayerPanel();
         }
 
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Minus) && playerNumber == 1)
+        {
+            ActivatePlayerPanel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Equals) && playerNumber == 2)
+        {
+            ActivatePlayerPanel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftBracket) && playerNumber == 3)
+        {
+            ActivatePlayerPanel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightBracket) && playerNumber == 4)
+        {
+            ActivatePlayerPanel();
+        }
+#endif
+
         if (playerModel.activeInHierarchy)
         {
             playerModel.transform.Rotate(0f, 2f, 0f);
