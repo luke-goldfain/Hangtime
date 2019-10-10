@@ -394,16 +394,16 @@ public class PlayerController : MonoBehaviour
 
                     // Change the current grapple's normal based on whether the player is high enough above their grapple,
                     // as well as more vertical than horizontal to their grapple.
-                    if ((this.transform.position.y - GrappleHitPosition.y >= 8f) &&
+                    /*if ((this.transform.position.y - GrappleHitPosition.y >= 10f) &&
                         (this.transform.position.y - GrappleHitPosition.y >= (new Vector2(this.transform.position.x, this.transform.position.z) -
                                                                               new Vector2(GrappleHitPosition.x, GrappleHitPosition.z)).magnitude))
                     {
-                        currentGrappleNormal = cameraTransform.right;
+                        currentGrappleNormal = Vector3.Cross(grappleDir, rb.velocity);
                     }
                     else
-                    {
-                        currentGrappleNormal = -cameraTransform.right;
-                    }
+                    {*/
+                        currentGrappleNormal = Vector3.Cross(grappleDir, -rb.velocity);
+                    //}
 
                     break;
                 }
@@ -467,17 +467,18 @@ public class PlayerController : MonoBehaviour
                 currentGrappledObject.GetComponent<Rigidbody>().AddForce(-moveDir * Mathf.Max(GrappleForce - Vector3.Distance(GrappleHitPosition, this.transform.position), 15f * (consecutiveGrapples + 1)));
             }
         }
-        else if (this.transform.position.y <= GrappleHitPosition.y) // if player is not pulling, rotate them around the grapple point at a soft-fixed speed, ala spider man.
+        else // if player is not pulling, rotate them around the grapple point at a soft-fixed speed, ala spider man.
         {
-            rb.AddForce(moveDir * GrappleForce * 0.1f);
+            Vector3 swingVelocity = moveDir * GrappleForce * 100f;
+            swingVelocity = Vector3.ClampMagnitude(swingVelocity, rb.velocity.magnitude * 1.3f);
 
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, GrappleForce * 2f);
+            rb.velocity = Vector3.Lerp(rb.velocity, swingVelocity, 0.1f);
         }
 
         // If the player is pulling and has traveled 1.5 times the original length of the grapple (a ways past or away from the grapple point), break off the grapple automatically.
-        // If the player is swinging and has traveled 2.4 times original grapple length, same deal.
+        // If the player is swinging and has traveled 2.6 times original grapple length, same deal.
         if ((Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(GrappleHitPosition, grappleStartPosition) * 1.5f && isPulling) ||
-            (Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(GrappleHitPosition, grappleStartPosition) * 2.4f && !isPulling))
+            (Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(GrappleHitPosition, grappleStartPosition) * 2.6f && !isPulling))
         {
             this.currentState = State.inAir;
 
