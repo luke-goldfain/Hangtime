@@ -113,9 +113,9 @@ MonoBehaviour:
   GrappleDistance: 40
   SpeedLimit: 30
   GrappleForce: 30
-  DefaultRunSpeed: 15
+  DefaultRunSpeed: 25
   JumpForce: 10
-  MaxJumpForce: 30
+  MaxReboundJumpForce: 30
   GrappleTravelTime: 0.3
   RespawnHeight: -20
   grapplingHookPrefab: {fileID: 1772408175462317669, guid: 6b1745b14708d584caf415149fda3c1f,
