@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -352,7 +352,11 @@ PrefabInstance:
     - target: {fileID: 1655848049, guid: 9b3467a3c4fd0174b9cb012d8f625ef4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7911795df27dd464190eed77dda90191, type: 2}
+      objectReference: {fileID: 2100000, guid: 698a8134f4ebbbd4e848648685f68067, type: 2}
+    - target: {fileID: 1655848049, guid: 9b3467a3c4fd0174b9cb012d8f625ef4, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85320f50710fcfb4d886bc56151bea1b, type: 2}
     - target: {fileID: 1655848050, guid: 9b3467a3c4fd0174b9cb012d8f625ef4, type: 3}
       propertyPath: InitialModule.startSpeed.minScalar
       value: 27.32
@@ -372,6 +376,10 @@ PrefabInstance:
     - target: {fileID: 1655848050, guid: 9b3467a3c4fd0174b9cb012d8f625ef4, type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655848050, guid: 9b3467a3c4fd0174b9cb012d8f625ef4, type: 3}
+      propertyPath: UVModule.enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b3467a3c4fd0174b9cb012d8f625ef4, type: 3}
