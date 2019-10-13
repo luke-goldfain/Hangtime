@@ -84,6 +84,8 @@ public class PlayerController : MonoBehaviour
 
     private float currentGrappleDistance;
 
+    private GameObject currentGrappledObject;
+
     private Vector3 currentGrappleNormal;
 
     private Transform cameraTransform;
@@ -106,6 +108,8 @@ public class PlayerController : MonoBehaviour
     private bool hasAirDashed;
 
     private bool grappleCasted;
+
+    private bool hasGrappledMovableObject;
 
     private float currentGrappleTravelTime;
 
@@ -410,6 +414,11 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 moveDir = Vector3.up; // Default -- always overwritten
 
+        if (hasGrappledMovableObject)
+        {
+            GrappleHitPosition = currentGrappledObject.transform.position + (currentGrappledObject.transform.position - GrappleHitPosition);
+        }
+
         if (isPulling)
         {
             // Movement direction is  a spherical interpolation of the forward-facing direction and the direction of the grapple.
@@ -451,6 +460,12 @@ public class PlayerController : MonoBehaviour
             // Add force inverse to the length of the grapple (low length = high force). 
             // If distance is high enough that the force is below 15 * consecutiveGrapples, default to that.
             rb.AddForce(moveDir * Mathf.Max(GrappleForce - Vector3.Distance(GrappleHitPosition, this.transform.position), 15f * (consecutiveGrapples + 1)));
+
+            // If the currently grappled object is movable, pull it towards the player at the same rate.
+            if (hasGrappledMovableObject)
+            {
+                currentGrappledObject.GetComponent<Rigidbody>().AddForce(-moveDir * Mathf.Max(GrappleForce - Vector3.Distance(GrappleHitPosition, this.transform.position), 15f * (consecutiveGrapples + 1)));
+            }
         }
         else if (this.transform.position.y <= GrappleHitPosition.y) // if player is not pulling, rotate them around the grapple point at a soft-fixed speed, ala spider man.
         {
@@ -605,6 +620,8 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(this.transform.position, lastGrapplableRaycastPoint - cameraTransform.position, out hit, GrappleDistance, GrapplableMask) &&
             grapplableTimer < grapplableMaxTime)
         {
+            currentGrappledObject = hit.collider.gameObject;
+
             GrappleHitPosition = hit.point;
 
             grappleCasted = true;
@@ -612,6 +629,15 @@ public class PlayerController : MonoBehaviour
             currentGrappleTravelTime = 0f;
 
             grapplingHook = Instantiate(grapplingHookPrefab, this.transform.position, this.cameraTransform.rotation);
+
+            if (hit.collider.gameObject.GetComponent<Rigidbody>() != null)
+            {
+                hasGrappledMovableObject = true;
+            }
+            else
+            {
+                hasGrappledMovableObject = false;
+            }
         }
     }
 

@@ -15,7 +15,7 @@ public class CheckpointController : MonoBehaviour
 
     public List<GameObject> CheckpointsHit { get; private set; }
 
-    private bool finishable;
+    public bool Finishable { get; private set; }
     public bool Finished { get; private set; }
 
     private GameObject CheckpointMeterFill;
@@ -27,7 +27,7 @@ public class CheckpointController : MonoBehaviour
 
         CheckpointsHit = new List<GameObject>();
 
-        finishable = false;
+        Finishable = false;
 
         Finished = false;
     }
@@ -36,6 +36,11 @@ public class CheckpointController : MonoBehaviour
     void Update()
     {
         CheckpointsTotalPlaced = GameObject.FindGameObjectsWithTag("Checkpoint");
+
+        if (Finishable)
+        {
+            CheckpointsTotalPlaced = GameObject.FindGameObjectsWithTag("Finish");
+        }
 
         this.gameObject.GetComponent<PlayerController>().CheckpointText.GetComponent<TextMeshProUGUI>().text = CheckpointsHit.Count + " / " + CheckpointsRequired;
 
@@ -48,7 +53,7 @@ public class CheckpointController : MonoBehaviour
 
         if (CheckpointsHit.Count >= CheckpointsRequired)
         {
-            finishable = true;
+            Finishable = true;
         }
     }
 
@@ -74,7 +79,7 @@ public class CheckpointController : MonoBehaviour
 
         if (other.tag == "Finish")
         {
-            if (finishable)
+            if (Finishable)
             {
                 RaceFinish();
             }
