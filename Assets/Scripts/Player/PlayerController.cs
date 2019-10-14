@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The time the grappling hook takes to travel to its destination.")]
     public float GrappleTravelTime = 0.3f; 
     [Tooltip("The height at which the player will respawn at their last reached checkpoint.")]
-    public float RespawnHeight = -20f; 
+    public float RespawnHeight = -20f;
 
     [SerializeField]
     private GameObject grapplingHookPrefab;
@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask GrapplableMask;
 
     public bool AcceptsInput = true;
+    public bool HoldingPowerUp = false; //If player is carrying a power-up this statement is true, if not it is false.
 
     private int numberOfPlayers;
     
