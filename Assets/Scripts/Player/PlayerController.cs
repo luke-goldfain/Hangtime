@@ -80,6 +80,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 grappleStartPosition;
 
+    private float startOfSwingSpd;
+
     private Vector3 grappleDir;
 
     private float currentGrappleDistance;
@@ -392,6 +394,8 @@ public class PlayerController : MonoBehaviour
                 {
                     this.GetComponent<Collider>().material.dynamicFriction = defaultFriction;
 
+                    startOfSwingSpd = this.rb.velocity.magnitude;
+
                     if (consecutiveGrapples < 4) consecutiveGrapples++;
                     
                     currentGrappleDistance = Vector3.Distance(this.transform.position, GrappleHitPosition);
@@ -399,6 +403,13 @@ public class PlayerController : MonoBehaviour
                     // Set the current grapple's normal, used when swinging, by a cross-product based on 
                     // the direction of the grapple and the player's velocity.
                     currentGrappleNormal = Vector3.Cross(grappleDir, -rb.velocity);
+
+                    // Check if the player is moving slowly and is beneath their grapple point, and make 
+                    // sure in that case that moveDir will face down by reversing the normal.
+                    if (rb.velocity.magnitude < 8f && rb.velocity.y > 0f && this.transform.position.y < GrappleHitPosition.y )
+                    {
+                        currentGrappleNormal = Vector3.Cross(grappleDir, rb.velocity);
+                    }
 
                     break;
                 }
@@ -467,7 +478,7 @@ public class PlayerController : MonoBehaviour
         else // if player is not pulling, rotate them around the grapple point at a soft-fixed speed, ala spider man.
         {
             Vector3 swingVelocity = moveDir * GrappleForce * 100f;
-            swingVelocity = Vector3.ClampMagnitude(swingVelocity, rb.velocity.magnitude * 1.25f);
+            swingVelocity = Vector3.ClampMagnitude(swingVelocity, Mathf.Max(SpeedLimit, startOfSwingSpd * 1.3f));
 
             rb.velocity = Vector3.Lerp(rb.velocity, swingVelocity, 0.1f);
         }
@@ -486,7 +497,7 @@ public class PlayerController : MonoBehaviour
         if (rb.velocity.y <= 0) canWalkOnGround = true;
 
         // Update currentRunSpeed so that when the player hits the ground, they are running relative to how fast they were grappling
-        currentRunSpeed = rb.velocity.magnitude * 0.7f;
+        currentRunSpeed = rb.velocity.magnitude * 0.75f;
     }
 
     private void UpdateMoveAir()
@@ -515,15 +526,19 @@ public class PlayerController : MonoBehaviour
             {
                 Vector3 airJumpDirection = (transform.forward * vAxis * JumpForce) + (transform.right * hAxis * JumpForce) + (transform.up * JumpForce);
 
-                // Weigh the player's current velocity more if they are attempting to jump in a direction < 180 degrees from their current velocity.
+                // Weigh the player's current velocity more if they are attempting to jump in a direction < 120 degrees from their current velocity.
                 // Otherwise, clamp the magnitude of velocity as well (unclamped, the player would jump far too strongly).
-                if (Vector3.Angle(rb.velocity, airJumpDirection) < 120)
+                if (Vector3.Angle(new Vector3(rb.velocity.x, 0f, rb.velocity.z), airJumpDirection) < 120)
                 {
-                    rb.velocity = Vector3.Slerp(rb.velocity, airJumpDirection, 0.6f);
+                    rb.velocity += airJumpDirection;
+
+                    rb.velocity = new Vector3(rb.velocity.x, JumpForce * 2f, rb.velocity.z); // Force y to a constant value
                 }
                 else
                 {
                     rb.velocity = Vector3.Lerp(rb.velocity, airJumpDirection, 0.9f);
+
+                    rb.velocity = new Vector3(rb.velocity.x, JumpForce * 2f, rb.velocity.z); // Force y to a constant value
 
                     rb.velocity = Vector3.ClampMagnitude(rb.velocity, (rb.velocity.magnitude + JumpForce) / 2f);
                 }
