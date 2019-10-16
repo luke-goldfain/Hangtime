@@ -532,7 +532,10 @@ public class PlayerController : MonoBehaviour
                 {
                     rb.velocity += airJumpDirection;
 
-                    rb.velocity = new Vector3(rb.velocity.x, JumpForce * 2f, rb.velocity.z); // Force y to a constant value
+                    if (rb.velocity.y < (JumpForce * 2f)) // Make sure y-velocity is not already higher than overwrite
+                    {
+                        rb.velocity = new Vector3(rb.velocity.x, JumpForce * 2f, rb.velocity.z); // Force y to a constant value
+                    }
                 }
                 else
                 {
