@@ -9,19 +9,19 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Limit on the distance of the grappling hook.")]
     public float GrappleDistance = 30f;
     [Tooltip("SOFT airborne speed limit, increased by the number of consecutive grapples in the air.")]
-    public float SpeedLimit = 30f; 
+    public float SpeedLimit = 30f;
     [Tooltip("The force with which the grappling hook pulls the player.")]
-    public float GrappleForce = 30f; 
+    public float GrappleForce = 30f;
     [Tooltip("The default speed at which the player can move while on the ground. Sliding and landing while moving quickly temporarily circumvent this.")]
     public float DefaultRunSpeed = 25f;
     [Tooltip("The force with which the player jumps.")]
-    public float JumpForce = 10f; 
+    public float JumpForce = 10f;
     [Tooltip("The maximum force with which the player can jump, applicable only to \"rebound\" jumps.")]
-    public float MaxReboundJumpForce = 30f; 
+    public float MaxReboundJumpForce = 30f;
     [Tooltip("The time the grappling hook takes to travel to its destination.")]
-    public float GrappleTravelTime = 0.3f; 
+    public float GrappleTravelTime = 0.3f;
     [Tooltip("The height at which the player will respawn at their last reached checkpoint.")]
-    public float RespawnHeight = -20f; 
+    public float RespawnHeight = -20f;
 
     [SerializeField]
     private GameObject grapplingHookPrefab;
@@ -31,10 +31,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     public GameObject HUD;
+
+    [SerializeField]
+    private GameObject slidePRight, slidePLeft;
     //public GameObject Reticle, Speedometer, CheckpointMeter, CheckpointMeterFill;
 
-    public GameObject Reticle, Speedometer, SpeedometerText, 
-                      SpeedometerNeedle, PCompass, CheckpointMeter, 
+    [HideInInspector]
+    public GameObject Reticle, Speedometer, SpeedometerText,
+                      SpeedometerNeedle, PCompass, CheckpointMeter,
                       CheckpointMeterFill, PlacementText, CheckpointText,
                       ModeIndicator, ObjectiveIndicator;
 
@@ -370,6 +374,12 @@ public class PlayerController : MonoBehaviour
 
                     ropeSections.Clear();
 
+                    if (slidePLeft.GetComponent<ParticleSystem>().isPlaying)
+                    {
+                        slidePLeft.GetComponent<ParticleSystem>().Stop();
+                        slidePRight.GetComponent<ParticleSystem>().Stop();
+                    }
+
                     break;
                 }
             case State.onGround:
@@ -409,6 +419,12 @@ public class PlayerController : MonoBehaviour
                     if (rb.velocity.magnitude < 8f && rb.velocity.y > 0f && this.transform.position.y < GrappleHitPosition.y )
                     {
                         currentGrappleNormal = Vector3.Cross(grappleDir, rb.velocity);
+                    }
+
+                    if (slidePLeft.GetComponent<ParticleSystem>().isPlaying)
+                    {
+                        slidePLeft.GetComponent<ParticleSystem>().Stop();
+                        slidePRight.GetComponent<ParticleSystem>().Stop();
                     }
 
                     break;
@@ -572,6 +588,12 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButton(playerSlideButton) && slideTimer < slideMaxTime) // Sliding behavior
             {
+                if (slidePLeft.GetComponent<ParticleSystem>().isStopped)
+                {
+                    slidePLeft.GetComponent<ParticleSystem>().Play();
+                    slidePRight.GetComponent<ParticleSystem>().Play();
+                }
+
                 // Move the camera down to give the player feedback that they are sliding.
                 cameraTransform.position = Vector3.Slerp(cameraTransform.position, this.transform.position + (Vector3.down * 0.8f), 0.2f);
 
@@ -610,6 +632,12 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButtonUp(playerSlideButton) || slideTimer >= slideMaxTime) // What happens when a slide "ends"
             {
+                if (slidePLeft.GetComponent<ParticleSystem>().isPlaying)
+                {
+                    slidePLeft.GetComponent<ParticleSystem>().Stop();
+                    slidePRight.GetComponent<ParticleSystem>().Stop();
+                }
+
                 this.GetComponent<Collider>().material.dynamicFriction = defaultFriction;
 
                 rb.velocity = Vector3.ClampMagnitude(rb.velocity, currentRunSpeed);
