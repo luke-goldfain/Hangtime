@@ -66,9 +66,9 @@ public class CheckpointController : MonoBehaviour
                 CheckpointsHit.Add(other.gameObject);
             }
 
-            MeshRenderer[] meshes = other.gameObject.GetComponentsInChildren<MeshRenderer>();
+            Transform[] cpChildren = other.gameObject.GetComponentsInChildren<Transform>();
 
-            foreach (MeshRenderer pv in meshes)
+            foreach (Transform pv in cpChildren)
             {
                 if (pv.gameObject.layer == LayerMask.NameToLayer("P" + playerNumber + "View"))
                 {
