@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GrappleDistance: 40
-  SpeedLimit: 30
+  SpeedLimit: 60
   GrappleForce: 30
   DefaultRunSpeed: 25
   JumpForce: 10

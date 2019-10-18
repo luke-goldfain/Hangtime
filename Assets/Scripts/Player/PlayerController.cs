@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Limit on the distance of the grappling hook.")]
     public float GrappleDistance = 30f;
     [Tooltip("SOFT airborne speed limit, increased by the number of consecutive grapples in the air.")]
-    public float SpeedLimit = 30f;
+    public float SpeedLimit = 60f;
     [Tooltip("The force with which the grappling hook pulls the player.")]
     public float GrappleForce = 30f;
     [Tooltip("The default speed at which the player can move while on the ground. Sliding and landing while moving quickly temporarily circumvent this.")]
@@ -193,7 +193,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         cameraTransform = this.GetComponentInChildren<PlayerCameraController>().transform;
 
@@ -494,7 +494,7 @@ public class PlayerController : MonoBehaviour
         else // if player is not pulling, rotate them around the grapple point at a soft-fixed speed, ala spider man.
         {
             Vector3 swingVelocity = moveDir * GrappleForce * 100f;
-            swingVelocity = Vector3.ClampMagnitude(swingVelocity, Mathf.Max(SpeedLimit, startOfSwingSpd * 1.3f));
+            swingVelocity = Vector3.ClampMagnitude(swingVelocity, Mathf.Max(SpeedLimit * 0.4f, startOfSwingSpd * 1.3f));
 
             rb.velocity = Vector3.Lerp(rb.velocity, swingVelocity, 0.1f);
         }
@@ -505,12 +505,12 @@ public class PlayerController : MonoBehaviour
             (Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(GrappleHitPosition, grappleStartPosition) * 2.6f && !isPulling))
         {
             this.currentState = State.inAir;
-
-            LerpSpeedToLimit();
         }
 
         // Set canHitGround to true if player is falling
         if (rb.velocity.y <= 0) canWalkOnGround = true;
+
+        LerpSpeedToLimit();
 
         // Update currentRunSpeed so that when the player hits the ground, they are running relative to how fast they were grappling
         currentRunSpeed = rb.velocity.magnitude * 0.75f;
@@ -524,7 +524,16 @@ public class PlayerController : MonoBehaviour
             float vAxis = Input.GetAxisRaw(playerVerticalAxis);
 
             // Give the player air control, relative to their current velocity so that it is always noticeable.
-            rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * rb.velocity.magnitude * 0.2f);
+            if (Vector3.Angle(new Vector3(rb.velocity.x, 0f, rb.velocity.z), this.transform.TransformDirection(new Vector3(hAxis, 0, vAxis))) > 70)
+            {
+                rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * rb.velocity.magnitude * 0.3f);
+            }
+            else
+            {
+                rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * rb.velocity.magnitude * 0.02f);
+            }
+
+            LerpSpeedToLimit();
 
             // Assign airVelocity variable, used primarily for checking collision angles
             airVelocity = rb.velocity;
@@ -680,7 +689,12 @@ public class PlayerController : MonoBehaviour
 
     private void LerpSpeedToLimit()
     {
-        rb.velocity = Vector3.Slerp(rb.velocity, Vector3.ClampMagnitude(rb.velocity, this.SpeedLimit + (this.SpeedLimit * 0.5f * (consecutiveGrapples - 1))), 0.4f);
+        // Only do this if ABOVE speed limit
+        if (rb.velocity.magnitude > SpeedLimit + (this.SpeedLimit * 0.5f * (consecutiveGrapples - 1)))
+        {
+            // Soft-clamp speed to 3x speed limit, plus consecutive grapple bonus, to prevent coasting thru the air by holding a direction.
+            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.ClampMagnitude(rb.velocity, SpeedLimit + (this.SpeedLimit * 0.5f * (consecutiveGrapples - 1))), 0.05f);
+        }
     }
 
     private void CastGrapple()
