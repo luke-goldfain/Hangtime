@@ -915,7 +915,12 @@ PrefabInstance:
     - target: {fileID: 4229806678028671497, guid: 99e172a39219bf84594b0f850d8863ed,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000009772929
+      value: -0.17642306
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229806678028671497, guid: 99e172a39219bf84594b0f850d8863ed,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98431444
       objectReference: {fileID: 0}
     - target: {fileID: 4229806678052460091, guid: 99e172a39219bf84594b0f850d8863ed,
         type: 3}
@@ -925,7 +930,7 @@ PrefabInstance:
     - target: {fileID: 4229806678052460091, guid: 99e172a39219bf84594b0f850d8863ed,
         type: 3}
       propertyPath: m_Text
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4229806678399079417, guid: 99e172a39219bf84594b0f850d8863ed,
         type: 3}
@@ -1355,7 +1360,7 @@ PrefabInstance:
     - target: {fileID: 871764896145179288, guid: b8f162fa44e424b4a8948e0462a37442,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 95.54165
+      value: 154
       objectReference: {fileID: 0}
     - target: {fileID: 871764896145179288, guid: b8f162fa44e424b4a8948e0462a37442,
         type: 3}
@@ -1402,7 +1407,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 871764896145179290, guid: b8f162fa44e424b4a8948e0462a37442,
+        type: 3}
+      propertyPath: orthographic size
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 871764896145179290, guid: b8f162fa44e424b4a8948e0462a37442,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 16388
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 871764896145179289, guid: b8f162fa44e424b4a8948e0462a37442, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b8f162fa44e424b4a8948e0462a37442, type: 3}
 --- !u!4 &9002098479068221218 stripped
 Transform:
