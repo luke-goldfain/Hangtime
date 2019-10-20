@@ -378,11 +378,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5155156374802849281, guid: c95830fe6ace4f5489f6877dd0a326af,
-        type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 20727748}
     - target: {fileID: 9002098479068221218, guid: c95830fe6ace4f5489f6877dd0a326af,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -393,6 +388,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -367
       objectReference: {fileID: 0}
+    - target: {fileID: 5155156374802849281, guid: c95830fe6ace4f5489f6877dd0a326af,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 20727748}
     - target: {fileID: 7293185434818496041, guid: c95830fe6ace4f5489f6877dd0a326af,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2408,6 +2408,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
         type: 3}
+      propertyPath: HUD
+      value: 
+      objectReference: {fileID: 2052565305}
+    - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
+        type: 3}
       propertyPath: Reticle
       value: 
       objectReference: {fileID: 1473231478}
@@ -2423,31 +2428,6 @@ PrefabInstance:
       objectReference: {fileID: 58352592}
     - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
         type: 3}
-      propertyPath: CheckpointMeterFill
-      value: 
-      objectReference: {fileID: 2103927768}
-    - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
-        type: 3}
-      propertyPath: CheckpointMeter
-      value: 
-      objectReference: {fileID: 1014051481}
-    - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
-        type: 3}
-      propertyPath: CheckpointText
-      value: 
-      objectReference: {fileID: 673965339}
-    - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
-        type: 3}
-      propertyPath: PlacementText
-      value: 
-      objectReference: {fileID: 1946972530}
-    - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
-        type: 3}
-      propertyPath: HUD
-      value: 
-      objectReference: {fileID: 2052565305}
-    - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
-        type: 3}
       propertyPath: SpeedometerNeedle
       value: 
       objectReference: {fileID: 1224915769}
@@ -2458,6 +2438,26 @@ PrefabInstance:
       objectReference: {fileID: 574627814}
     - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
         type: 3}
+      propertyPath: CheckpointMeter
+      value: 
+      objectReference: {fileID: 1014051481}
+    - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
+        type: 3}
+      propertyPath: CheckpointMeterFill
+      value: 
+      objectReference: {fileID: 2103927768}
+    - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
+        type: 3}
+      propertyPath: PlacementText
+      value: 
+      objectReference: {fileID: 1946972530}
+    - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
+        type: 3}
+      propertyPath: CheckpointText
+      value: 
+      objectReference: {fileID: 673965339}
+    - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
+        type: 3}
       propertyPath: ModeIndicator
       value: 
       objectReference: {fileID: 1370992008}
@@ -2466,16 +2466,6 @@ PrefabInstance:
       propertyPath: ObjectiveIndicator
       value: 
       objectReference: {fileID: 457266496}
-    - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
-        type: 3}
-      propertyPath: SpeedLimit
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705682671031744626, guid: 66f0638ade4aa8747a72498e48c0fab3,
-        type: 3}
-      propertyPath: MaxJumpForce
-      value: 40
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f0638ade4aa8747a72498e48c0fab3, type: 3}
 --- !u!1 &1658801750
