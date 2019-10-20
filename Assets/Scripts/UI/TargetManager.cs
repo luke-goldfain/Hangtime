@@ -6,9 +6,9 @@ using System;
 
 public class TargetManager : MonoBehaviour
 {
-    [Tooltip("Reference to the player that this indicator belongs to.")]
+    [Tooltip("Reference to the player that this indicator belongs to. Populated on runtime.")]
     public Transform playerReference;
-    [Tooltip("Rference to the indicator itself.")]
+    [Tooltip("Reference to the indicator itself.")]
     public Image indicatorReference;
 
     // List of targets for the indicator to select from.
@@ -25,11 +25,7 @@ public class TargetManager : MonoBehaviour
 
     void Awake()
     {
-        indicatorReference = this.GetComponentInChildren<Image>();
-
         TargetList = new List<Transform>();
-
-        textReference = indicatorReference.GetComponentInChildren<Text>();
     }
 
     void Start()
@@ -40,6 +36,10 @@ public class TargetManager : MonoBehaviour
         targetRange = 5;
         
         targetValidated = TargetList.Count > 0;
+
+        //indicatorReference = this.GetComponentInChildren<Image>();
+
+        textReference = indicatorReference.GetComponentInChildren<Text>();
     }
 
     private void Update()
@@ -81,31 +81,25 @@ public class TargetManager : MonoBehaviour
         }
 
         // Set the target to the checkpoint closest to the player
-        Transform closestCheckpoint = TargetList[targetIndex];
-
-        foreach(GameObject cp in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
+        if (TargetList.Count > 0)
         {
-            if (Vector3.Distance(cp.transform.position, playerReference.transform.position) < Vector3.Distance(closestCheckpoint.position, playerReference.transform.position))
-            {
-                closestCheckpoint = cp.transform;
-            }
-        }
+            Transform closestCheckpoint = TargetList[0];
 
-        targetIndex = TargetList.IndexOf(closestCheckpoint);
+            foreach (GameObject cp in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
+            {
+                if (!playerReference.GetComponent<CheckpointController>().CheckpointsHit.Contains(cp) &&
+                    Vector3.Distance(cp.transform.position, playerReference.transform.position) < Vector3.Distance(closestCheckpoint.position, playerReference.transform.position))
+                {
+                    closestCheckpoint = cp.transform;
+                }
+            }
+
+            targetIndex = TargetList.IndexOf(closestCheckpoint);
+        }
 
         targetValidated = TargetList.Count > 0;
-    }
 
-    void LateUpdate()
-    {
-        if (targetValidated)
-        {
-            //if (targetList[targetIndex])
-            //{
-            //    targetIndex = (targetIndex + 1) % targetList.Count;
-            //}
-        }
-        
+        // Update the target system with the selected index (closest checkpoint).
         UpdateTargetSystem(targetIndex);
     }
 
@@ -156,27 +150,27 @@ public class TargetManager : MonoBehaviour
         }
     }
 
-    public void UpdateTargetSystem(int index)
+    public void UpdateTargetSystem(int tIndex)
     {
-        if (targetValidated)
+        if (targetValidated && tIndex >= 0 && tIndex < TargetList.Count)
         {
           
             //indicatorReference.gameObject.SetActive(RelativePosition(playerReference, targetList[index]));
             indicatorReference.gameObject.SetActive(true);
             
-            if (TargetList[index].gameObject.activeInHierarchy)
+            if (TargetList[tIndex].gameObject.activeInHierarchy)
             {
                
-                textReference.text = LinearDistance(playerReference.position, TargetList[index].position) + "m";
+                textReference.text = LinearDistance(playerReference.position, TargetList[tIndex].position) + "m";
 
                 // Heading variable prevents checkpoint marker to appear in the opposite direction.
                 // This is a workaround for Unity's WolrdToScreenPoint silliness.
-                Vector3 heading = TargetList[index].transform.position - playerReference.transform.position;
+                Vector3 heading = TargetList[tIndex].transform.position - playerReference.transform.position;
 
                 // If the player is facing towards the checkpoint, display the indicator on their screen.
                 if (Vector3.Dot(playerReference.GetComponentInChildren<Camera>().transform.forward, heading) > 0)
                 {
-                    indicatorReference.transform.position = playerReference.GetComponentInChildren<Camera>().WorldToScreenPoint(TargetList[index].position + (Vector3.up * 10f));
+                    indicatorReference.transform.position = playerReference.GetComponentInChildren<Camera>().WorldToScreenPoint(TargetList[tIndex].position + (Vector3.up * 10f));
 
                     // Clamp indicator position to screen.
                     indicatorReference.transform.position = new Vector3(Mathf.Clamp(indicatorReference.transform.position.x, minXPos, maxXPos), 
@@ -191,6 +185,10 @@ public class TargetManager : MonoBehaviour
                 //indicatorVector.x = Camera.main.WorldToViewportPoint(targetList[index].position).x;
                 //indicatorReference.rectTransform.anchorMin = indicatorVector;
                 //indicatorReference.rectTransform.anchorMax = indicatorVector;
+            }
+            else
+            {
+                indicatorReference.gameObject.SetActive(false);
             }
         }
         else

@@ -107,21 +107,22 @@ public class PlayerCameraController : MonoBehaviour
         this.GetComponentInParent<Rigidbody>().transform.eulerAngles = new Vector3(0, yaw, 0);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Checkpoint")
-        {
-            MeshRenderer[] meshes = other.gameObject.GetComponentsInChildren<MeshRenderer>();
+    // This is now handled in CheckpointController.cs
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.tag == "Checkpoint")
+    //    {
+    //        Transform[] cpChildren = other.gameObject.GetComponentsInChildren<Transform>();
 
-            foreach(MeshRenderer pv in meshes)
-            {
-                if (pv.gameObject.layer == LayerMask.NameToLayer("P" + playerNumber + "View"))
-                {
-                    pv.gameObject.SetActive(false);
-                }
-            }
-        }
-    }
+    //        foreach(Transform pv in cpChildren)
+    //        {
+    //            if (pv.gameObject.layer == LayerMask.NameToLayer("P" + playerNumber + "View"))
+    //            {
+    //                pv.gameObject.SetActive(false);
+    //            }
+    //        }
+    //    }
+    //}
 
     private void StartAssignInputAxes()
     {

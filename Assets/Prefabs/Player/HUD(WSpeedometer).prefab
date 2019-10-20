@@ -934,10 +934,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4229806678399079417, guid: 99e172a39219bf84594b0f850d8863ed,
         type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229806678399079417, guid: 99e172a39219bf84594b0f850d8863ed,
+        type: 3}
       propertyPath: ObjectiveSystem
       value: 
       objectReference: {fileID: 3369369790705202720}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4229806678052460090, guid: 99e172a39219bf84594b0f850d8863ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 99e172a39219bf84594b0f850d8863ed, type: 3}
 --- !u!224 &3337448904564678715 stripped
 RectTransform:
@@ -1496,6 +1502,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ObjectiveParent
+      objectReference: {fileID: 0}
+    - target: {fileID: 149726128906831058, guid: 1d54c4acf2c86a24294aaf17fa2e51de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d54c4acf2c86a24294aaf17fa2e51de, type: 3}

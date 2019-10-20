@@ -9,17 +9,17 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Limit on the distance of the grappling hook.")]
     public float GrappleDistance = 30f;
     [Tooltip("SOFT airborne speed limit, increased by the number of consecutive grapples in the air.")]
-    public float SpeedLimit = 30f; 
+    public float SpeedLimit = 60f;
     [Tooltip("The force with which the grappling hook pulls the player.")]
-    public float GrappleForce = 30f; 
+    public float GrappleForce = 30f;
     [Tooltip("The default speed at which the player can move while on the ground. Sliding and landing while moving quickly temporarily circumvent this.")]
-    public float DefaultRunSpeed = 7f;
+    public float DefaultRunSpeed = 25f;
     [Tooltip("The force with which the player jumps.")]
-    public float JumpForce = 10f; 
+    public float JumpForce = 10f;
     [Tooltip("The maximum force with which the player can jump, applicable only to \"rebound\" jumps.")]
-    public float MaxJumpForce = 30f; 
+    public float MaxReboundJumpForce = 30f;
     [Tooltip("The time the grappling hook takes to travel to its destination.")]
-    public float GrappleTravelTime = 0.3f; 
+    public float GrappleTravelTime = 0.3f;
     [Tooltip("The height at which the player will respawn at their last reached checkpoint.")]
     public float RespawnHeight = -20f;
 
@@ -31,10 +31,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     public GameObject HUD;
+
+    [SerializeField]
+    private GameObject slidePRight, slidePLeft;
     //public GameObject Reticle, Speedometer, CheckpointMeter, CheckpointMeterFill;
 
-    public GameObject Reticle, Speedometer, SpeedometerText, 
-                      SpeedometerNeedle, PCompass, CheckpointMeter, 
+    [HideInInspector]
+    public GameObject Reticle, Speedometer, SpeedometerText,
+                      SpeedometerNeedle, PCompass, CheckpointMeter,
                       CheckpointMeterFill, PlacementText, CheckpointText,
                       ModeIndicator, ObjectiveIndicator;
 
@@ -81,6 +85,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 grappleStartPosition;
 
+    private float startOfSwingSpd;
+
     private Vector3 grappleDir;
 
     private float currentGrappleDistance;
@@ -105,6 +111,8 @@ public class PlayerController : MonoBehaviour
 
     private readonly float defaultFriction = 1f;
     private readonly float slideFriction = 0.05f;
+    
+    private bool canWalkOnGround;
 
     private bool hasAirDashed;
 
@@ -186,7 +194,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         cameraTransform = this.GetComponentInChildren<PlayerCameraController>().transform;
 
@@ -367,10 +375,18 @@ public class PlayerController : MonoBehaviour
 
                     ropeSections.Clear();
 
+                    if (slidePLeft.GetComponent<ParticleSystem>().isPlaying)
+                    {
+                        slidePLeft.GetComponent<ParticleSystem>().Stop();
+                        slidePRight.GetComponent<ParticleSystem>().Stop();
+                    }
+
                     break;
                 }
             case State.onGround:
                 {
+                    canWalkOnGround = true;
+
                     groundTimer = 0f;
                     slideTimer = 0f;
 
@@ -389,21 +405,27 @@ public class PlayerController : MonoBehaviour
                 {
                     this.GetComponent<Collider>().material.dynamicFriction = defaultFriction;
 
+                    startOfSwingSpd = this.rb.velocity.magnitude;
+
                     if (consecutiveGrapples < 4) consecutiveGrapples++;
                     
                     currentGrappleDistance = Vector3.Distance(this.transform.position, GrappleHitPosition);
 
-                    // Change the current grapple's normal based on whether the player is high enough above their grapple,
-                    // as well as more vertical than horizontal to their grapple.
-                    if ((this.transform.position.y - GrappleHitPosition.y >= 8f) &&
-                        (this.transform.position.y - GrappleHitPosition.y >= (new Vector2(this.transform.position.x, this.transform.position.z) -
-                                                                              new Vector2(GrappleHitPosition.x, GrappleHitPosition.z)).magnitude))
+                    // Set the current grapple's normal, used when swinging, by a cross-product based on 
+                    // the direction of the grapple and the player's velocity.
+                    currentGrappleNormal = Vector3.Cross(grappleDir, -rb.velocity);
+
+                    // Check if the player is moving slowly and is beneath their grapple point, and make 
+                    // sure in that case that moveDir will face down by reversing the normal.
+                    if (rb.velocity.magnitude < 8f && rb.velocity.y > 0f && this.transform.position.y < GrappleHitPosition.y )
                     {
-                        currentGrappleNormal = cameraTransform.right;
+                        currentGrappleNormal = Vector3.Cross(grappleDir, rb.velocity);
                     }
-                    else
+
+                    if (slidePLeft.GetComponent<ParticleSystem>().isPlaying)
                     {
-                        currentGrappleNormal = -cameraTransform.right;
+                        slidePLeft.GetComponent<ParticleSystem>().Stop();
+                        slidePRight.GetComponent<ParticleSystem>().Stop();
                     }
 
                     break;
@@ -429,6 +451,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            // Movement direction in swinging mode is the cross-product of the grapple's direction and the current grapple normal, which is
+            // itself a cross-product of the grapple direction and the player's velocity at the start of their grapple.
             moveDir = Vector3.Cross(GrappleHitPosition - this.transform.position, currentGrappleNormal);
         }
 
@@ -468,25 +492,29 @@ public class PlayerController : MonoBehaviour
                 currentGrappledObject.GetComponent<Rigidbody>().AddForce(-moveDir * Mathf.Max(GrappleForce - Vector3.Distance(GrappleHitPosition, this.transform.position), 15f * (consecutiveGrapples + 1)));
             }
         }
-        else if (this.transform.position.y <= GrappleHitPosition.y) // if player is not pulling, rotate them around the grapple point at a soft-fixed speed, ala spider man.
+        else // if player is not pulling, rotate them around the grapple point at a soft-fixed speed, ala spider man.
         {
-            rb.AddForce(moveDir * GrappleForce * 0.1f);
+            Vector3 swingVelocity = moveDir * GrappleForce * 100f;
+            swingVelocity = Vector3.ClampMagnitude(swingVelocity, Mathf.Max(SpeedLimit * 0.4f, startOfSwingSpd * 1.3f));
 
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, GrappleForce * 2f);
+            rb.velocity = Vector3.Lerp(rb.velocity, swingVelocity, 0.1f);
         }
 
         // If the player is pulling and has traveled 1.5 times the original length of the grapple (a ways past or away from the grapple point), break off the grapple automatically.
-        // If the player is swinging and has traveled 2.4 times original grapple length, same deal.
+        // If the player is swinging and has traveled 2.6 times original grapple length, same deal.
         if ((Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(GrappleHitPosition, grappleStartPosition) * 1.5f && isPulling) ||
-            (Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(GrappleHitPosition, grappleStartPosition) * 2.4f && !isPulling))
+            (Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(GrappleHitPosition, grappleStartPosition) * 2.6f && !isPulling))
         {
             this.currentState = State.inAir;
-
-            LerpSpeedToLimit();
         }
 
+        // Set canHitGround to true if player is falling
+        if (rb.velocity.y <= 0) canWalkOnGround = true;
+
+        LerpSpeedToLimit();
+
         // Update currentRunSpeed so that when the player hits the ground, they are running relative to how fast they were grappling
-        currentRunSpeed = rb.velocity.magnitude * 0.7f;
+        currentRunSpeed = rb.velocity.magnitude * 0.75f;
     }
 
     private void UpdateMoveAir()
@@ -496,7 +524,17 @@ public class PlayerController : MonoBehaviour
             float hAxis = Input.GetAxisRaw(playerHorizontalAxis);
             float vAxis = Input.GetAxisRaw(playerVerticalAxis);
 
-            rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * 2f);
+            // Give the player air control, relative to their current velocity so that it is always noticeable.
+            if (Vector3.Angle(new Vector3(rb.velocity.x, 0f, rb.velocity.z), this.transform.TransformDirection(new Vector3(hAxis, 0, vAxis))) > 70)
+            {
+                rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * rb.velocity.magnitude * 0.3f);
+            }
+            else
+            {
+                rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * rb.velocity.magnitude * 0.02f);
+            }
+
+            LerpSpeedToLimit();
 
             // Assign airVelocity variable, used primarily for checking collision angles
             airVelocity = rb.velocity;
@@ -509,13 +547,35 @@ public class PlayerController : MonoBehaviour
             }
 
             // Reassign air velocity if the player jumps, allowing for air jumping (once per inAir-state)
-            // The velocity assignment for air-jumping takes current velocity into account, albeit not weighing it heavily.
+            // The velocity assignment for air-jumping takes current velocity into account, and weighs it according to a Slerp.
             if (Input.GetButtonDown(playerJumpButton) && !hasAirDashed)
             {
-                rb.velocity = Vector3.Slerp(rb.velocity, (transform.forward * vAxis * JumpForce) + (transform.right * hAxis * JumpForce) + (transform.up * JumpForce), 0.9f);
+                Vector3 airJumpDirection = (transform.forward * vAxis * JumpForce) + (transform.right * hAxis * JumpForce) + (transform.up * JumpForce);
+
+                // Weigh the player's current velocity more if they are attempting to jump in a direction < 120 degrees from their current velocity.
+                // Otherwise, clamp the magnitude of velocity as well (unclamped, the player would jump far too strongly).
+                if (Vector3.Angle(new Vector3(rb.velocity.x, 0f, rb.velocity.z), airJumpDirection) < 120)
+                {
+                    rb.velocity += airJumpDirection;
+
+                    if (rb.velocity.y < (JumpForce * 2f)) // Make sure y-velocity is not already higher than overwrite
+                    {
+                        rb.velocity = new Vector3(rb.velocity.x, JumpForce * 2f, rb.velocity.z); // Force y to a constant value
+                    }
+                }
+                else
+                {
+                    rb.velocity = Vector3.Lerp(rb.velocity, airJumpDirection, 0.9f);
+
+                    rb.velocity = new Vector3(rb.velocity.x, JumpForce * 2f, rb.velocity.z); // Force y to a constant value
+
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, (rb.velocity.magnitude + JumpForce) / 2f);
+                }
 
                 hasAirDashed = true;
             }
+
+            if (rb.velocity.y <= 0) canWalkOnGround = true;
         }
 
         // Update currentRunSpeed so that when the player hits the ground, they are running relative to how fast they were flying
@@ -538,6 +598,12 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButton(playerSlideButton) && slideTimer < slideMaxTime) // Sliding behavior
             {
+                if (slidePLeft.GetComponent<ParticleSystem>().isStopped)
+                {
+                    slidePLeft.GetComponent<ParticleSystem>().Play();
+                    slidePRight.GetComponent<ParticleSystem>().Play();
+                }
+
                 // Move the camera down to give the player feedback that they are sliding.
                 cameraTransform.position = Vector3.Slerp(cameraTransform.position, this.transform.position + (Vector3.down * 0.8f), 0.2f);
 
@@ -555,19 +621,33 @@ public class PlayerController : MonoBehaviour
 
                 slideTimer += Time.deltaTime;
             }
-            else if (Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, 2f, ~(1 << 8))) // Normal running behavior
+            else if (canWalkOnGround && Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, 2f, ~(1 << 8))) // Normal running behavior
             {
-                // Decrease currentRunSpeed gradually until it matches DefaultRunSpeed.
-                currentRunSpeed = Mathf.Lerp(currentRunSpeed, DefaultRunSpeed, 0.02f); // Lerp towards DefaultRunSpeed.
-                currentRunSpeed = Mathf.Max(currentRunSpeed, DefaultRunSpeed); // Mathf.Max to ensure [currentRunSpeed >= DefaultRunSpeed]
+                if (hAxis != 0 || vAxis != 0)
+                {
+                    // Increase or decrease currentRunSpeed gradually until it matches DefaultRunSpeed.
+                    currentRunSpeed = Mathf.Lerp(currentRunSpeed, DefaultRunSpeed, 0.02f); // Lerp towards DefaultRunSpeed.
 
-                rb.velocity = Vector3.ProjectOnPlane((transform.forward * vAxis * currentRunSpeed) + (transform.right * hAxis * currentRunSpeed), hit.normal);
+                    rb.velocity = Vector3.ProjectOnPlane((transform.forward * vAxis * currentRunSpeed) + (transform.right * hAxis * currentRunSpeed), hit.normal);
+                }
+                else
+                {
+                    currentRunSpeed = rb.velocity.magnitude;
+
+                    rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, 0.02f);
+                }
 
                 rb.velocity = Vector3.ClampMagnitude(rb.velocity, currentRunSpeed);
             }
 
             if (Input.GetButtonUp(playerSlideButton) || slideTimer >= slideMaxTime) // What happens when a slide "ends"
             {
+                if (slidePLeft.GetComponent<ParticleSystem>().isPlaying)
+                {
+                    slidePLeft.GetComponent<ParticleSystem>().Stop();
+                    slidePRight.GetComponent<ParticleSystem>().Stop();
+                }
+
                 this.GetComponent<Collider>().material.dynamicFriction = defaultFriction;
 
                 rb.velocity = Vector3.ClampMagnitude(rb.velocity, currentRunSpeed);
@@ -584,22 +664,23 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButtonDown(playerJumpButton))
             {
-                this.transform.position += Vector3.up; // Messy brute-force to get player out of the ground --
-                                                       // jumping does not work correctly if player is colliding with the ground when the next line is executed.
+                // Set canWalkOnGround to false to get the player out of the ground. 
+                // This gets set back to true once the player has moved downwards during a jump or grapple, or has otherwise collided with an object.
+                canWalkOnGround = false;
 
                 // To jump off of a surface based on angle and magnitude of incidence, the angle must be straighter than 75 degrees (which is almost flat to the
                 //  surface), they must have been against the surface for < angleJumpCooldown seconds, and the velocity of the incidence must be high enough.
                 if (Vector3.Angle(incidenceVelocity, collisionNormal) < 75f && groundTimer < angleJumpCooldown && incidenceVelocity.magnitude > 10f)
                 {
-                    rb.velocity = Vector3.ClampMagnitude(incidenceVelocity, MaxJumpForce);
+                    rb.velocity = Vector3.ClampMagnitude(incidenceVelocity, MaxReboundJumpForce);
                 }
                 // If the previous parameters are not met, jump velocity is given by current velocity alongside the default jump force.
                 // Note: When jumping off of a wall, this may feel unnatural as the player will jump straight up instead of jumping "off" the wall.
                 else
                 {
-                    float tempJumpForce = Mathf.Max(JumpForce, Mathf.Min(rb.velocity.magnitude, MaxJumpForce));
+                    float tempJumpForce = Mathf.Max(JumpForce, Mathf.Min(rb.velocity.magnitude, MaxReboundJumpForce));
 
-                    rb.velocity = (transform.forward * vAxis * tempJumpForce) + (transform.right * hAxis * tempJumpForce) + (transform.up * tempJumpForce * 0.75f);
+                    rb.velocity = (transform.forward * vAxis * tempJumpForce) + (transform.right * hAxis * tempJumpForce) + (transform.up * tempJumpForce);
                 }
 
                 this.currentState = State.inAir;
@@ -609,7 +690,12 @@ public class PlayerController : MonoBehaviour
 
     private void LerpSpeedToLimit()
     {
-        rb.velocity = Vector3.Slerp(rb.velocity, Vector3.ClampMagnitude(rb.velocity, this.SpeedLimit + (this.SpeedLimit * 0.5f * (consecutiveGrapples - 1))), 0.4f);
+        // Only do this if ABOVE speed limit
+        if (rb.velocity.magnitude > SpeedLimit + (this.SpeedLimit * 0.5f * (consecutiveGrapples - 1)))
+        {
+            // Soft-clamp speed to 3x speed limit, plus consecutive grapple bonus, to prevent coasting thru the air by holding a direction.
+            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.ClampMagnitude(rb.velocity, SpeedLimit + (this.SpeedLimit * 0.5f * (consecutiveGrapples - 1))), 0.05f);
+        }
     }
 
     private void CastGrapple()
