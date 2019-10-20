@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask GrapplableMask;
 
     public bool AcceptsInput = true;
-    public bool HoldingPowerUp = false; //If player is carrying a power-up this statement is true, if not it is false.
+  
 
     private int numberOfPlayers;
     

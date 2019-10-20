@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Increase players movement stats by multiplier for limited number of seconds.
+/// </summary>
 public class CatWalk : MonoBehaviour
 {
 
@@ -13,6 +15,7 @@ public class CatWalk : MonoBehaviour
     [SerializeField]
     private float Duration = 4f;
 
+    [Tooltip("Visual effect that plays on pick up.")]
     [SerializeField]
     private GameObject pickupVFX;
     //public bool HoldingPowerUp = false; If player has a pick-up active, this statement is true, if not it is false.
