@@ -9,6 +9,7 @@ TagManager:
   - Lava
   - spawner
   - Setup Manager
+  - Power up
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - P2View
   - P3View
   - P4View
-  - 
-  - 
+  - MiniMap
+  - Terrain
   - 
   - 
   - 
@@ -45,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: MiniMap
+    uniqueID: 216971183
     locked: 0

@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask GrapplableMask;
 
     public bool AcceptsInput = true;
+  
 
     private int numberOfPlayers;
     

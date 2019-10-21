@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class MobilityPowerUp : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float multiplier = 1.6f;
+    
     void ActivePowerUp(Collider player)
     {
         PlayerController stats = player.GetComponent<PlayerController>();
-        stats.DefaultRunSpeed = 30;
-        stats.JumpForce = 20;
+        stats.DefaultRunSpeed *= multiplier;
+        stats.JumpForce *= multiplier;
     }
 
 
