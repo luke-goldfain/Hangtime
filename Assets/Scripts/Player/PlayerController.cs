@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Reticle, Speedometer, SpeedometerText,
                       SpeedometerNeedle, PCompass, CheckpointMeter,
                       CheckpointMeterFill, PlacementText, CheckpointText,
-                      ModeIndicator, ObjectiveIndicator;
+                      ModeIndicator, ObjectiveIndicator, PlayerMinimap;
 
     [SerializeField]
     private Sprite pullIcon, swingIcon;
@@ -173,6 +173,7 @@ public class PlayerController : MonoBehaviour
         CheckpointText = CheckpointMeter.transform.Find("CheckpointText").gameObject;
         ModeIndicator = HUD.transform.Find("ModeIndicator").gameObject;
         ObjectiveIndicator = HUD.transform.Find("ObjectiveParent").gameObject;
+        PlayerMinimap = HUD.transform.Find("MiniCam").gameObject;
     }
 
     // Collect variables for jump-off angle when colliding with an object
@@ -877,5 +878,10 @@ public class PlayerController : MonoBehaviour
     internal void StartSetObjectiveReference()
     {
         ObjectiveIndicator.GetComponent<TargetManager>().playerReference = this.gameObject.transform;
+    }
+
+    internal void StartSetMinimapReference()
+    {
+        PlayerMinimap.GetComponent<Minimap>().Player = this.gameObject.transform;
     }
 }

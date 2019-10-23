@@ -156,7 +156,16 @@ public class FollowOrbBehavior : MonoBehaviour
 
         if (Physics.Raycast(this.transform.position + (Vector3.down * 4), Vector3.down, out RaycastHit hit, Mathf.Infinity, CheckpointMask))
         {
-            Instantiate(CheckpointPrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+            GameObject cp = Instantiate(CheckpointPrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+
+            // Reset the rotation of the beacons
+            foreach(Transform child in cp.GetComponentsInChildren<Transform>())
+            {
+                if (child.gameObject.GetComponent<ParticleSystem>() != null)
+                {
+                    child.rotation = Quaternion.identity;
+                }
+            }
         }
     }
 

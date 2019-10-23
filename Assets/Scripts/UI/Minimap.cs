@@ -14,6 +14,7 @@ public class Minimap : MonoBehaviour
         newPosition.y = transform.position.y;
         transform.position = newPosition;
 
-
+        // Also set rotation equal to player rotation (in the future this should be a setting)
+        transform.rotation = Player.rotation;
     }
 }

@@ -84,7 +84,7 @@ public class PlayerCameraController : MonoBehaviour
         this.GetComponentInParent<PlayerController>().StartSetSpeedometerAndIndicatorPositions();
         this.GetComponentInParent<PlayerController>().StartSetCheckpointMeterPosition();
         this.GetComponentInParent<PlayerController>().StartSetObjectiveReference();
-        //this.GetComponentInParent<PlayerController>().StartSetCompassPosition();
+        this.GetComponentInParent<PlayerController>().StartSetMinimapReference();
     }
 
     // Update is called once per frame

@@ -45,56 +45,59 @@ public class TargetManager : MonoBehaviour
     private void Update()
     {
         // Correct each frame for new checkpoints that are not yet in the target list
-        if (TargetList.Count < playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced.Length - playerReference.GetComponent<CheckpointController>().CheckpointsHit.Count)
+        if (playerReference != null)
         {
-            foreach (GameObject cp in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
+            if (TargetList.Count < playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced.Length - playerReference.GetComponent<CheckpointController>().CheckpointsHit.Count)
             {
-                if (!TargetList.Contains(cp.transform))
+                foreach (GameObject cp in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
                 {
-                    TargetList.Add(cp.transform);
-                }
-            }
-        }
-
-        // Add the finish line to the list if the player is able to finish
-        if (playerReference.GetComponent<CheckpointController>().Finishable)
-        {
-            foreach (GameObject fl in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
-            {
-                if (!TargetList.Contains(fl.transform))
-                {
-                    TargetList.Add(fl.transform);
-                }
-            }
-        }
-
-        // Correct each frame for checkpoints that have just been hit by player
-        if (TargetList.Count > playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced.Length - playerReference.GetComponent<CheckpointController>().CheckpointsHit.Count)
-        {
-            foreach (GameObject cp in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
-            {
-                if (playerReference.GetComponent<CheckpointController>().CheckpointsHit.Contains(cp))
-                {
-                    TargetList.Remove(cp.transform);
-                }
-            }
-        }
-
-        // Set the target to the checkpoint closest to the player
-        if (TargetList.Count > 0)
-        {
-            Transform closestCheckpoint = TargetList[0];
-
-            foreach (GameObject cp in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
-            {
-                if (!playerReference.GetComponent<CheckpointController>().CheckpointsHit.Contains(cp) &&
-                    Vector3.Distance(cp.transform.position, playerReference.transform.position) < Vector3.Distance(closestCheckpoint.position, playerReference.transform.position))
-                {
-                    closestCheckpoint = cp.transform;
+                    if (!TargetList.Contains(cp.transform))
+                    {
+                        TargetList.Add(cp.transform);
+                    }
                 }
             }
 
-            targetIndex = TargetList.IndexOf(closestCheckpoint);
+            // Add the finish line to the list if the player is able to finish
+            if (playerReference.GetComponent<CheckpointController>().Finishable)
+            {
+                foreach (GameObject fl in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
+                {
+                    if (!TargetList.Contains(fl.transform))
+                    {
+                        TargetList.Add(fl.transform);
+                    }
+                }
+            }
+
+            // Correct each frame for checkpoints that have just been hit by player
+            if (TargetList.Count > playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced.Length - playerReference.GetComponent<CheckpointController>().CheckpointsHit.Count)
+            {
+                foreach (GameObject cp in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
+                {
+                    if (playerReference.GetComponent<CheckpointController>().CheckpointsHit.Contains(cp))
+                    {
+                        TargetList.Remove(cp.transform);
+                    }
+                }
+            }
+
+            // Set the target to the checkpoint closest to the player
+            if (TargetList.Count > 0)
+            {
+                Transform closestCheckpoint = TargetList[0];
+
+                foreach (GameObject cp in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
+                {
+                    if (!playerReference.GetComponent<CheckpointController>().CheckpointsHit.Contains(cp) &&
+                        Vector3.Distance(cp.transform.position, playerReference.transform.position) < Vector3.Distance(closestCheckpoint.position, playerReference.transform.position))
+                    {
+                        closestCheckpoint = cp.transform;
+                    }
+                }
+
+                targetIndex = TargetList.IndexOf(closestCheckpoint);
+            }
         }
 
         targetValidated = TargetList.Count > 0;
@@ -154,13 +157,13 @@ public class TargetManager : MonoBehaviour
     {
         if (targetValidated && tIndex >= 0 && tIndex < TargetList.Count)
         {
-          
+
             //indicatorReference.gameObject.SetActive(RelativePosition(playerReference, targetList[index]));
             indicatorReference.gameObject.SetActive(true);
-            
+
             if (TargetList[tIndex].gameObject.activeInHierarchy)
             {
-               
+
                 textReference.text = LinearDistance(playerReference.position, TargetList[tIndex].position) + "m";
 
                 // Heading variable prevents checkpoint marker to appear in the opposite direction.
@@ -173,7 +176,7 @@ public class TargetManager : MonoBehaviour
                     indicatorReference.transform.position = playerReference.GetComponentInChildren<Camera>().WorldToScreenPoint(TargetList[tIndex].position + (Vector3.up * 10f));
 
                     // Clamp indicator position to screen.
-                    indicatorReference.transform.position = new Vector3(Mathf.Clamp(indicatorReference.transform.position.x, minXPos, maxXPos), 
+                    indicatorReference.transform.position = new Vector3(Mathf.Clamp(indicatorReference.transform.position.x, minXPos, maxXPos),
                                                                         Mathf.Clamp(indicatorReference.transform.position.y, minYPos, maxYPos));
                 }
                 else
@@ -191,7 +194,7 @@ public class TargetManager : MonoBehaviour
                 indicatorReference.gameObject.SetActive(false);
             }
         }
-        else
+        else if (indicatorReference != null && indicatorReference.enabled)
         {
             indicatorReference.gameObject.SetActive(false);
         }
