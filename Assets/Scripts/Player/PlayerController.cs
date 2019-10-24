@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float JumpForce = 10f; // The force with which the player jumps. Self-explanatory.
     public float MaxJumpForce = 30f;
 
+
     [SerializeField]
     private GameObject ropeSectionPrefab;
 
