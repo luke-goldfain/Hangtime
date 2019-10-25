@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSelectPanel : MonoBehaviour
 {
@@ -17,8 +18,19 @@ public class PlayerSelectPanel : MonoBehaviour
     [SerializeField]
     private GameObject controlsPanel;
 
+    [SerializeField]
+    private Transform playerLocation;
+
     private bool panelActive;
     private bool acceptsInput;
+    private bool modelInserted;
+
+    private void Start()
+    {
+        modelInserted = false;
+
+        this.GetComponent<Selectable>().interactable = false;
+    }
 
     // Update is called once per frame
     void Update()
@@ -59,7 +71,7 @@ public class PlayerSelectPanel : MonoBehaviour
 
         if (playerModel.activeInHierarchy)
         {
-            playerModel.transform.Rotate(0f, 2f, 0f);
+            playerModel.transform.Rotate(0f, 0.25f, 0f);
         }
     }
 
@@ -68,6 +80,19 @@ public class PlayerSelectPanel : MonoBehaviour
         panelActive = true;
 
         playerConfirmedText.SetActive(true);
+
+        this.GetComponent<Selectable>().interactable = true;
+
+        this.GetComponent<Selectable>().Select();
+
+        if (!modelInserted)
+        {
+            playerModel = Instantiate(playerModel, playerLocation);
+
+            playerModel.transform.localScale = new Vector3(50f, 50f, 50f);
+
+            modelInserted = true;
+        }
 
         playerModel.SetActive(true);
 
