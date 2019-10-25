@@ -281,12 +281,12 @@ PrefabInstance:
     - target: {fileID: 471279772010507068, guid: ec21f13b9fbfd524583ba8fdc1f5ccc7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 162
+      value: 24.450012
       objectReference: {fileID: 0}
     - target: {fileID: 471279772010507068, guid: ec21f13b9fbfd524583ba8fdc1f5ccc7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -105
+      value: -30.400024
       objectReference: {fileID: 0}
     - target: {fileID: 471279772010507068, guid: ec21f13b9fbfd524583ba8fdc1f5ccc7,
         type: 3}
@@ -321,12 +321,12 @@ PrefabInstance:
     - target: {fileID: 471279772010507068, guid: ec21f13b9fbfd524583ba8fdc1f5ccc7,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 471279772010507068, guid: ec21f13b9fbfd524583ba8fdc1f5ccc7,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 471279772010507065, guid: ec21f13b9fbfd524583ba8fdc1f5ccc7,
         type: 3}
@@ -394,12 +394,12 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -477,8 +477,8 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
+  m_HorizontalAxis: P1Horizontal
+  m_VerticalAxis: P1Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
@@ -537,7 +537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797044659}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -318.0537, y: 34.606323, z: -1532.5}
+  m_LocalPosition: {x: -379, y: -72, z: -1532.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1893597723}
@@ -654,7 +654,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 331, y: -109}
+  m_AnchoredPosition: {x: 331, y: -50}
   m_SizeDelta: {x: 919.1, y: 980.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1893597724
@@ -694,7 +694,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 071ba1dd3bff97848bfed5eb0e301a15, type: 3}
-    m_FontSize: 36
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -708,17 +708,13 @@ MonoBehaviour:
   m_Text: 'Project Manager
 
 
-
     Designer
-
 
 
     Programmer
 
 
-
     Character Artist
-
 
 
     Environment Artist
@@ -767,7 +763,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 331, y: -251.2}
+  m_AnchoredPosition: {x: 325, y: -170}
   m_SizeDelta: {x: 919.1, y: 1043.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1982223868
@@ -807,7 +803,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 36
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -821,17 +817,13 @@ MonoBehaviour:
   m_Text: 'Timothy Chatman
 
 
-
     Eric Lovelock
-
 
 
     Luke Goldfain
 
 
-
-    Alex Gallanis                  Sunnie Farrar
-
+    Alex Gallanis  &  Sunnie Farrar
 
 
     Kyler Fleming
