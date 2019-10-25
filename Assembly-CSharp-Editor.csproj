@@ -367,6 +367,9 @@
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>F:/Users/Luke/Documents/Unity projects/Hangtime Proto/Hangtime-Prototype/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
+    <Reference Include="PackageManagerAssembly">
+      <HintPath>C:/Users/timot/Desktop/NDA Interactive/Hangtime-Prototype/Assets/Add-Ons/EffectExamples/Editor/PackageManagerAssembly/PackageManagerAssembly.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.10f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
     </Reference>

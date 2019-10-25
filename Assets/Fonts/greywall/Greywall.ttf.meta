@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 88908dbdd5c24b048ac3eb3bbe3f7eb3
+guid: 5b19e2ef2659b034898136159523acf9
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Galaxy Force 3D
+  fontName: Greywall
   fontNames:
-  - Galaxy Force 3D
+  - Greywall
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

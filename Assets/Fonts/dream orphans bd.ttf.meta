@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1f9f4ee34bd0a0a40a3d3cf6d7b43883
+guid: 071ba1dd3bff97848bfed5eb0e301a15
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Galaxy Force Extra-Expanded Italic
+  fontName: Dream Orphans
   fontNames:
-  - Galaxy Force Extra-Expanded Italic
+  - Dream Orphans
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
