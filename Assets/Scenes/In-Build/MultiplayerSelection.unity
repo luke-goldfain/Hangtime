@@ -729,6 +729,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Back Button
       objectReference: {fileID: 0}
+    - target: {fileID: 471279772010507069, guid: ec21f13b9fbfd524583ba8fdc1f5ccc7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 471279772010507068, guid: ec21f13b9fbfd524583ba8fdc1f5ccc7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -787,7 +792,7 @@ PrefabInstance:
     - target: {fileID: 471279772010507068, guid: ec21f13b9fbfd524583ba8fdc1f5ccc7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 155.79999
+      value: 155.7998
       objectReference: {fileID: 0}
     - target: {fileID: 471279772010507068, guid: ec21f13b9fbfd524583ba8fdc1f5ccc7,
         type: 3}
@@ -1477,7 +1482,7 @@ RectTransform:
   - {fileID: 65470895}
   - {fileID: 2139009674}
   m_Father: {fileID: 1086275471}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1920,7 +1925,7 @@ RectTransform:
   m_Children:
   - {fileID: 1374627441}
   m_Father: {fileID: 1086275471}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -2821,7 +2826,7 @@ RectTransform:
   - {fileID: 833599718}
   - {fileID: 1184059792}
   m_Father: {fileID: 1086275471}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2957,7 +2962,7 @@ RectTransform:
   - {fileID: 1702642580}
   - {fileID: 799377169}
   m_Father: {fileID: 1086275471}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3093,7 +3098,7 @@ RectTransform:
   - {fileID: 1425177907}
   - {fileID: 154745919}
   m_Father: {fileID: 1086275471}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
