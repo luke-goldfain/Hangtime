@@ -60,11 +60,11 @@ Camera:
   far clip plane: 1000
   field of view: 33.059917
   orthographic: 1
-  orthographic size: 60
+  orthographic size: 42
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 16388
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: a91920691121c6f4891ec2b3c5fce20c, type: 2}
   m_TargetDisplay: 0
