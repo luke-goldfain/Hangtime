@@ -15,6 +15,7 @@ public class Minimap : MonoBehaviour
         transform.position = newPosition;
 
         // Also set rotation equal to player rotation (in the future this should be a setting)
-        transform.rotation = Player.rotation;
+        Quaternion newRotation = Quaternion.Euler(90f, 0f, -Player.rotation.eulerAngles.y);
+        this.transform.rotation = newRotation;
     }
 }
