@@ -10,6 +10,7 @@ TagManager:
   - spawner
   - Setup Manager
   - Power up
+  - Countdown
   layers:
   - Default
   - TransparentFX
