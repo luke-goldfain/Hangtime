@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     public GameObject HUD;
 
     [SerializeField]
+    public GameObject windZone;
+
+    [SerializeField]
     private GameObject slidePRight, slidePLeft;
     //public GameObject Reticle, Speedometer, CheckpointMeter, CheckpointMeterFill;
 
@@ -53,7 +56,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask GrapplableMask;
 
     public bool AcceptsInput = true;
-  
+
+    [SerializeField]
+    private bool inWindZone = false;
+
 
     private int numberOfPlayers;
     
@@ -348,6 +354,30 @@ public class PlayerController : MonoBehaviour
         {
             // Conditional operator: if cursor unlocked, lock cursor, otherwise unlock cursor
             Cursor.lockState = (Cursor.lockState == CursorLockMode.Locked)? CursorLockMode.None : CursorLockMode.Locked;
+        }
+
+        // Get ForceField component and allows player to edit the effects of ForceField Colliders
+        if (inWindZone)
+        {
+               rb.AddForce(windZone.GetComponent<ForceField>().ForceDirection * windZone.GetComponent<ForceField>().ForceStrength);
+        }
+
+        }
+
+        void OnTriggerEnter(Collider coll) // start applying force when player enters ForceField's collider
+    {
+        if(coll.gameObject.tag == "ForceField")
+        {
+           windZone = coll.gameObject;
+           inWindZone = true;
+        }
+    }
+
+        void OnTriggerExit(Collider coll) // Stops applying force when player leaves ForceField's collider
+    {
+        if(coll.gameObject.tag == "ForceField")
+        {
+          inWindZone = false;
         }
     }
 
@@ -885,4 +915,5 @@ public class PlayerController : MonoBehaviour
     {
         PlayerMinimap.GetComponent<Minimap>().Player = this.gameObject.transform;
     }
+
 }
