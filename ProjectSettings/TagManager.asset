@@ -6,7 +6,11 @@ TagManager:
   tags:
   - Reticle
   - Checkpoint
+  - Lava
+  - spawner
   - Setup Manager
+  - Power up
+  - WindArea
   layers:
   - Default
   - TransparentFX
@@ -18,12 +22,12 @@ TagManager:
   - 
   - PostProcessing
   - Agents
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - P1View
+  - P2View
+  - P3View
+  - P4View
+  - MiniMap
+  - Terrain
   - 
   - 
   - 
@@ -43,4 +47,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: MiniMap
+    uniqueID: 216971183
     locked: 0

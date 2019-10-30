@@ -9,9 +9,13 @@ public class CheckpointController : MonoBehaviour
 {
     public int CheckpointsRequired;
 
-    private List<GameObject> checkpointsHit;
+    private int playerNumber;
 
-    private bool finishable;
+    public GameObject[] CheckpointsTotalPlaced { get; private set; }
+
+    public List<GameObject> CheckpointsHit { get; private set; }
+
+    public bool Finishable { get; private set; }
     public bool Finished { get; private set; }
 
     private GameObject CheckpointMeterFill;
@@ -19,9 +23,11 @@ public class CheckpointController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        checkpointsHit = new List<GameObject>();
+        playerNumber = this.gameObject.GetComponent<PlayerController>().PlayerNumber;
 
-        finishable = false;
+        CheckpointsHit = new List<GameObject>();
+
+        Finishable = false;
 
         Finished = false;
     }
@@ -29,18 +35,25 @@ public class CheckpointController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.GetComponent<PlayerController>().CheckpointText.GetComponent<TextMeshProUGUI>().text = checkpointsHit.Count + " / " + CheckpointsRequired;
+        CheckpointsTotalPlaced = GameObject.FindGameObjectsWithTag("Checkpoint");
+
+        if (Finishable)
+        {
+            CheckpointsTotalPlaced = GameObject.FindGameObjectsWithTag("Finish");
+        }
+
+        this.gameObject.GetComponent<PlayerController>().CheckpointText.GetComponent<TextMeshProUGUI>().text = CheckpointsHit.Count + " / " + CheckpointsRequired;
 
         CheckpointMeterFill = this.gameObject.GetComponent<PlayerController>().CheckpointMeterFill;
 
-        if (checkpointsHit.Count > 0)
+        if (CheckpointsHit.Count > 0)
         {
-            CheckpointMeterFill.GetComponent<Image>().fillAmount = (float)checkpointsHit.Count / CheckpointsRequired;
+            CheckpointMeterFill.GetComponent<Image>().fillAmount = (float)CheckpointsHit.Count / CheckpointsRequired;
         }
 
-        if (checkpointsHit.Count >= CheckpointsRequired)
+        if (CheckpointsHit.Count >= CheckpointsRequired)
         {
-            finishable = true;
+            Finishable = true;
         }
     }
 
@@ -48,15 +61,25 @@ public class CheckpointController : MonoBehaviour
     {
         if (other.tag == "Checkpoint")
         {
-            if (!checkpointsHit.Contains(other.gameObject))
+            if (!CheckpointsHit.Contains(other.gameObject))
             {
-                checkpointsHit.Add(other.gameObject);
+                CheckpointsHit.Add(other.gameObject);
+            }
+
+            Transform[] cpChildren = other.gameObject.GetComponentsInChildren<Transform>();
+
+            foreach (Transform pv in cpChildren)
+            {
+                if (pv.gameObject.layer == LayerMask.NameToLayer("P" + playerNumber + "View"))
+                {
+                    pv.gameObject.SetActive(false);
+                }
             }
         }
 
         if (other.tag == "Finish")
         {
-            if (finishable)
+            if (Finishable)
             {
                 RaceFinish();
             }
