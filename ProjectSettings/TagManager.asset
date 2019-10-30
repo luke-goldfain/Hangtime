@@ -10,6 +10,7 @@ TagManager:
   - spawner
   - Setup Manager
   - Power up
+  - WindArea
   layers:
   - Default
   - TransparentFX

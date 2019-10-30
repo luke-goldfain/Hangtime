@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\FiL\StartingPlatform.cs" />
     <Compile Include="Assets\Scripts\Follow Orb\CheckpointLists.cs" />
     <Compile Include="Assets\Scripts\Follow Orb\FollowOrbBehavior.cs" />
+    <Compile Include="Assets\Scripts\ForceField.cs" />
     <Compile Include="Assets\Scripts\Global\GameStats.cs" />
     <Compile Include="Assets\Scripts\Global\ListWrapper.cs" />
     <Compile Include="Assets\Scripts\Player Select\GameObjectEnabler.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Assets\Scripts\UI\SpeedConverter.cs" />
     <Compile Include="Assets\Scripts\UI\SpeedometerReference.cs" />
     <Compile Include="Assets\Scripts\UI\TargetManager.cs" />
+    <Compile Include="Assets\wind.cs" />
     <None Include="Assets\Add-Ons\Rocks and Boulders 2\Shaders\shader info.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
