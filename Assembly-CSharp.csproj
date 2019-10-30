@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Follow Orb\FollowOrbBehavior.cs" />
     <Compile Include="Assets\Scripts\Global\GameStats.cs" />
     <Compile Include="Assets\Scripts\Global\ListWrapper.cs" />
+    <Compile Include="Assets\Scripts\InputTest.cs" />
     <Compile Include="Assets\Scripts\Player Select\GameObjectEnabler.cs" />
     <Compile Include="Assets\Scripts\Player Select\PlayerSelectPanel.cs" />
     <Compile Include="Assets\Scripts\Player\CheckpointController.cs" />

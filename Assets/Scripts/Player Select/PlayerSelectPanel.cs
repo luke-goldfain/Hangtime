@@ -21,6 +21,9 @@ public class PlayerSelectPanel : MonoBehaviour
     [SerializeField]
     private Transform playerLocation;
 
+    [SerializeField]
+    private GameObject SelectableComponent;
+
     private bool panelActive;
     private bool acceptsInput;
     private bool modelInserted;
@@ -29,7 +32,7 @@ public class PlayerSelectPanel : MonoBehaviour
     {
         modelInserted = false;
 
-        this.GetComponent<Selectable>().interactable = false;
+        //this.SelectableComponent.GetComponent<Selectable>().interactable = false;
     }
 
     // Update is called once per frame
@@ -81,9 +84,9 @@ public class PlayerSelectPanel : MonoBehaviour
 
         playerConfirmedText.SetActive(true);
 
-        this.GetComponent<Selectable>().interactable = true;
+        this.SelectableComponent.GetComponent<Selectable>().interactable = true;
 
-        this.GetComponent<Selectable>().Select();
+        this.SelectableComponent.GetComponent<Selectable>().Select();
 
         if (!modelInserted)
         {
