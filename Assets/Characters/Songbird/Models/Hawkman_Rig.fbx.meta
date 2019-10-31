@@ -13,9 +13,10 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 0
+    optimizeGameObjects: 1
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Head' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -23,7 +24,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -49,7 +50,7 @@ ModelImporter:
     weldVertices: 1
     preserveHierarchy: 0
     skinWeightsMode: 0
-    maxBonesPerVertex: 4
+    maxBonesPerVertex: 3
     minBoneWeight: 0.001
     meshOptimizationFlags: -1
     indexFormat: 0
@@ -72,7 +73,197 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Hawkman_Rig(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hawkman_Etc
+      parentName: Hawkman_Rig(Clone)
+      position: {x: -0.00006895608, y: 0.1920292, z: -0.0049808454}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface13
+      parentName: Hawkman_Etc
+      position: {x: 0.00006895608, y: -0.1920292, z: 0.0049808454}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface14
+      parentName: Hawkman_Etc
+      position: {x: 0.00006895608, y: -0.1920292, z: 0.0049808454}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hawkman_Body
+      parentName: Hawkman_Rig(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Global_Control
+      parentName: Hawkman_Rig(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root_Control
+      parentName: Global_Control
+      position: {x: -0.000012595789, y: 0.1298199, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint1
+      parentName: Root_Control
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+      scale: {x: 1.000001, y: 1.000001, z: 1}
+    - name: joint2
+      parentName: joint1
+      position: {x: -0.0199122, y: 4.4213763e-18, z: 0}
+      rotation: {x: -0.99998045, y: 0.006249576, z: -3.8267686e-19, w: 6.1231145e-17}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000013}
+    - name: polySurface9
+      parentName: joint2
+      position: {x: -0.05162648, y: -0.00008332364, z: 0.008574027}
+      rotation: {x: -0.7026738, y: 0.71151215, z: 4.3567553e-17, w: -4.3026362e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint3
+      parentName: joint2
+      position: {x: -0.031237263, y: 1.4731271e-16, z: 1.8042112e-32}
+      rotation: {x: 0.9998612, y: -0.016663931, z: 1.0203723e-18, w: 6.122386e-17}
+      scale: {x: 1.0000024, y: 1.000003, z: 0.9999998}
+    - name: joint4
+      parentName: joint3
+      position: {x: -0.01874496, y: 1.4432899e-17, z: -7.649728e-20}
+      rotation: {x: -0.9997917, y: 0.020412395, z: 2.150779e-10, w: -0.00000001053451}
+      scale: {x: 1.0000002, y: 1.0000004, z: 1.0000002}
+    - name: joint5
+      parentName: joint4
+      position: {x: -0.019525668, y: -3.7470024e-18, z: -1.1552929e-19}
+      rotation: {x: -0.7000015, y: 0.7141415, z: 1.5046404e-10, w: -1.4748484e-10}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hawkman_Head
+      parentName: joint5
+      position: {x: -0.0003778228, y: 0.0094375415, z: 0.002115767}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint10
+      parentName: joint3
+      position: {x: -0.0051156706, y: -0.029860737, z: -0.005404139}
+      rotation: {x: 3.308722e-24, y: -5.8419623e-24, z: 0.7723526, w: 0.63519406}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: joint11
+      parentName: joint10
+      position: {x: -0.03196357, y: 1.4210854e-16, z: -4.440892e-18}
+      rotation: {x: 6.213257e-24, y: -2.6939351e-24, z: -0.10409668, w: 0.9945673}
+      scale: {x: 0.9999998, y: 1, z: 1}
+    - name: joint12
+      parentName: joint11
+      position: {x: -0.040149756, y: 3.5527136e-17, z: -0.0018187857}
+      rotation: {x: 0.114742294, y: 0.028514758, z: -0.15515849, w: 0.98078895}
+      scale: {x: 1.0000004, y: 0.9999999, z: 1.0000005}
+    - name: joint13
+      parentName: joint12
+      position: {x: -0.009820231, y: -0.0031647908, z: 5.3831955e-17}
+      rotation: {x: -0.0127477525, y: -0.29005077, z: -0.060691856, w: 0.95499974}
+      scale: {x: 0.99999976, y: 1.0000001, z: 1}
+    - name: joint14
+      parentName: joint13
+      position: {x: -0.011507877, y: -0.008481639, z: 1.2505371e-16}
+      rotation: {x: 0.25021538, y: -0.2554825, z: -0.6534354, w: 0.6671905}
+      scale: {x: 1.0000006, y: 1.0000006, z: 1.0000002}
+    - name: joint15
+      parentName: joint12
+      position: {x: -0.008550755, y: 0.0012659164, z: -0.009954211}
+      rotation: {x: 0.0000000060535945, y: -0.5939507, z: -8.14907e-10, w: 0.8045014}
+      scale: {x: 0.99999976, y: 1.0000001, z: 0.99999976}
+    - name: joint16
+      parentName: joint15
+      position: {x: -0.021086788, y: -0.0063295816, z: 4.5988256e-18}
+      rotation: {x: 0, y: 0.59395057, z: -0, w: 0.8045016}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint17
+      parentName: joint12
+      position: {x: -0.0012499408, y: 0.0012659164, z: -0.013180034}
+      rotation: {x: -0.000000037252896, y: -0.58518827, z: 0.000000056392295, w: 0.8108975}
+      scale: {x: 0.9999999, y: 1.0000001, z: 1}
+    - name: joint18
+      parentName: joint17
+      position: {x: -0.02066168, y: -0.0063295816, z: 9.302245e-18}
+      rotation: {x: 0, y: 0.58518803, z: -0, w: 0.81089765}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint23
+      parentName: joint3
+      position: {x: -0.0038680392, y: 0.030047946, z: -0.00540414}
+      rotation: {x: 0.7854153, y: 0.6189692, z: -3.790092e-17, w: -4.8092817e-17}
+      scale: {x: 1, y: 1.0000033, z: 1.0000036}
+    - name: joint24
+      parentName: joint23
+      position: {x: 0.031963613, y: 0.00000030868446, z: -5.5511148e-18}
+      rotation: {x: 0.007386173, y: -0.0007974856, z: -0.99419427, w: -0.10734324}
+      scale: {x: 1.0000029, y: 0.9999992, z: 1.0000008}
+    - name: joint25
+      parentName: joint24
+      position: {x: -0.045251865, y: -0.0021012807, z: -2.962514e-18}
+      rotation: {x: -0.0000000011059454, y: -0.017843379, z: 0.000000027241182, w: 0.9998408}
+      scale: {x: 1.000003, y: 1, z: 1.0000029}
+    - name: joint26
+      parentName: joint25
+      position: {x: -0.012358828, y: 3.5527136e-17, z: 0.00051517476}
+      rotation: {x: -0.0000000014372749, y: -0.00826764, z: -0.00000008748533, w: 0.9999659}
+      scale: {x: 1.0000062, y: 1, z: 1.0000064}
+    - name: joint27
+      parentName: joint26
+      position: {x: -0.027558215, y: -2.2687207e-17, z: 0.00077239034}
+      rotation: {x: 0.018681705, y: -0.000061035775, z: 0.9998202, w: -0.0032673518}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint6
+      parentName: joint1
+      position: {x: 0.008569292, y: -0.016549088, z: 0}
+      rotation: {x: -0, y: -0, z: 0.9999275, w: 0.012045473}
+      scale: {x: 1.0000007, y: 1.0000007, z: 1}
+    - name: joint7
+      parentName: joint6
+      position: {x: -0.060935423, y: 7.515336e-17, z: -0.0065349382}
+      rotation: {x: -5.2016884e-11, y: -0.0000000014542617, z: -0.03574563, w: 0.9993609}
+      scale: {x: 1.0000005, y: 1.0000004, z: 1}
+    - name: joint8
+      parentName: joint7
+      position: {x: -0.05382402, y: -2.0306935e-17, z: -0.0061265044}
+      rotation: {x: 0.53853667, y: 0.45823398, z: -0.404737, w: 0.5798172}
+      scale: {x: 1.0000008, y: 1.0000002, z: 1.0000014}
+    - name: joint9
+      parentName: joint8
+      position: {x: -0.028429065, y: -1.110223e-18, z: 8.600842e-18}
+      rotation: {x: -0.43197873, y: 0.55981636, z: 0.55981636, w: -0.43197873}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint19
+      parentName: joint1
+      position: {x: 0.008568912, y: 0.016549096, z: 0}
+      rotation: {x: 0.9999275, y: 0.012045473, z: -0.0000000029101712, w: 3.505718e-11}
+      scale: {x: 1.0000002, y: 1.0000004, z: 1.0000014}
+    - name: joint20
+      parentName: joint19
+      position: {x: 0.06093578, y: 0.000000006022348, z: 0.0065349382}
+      rotation: {x: -1.04033185e-10, y: 0.0000000029085223, z: -0.03574563, w: 0.9993609}
+      scale: {x: 1.0000001, y: 1.0000004, z: 0.99999994}
+    - name: joint21
+      parentName: joint20
+      position: {x: 0.053824037, y: 0.000000043090015, z: 0.0061265044}
+      rotation: {x: 0.53853667, y: 0.45823398, z: -0.404737, w: 0.5798172}
+      scale: {x: 1.0000011, y: 1.0000018, z: 1.0000012}
+    - name: joint22
+      parentName: joint21
+      position: {x: 0.0284291, y: -0.000000011339746, z: -1.3322676e-17}
+      rotation: {x: -0.43197873, y: 0.55981636, z: 0.55981636, w: -0.43197873}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint28
+      parentName: joint1
+      position: {x: -0.0019488689, y: 4.3151247e-19, z: -0.019922987}
+      rotation: {x: 0.19658083, y: -0.67923194, z: 0.67923194, w: 0.19658083}
+      scale: {x: 1.0000013, y: 1.0000007, z: 1.0000008}
+    - name: joint29
+      parentName: joint28
+      position: {x: -0.081888996, y: 0, z: 1.5371818e-17}
+      rotation: {x: -0.19658108, y: 0.6792319, z: -0.6792319, w: 0.19658108}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -81,9 +272,9 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: 
+    rootMotionBoneName: Global_Control
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
