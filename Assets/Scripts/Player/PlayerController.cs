@@ -544,7 +544,7 @@ public class PlayerController : MonoBehaviour
         else // if player is not pulling, rotate them around the grapple point at a soft-fixed speed, ala spider man.
         {
             Vector3 swingVelocity = moveDir * GrappleForce * 100f;
-            swingVelocity = Vector3.ClampMagnitude(swingVelocity, Mathf.Max(SpeedLimit * 0.4f, startOfSwingSpd * 1.3f));
+            swingVelocity = Vector3.ClampMagnitude(swingVelocity, Mathf.Max(SpeedLimit * 0.6f, startOfSwingSpd * 1.3f));
 
             rb.velocity = Vector3.Lerp(rb.velocity, swingVelocity, 0.1f);
         }
