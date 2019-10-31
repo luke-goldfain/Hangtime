@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Add-Ons\Rocks and Boulders 2\Shaders\RotateGameObject.cs" />
+    <Compile Include="Assets\Scripts\AnimCharacterController.cs" />
     <Compile Include="Assets\Scripts\FiL\DebrisDespawn.cs" />
     <Compile Include="Assets\Scripts\FiL\DebrisSpawner.cs" />
     <Compile Include="Assets\Scripts\FiL\LavaGameManager.cs" />
