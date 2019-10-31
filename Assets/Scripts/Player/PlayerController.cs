@@ -488,7 +488,7 @@ public class PlayerController : MonoBehaviour
 
         if (hasGrappledMovableObject)
         {
-            GrappleHitPosition = currentGrappledObject.transform.position + (currentGrappledObject.transform.position - GrappleHitPosition);
+            GrappleHitPosition = currentGrappledObject.transform.position;//+ (currentGrappledObject.transform.position - GrappleHitPosition);
         }
 
         if (isPulling)
@@ -552,7 +552,8 @@ public class PlayerController : MonoBehaviour
         // If the player is pulling and has traveled 1.5 times the original length of the grapple (a ways past or away from the grapple point), break off the grapple automatically.
         // If the player is swinging and has traveled 2.6 times original grapple length, same deal.
         if ((Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(GrappleHitPosition, grappleStartPosition) * 1.5f && isPulling) ||
-            (Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(GrappleHitPosition, grappleStartPosition) * 2.6f && !isPulling))
+            (Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(GrappleHitPosition, grappleStartPosition) * 2.6f && !isPulling) ||
+            hasGrappledMovableObject && Vector3.Distance(this.transform.position, grappleStartPosition) >= Vector3.Distance(this.transform.position, GrappleHitPosition) * 2f)
         {
             this.currentState = State.inAir;
         }

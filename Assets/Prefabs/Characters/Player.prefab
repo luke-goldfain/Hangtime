@@ -234,6 +234,7 @@ MonoBehaviour:
   ropeSectionPrefab: {fileID: 6702158368456008991, guid: 5ced27e9f366695499962e9fa2a86f94,
     type: 3}
   HUD: {fileID: 0}
+  windZone: {fileID: 0}
   slidePRight: {fileID: 6541180360532937029}
   slidePLeft: {fileID: 9013118551690528554}
   Reticle: {fileID: 0}
@@ -255,6 +256,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   AcceptsInput: 1
+  inWindZone: 0
 --- !u!135 &5705682671031744630
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -353,7 +355,7 @@ Camera:
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!114 &5705682671271820607
