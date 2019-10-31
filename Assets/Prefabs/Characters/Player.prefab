@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 1486171771746055245}
   - component: {fileID: 6325377679662701837}
   - component: {fileID: 7603476095393982680}
-  - component: {fileID: 6446765984055410455}
   m_Layer: 14
   m_Name: Minimap Icon
   m_TagString: Untagged
@@ -110,19 +109,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &6446765984055410455
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3074257365129243113}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5705682671031744628
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ TagManager:
   - Setup Manager
   - Power up
   - WindArea
+  - Countdown
   layers:
   - Default
   - TransparentFX

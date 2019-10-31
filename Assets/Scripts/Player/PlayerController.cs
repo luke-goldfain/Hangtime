@@ -60,6 +60,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool inWindZone = false;
 
+    private GameObject countdownObject;
+
+    private bool inCountdown;
 
     private int numberOfPlayers;
     
@@ -165,6 +168,10 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         isPulling = true;
+
+        // Don't allow input at start for countdown
+        AcceptsInput = false;
+        inCountdown = true;
     }
 
     private void StartAssignHUDObjects()
@@ -181,6 +188,8 @@ public class PlayerController : MonoBehaviour
         ModeIndicator = HUD.transform.Find("ModeIndicator").gameObject;
         ObjectiveIndicator = HUD.transform.Find("ObjectiveParent").gameObject;
         PlayerMinimap = HUD.transform.Find("MiniCam").gameObject;
+
+        countdownObject = GameObject.FindGameObjectWithTag("Countdown");
     }
 
     // Collect variables for jump-off angle when colliding with an object
@@ -205,6 +214,14 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         cameraTransform = this.GetComponentInChildren<PlayerCameraController>().transform;
+
+        // Restore input once initial countdown is finished. inCountdown variable 
+        // required to allow other events to remove input.
+        if (!AcceptsInput && inCountdown && countdownObject.GetComponent<Countdown>().IsFinished)
+        {
+            inCountdown = false;
+            AcceptsInput = true;
+        }
 
         UpdateSpeedometer();
 
@@ -362,9 +379,9 @@ public class PlayerController : MonoBehaviour
                rb.AddForce(windZone.GetComponent<ForceField>().ForceDirection * windZone.GetComponent<ForceField>().ForceStrength);
         }
 
-        }
+    }
 
-        void OnTriggerEnter(Collider coll) // start applying force when player enters ForceField's collider
+    void OnTriggerEnter(Collider coll) // start applying force when player enters ForceField's collider
     {
         if(coll.gameObject.tag == "ForceField")
         {
@@ -373,7 +390,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-        void OnTriggerExit(Collider coll) // Stops applying force when player leaves ForceField's collider
+    void OnTriggerExit(Collider coll) // Stops applying force when player leaves ForceField's collider
     {
         if(coll.gameObject.tag == "ForceField")
         {
