@@ -948,8 +948,8 @@ public class PlayerController : MonoBehaviour
 
         if (numberOfPlayers > 2)
         {
-            Speedometer.transform.localScale *= 0.6f;
-            SpeedometerText.transform.localScale *= 0.6f;
+            Speedometer.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            SpeedometerText.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
         }
 
         ModeIndicator.transform.position = new Vector2(spedX + (Speedometer.GetComponent<RectTransform>().rect.width * 2), spedY);
@@ -983,16 +983,8 @@ public class PlayerController : MonoBehaviour
         CheckpointMeter.transform.position = new Vector2(cmX, cmY);
         CheckpointMeterFill.transform.position = new Vector2(cmX, cmY);
 
-        if (numberOfPlayers < 3)
-        {
-            CheckpointMeter.transform.localScale *= 0.5f;
-            CheckpointMeterFill.transform.localScale *= 0.5f;
-        }
-        else
-        {
-            CheckpointMeter.transform.localScale *= 0.3f;
-            CheckpointMeterFill.transform.localScale *= 0.3f;
-        }
+        CheckpointMeter.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        CheckpointMeterFill.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
     /*internal void StartSetCompassPosition()
