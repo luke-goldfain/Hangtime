@@ -231,9 +231,6 @@ public class PlayerController : MonoBehaviour
 
         cameraTransform.position = cameraObjToFollow.transform.position;
 
-        // Bruteforce set model position
-        anim.gameObject.transform.localPosition = new Vector3(0, -1, 0);
-
         // Restore input once initial countdown is finished. inCountdown variable 
         // required to allow other events to remove input.
         if (!AcceptsInput && inCountdown && countdownObject.GetComponent<Countdown>().IsFinished)

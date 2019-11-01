@@ -92,7 +92,7 @@ public class PlayerSelectPanel : MonoBehaviour
         {
             playerModel = Instantiate(playerModel, playerLocation);
 
-            playerModel.transform.localScale = new Vector3(50f, 50f, 50f);
+            //playerModel.transform.localScale = new Vector3(50f, 50f, 50f);
 
             modelInserted = true;
         }
