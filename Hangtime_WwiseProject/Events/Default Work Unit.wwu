@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{13C548C9-2953-42A2-A8B2-D429744F047D}" SchemaVersion="94">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{13C548C9-2953-42A2-A8B2-D429744F047D}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="JumpGirl" ID="{B0F64991-5984-4D9A-8231-C0B2966F628F}">
+					<ChildrenList>
+						<Action Name="" ID="{57A13F1F-41AE-4BDB-82DE-DD1DD6C4938A}" ShortID="169044456">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_game_plr_jump_double_girl_02" ID="{213F2B6C-801A-4386-B401-E12659E0F663}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Slide" ID="{A7FFCE7D-03CE-4A0B-8B6F-D3B74C854FCC}">
+					<ChildrenList>
+						<Action Name="" ID="{475698C1-4A13-4DAB-80A9-921AFAA34844}" ShortID="819763523">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_game_plr_slide_sand_02" ID="{E76DC7E6-99BE-4360-9897-254242EEFCC5}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Checkpoint" ID="{AC219F71-059A-4B49-995C-EF95A3696B9C}">
+					<ChildrenList>
+						<Action Name="" ID="{8B25AF6A-2169-4206-8732-C3029AEDD176}" ShortID="155911668">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_game_plr_checkpoint_02" ID="{38273385-AC81-40A6-9FC8-8707CAB6D6F3}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Finish" ID="{4488E2D5-35FC-4214-9424-A4DE4DD27061}">
+					<ChildrenList>
+						<Action Name="" ID="{8131FBA4-E3A2-401F-9A76-CA3F4ED26E25}" ShortID="735192633">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_game_plr_finish_02" ID="{F2A7E427-310A-4FB3-9007-742FBD529938}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="GrappleLaunch" ID="{A8382530-1E7A-4DC8-BAD0-3B55AE2CD0DD}">
+					<ChildrenList>
+						<Action Name="" ID="{B9F78542-CC59-4503-B931-1FD96B2EA7FC}" ShortID="395527841">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_game_plr_grapple_launch_02" ID="{FF964C7C-6AF6-4E50-AA2F-2C5876354617}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="GrappleLatch" ID="{502D5234-703D-462C-94D4-8CD5A9D9CCC8}">
+					<ChildrenList>
+						<Action Name="" ID="{90B49781-EEA5-4D0B-B53A-9FF5A101B665}" ShortID="4193560">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_game_plr_grapple_latch" ID="{B491AEC2-E233-4674-8754-DEF6C1F6DC0B}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="GrappleReel" ID="{B3B22614-DB48-4329-84C5-D6A186CA08EB}">
+					<ChildrenList>
+						<Action Name="" ID="{AB54C52E-E75C-4D1F-8084-5BB93780222B}" ShortID="244223455">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_game_plr_grapple_reel" ID="{42480BAC-7EE8-417B-8F48-750697CFFE00}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="GrappleSwing" ID="{CE3B631F-60EE-4A2A-9CB4-C96696B2B54E}">
+					<ChildrenList>
+						<Action Name="" ID="{1C57FDAC-60DF-412F-B4A4-094C612FE2C8}" ShortID="2438789">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_game_plr_grapple_swing_02" ID="{161C32E0-6B25-4842-BFD0-FBA1A5404FD9}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="GrappleSwitch" ID="{4A395BE9-1D01-44B9-9531-AF81CE104B8A}">
+					<ChildrenList>
+						<Action Name="" ID="{04773BF9-E6C5-4900-A79E-E877141BBE71}" ShortID="887469079">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_game_plr_grapple_switchmode_02" ID="{C8A8FF5C-9C8F-4367-A7B5-31272E3D0BFD}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Land" ID="{9AEF84CC-75CA-4593-B38B-0F6E38175A53}">
+					<ChildrenList>
+						<Action Name="" ID="{FFB6C814-678C-4779-BBAD-8687D74C7823}" ShortID="641386675">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_game_plr_land" ID="{F454F6AF-651C-4FB2-944A-A8358CAA0591}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="FastLand" ID="{857C351E-BC6E-4B42-AB16-E7ED8834FFFB}">
+					<ChildrenList>
+						<Action Name="" ID="{2CA43C19-EBD0-49E1-85AE-DB9D887097C6}" ShortID="648215574">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_game_plr_fastfall_land_sand" ID="{43A43699-1B3B-42B7-81E7-DF175D110C69}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Footstep" ID="{3D5B4BF2-08D3-415B-9885-52097B40DCFA}">
+					<ChildrenList>
+						<Action Name="" ID="{F42C8AF2-CE39-4F04-BFD3-B5E5F925B9CB}" ShortID="795545856">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Footsteps" ID="{8AD796CD-D1F5-47E4-86A3-2725CCC54799}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="CheckpointDrop" ID="{DFD51FE5-2463-4E89-B9CD-8F5937DB5800}">
+					<ChildrenList>
+						<Action Name="" ID="{F9EF2DFA-89F3-48CF-9E9C-DF5B9ED2EBD3}" ShortID="1068496419">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_game_env_checkpoint_drop_02" ID="{591475E9-20A9-46D2-A5BE-91801ED554B0}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Highlight" ID="{2F6D683E-3793-4D21-8036-A31A8B697A93}">
+					<ChildrenList>
+						<Action Name="" ID="{DC4A8BC0-A012-47CC-B36B-044B1258667A}" ShortID="974452011">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_menu_ui_selectionswitch" ID="{8CF9EA3A-A5BA-436C-81AD-A18CBA0D0333}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Select" ID="{CBBC07C1-0B02-402D-A24D-0EE94D6E4FAE}">
+					<ChildrenList>
+						<Action Name="" ID="{8AAD0EAC-170B-42E3-8A1F-906CD5FA4BB8}" ShortID="1071358157">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_menu_ui_select" ID="{989D7E0B-F157-4997-8DBC-0E30749934E0}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Deselect" ID="{A6EBFE0E-7B33-4AE1-8A65-4D91E12B38A9}">
+					<ChildrenList>
+						<Action Name="" ID="{8D334081-9184-4B09-A8A4-8FEA9FD3A82A}" ShortID="385581478">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_menu_ui_deselect" ID="{676CD943-69F6-4A36-8D4C-25E052323B45}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="OrbHum" ID="{210979B3-93ED-4A48-8EE7-2DC0B00C1821}"/>
+				<Event Name="JumpBird" ID="{A3782365-E9D1-4B11-A067-E41E3F4FFE8F}">
+					<ChildrenList>
+						<Action Name="" ID="{6DF5431A-DBD4-4D07-9C9E-469FFC0ECC3F}" ShortID="174156873">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_game_plr_jump_double_bird" ID="{CAAD5067-CED3-4D28-BCC7-B954822CBA51}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SlideStop" ID="{5090D999-AEFF-4929-A80E-41F008F50573}">
+					<ChildrenList>
+						<Action Name="" ID="{DB1C88C0-CA3F-4F9F-B66D-9F189158F793}" ShortID="599003416">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ht_sx_game_plr_slide_sand_02" ID="{E76DC7E6-99BE-4360-9897-254242EEFCC5}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Countdown" ID="{A7420268-07CF-4F96-A211-955E28C2C2D2}">
+					<ChildrenList>
+						<Action Name="" ID="{81A489CF-B7C5-4339-B6FC-419539D78160}" ShortID="690236646">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Countdown" ID="{12D4CC97-E49F-4572-81CD-D0C1CCDB935C}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

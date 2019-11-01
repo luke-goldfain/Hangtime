@@ -43,6 +43,8 @@ public class Countdown : MonoBehaviour
             currentTextIndex++;
 
             currentTimer = 0f;
+
+            AkSoundEngine.PostEvent("Countdown", GameObject.Find("PlayerController"));
         }
         else if (currentTimer >= TimerPerNumber)
         {

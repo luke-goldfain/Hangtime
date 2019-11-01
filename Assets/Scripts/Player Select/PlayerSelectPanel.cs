@@ -43,11 +43,15 @@ public class PlayerSelectPanel : MonoBehaviour
         if (Input.GetButtonDown("P" + playerNumber + "Jump") && !panelActive && acceptsInput)
         {
             ActivatePlayerPanel();
+
+            AkSoundEngine.PostEvent("Select", gameObject);
         }
 
         if (Input.GetButtonDown("P" + playerNumber + "Cancel") && panelActive && acceptsInput)
         {
             DeactivatePlayerPanel();
+
+            AkSoundEngine.PostEvent("Deselect", gameObject);
         }
 
 #if UNITY_EDITOR

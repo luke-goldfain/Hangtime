@@ -290,11 +290,25 @@ public class PlayerController : MonoBehaviour
             {
                 ModeIndicator.GetComponent<Image>().sprite = pullIcon;
             }
+
+            AkSoundEngine.PostEvent("GrappleSwitch", gameObject);
         }
 
         if ((Input.GetButtonDown(playerFireButton) || playerFiring) && AcceptsInput)
         {
             CastGrapple();
+
+            AkSoundEngine.PostEvent("GrappleLaunch", gameObject);
+
+            if(isPulling)
+            {
+                AkSoundEngine.PostEvent("GrappleReel", gameObject);
+            }
+
+            else if (!isPulling)
+            {
+                AkSoundEngine.PostEvent("GrappleSwing", gameObject);
+            }
         }
 
         if (grappleCasted)
@@ -483,6 +497,7 @@ public class PlayerController : MonoBehaviour
                     // Set the current grapple's normal, used when swinging, by a cross-product based on 
                     // the direction of the grapple and the player's velocity.
                     currentGrappleNormal = Vector3.Cross(grappleDir, -rb.velocity);
+                    
 
                     // Check if the player is moving slowly and is beneath their grapple point, and make 
                     // sure in that case that moveDir will face down by reversing the normal.
@@ -509,6 +524,8 @@ public class PlayerController : MonoBehaviour
         if (hasGrappledMovableObject)
         {
             GrappleHitPosition = currentGrappledObject.transform.position;//+ (currentGrappledObject.transform.position - GrappleHitPosition);
+
+            AkSoundEngine.PostEvent("GrappleLatch", gameObject);
         }
 
         if (isPulling)
@@ -555,10 +572,14 @@ public class PlayerController : MonoBehaviour
             // If distance is high enough that the force is below 15 * consecutiveGrapples, default to that.
             rb.AddForce(moveDir * Mathf.Max(GrappleForce - Vector3.Distance(GrappleHitPosition, this.transform.position), 15f * (consecutiveGrapples + 1)));
 
+            
+
             // If the currently grappled object is movable, pull it towards the player at the same rate.
             if (hasGrappledMovableObject)
             {
                 currentGrappledObject.GetComponent<Rigidbody>().AddForce(-moveDir * Mathf.Max(GrappleForce - Vector3.Distance(GrappleHitPosition, this.transform.position), 15f * (consecutiveGrapples + 1)));
+
+                
             }
         }
         else // if player is not pulling, rotate them around the grapple point at a soft-fixed speed, ala spider man.
@@ -567,6 +588,8 @@ public class PlayerController : MonoBehaviour
             swingVelocity = Vector3.ClampMagnitude(swingVelocity, Mathf.Max(SpeedLimit * 0.6f, startOfSwingSpd * 1.3f));
 
             rb.velocity = Vector3.Lerp(rb.velocity, swingVelocity, 0.1f);
+
+            
         }
 
         // If the player is pulling and has traveled 1.5 times the original length of the grapple (a ways past or away from the grapple point), break off the grapple automatically.
@@ -621,6 +644,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown(playerJumpButton) && !hasAirDashed)
             {
                 Vector3 airJumpDirection = (transform.forward * vAxis * JumpForce) + (transform.right * hAxis * JumpForce) + (transform.up * JumpForce);
+                AkSoundEngine.PostEvent("JumpGirl", gameObject);
 
                 // Weigh the player's current velocity more if they are attempting to jump in a direction < 120 degrees from their current velocity.
                 // Otherwise, clamp the magnitude of velocity as well (unclamped, the player would jump far too strongly).
@@ -641,6 +665,8 @@ public class PlayerController : MonoBehaviour
 
                     rb.velocity = Vector3.ClampMagnitude(rb.velocity, (rb.velocity.magnitude + JumpForce) / 2f);
                 }
+
+                
 
                 hasAirDashed = true;
             }
@@ -677,11 +703,14 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown(playerSlideButton))
             {
                 slideTimer = 0f;
+                AkSoundEngine.PostEvent("Slide", gameObject);
             }
 
             if (Input.GetButton(playerSlideButton) && slideTimer < slideMaxTime) // Sliding behavior
             {
                 anim.SetBool("ButtonDown", true);
+
+                
 
                 if (slidePLeft.GetComponent<ParticleSystem>().isStopped)
                 {
@@ -705,9 +734,12 @@ public class PlayerController : MonoBehaviour
                 }
 
                 slideTimer += Time.deltaTime;
+
+                
             }
             else if (canWalkOnGround && Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, 2f, ~(1 << 8))) // Normal running behavior
             {
+                
                 if (hAxis != 0 || vAxis != 0)
                 {
                     // Increase or decrease currentRunSpeed gradually until it matches DefaultRunSpeed.
@@ -739,6 +771,8 @@ public class PlayerController : MonoBehaviour
 
                 rb.velocity = Vector3.ClampMagnitude(rb.velocity, currentRunSpeed);
 
+                AkSoundEngine.PostEvent("SlideStop", gameObject);
+
                 // Move the camera back to give the player feedback that they are finished sliding.
                 //cameraTransform.position = this.transform.position;
             }
@@ -754,6 +788,8 @@ public class PlayerController : MonoBehaviour
                 // Set canWalkOnGround to false to get the player out of the ground. 
                 // This gets set back to true once the player has moved downwards during a jump or grapple, or has otherwise collided with an object.
                 canWalkOnGround = false;
+
+                AkSoundEngine.PostEvent("Jump", gameObject);
 
                 // To jump off of a surface based on angle and magnitude of incidence, the angle must be straighter than 75 degrees (which is almost flat to the
                 //  surface), they must have been against the surface for < angleJumpCooldown seconds, and the velocity of the incidence must be high enough.

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{54E0A6A2-C96F-4CF6-BA5A-CE8175CE9929}" SchemaVersion="94">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{54E0A6A2-C96F-4CF6-BA5A-CE8175CE9929}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Character" ID="{D44959F0-5848-400C-9A36-982E19FA2C66}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Footstep" ID="{3D5B4BF2-08D3-415B-9885-52097B40DCFA}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Finish" ID="{4488E2D5-35FC-4214-9424-A4DE4DD27061}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="GrappleReel" ID="{B3B22614-DB48-4329-84C5-D6A186CA08EB}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="GrappleSwitch" ID="{4A395BE9-1D01-44B9-9531-AF81CE104B8A}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Land" ID="{9AEF84CC-75CA-4593-B38B-0F6E38175A53}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="GrappleLatch" ID="{502D5234-703D-462C-94D4-8CD5A9D9CCC8}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="SlideStop" ID="{5090D999-AEFF-4929-A80E-41F008F50573}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Slide" ID="{A7FFCE7D-03CE-4A0B-8B6F-D3B74C854FCC}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="GrappleSwing" ID="{CE3B631F-60EE-4A2A-9CB4-C96696B2B54E}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="FastLand" ID="{857C351E-BC6E-4B42-AB16-E7ED8834FFFB}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Checkpoint" ID="{AC219F71-059A-4B49-995C-EF95A3696B9C}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="JumpGirl" ID="{B0F64991-5984-4D9A-8231-C0B2966F628F}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="GrappleLaunch" ID="{A8382530-1E7A-4DC8-BAD0-3B55AE2CD0DD}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Menu" ID="{BC652F27-5DCF-4D58-ADD4-64B6C4D123B3}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Select" ID="{CBBC07C1-0B02-402D-A24D-0EE94D6E4FAE}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Deselect" ID="{A6EBFE0E-7B33-4AE1-8A65-4D91E12B38A9}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Highlight" ID="{2F6D683E-3793-4D21-8036-A31A8B697A93}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Countdown" ID="{A7420268-07CF-4F96-A211-955E28C2C2D2}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Orb" ID="{D0A0CE2E-A0B2-4879-85D2-83347CDF7109}">
+					<ObjectInclusionList>
+						<ObjectRef Name="OrbHum" ID="{210979B3-93ED-4A48-8EE7-2DC0B00C1821}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="CheckpointDrop" ID="{DFD51FE5-2463-4E89-B9CD-8F5937DB5800}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

@@ -1,0 +1,319 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf352299fc13d9d4c9af8e50047b4f21, type: 3}
+  m_Name: AkWwiseProjectData
+  m_EditorClassIdentifier: 
+  AcousticTextureWwu:
+  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: a354006ecb618a4fba50eec10bcb8b1f
+    GuidInternal: 
+    m_lastTime: -8586290346346705512
+    List: []
+  AuxBusWwu:
+  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 8d3841313e5786479d6bc9808951a324
+    GuidInternal: 
+    m_lastTime: -8586290346347363763
+    List: []
+  BankWwu:
+  - PhysicalPath: SoundBanks\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: a2a6e0546fc9f64cba5ace8175ce9929
+    GuidInternal: 
+    m_lastTime: -8586290327033339427
+    List:
+    - name: Character
+      guid: f05949d448580c409a36982e19fa2c66
+      id: 436743010
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Character
+        ObjectType: 7
+      Path: Default Work Unit\Character
+    - name: Menu
+      guid: 272f65bccf5d584dadd464b6c4d123b3
+      id: 2607556080
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Menu
+        ObjectType: 7
+      Path: Default Work Unit\Menu
+    - name: Orb
+      guid: 2ecea0d0b2a0794885d283347cdf7109
+      id: 595159780
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Orb
+        ObjectType: 7
+      Path: Default Work Unit\Orb
+  EventWwu:
+  - PhysicalPath: Events\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: c948c5135329a242a8b2d429744f047d
+    GuidInternal: 
+    m_lastTime: -8586290333157361523
+    List:
+    - name: Checkpoint
+      guid: 719f21ac9a05494b995cef95a3696b9c
+      id: 612075679
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Checkpoint
+        ObjectType: 3
+      Path: Default Work Unit\Checkpoint
+      maxAttenuation: 0
+      maxDuration: 0.877271
+      minDuration: 0.877271
+    - name: CheckpointDrop
+      guid: e51fd5df6324894eb9cd8f5937db5800
+      id: 331740044
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: CheckpointDrop
+        ObjectType: 3
+      Path: Default Work Unit\CheckpointDrop
+      maxAttenuation: 0
+      maxDuration: 1.212813
+      minDuration: 1.212813
+    - name: Deselect
+      guid: 0efeeba6337be14a8a654d91e12b38a9
+      id: 214853820
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Deselect
+        ObjectType: 3
+      Path: Default Work Unit\Deselect
+      maxAttenuation: 0
+      maxDuration: 0.995125
+      minDuration: 0.995125
+    - name: FastLand
+      guid: 1e357c856ebc424bab16e7ed8834fffb
+      id: 2821004216
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: FastLand
+        ObjectType: 3
+      Path: Default Work Unit\FastLand
+      maxAttenuation: 0
+      maxDuration: 1.651521
+      minDuration: 1.651521
+    - name: Finish
+      guid: d5e28844fc3514429424a4de4dd27061
+      id: 2555741448
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Finish
+        ObjectType: 3
+      Path: Default Work Unit\Finish
+      maxAttenuation: 0
+      maxDuration: 3.379708
+      minDuration: 3.379708
+    - name: Footstep
+      guid: f24b5b3dd3085b41988552097b40dcfa
+      id: 1866025847
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Footstep
+        ObjectType: 3
+      Path: Default Work Unit\Footstep
+      maxAttenuation: 0
+      maxDuration: 0.301958
+      minDuration: 0.272396
+    - name: GrappleLatch
+      guid: 34522d503d702c4694d48cd5a9d9ccc8
+      id: 3628150596
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: GrappleLatch
+        ObjectType: 3
+      Path: Default Work Unit\GrappleLatch
+      maxAttenuation: 0
+      maxDuration: 0.4
+      minDuration: 0.4
+    - name: GrappleLaunch
+      guid: 302538a87a1ec84dbad03b55ae2cd0dd
+      id: 1366009823
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: GrappleLaunch
+        ObjectType: 3
+      Path: Default Work Unit\GrappleLaunch
+      maxAttenuation: 0
+      maxDuration: 0.5
+      minDuration: 0.5
+    - name: GrappleReel
+      guid: 1426b2b348db294384c5d6a186ca08eb
+      id: 3291783226
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: GrappleReel
+        ObjectType: 3
+      Path: Default Work Unit\GrappleReel
+      maxAttenuation: 0
+      maxDuration: 1.356458
+      minDuration: 1.356458
+    - name: GrappleSwing
+      guid: 1f633bceee602a4a9cb4c96696b2b54e
+      id: 1361101372
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: GrappleSwing
+        ObjectType: 3
+      Path: Default Work Unit\GrappleSwing
+      maxAttenuation: 0
+      maxDuration: 3.025542
+      minDuration: 3.025542
+    - name: GrappleSwitch
+      guid: e95b394a011db9449531af81ce104b8a
+      id: 3998983238
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: GrappleSwitch
+        ObjectType: 3
+      Path: Default Work Unit\GrappleSwitch
+      maxAttenuation: 0
+      maxDuration: 1.346667
+      minDuration: 1.346667
+    - name: Highlight
+      guid: 3e686d2f9337214d8036a31a8b697a93
+      id: 3174665583
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Highlight
+        ObjectType: 3
+      Path: Default Work Unit\Highlight
+      maxAttenuation: 0
+      maxDuration: 1.846145
+      minDuration: 1.846145
+    - name: JumpBird
+      guid: 652378a3d1e9114ba067e41e3f4ffe8f
+      id: 1096922712
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: JumpBird
+        ObjectType: 3
+      Path: Default Work Unit\JumpBird
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: JumpGirl
+      guid: 9149f6b084599a4d8231c0b2966f628f
+      id: 2340384243
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: JumpGirl
+        ObjectType: 3
+      Path: Default Work Unit\JumpGirl
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Land
+      guid: cc84ef9aca759345b38b0f6e38175a53
+      id: 674522502
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Land
+        ObjectType: 3
+      Path: Default Work Unit\Land
+      maxAttenuation: 0
+      maxDuration: 0.608
+      minDuration: 0.608
+    - name: OrbHum
+      guid: b3790921ed93484a8ee72dc0b00c1821
+      id: 119923798
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: OrbHum
+        ObjectType: 3
+      Path: Default Work Unit\OrbHum
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Select
+      guid: c107bccb020b2d40a24d0ee94d6e4fae
+      id: 1432588725
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Select
+        ObjectType: 3
+      Path: Default Work Unit\Select
+      maxAttenuation: 0
+      maxDuration: 3.188917
+      minDuration: 3.188917
+    - name: Slide
+      guid: 7dceffa7ce030b4a8b6fd3b74c854fcc
+      id: 3686556480
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Slide
+        ObjectType: 3
+      Path: Default Work Unit\Slide
+      maxAttenuation: 0
+      maxDuration: 3.867733
+      minDuration: 3.867733
+  RtpcWwu:
+  - PhysicalPath: Game Parameters\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 9925830f925a03428744bd640ff20471
+    GuidInternal: 
+    m_lastTime: -8586290346347643016
+    List: []
+  StateWwu:
+  - PhysicalPath: States\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 7d6c6efcb88ce94daa300d0514f9f12d
+    GuidInternal: 
+    m_lastTime: -8586290346346765349
+    List: []
+  SwitchWwu:
+  - PhysicalPath: Switches\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 9f4122bfc651cd4fba52448c11b10b86
+    GuidInternal: 
+    m_lastTime: -8586290346347513349
+    List: []
+  TriggerWwu:
+  - PhysicalPath: Triggers\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 86e2ae2857d4de4bbc88ff99ff937082
+    GuidInternal: 
+    m_lastTime: -8586290346347583047
+    List: []
+  ExpandedItems:
+  - /Hangtime_WwiseProject
+  - /Hangtime_WwiseProject/SoundBanks
+  - /Hangtime_WwiseProject/SoundBanks/Default Work Unit
+  autoPopulateEnabled: 1
+  CurrentPluginConfig: 

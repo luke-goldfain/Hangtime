@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="134">
+	<RootPaths>
+		<ProjectRoot>C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="436743010" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\Character</ObjectPath>
+			<ShortName>Character</ShortName>
+			<Path>Character.bnk</Path>
+			<IncludedEvents>
+				<Event Id="612075679" Name="Checkpoint" ObjectPath="\Events\Default Work Unit\Checkpoint" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="0.877271" DurationMax="0.877271"/>
+				<Event Id="2821004216" Name="FastLand" ObjectPath="\Events\Default Work Unit\FastLand" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="1.651521" DurationMax="1.651521"/>
+				<Event Id="2555741448" Name="Finish" ObjectPath="\Events\Default Work Unit\Finish" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="3.379708" DurationMax="3.379708"/>
+				<Event Id="1866025847" Name="Footstep" ObjectPath="\Events\Default Work Unit\Footstep" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="10.272396" DurationMax="10.301958"/>
+				<Event Id="3628150596" Name="GrappleLatch" ObjectPath="\Events\Default Work Unit\GrappleLatch" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="0.400000" DurationMax="0.400000"/>
+				<Event Id="1366009823" Name="GrappleLaunch" ObjectPath="\Events\Default Work Unit\GrappleLaunch" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="0.500000" DurationMax="0.500000"/>
+				<Event Id="3291783226" Name="GrappleReel" ObjectPath="\Events\Default Work Unit\GrappleReel" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="1.356458" DurationMax="1.356458"/>
+				<Event Id="1361101372" Name="GrappleSwing" ObjectPath="\Events\Default Work Unit\GrappleSwing" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="3.025542" DurationMax="3.025542"/>
+				<Event Id="3998983238" Name="GrappleSwitch" ObjectPath="\Events\Default Work Unit\GrappleSwitch" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="1.346667" DurationMax="1.346667"/>
+				<Event Id="2340384243" Name="JumpGirl" ObjectPath="\Events\Default Work Unit\JumpGirl" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="1.500000" DurationMax="1.500000"/>
+				<Event Id="674522502" Name="Land" ObjectPath="\Events\Default Work Unit\Land" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="0.608000" DurationMax="0.608000"/>
+				<Event Id="3686556480" Name="Slide" ObjectPath="\Events\Default Work Unit\Slide" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="3.867733" DurationMax="3.867733"/>
+				<Event Id="1780160584" Name="SlideStop" ObjectPath="\Events\Default Work Unit\SlideStop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="84747958" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_game_plr_fastfall_land_sand.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_game_plr_fastfall_land_sand_10C4C929.wem</Path>
+				</File>
+				<File Id="190577679" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_game_plr_slide_sand_02.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_game_plr_slide_sand_02_10C4C929.wem</Path>
+				</File>
+				<File Id="248893250" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_game_plr_land.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_game_plr_land_10C4C929.wem</Path>
+				</File>
+				<File Id="272067843" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_game_plr_grapple_switchmode_02.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_game_plr_grapple_switchmode_02_10C4C929.wem</Path>
+				</File>
+				<File Id="404052131" Language="SFX">
+					<ShortName>Bounced Files\FootstepsSand_02.wav</ShortName>
+					<Path>SFX\Bounced Files\FootstepsSand_02_10C4C929.wem</Path>
+				</File>
+				<File Id="485796783" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_game_plr_grapple_reel.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_game_plr_grapple_reel_10C4C929.wem</Path>
+				</File>
+				<File Id="491734543" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_game_plr_jump_double_girl_02.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_game_plr_jump_double_girl_02_10C4C929.wem</Path>
+				</File>
+				<File Id="494180676" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_game_plr_grapple_latch.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_game_plr_grapple_latch_10C4C929.wem</Path>
+				</File>
+				<File Id="498547364" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_game_plr_grapple_launch_02.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_game_plr_grapple_launch_02_10C4C929.wem</Path>
+				</File>
+				<File Id="658669250" Language="SFX">
+					<ShortName>Bounced Files\FootstepsSand_04.wav</ShortName>
+					<Path>SFX\Bounced Files\FootstepsSand_04_10C4C929.wem</Path>
+				</File>
+				<File Id="695136453" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_game_plr_checkpoint_02.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_game_plr_checkpoint_02_10C4C929.wem</Path>
+				</File>
+				<File Id="754595507" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_game_plr_grapple_swing_02.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_game_plr_grapple_swing_02_10C4C929.wem</Path>
+				</File>
+				<File Id="837498211" Language="SFX">
+					<ShortName>Bounced Files\FootstepsSand_01.wav</ShortName>
+					<Path>SFX\Bounced Files\FootstepsSand_01_10C4C929.wem</Path>
+				</File>
+				<File Id="895467642" Language="SFX">
+					<ShortName>Bounced Files\FootstepsSand_05.wav</ShortName>
+					<Path>SFX\Bounced Files\FootstepsSand_05_10C4C929.wem</Path>
+				</File>
+				<File Id="900000599" Language="SFX">
+					<ShortName>Bounced Files\FootstepsSand_06.wav</ShortName>
+					<Path>SFX\Bounced Files\FootstepsSand_06_10C4C929.wem</Path>
+				</File>
+				<File Id="901681366" Language="SFX">
+					<ShortName>Bounced Files\FootstepsSand_03.wav</ShortName>
+					<Path>SFX\Bounced Files\FootstepsSand_03_10C4C929.wem</Path>
+				</File>
+				<File Id="993611665" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_game_plr_finish_02.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_game_plr_finish_02_10C4C929.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+		<SoundBank Id="595159780" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\Orb</ObjectPath>
+			<ShortName>Orb</ShortName>
+			<Path>Orb.bnk</Path>
+			<IncludedEvents>
+				<Event Id="331740044" Name="CheckpointDrop" ObjectPath="\Events\Default Work Unit\CheckpointDrop" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="1.212813" DurationMax="1.212813"/>
+				<Event Id="119923798" Name="OrbHum" ObjectPath="\Events\Default Work Unit\OrbHum" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="912215563" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_game_env_checkpoint_drop_02.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_game_env_checkpoint_drop_02_10C4C929.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="2607556080" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\Menu</ObjectPath>
+			<ShortName>Menu</ShortName>
+			<Path>Menu.bnk</Path>
+			<IncludedEvents>
+				<Event Id="1505888634" Name="Countdown" ObjectPath="\Events\Default Work Unit\Countdown" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="214853820" Name="Deselect" ObjectPath="\Events\Default Work Unit\Deselect" DurationType="OneShot" DurationMin="0.995125" DurationMax="0.995125"/>
+				<Event Id="3174665583" Name="Highlight" ObjectPath="\Events\Default Work Unit\Highlight" DurationType="OneShot" DurationMin="1.846145" DurationMax="1.846145"/>
+				<Event Id="1432588725" Name="Select" ObjectPath="\Events\Default Work Unit\Select" DurationType="OneShot" DurationMin="3.188917" DurationMax="3.188917"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="247740156" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_menu_ui_select.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_menu_ui_select_10C4C929.wem</Path>
+				</File>
+				<File Id="254680892" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_menu_ui_selectionswitch.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_menu_ui_selectionswitch_10C4C929.wem</Path>
+				</File>
+				<File Id="338713398" Language="SFX">
+					<ShortName>Countdown_final.wav</ShortName>
+					<Path>SFX\Countdown_final_10C4C929.wem</Path>
+				</File>
+				<File Id="494546097" Language="SFX">
+					<ShortName>Countdown_02.wav</ShortName>
+					<Path>SFX\Countdown_02_10C4C929.wem</Path>
+				</File>
+				<File Id="878652141" Language="SFX">
+					<ShortName>Countdown_03.wav</ShortName>
+					<Path>SFX\Countdown_03_10C4C929.wem</Path>
+				</File>
+				<File Id="939934182" Language="SFX">
+					<ShortName>Countdown_01.wav</ShortName>
+					<Path>SFX\Countdown_01_10C4C929.wem</Path>
+				</File>
+				<File Id="1073514951" Language="SFX">
+					<ShortName>Bounced Files\ht_sx_menu_ui_deselect.wav</ShortName>
+					<Path>SFX\Bounced Files\ht_sx_menu_ui_deselect_10C4C929.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

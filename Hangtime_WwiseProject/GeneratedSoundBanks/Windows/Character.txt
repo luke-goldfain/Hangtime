@@ -1,0 +1,34 @@
+Event	ID	Name			Wwise Object Path	Notes
+	612075679	Checkpoint			\Default Work Unit\Checkpoint	
+	674522502	Land			\Default Work Unit\Land	
+	1361101372	GrappleSwing			\Default Work Unit\GrappleSwing	
+	1366009823	GrappleLaunch			\Default Work Unit\GrappleLaunch	
+	1780160584	SlideStop			\Default Work Unit\SlideStop	
+	1866025847	Footstep			\Default Work Unit\Footstep	
+	2340384243	JumpGirl			\Default Work Unit\JumpGirl	
+	2555741448	Finish			\Default Work Unit\Finish	
+	2821004216	FastLand			\Default Work Unit\FastLand	
+	3291783226	GrappleReel			\Default Work Unit\GrappleReel	
+	3628150596	GrappleLatch			\Default Work Unit\GrappleLatch	
+	3686556480	Slide			\Default Work Unit\Slide	
+	3998983238	GrappleSwitch			\Default Work Unit\GrappleSwitch	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	84747958	ht_sx_game_plr_fastfall_land_sand	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_fastfall_land_sand_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Land\ht_sx_game_plr_fastfall_land_sand		317156
+	190577679	ht_sx_game_plr_slide_sand_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_slide_sand_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Slide\ht_sx_game_plr_slide_sand_02		682332
+	248893250	ht_sx_game_plr_land	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_land_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Land\ht_sx_game_plr_land		116800
+	272067843	ht_sx_game_plr_grapple_switchmode_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_grapple_switchmode_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Grapple\ht_sx_game_plr_grapple_switchmode_02		237616
+	404052131	FootstepsSand_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\FootstepsSand_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\FootstepsSand_02		57664
+	485796783	ht_sx_game_plr_grapple_reel	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_grapple_reel_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Grapple\ht_sx_game_plr_grapple_reel		260504
+	491734543	ht_sx_game_plr_jump_double_girl_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_jump_double_girl_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Jump\ht_sx_game_plr_jump_double_girl_02		264664
+	494180676	ht_sx_game_plr_grapple_latch	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_grapple_latch_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Grapple\ht_sx_game_plr_grapple_latch		76864
+	498547364	ht_sx_game_plr_grapple_launch_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_grapple_launch_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Grapple\ht_sx_game_plr_grapple_launch_02		96064
+	658669250	FootstepsSand_04	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\FootstepsSand_04_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\FootstepsSand_04		52364
+	695136453	ht_sx_game_plr_checkpoint_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_checkpoint_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Checkpoint\ht_sx_game_plr_checkpoint_02		168500
+	754595507	ht_sx_game_plr_grapple_swing_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_grapple_swing_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Grapple\ht_sx_game_plr_grapple_swing_02		580968
+	837498211	FootstepsSand_01	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\FootstepsSand_01_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\FootstepsSand_01		57664
+	895467642	FootstepsSand_05	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\FootstepsSand_05_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\FootstepsSand_05		58040
+	900000599	FootstepsSand_06	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\FootstepsSand_06_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\FootstepsSand_06		57236
+	901681366	FootstepsSand_03	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\FootstepsSand_03_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\FootstepsSand_03		52400
+	993611665	ht_sx_game_plr_finish_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_finish_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Checkpoint\ht_sx_game_plr_finish_02		648968
+

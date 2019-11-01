@@ -23,10 +23,14 @@ public class PauseMenu : MonoBehaviour
             if (ispaused)
             {
                 Resume();
+
+                AkSoundEngine.PostEvent("Deselect", gameObject);
             }
             else
             {
                 Pause();
+
+                AkSoundEngine.PostEvent("Select", gameObject);
             }
         }
     }
