@@ -17,6 +17,7 @@ namespace AK
         static const AkUniqueID CHECKPOINTDROP = 331740044U;
         static const AkUniqueID COUNTDOWN = 1505888634U;
         static const AkUniqueID DESELECT = 214853820U;
+        static const AkUniqueID DESERTMUSICPLAY = 3858969937U;
         static const AkUniqueID FASTLAND = 2821004216U;
         static const AkUniqueID FINISH = 2555741448U;
         static const AkUniqueID FOOTSTEP = 1866025847U;
@@ -39,6 +40,7 @@ namespace AK
         static const AkUniqueID INIT = 1355168291U;
         static const AkUniqueID CHARACTER = 436743010U;
         static const AkUniqueID MENU = 2607556080U;
+        static const AkUniqueID MUSIC = 3991942870U;
         static const AkUniqueID ORB = 595159780U;
     } // namespace BANKS
 

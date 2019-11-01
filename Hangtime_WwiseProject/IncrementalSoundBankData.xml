@@ -6,12 +6,13 @@
 				<File Name="Character" Hash="167394786" Timestamp="1572580115"/>
 				<File Name="Init" Hash="1182415902" Timestamp="1572573640"/>
 				<File Name="Menu" Hash="1038255752" Timestamp="1572575553"/>
+				<File Name="Music" Hash="294042799" Timestamp="1572588453"/>
 				<File Name="Orb" Hash="3541426158" Timestamp="1572580115"/>
 			</Language>
 		</Banks>
 		<XMLInfo>
 			<Language ID="-1">
-				<File Name="" Hash="4066480782" Timestamp="1572580115"/>
+				<File Name="" Hash="218999095" Timestamp="1572588453"/>
 			</Language>
 		</XMLInfo>
 	</Platform>
@@ -21,12 +22,13 @@
 				<File Name="Character" Hash="167394786" Timestamp="1572580115"/>
 				<File Name="Init" Hash="2279659568" Timestamp="1572573640"/>
 				<File Name="Menu" Hash="1038255752" Timestamp="1572575553"/>
+				<File Name="Music" Hash="294042799" Timestamp="1572588452"/>
 				<File Name="Orb" Hash="3541426158" Timestamp="1572580115"/>
 			</Language>
 		</Banks>
 		<XMLInfo>
 			<Language ID="-1">
-				<File Name="" Hash="2061953948" Timestamp="1572580115"/>
+				<File Name="" Hash="1594018913" Timestamp="1572588452"/>
 			</Language>
 		</XMLInfo>
 	</Platform>
