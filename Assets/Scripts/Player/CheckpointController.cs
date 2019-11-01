@@ -64,6 +64,8 @@ public class CheckpointController : MonoBehaviour
             if (!CheckpointsHit.Contains(other.gameObject))
             {
                 CheckpointsHit.Add(other.gameObject);
+
+                AkSoundEngine.PostEvent("Checkpoint", GameObject.Find("Main Camera"));
             }
 
             Transform[] cpChildren = other.gameObject.GetComponentsInChildren<Transform>();
@@ -82,6 +84,8 @@ public class CheckpointController : MonoBehaviour
             if (Finishable)
             {
                 RaceFinish();
+
+                AkSoundEngine.PostEvent("Finish", GameObject.Find("Main Camera"));
             }
         }
     }
