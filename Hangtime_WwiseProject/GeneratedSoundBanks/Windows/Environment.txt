@@ -1,0 +1,14 @@
+Event	ID	Name			Wwise Object Path	Notes
+	612075679	Checkpoint			\Default Work Unit\Checkpoint	
+	894216997	FinalCheckpoint			\Default Work Unit\FinalCheckpoint	
+	1505888634	Countdown			\Default Work Unit\Countdown	
+	2552165224	DropCheckpoint			\Default Work Unit\DropCheckpoint	
+	2555741448	Finish			\Default Work Unit\Finish	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	112514729	ht_sx_game_plr_finish_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_finish_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Checkpoint\ht_sx_game_plr_finish_02		648968
+	210136389	ht_sx_game_env_checkpoint_drop_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_env_checkpoint_drop_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment\ht_sx_game_env_checkpoint_drop_02		232924
+	383385520	ht_sx_game_plr_checkpoint_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_checkpoint_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Checkpoint\ht_sx_game_plr_checkpoint_02		168500
+	476649005	ht_sx_game_env_countdown_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_env_countdown_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment\ht_sx_game_env_countdown_02		771436
+	528793569	ht_sx_game_plr_checkpoint_final_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_checkpoint_final_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Checkpoint\ht_sx_game_plr_checkpoint_final_02		471084
+

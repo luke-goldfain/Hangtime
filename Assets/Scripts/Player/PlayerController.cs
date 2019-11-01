@@ -253,11 +253,15 @@ public class PlayerController : MonoBehaviour
             {
                 ModeIndicator.GetComponent<Image>().sprite = pullIcon;
             }
+
+            AkSoundEngine.PostEvent("GrappleSwitch", gameObject);
         }
 
         if ((Input.GetButtonDown(playerFireButton) || playerFiring) && AcceptsInput)
         {
             CastGrapple();
+
+           // AkSoundEngine.PostEvent("GrappleLaunch", gameObject);
         }
 
         if (grappleCasted)
@@ -442,6 +446,8 @@ public class PlayerController : MonoBehaviour
         if (hasGrappledMovableObject)
         {
             GrappleHitPosition = currentGrappledObject.transform.position + (currentGrappledObject.transform.position - GrappleHitPosition);
+
+           // AkSoundEngine.PostEvent("GrappleLatch", gameObject);
         }
 
         if (isPulling)
@@ -450,6 +456,8 @@ public class PlayerController : MonoBehaviour
             // The last argument in this function determines the relative "strength" of the two Vector3's, with the grapple direction
             // remaining the strongest factor in movement direction.
             moveDir = Vector3.Slerp(cameraTransform.forward, grappleDir, 0.9f);
+
+            //AkSoundEngine.PostEvent("GrapplePull", gameObject);
         }
         else
         {
@@ -593,6 +601,8 @@ public class PlayerController : MonoBehaviour
             float hAxis = Input.GetAxisRaw(playerHorizontalAxis);
             float vAxis = Input.GetAxisRaw(playerVerticalAxis);
 
+            AkSoundEngine.PostEvent("Footstep", gameObject);
+
             if (Input.GetButtonDown(playerSlideButton))
             {
                 slideTimer = 0f;
@@ -622,6 +632,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 slideTimer += Time.deltaTime;
+                AkSoundEngine.PostEvent("Slide", gameObject);
             }
             else if (canWalkOnGround && Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, 2f, ~(1 << 8))) // Normal running behavior
             {

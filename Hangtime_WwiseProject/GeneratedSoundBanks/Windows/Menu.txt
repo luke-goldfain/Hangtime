@@ -1,0 +1,10 @@
+Event	ID	Name			Wwise Object Path	Notes
+	214853820	Deselect			\Default Work Unit\Deselect	
+	1432588725	Select			\Default Work Unit\Select	
+	3174665583	Highlight			\Default Work Unit\Highlight	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	532348259	ht_sx_menu_ui_select	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_menu_ui_select_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Menu\ht_sx_menu_ui_select		612336
+	609797737	ht_sx_menu_ui_deselect	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_menu_ui_deselect_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Menu\ht_sx_menu_ui_deselect		191128
+	1023864907	ht_sx_menu_ui_selectionswitch	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_menu_ui_selectionswitch_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Menu\ht_sx_menu_ui_selectionswitch		325788
+

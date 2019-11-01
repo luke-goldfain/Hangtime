@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3686556480	Slide			\Default Work Unit\Slide	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	362016787	ht_sx_game_plr_slide_sand_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_slide_sand_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Slide\ht_sx_game_plr_slide_sand_02		682332
+

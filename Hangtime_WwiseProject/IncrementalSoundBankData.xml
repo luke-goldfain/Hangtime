@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<IncrementalBankBuild Version="6" Flags="861300542">
+	<Platform GUID="{E1880D5E-A627-4147-B78E-105D776814B3}">
+		<Banks>
+			<Language ID="393239870">
+				<File Name="Environment" Hash="4134398909" Timestamp="1572567761"/>
+				<File Name="Footsteps" Hash="4294738330" Timestamp="1572565916"/>
+				<File Name="Grapple" Hash="163504671" Timestamp="1572567761"/>
+				<File Name="Init" Hash="1182415902" Timestamp="1572564829"/>
+				<File Name="Jump" Hash="68878557" Timestamp="1572567761"/>
+				<File Name="Land" Hash="2619766598" Timestamp="1572567761"/>
+				<File Name="Menu" Hash="1414747059" Timestamp="1572567761"/>
+				<File Name="Slide" Hash="2466609585" Timestamp="1572567761"/>
+			</Language>
+		</Banks>
+		<XMLInfo>
+			<Language ID="-1">
+				<File Name="" Hash="3618779811" Timestamp="1572567761"/>
+			</Language>
+		</XMLInfo>
+	</Platform>
+	<Platform GUID="{11F66037-7C7B-4A5B-9429-6EB2C49E8934}">
+		<Banks>
+			<Language ID="393239870">
+				<File Name="Environment" Hash="4134398909" Timestamp="1572567761"/>
+				<File Name="Footsteps" Hash="4294738330" Timestamp="1572565916"/>
+				<File Name="Grapple" Hash="163504671" Timestamp="1572567761"/>
+				<File Name="Init" Hash="2279659568" Timestamp="1572564828"/>
+				<File Name="Jump" Hash="68878557" Timestamp="1572567761"/>
+				<File Name="Land" Hash="2619766598" Timestamp="1572567761"/>
+				<File Name="Menu" Hash="1414747059" Timestamp="1572567761"/>
+				<File Name="Slide" Hash="2466609585" Timestamp="1572567761"/>
+			</Language>
+		</Banks>
+		<XMLInfo>
+			<Language ID="-1">
+				<File Name="" Hash="2097823561" Timestamp="1572567761"/>
+			</Language>
+		</XMLInfo>
+	</Platform>
+</IncrementalBankBuild>

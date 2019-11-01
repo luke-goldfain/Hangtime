@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	674522502	Land			\Default Work Unit\Land	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	358896338	ht_sx_game_plr_land	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Mac\SFX\Bounced Files\ht_sx_game_plr_land_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Land\ht_sx_game_plr_land		116800
+

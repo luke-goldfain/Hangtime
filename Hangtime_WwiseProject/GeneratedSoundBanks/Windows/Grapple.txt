@@ -1,0 +1,14 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1361101372	GrappleSwing			\Default Work Unit\GrappleSwing	
+	1366009823	GrappleLaunch			\Default Work Unit\GrappleLaunch	
+	2230488411	GrapplePull			\Default Work Unit\GrapplePull	
+	3628150596	GrappleLatch			\Default Work Unit\GrappleLatch	
+	3998983238	GrappleSwitch			\Default Work Unit\GrappleSwitch	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	168885446	ht_sx_game_plr_grapple_reel	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_grapple_reel_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Grapple\ht_sx_game_plr_grapple_reel		260504
+	576814780	ht_sx_game_plr_grapple_launch_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_grapple_launch_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Grapple\ht_sx_game_plr_grapple_launch_02		96064
+	612923958	ht_sx_game_plr_grapple_swing_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_grapple_swing_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Grapple\ht_sx_game_plr_grapple_swing_02		580968
+	687830160	ht_sx_game_plr_grapple_switchmode_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_grapple_switchmode_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Grapple\ht_sx_game_plr_grapple_switchmode_02		237616
+	840083216	ht_sx_game_plr_grapple_latch	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_plr_grapple_latch_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Grapple\ht_sx_game_plr_grapple_latch		76864
+

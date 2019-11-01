@@ -1,6 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{DE45A214-B320-445F-9A7B-433DC0261909}" SchemaVersion="94">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{DE45A214-B320-445F-9A7B-433DC0261909}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{DE45A214-B320-445F-9A7B-433DC0261909}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Footsteps" ID="{FF8C53DF-5BAD-41D1-A254-2FC3F42929FA}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Footstep" ID="{816C6B31-E1C9-4348-A6D2-8689EDA756B7}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Grapple" ID="{C9ED812C-EE71-4C32-B809-90D28C01FDD4}">
+					<ObjectInclusionList>
+						<ObjectRef Name="GrappleLatch" ID="{4163EAAB-A0D5-496D-81C3-D95A83CC9C06}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="GrappleLaunch" ID="{E7E0529A-EEF7-4A21-8FAD-C116BDADC5BA}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="GrapplePull" ID="{DC5FE4CA-272D-4AA3-B05C-512806470BEE}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="GrappleSwitch" ID="{13F70E29-19F0-4BA6-92AF-95E5BC50432B}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="GrappleSwing" ID="{84D730F0-EAEC-4CF0-9D4A-4385E1A75138}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Menu" ID="{47286921-8159-4566-BB12-FB26201A17E7}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Select" ID="{12B81392-2CD8-464B-875C-A1491E434149}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Deselect" ID="{C16CAF30-E33B-4881-A645-33BE077B7747}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Highlight" ID="{B1DE9943-3A77-4D19-9176-D126E39B6630}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Environment" ID="{A65ADD72-3EB0-459C-82DD-3910163C37AD}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Checkpoint" ID="{951BBF48-2792-42BE-B0CA-6BDD1A7B07B5}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="DropCheckpoint" ID="{CE6A059C-E059-42EF-B29D-4F0A1D666077}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Finish" ID="{EF411BE5-81C0-4480-BE37-76B38C445DCC}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Countdown" ID="{BB93C178-882F-4984-9EF9-4888D3078369}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="FinalCheckpoint" ID="{22EB972B-DB1F-4EDA-9CE8-41727AAB8913}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Jump" ID="{6AB8796E-AE38-4E37-A388-E6491E22C7F8}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Jump" ID="{284B9DEE-038F-471B-8378-E09EDC1D3975}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Land" ID="{BB4D6255-9581-4826-9E89-D0E24C4E7B4E}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Land" ID="{4269B8B4-77CD-489F-9D32-D5C1E098CCAC}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Slide" ID="{E21AF3B2-6042-456D-AECD-C4F60D2377BE}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Slide" ID="{212017FA-572D-4453-962A-CA8364D27A49}" WorkUnitID="{227DEFA8-3CD7-41AA-91E3-F46777512D98}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>
