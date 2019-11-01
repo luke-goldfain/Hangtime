@@ -67,7 +67,7 @@ public class FollowOrbBehavior : MonoBehaviour
             {
                 DropCheckpoint();
 
-                AkSoundEngine.PostEvent("CheckpointDrop", GameObject.Find("Follow Orb"));
+                AkSoundEngine.PostEvent("CheckpointDrop", GameObject.Find("Main Camera"));
 
                 CurrentCheckptTarget++;
             }

@@ -38,13 +38,14 @@ public class Countdown : MonoBehaviour
 
         currentTimer += Time.deltaTime;
 
+
         if (currentTimer >= TimerPerNumber && currentTextIndex < (countdownText.Count - 1))
         {
             currentTextIndex++;
 
             currentTimer = 0f;
 
-            AkSoundEngine.PostEvent("Countdown", GameObject.Find("PlayerController"));
+            
         }
         else if (currentTimer >= TimerPerNumber)
         {

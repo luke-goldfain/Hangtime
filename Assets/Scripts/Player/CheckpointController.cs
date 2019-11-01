@@ -65,7 +65,7 @@ public class CheckpointController : MonoBehaviour
             {
                 CheckpointsHit.Add(other.gameObject);
 
-                AkSoundEngine.PostEvent("Checkpoint", gameObject);
+                AkSoundEngine.PostEvent("Checkpoint", GameObject.Find("Main Camera"));
             }
 
             Transform[] cpChildren = other.gameObject.GetComponentsInChildren<Transform>();
