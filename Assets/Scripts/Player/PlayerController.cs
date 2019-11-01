@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject grapplingHookPrefab;
 
-
     [SerializeField]
     private GameObject ropeSectionPrefab;
 
@@ -39,6 +38,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject slidePRight, slidePLeft;
     //public GameObject Reticle, Speedometer, CheckpointMeter, CheckpointMeterFill;
+
+    [SerializeField]
+    private GameObject playerCamera;
 
     [HideInInspector]
     public GameObject Reticle, Speedometer, SpeedometerText,
@@ -59,6 +61,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private bool inWindZone = false;
+
+    private Animator anim;
 
     private GameObject countdownObject;
 
@@ -106,6 +110,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 currentGrappleNormal;
 
     private Transform cameraTransform;
+
+    private Vector3 camOriginalPos;
 
     private float cameraX, cameraY, cameraW, cameraH;
 
@@ -161,7 +167,12 @@ public class PlayerController : MonoBehaviour
 
         PlacementText.SetActive(false);
 
+        anim = this.GetComponentInChildren<Animator>();
+
         rb = this.GetComponent<Rigidbody>();
+
+        cameraTransform = playerCamera.transform;
+        camOriginalPos = cameraTransform.localPosition;
 
         ropeSections = new List<GameObject>();
 
@@ -213,7 +224,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        cameraTransform = this.GetComponentInChildren<PlayerCameraController>().transform;
+        cameraTransform = playerCamera.transform;
 
         // Restore input once initial countdown is finished. inCountdown variable 
         // required to allow other events to remove input.
@@ -412,6 +423,7 @@ public class PlayerController : MonoBehaviour
         {
             case State.inAir:
                 {
+                    anim.SetInteger("Condition", 2);
 
                     hasAirDashed = false;
 
@@ -434,6 +446,8 @@ public class PlayerController : MonoBehaviour
                 }
             case State.onGround:
                 {
+                    anim.SetInteger("Condition", 1);
+
                     canWalkOnGround = true;
 
                     groundTimer = 0f;
@@ -636,6 +650,19 @@ public class PlayerController : MonoBehaviour
     {
         groundTimer += Time.deltaTime;
 
+        if (canWalkOnGround && this.rb.velocity.magnitude > 1f)
+        {
+            anim.SetInteger("Condition", 1);
+        }
+        else if (canWalkOnGround)
+        {
+            anim.SetInteger("Condition", 0);
+        }
+        else
+        {
+            anim.SetInteger("Condition", 2);
+        }
+
         if (AcceptsInput)
         {
             float hAxis = Input.GetAxisRaw(playerHorizontalAxis);
@@ -655,7 +682,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 // Move the camera down to give the player feedback that they are sliding.
-                cameraTransform.position = Vector3.Slerp(cameraTransform.position, this.transform.position + (Vector3.down * 0.8f), 0.2f);
+                cameraTransform.position = Vector3.Slerp(cameraTransform.position, this.transform.position + camOriginalPos + (Vector3.down * 0.8f), 0.2f);
 
                 this.GetComponent<Collider>().material.dynamicFriction = slideFriction;
 
@@ -707,9 +734,9 @@ public class PlayerController : MonoBehaviour
             }
 
             // If the player is not sliding and the camera is not back at default position, return it there.
-            if ((slideTimer == 0f || slideTimer > slideMaxTime || !Input.GetButton(playerSlideButton)) && cameraTransform.position != this.transform.position)
+            if ((slideTimer == 0f || slideTimer > slideMaxTime || !Input.GetButton(playerSlideButton)) && cameraTransform.position != this.transform.position + camOriginalPos)
             {
-                cameraTransform.position = Vector3.Slerp(cameraTransform.position, this.transform.position, 0.3f);
+                cameraTransform.position = Vector3.Slerp(cameraTransform.position, this.transform.position + camOriginalPos, 0.3f);
             }
 
             if (Input.GetButtonDown(playerJumpButton))
@@ -750,6 +777,8 @@ public class PlayerController : MonoBehaviour
 
     private void CastGrapple()
     {
+        anim.SetInteger("Condition", 3);
+
         RaycastHit hit;
 
         Debug.DrawRay(transform.position, cameraTransform.TransformDirection(Vector3.forward) * GrappleDistance, Color.blue, 1f);

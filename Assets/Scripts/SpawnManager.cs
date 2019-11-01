@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
-    public GameObject PlayerPrefab, HUDPrefab;
+    public GameObject PlayerPrefab, HUDPrefab,
+                      PinkyPrefab, SongbirdPrefab;
     //public GameObject PlayerPrefab, ReticlePrefab, SpeedometerPrefab, CheckpointMeterPrefab, CheckpointMeterFillPrefab;
 
     [SerializeField, Tooltip("The initial spawn points of each player in the current scene.")]
@@ -26,7 +27,18 @@ public class SpawnManager : MonoBehaviour
         {
             if (GameStats.PlayersReady[i - 1] == true)
             {
-                GameObject currentPlayer = Instantiate(PlayerPrefab, InitialSpawnPoints[i - 1], Quaternion.identity);
+                GameObject currentPlayer = new GameObject();
+
+                switch (GameStats.chosenChars[i - 1])
+                {
+                    case GameStats.charChoices.pinky:
+                        currentPlayer = Instantiate(PinkyPrefab, InitialSpawnPoints[i - 1], Quaternion.identity);
+                        break;
+                    case GameStats.charChoices.songbird:
+                        currentPlayer = Instantiate(SongbirdPrefab, InitialSpawnPoints[i - 1], Quaternion.identity);
+                        break;
+                }
+                
                 currentPlayer.transform.Rotate(0f, SpawnRotation, 0f); // DOESN'T WORK >:(
                 currentPlayer.GetComponent<PlayerController>().PlayerNumber = i;
 
