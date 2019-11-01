@@ -32,8 +32,7 @@ public class PlayerCameraController : MonoBehaviour
     {
         playerNumber = this.GetComponentInParent<PlayerController>().PlayerNumber;
 
-        // DEBUGGY BRUTEFORCEY
-        numberOfPlayers = GameObject.FindGameObjectsWithTag("Player").Length; // TODO: Change this to reference a global variable, set via menu input.
+        numberOfPlayers = GameStats.NumOfPlayers;
 
         StartAssignInputAxes();
 

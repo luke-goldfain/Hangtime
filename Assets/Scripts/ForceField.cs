@@ -13,5 +13,15 @@ public class ForceField : MonoBehaviour
     [Tooltip("Sets the direction this force effect moves objects in")]
     [SerializeField]
     public Vector3 ForceDirection;
+    
+    public void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Rigidbody pRb = collision.gameObject.GetComponent<Rigidbody>();
+
+            pRb.AddForce(ForceStrength * ForceDirection * pRb.velocity.magnitude * 0.5f);
+        }
+    }
 
 }

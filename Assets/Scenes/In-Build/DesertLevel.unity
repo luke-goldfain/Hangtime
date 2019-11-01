@@ -15742,7 +15742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ForceStrength: 40000
-  ForceDirection: {x: -1, y: 0, z: 0}
+  ForceDirection: {x: -2, y: 0, z: 0}
 --- !u!33 &1238531815
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -26025,69 +26025,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
         type: 3}
-      propertyPath: InitialSpawnPoints.Array.data[0].y
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
+      propertyPath: PinkyPrefab
+      value: 
+      objectReference: {fileID: 704136295773965611, guid: cf1705cd80a168a40920a531e1f5d8f2,
         type: 3}
-      propertyPath: InitialSpawnPoints.Array.data[1].y
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
-        type: 3}
-      propertyPath: InitialSpawnPoints.Array.data[2].y
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
-        type: 3}
-      propertyPath: InitialSpawnPoints.Array.data[3].y
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
-        type: 3}
-      propertyPath: InitialSpawnPoints.Array.data[0].z
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
-        type: 3}
-      propertyPath: InitialSpawnPoints.Array.data[1].z
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
-        type: 3}
-      propertyPath: InitialSpawnPoints.Array.data[2].z
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
-        type: 3}
-      propertyPath: InitialSpawnPoints.Array.data[3].z
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
-        type: 3}
-      propertyPath: SpawnRotation
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
-        type: 3}
-      propertyPath: InitialSpawnPoints.Array.data[0].x
-      value: 376
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
-        type: 3}
-      propertyPath: InitialSpawnPoints.Array.data[1].x
-      value: 374
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
-        type: 3}
-      propertyPath: InitialSpawnPoints.Array.data[2].x
-      value: 372
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
-        type: 3}
-      propertyPath: InitialSpawnPoints.Array.data[3].x
-      value: 370
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e1fe07f54ede3340b27acea5b5348cf, type: 3}
 --- !u!1001 &2124124164
