@@ -47,8 +47,13 @@ MonoBehaviour:
     type: 3}
   HUDPrefab: {fileID: 1780708271061067862, guid: c95830fe6ace4f5489f6877dd0a326af,
     type: 3}
+  PinkyPrefab: {fileID: 6604876208928569697, guid: 6d04ea7d175ebf7449df2908bd796ee8,
+    type: 3}
+  SongbirdPrefab: {fileID: 630226737003330634, guid: cd842f63ea7ddaf4cab454a19ec1b6a8,
+    type: 3}
   InitialSpawnPoints:
-  - {x: 302, y: 202, z: 1260}
-  - {x: 304, y: 202, z: 1260}
-  - {x: 302, y: 202, z: 1264}
-  - {x: 304, y: 202, z: 1264}
+  - {x: 376, y: 48, z: -30}
+  - {x: 374, y: 48, z: -30}
+  - {x: 372, y: 48, z: -30}
+  - {x: 370, y: 48, z: -30}
+  SpawnRotation: 180
