@@ -236,6 +236,7 @@ MonoBehaviour:
   GrapplableMask:
     serializedVersion: 2
     m_Bits: 1
+  cameraObjToFollow: {fileID: 1684410019208096794}
   AcceptsInput: 1
   inWindZone: 0
 --- !u!114 &8328777589328497189
@@ -9950,6 +9951,12 @@ PrefabInstance:
 --- !u!4 &1348590669987214183 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7922502661739072370, guid: 6d04ea7d175ebf7449df2908bd796ee8,
+    type: 3}
+  m_PrefabInstance: {fileID: 9170817733128173589}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1684410019208096794 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7504531757072700431, guid: 6d04ea7d175ebf7449df2908bd796ee8,
     type: 3}
   m_PrefabInstance: {fileID: 9170817733128173589}
   m_PrefabAsset: {fileID: 0}

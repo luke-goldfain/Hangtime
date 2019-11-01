@@ -15501,7 +15501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a745ec85df99e4b8530bc253e27abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForceStrength: 40000
+  ForceStrength: 40
   ForceDirection: {x: -2, y: 0, z: 0}
 --- !u!33 &1238531815
 MeshFilter:

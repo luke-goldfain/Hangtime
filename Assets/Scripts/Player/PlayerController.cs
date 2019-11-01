@@ -57,6 +57,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public LayerMask GrapplableMask;
 
+    [SerializeField]
+    private GameObject cameraObjToFollow;
+
     public bool AcceptsInput = true;
 
     [SerializeField]
@@ -225,6 +228,8 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         cameraTransform = playerCamera.transform;
+
+        cameraTransform.position = cameraObjToFollow.transform.position;
 
         // Bruteforce set model position
         anim.gameObject.transform.localPosition = new Vector3(0, -1, 0);
@@ -690,7 +695,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 // Move the camera down to give the player feedback that they are sliding.
-                cameraTransform.position = Vector3.Slerp(cameraTransform.position, this.transform.position + camOriginalPos + (Vector3.down * 0.8f), 0.2f);
+                //cameraTransform.position = Vector3.Slerp(cameraTransform.position, this.transform.position + camOriginalPos + (Vector3.down * 0.8f), 0.2f);
 
                 this.GetComponent<Collider>().material.dynamicFriction = slideFriction;
 
@@ -746,7 +751,7 @@ public class PlayerController : MonoBehaviour
             // If the player is not sliding and the camera is not back at default position, return it there.
             if ((slideTimer == 0f || slideTimer > slideMaxTime || !Input.GetButton(playerSlideButton)) && cameraTransform.position != this.transform.position + camOriginalPos)
             {
-                cameraTransform.position = Vector3.Slerp(cameraTransform.position, this.transform.position + camOriginalPos, 0.3f);
+                //cameraTransform.position = Vector3.Slerp(cameraTransform.position, this.transform.position + camOriginalPos, 0.3f);
             }
 
             if (Input.GetButtonDown(playerJumpButton))
