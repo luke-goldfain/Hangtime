@@ -216,6 +216,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="DesertMusicPlay" ID="{E0C56AC0-B3CB-4725-BD81-1F101BAE2DC8}">
+					<ChildrenList>
+						<Action Name="" ID="{452ED8DD-6ECD-48AE-9211-5D71B7EA47CA}" ShortID="283844326">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="RR Music_Hangtime_Gameplay_v01" ID="{DD39C498-2824-4FAA-A892-12AC91618664}" WorkUnitID="{F2483306-E47B-4F7E-809B-A8E7CF3DE6AF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

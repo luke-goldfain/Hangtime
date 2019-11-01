@@ -162,5 +162,19 @@
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
+		<SoundBank Id="3991942870" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\Music</ObjectPath>
+			<ShortName>Music</ShortName>
+			<Path>Music.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3858969937" Name="DesertMusicPlay" ObjectPath="\Events\Default Work Unit\DesertMusicPlay" DurationType="OneShot" DurationMin="181.714264" DurationMax="181.714264"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="338133083" Language="SFX">
+					<ShortName>RR Music_Hangtime_Gameplay_v01.wav</ShortName>
+					<Path>SFX\RR Music_Hangtime_Gameplay_v01_10C4C929.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

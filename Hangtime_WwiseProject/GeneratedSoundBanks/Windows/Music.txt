@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3858969937	DesertMusicPlay			\Default Work Unit\DesertMusicPlay	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	338133083	RR Music_Hangtime_Gameplay_v01	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\RR Music_Hangtime_Gameplay_v01_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\RR Music_Hangtime_Gameplay_v01		34889284
+
