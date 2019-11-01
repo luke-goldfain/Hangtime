@@ -85,7 +85,7 @@ public class CheckpointController : MonoBehaviour
             {
                 RaceFinish();
 
-                AkSoundEngine.PostEvent("Finish", gameObject);
+                AkSoundEngine.PostEvent("Finish", GameObject.Find("Main Camera"));
             }
         }
     }

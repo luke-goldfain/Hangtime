@@ -45,6 +45,8 @@ public class Countdown : MonoBehaviour
 
             currentTimer = 0f;
 
+            AkSoundEngine.PostEvent("Countdown", GameObject.Find("Main Camera"));
+
             
         }
         else if (currentTimer >= TimerPerNumber)

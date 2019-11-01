@@ -62,6 +62,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool inWindZone = false;
 
+    [SerializeField]
+    private AkAudioListener PlayerListener;
+
     private Animator anim;
 
     private GameObject countdownObject;
