@@ -226,6 +226,9 @@ public class PlayerController : MonoBehaviour
     {
         cameraTransform = playerCamera.transform;
 
+        // Bruteforce set model position
+        anim.gameObject.transform.localPosition = new Vector3(0, -1, 0);
+
         // Restore input once initial countdown is finished. inCountdown variable 
         // required to allow other events to remove input.
         if (!AcceptsInput && inCountdown && countdownObject.GetComponent<Countdown>().IsFinished)
@@ -424,6 +427,7 @@ public class PlayerController : MonoBehaviour
             case State.inAir:
                 {
                     anim.SetInteger("Condition", 2);
+                    anim.SetBool("ButtonDown", false);
 
                     hasAirDashed = false;
 
@@ -466,6 +470,8 @@ public class PlayerController : MonoBehaviour
                 }
             case State.grappling:
                 {
+                    anim.SetBool("ButtonDown", false);
+
                     this.GetComponent<Collider>().material.dynamicFriction = defaultFriction;
 
                     startOfSwingSpd = this.rb.velocity.magnitude;
@@ -675,6 +681,8 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButton(playerSlideButton) && slideTimer < slideMaxTime) // Sliding behavior
             {
+                anim.SetBool("ButtonDown", true);
+
                 if (slidePLeft.GetComponent<ParticleSystem>().isStopped)
                 {
                     slidePLeft.GetComponent<ParticleSystem>().Play();
@@ -719,6 +727,8 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButtonUp(playerSlideButton) || slideTimer >= slideMaxTime) // What happens when a slide "ends"
             {
+                anim.SetBool("ButtonDown", false);
+
                 if (slidePLeft.GetComponent<ParticleSystem>().isPlaying)
                 {
                     slidePLeft.GetComponent<ParticleSystem>().Stop();

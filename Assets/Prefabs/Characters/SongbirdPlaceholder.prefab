@@ -1,13 +1,44 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!95 &3745104410393760552
+--- !u!1 &7460998375652408555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7387491330069299526}
+  - component: {fileID: 8575811389860486686}
+  m_Layer: 0
+  m_Name: SongbirdModelPH
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7387491330069299526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460998375652408555}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 630226737003330637}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &8575811389860486686
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630226737003330634}
+  m_GameObject: {fileID: 7460998375652408555}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
@@ -98,9 +129,9 @@ PrefabInstance:
       objectReference: {fileID: 630226736729667869}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f0638ade4aa8747a72498e48c0fab3, type: 3}
---- !u!1 &630226737003330634 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5705682671031744628, guid: 66f0638ade4aa8747a72498e48c0fab3,
+--- !u!4 &630226737003330637 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5705682671031744627, guid: 66f0638ade4aa8747a72498e48c0fab3,
     type: 3}
   m_PrefabInstance: {fileID: 5157091924149765182}
   m_PrefabAsset: {fileID: 0}

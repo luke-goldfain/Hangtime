@@ -98,7 +98,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -15502,7 +15502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ForceStrength: 40000
-  ForceDirection: {x: -1, y: 0, z: 0}
+  ForceDirection: {x: -2, y: 0, z: 0}
 --- !u!33 &1238531815
 MeshFilter:
   m_ObjectHideFlags: 0
