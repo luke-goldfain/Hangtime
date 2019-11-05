@@ -30,7 +30,10 @@ public class FinishedResetDisplay : MonoBehaviour
             resetTextDisplayed = true;
         }
 
-        if (resetTextDisplayed && (Input.GetButtonDown("P1Start") ||
+        // If someone presses the start button and all players are finished, reset the game.
+        // (Cheat: the Home button on keyboard can be used at all times)
+        if (Input.GetKeyDown(KeyCode.Home) ||
+            resetTextDisplayed && (Input.GetButtonDown("P1Start") ||
                                    Input.GetButtonDown("P2Start") ||
                                    Input.GetButtonDown("P3Start") ||
                                    Input.GetButtonDown("P4Start")))
