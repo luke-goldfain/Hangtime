@@ -54,6 +54,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public int PlayerNumber;
 
+    [HideInInspector]
+    public int PlayerViewNumber;
+
     [SerializeField]
     public LayerMask GrapplableMask;
 
@@ -915,7 +918,7 @@ public class PlayerController : MonoBehaviour
         float reticleX = Screen.width * (cameraW / 2);
         float reticleY = Screen.height * (cameraH / 2); 
 
-        switch (PlayerNumber)
+        switch (PlayerViewNumber)
         {
             case 1:
                 if (numberOfPlayers > 2) reticleY += (Screen.height / 2);
@@ -964,7 +967,7 @@ public class PlayerController : MonoBehaviour
         float cmX = Screen.width * cameraW;
         float cmY = Screen.height * cameraH / 2;
 
-        switch (PlayerNumber)
+        switch (PlayerViewNumber)
         {
             case 1:
                 if (numberOfPlayers > 2) cmY += (Screen.height * cameraY);

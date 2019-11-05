@@ -47,9 +47,11 @@ public class TargetManager : MonoBehaviour
         // Correct each frame for new checkpoints that are not yet in the target list
         if (playerReference != null)
         {
-            if (TargetList.Count < playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced.Length - playerReference.GetComponent<CheckpointController>().CheckpointsHit.Count)
+            CheckpointController pCheckptController = playerReference.GetComponent<CheckpointController>();
+
+            if (TargetList.Count < pCheckptController.CheckpointsTotalPlaced.Length - pCheckptController.CheckpointsHit.Count)
             {
-                foreach (GameObject cp in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
+                foreach (GameObject cp in pCheckptController.CheckpointsTotalPlaced)
                 {
                     if (!TargetList.Contains(cp.transform))
                     {
@@ -59,9 +61,9 @@ public class TargetManager : MonoBehaviour
             }
 
             // Add the finish line to the list if the player is able to finish
-            if (playerReference.GetComponent<CheckpointController>().Finishable)
+            if (pCheckptController.Finishable)
             {
-                foreach (GameObject fl in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
+                foreach (GameObject fl in pCheckptController.CheckpointsTotalPlaced)
                 {
                     if (!TargetList.Contains(fl.transform))
                     {
@@ -71,11 +73,11 @@ public class TargetManager : MonoBehaviour
             }
 
             // Correct each frame for checkpoints that have just been hit by player
-            if (TargetList.Count > playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced.Length - playerReference.GetComponent<CheckpointController>().CheckpointsHit.Count)
+            if (TargetList.Count > pCheckptController.CheckpointsTotalPlaced.Length - pCheckptController.CheckpointsHit.Count)
             {
-                foreach (GameObject cp in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
+                foreach (GameObject cp in pCheckptController.CheckpointsTotalPlaced)
                 {
-                    if (playerReference.GetComponent<CheckpointController>().CheckpointsHit.Contains(cp))
+                    if (pCheckptController.CheckpointsHit.Contains(cp))
                     {
                         TargetList.Remove(cp.transform);
                     }
@@ -87,9 +89,9 @@ public class TargetManager : MonoBehaviour
             {
                 Transform closestCheckpoint = TargetList[0];
 
-                foreach (GameObject cp in playerReference.GetComponent<CheckpointController>().CheckpointsTotalPlaced)
+                foreach (GameObject cp in pCheckptController.CheckpointsTotalPlaced)
                 {
-                    if (!playerReference.GetComponent<CheckpointController>().CheckpointsHit.Contains(cp) &&
+                    if (!pCheckptController.CheckpointsHit.Contains(cp) &&
                         Vector3.Distance(cp.transform.position, playerReference.transform.position) < Vector3.Distance(closestCheckpoint.position, playerReference.transform.position))
                     {
                         closestCheckpoint = cp.transform;
@@ -113,9 +115,9 @@ public class TargetManager : MonoBehaviour
         int numOfPlayers = GameStats.NumOfPlayers;
 
         float xBorder = pCam.pixelWidth * 0.05f;
-        float yBorder = pCam.pixelHeight * 0.05f;
+        float yBorder = pCam.pixelHeight * 0.08f;
 
-        switch (playerReference.GetComponent<PlayerController>().PlayerNumber) //TODO
+        switch (playerReference.GetComponent<PlayerController>().PlayerViewNumber)
         {
             case 1:
                 minXPos = xBorder;
