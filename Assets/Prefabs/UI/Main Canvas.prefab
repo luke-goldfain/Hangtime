@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6606040729819314323}
   - component: {fileID: 6606040729819314320}
   - component: {fileID: 6606040729819314321}
+  - component: {fileID: 473775206}
   m_Layer: 5
   m_Name: Countdown Text
   m_TagString: Countdown
@@ -33,10 +34,10 @@ RectTransform:
   m_Father: {fileID: 6606040730226295289}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 70}
+  m_SizeDelta: {x: 0, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6606040729819314323
 CanvasRenderer:
@@ -94,12 +95,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 62.65
+  m_fontSize: 134.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 50
+  m_fontSizeMax: 150
   m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
@@ -172,6 +173,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsFinished: 0
   TimerPerNumber: 1
+--- !u!114 &473775206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606040729819314335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 855c06abac5938849bcec342f59f2642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResetText: Press Start to Restart!
 --- !u!1 &6606040730226295269
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +198,7 @@ GameObject:
   - component: {fileID: 6606040730226295270}
   - component: {fileID: 6606040730226295271}
   - component: {fileID: 6606040730226295268}
+  - component: {fileID: 74157661}
   m_Layer: 5
   m_Name: Main Canvas
   m_TagString: Untagged
@@ -271,3 +286,15 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &74157661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606040730226295269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e4a84ada4c9cd64bbbb306340aae724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
