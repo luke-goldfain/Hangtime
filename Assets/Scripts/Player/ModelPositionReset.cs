@@ -18,6 +18,12 @@ public class ModelPositionReset : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.gameObject.transform.localPosition = resetLocation;
+        // Reset position every frame unless sliding
+        if (!anim.GetBool("ButtonDown"))
+        {
+            anim.gameObject.transform.localPosition = resetLocation;
+        }
+
+        anim.gameObject.transform.localRotation = Quaternion.identity;
     }
 }

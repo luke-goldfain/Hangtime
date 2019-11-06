@@ -306,18 +306,6 @@ public class PlayerController : MonoBehaviour
         if ((Input.GetButtonDown(playerFireButton) || playerFiring) && AcceptsInput)
         {
             CastGrapple();
-
-            AkSoundEngine.PostEvent("GrappleLaunch", GameObject.Find("Main Camera"));
-
-            if(isPulling)
-            {
-                AkSoundEngine.PostEvent("GrappleReel", GameObject.Find("Main Camera"));
-            }
-
-            else if (!isPulling)
-            {
-                AkSoundEngine.PostEvent("GrappleSwing", GameObject.Find("Main Camera"));
-            }
         }
 
         if (grappleCasted)
@@ -495,6 +483,8 @@ public class PlayerController : MonoBehaviour
                 {
                     anim.SetBool("ButtonDown", false);
 
+                    AkSoundEngine.PostEvent("GrappleLatch", GameObject.Find("Main Camera"));
+
                     this.GetComponent<Collider>().material.dynamicFriction = defaultFriction;
 
                     startOfSwingSpd = this.rb.velocity.magnitude;
@@ -533,8 +523,6 @@ public class PlayerController : MonoBehaviour
         if (hasGrappledMovableObject)
         {
             GrappleHitPosition = currentGrappledObject.transform.position;//+ (currentGrappledObject.transform.position - GrappleHitPosition);
-
-            AkSoundEngine.PostEvent("GrappleLatch", GameObject.Find("Main Camera"));
         }
 
         if (isPulling)
@@ -836,11 +824,24 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
 
-        Debug.DrawRay(transform.position, cameraTransform.TransformDirection(Vector3.forward) * GrappleDistance, Color.blue, 1f);
+        Debug.DrawRay(cameraTransform.position, cameraTransform.TransformDirection(Vector3.forward) * GrappleDistance, Color.blue, 1f);
 
-        if (Physics.Raycast(this.transform.position, lastGrapplableRaycastPoint - cameraTransform.position, out hit, GrappleDistance, GrapplableMask) &&
+        // If this is a valid grapple (raycast hits), play sound and set all relevant variables.
+        if (Physics.Raycast(cameraTransform.position, lastGrapplableRaycastPoint - cameraTransform.position, out hit, GrappleDistance, GrapplableMask) &&
             grapplableTimer < grapplableMaxTime)
         {
+            AkSoundEngine.PostEvent("GrappleLaunch", GameObject.Find("Main Camera"));
+
+            if (isPulling)
+            {
+                AkSoundEngine.PostEvent("GrappleReel", GameObject.Find("Main Camera"));
+            }
+
+            else if (!isPulling)
+            {
+                AkSoundEngine.PostEvent("GrappleSwing", GameObject.Find("Main Camera"));
+            }
+
             currentGrappledObject = hit.collider.gameObject;
 
             GrappleHitPosition = hit.point;
@@ -866,7 +867,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(this.transform.position, cameraTransform.TransformDirection(Vector3.forward), out hit, GrappleDistance, GrapplableMask))
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.TransformDirection(Vector3.forward), out hit, GrappleDistance, GrapplableMask))
         {
             ResetReticlePosition();
 
