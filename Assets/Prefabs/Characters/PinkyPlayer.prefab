@@ -210,6 +210,7 @@ MonoBehaviour:
   MaxReboundJumpForce: 30
   GrappleTravelTime: 0.3
   RespawnHeight: -20
+  AirControlRatio: 0.6
   grapplingHookPrefab: {fileID: 1772408175462317669, guid: 6b1745b14708d584caf415149fda3c1f,
     type: 3}
   ropeSectionPrefab: {fileID: 6702158368456008991, guid: 5ced27e9f366695499962e9fa2a86f94,
@@ -234,12 +235,14 @@ MonoBehaviour:
   pullIcon: {fileID: 21300000, guid: dfb07526d7205f14ab33cfb19d97623d, type: 3}
   swingIcon: {fileID: 21300000, guid: e6dfdcdcaa29bff4ba4a1b5368e64087, type: 3}
   PlayerNumber: 1
+  PlayerViewNumber: 0
   GrapplableMask:
     serializedVersion: 2
     m_Bits: 1
   cameraObjToFollow: {fileID: 1684410019208096794}
   AcceptsInput: 1
   inWindZone: 0
+  PlayerListener: {fileID: 0}
 --- !u!114 &8328777589328497189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9900,6 +9903,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 704136295773965612}
     m_Modifications:
+    - target: {fileID: 6604876208928569697, guid: 6d04ea7d175ebf7449df2908bd796ee8,
+        type: 3}
+      propertyPath: m_Name
+      value: Pinky
+      objectReference: {fileID: 0}
     - target: {fileID: 7922502661739072370, guid: 6d04ea7d175ebf7449df2908bd796ee8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9954,11 +9962,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6604876208928569697, guid: 6d04ea7d175ebf7449df2908bd796ee8,
-        type: 3}
-      propertyPath: m_Name
-      value: Pinky
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d04ea7d175ebf7449df2908bd796ee8, type: 3}
