@@ -81,7 +81,7 @@ public class PlayerCameraController : MonoBehaviour
                 break;
         }
 
-        this.GetComponent<Camera>().rect = new Rect(cameraX, cameraY, cameraW, cameraH);
+        this.GetComponentInChildren<Camera>().rect = new Rect(cameraX, cameraY, cameraW, cameraH);
 
         pController.GetCameraPosition(cameraX, cameraY, cameraW, cameraH);
         
@@ -140,7 +140,7 @@ public class PlayerCameraController : MonoBehaviour
     {
         if (pNum != this.playerNumber)
         {
-            this.GetComponent<Camera>().cullingMask &= ~(1 << LayerMask.NameToLayer("P" + pNum + "View"));
+            this.GetComponentInChildren<Camera>().cullingMask &= ~(1 << LayerMask.NameToLayer("P" + pNum + "View"));
         }
     }
 }
