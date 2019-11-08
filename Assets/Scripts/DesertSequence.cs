@@ -22,7 +22,12 @@ public class DesertSequence : MonoBehaviour
     private GameObject Cam4;
     [SerializeField]
     private GameObject Cam5;
-
+    [SerializeField]
+    private GameObject FollowOrb;
+    [SerializeField]
+    private GameObject SpawnManager;
+    [SerializeField]
+    private GameObject MainCanvas;
     void Start()
     {
         StartCoroutine (TheSequence());
@@ -41,9 +46,21 @@ public class DesertSequence : MonoBehaviour
         Cam4.SetActive(true);
         Cam3.SetActive(false);
 
+        
+
         yield return new WaitForSeconds(8);
         Cam5.SetActive(true);
+        FollowOrb.SetActive(true);
+        MainCanvas.SetActive(true);
         Cam4.SetActive(false);
+
+        yield return new WaitForSeconds(24);
+        SpawnManager.SetActive(true);
+
+        yield return new WaitForSeconds(27);
+        FollowOrb.SetActive(true);
+        MainCanvas.SetActive(true);
+        Cam5.SetActive(false);
     }
 
 }
