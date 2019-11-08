@@ -36,7 +36,7 @@ public class DesertSequence : MonoBehaviour
     {
         yield return new WaitForSeconds(4);
         Cam2.SetActive(true);
-        Cam1.SetActive(false);
+        Cam1.GetComponent<Camera>().enabled = false;
 
         yield return new WaitForSeconds(6);
         Cam3.SetActive(true);
@@ -50,16 +50,13 @@ public class DesertSequence : MonoBehaviour
 
         yield return new WaitForSeconds(8);
         Cam5.SetActive(true);
-        FollowOrb.SetActive(true);
-        MainCanvas.SetActive(true);
         Cam4.SetActive(false);
 
-       
 
         yield return new WaitForSeconds(27);
-       SpawnManager.SetActive(true);
         FollowOrb.SetActive(true);
         MainCanvas.SetActive(true);
+        SpawnManager.SetActive(true);
         Cam5.SetActive(false);
     }
 

@@ -138,7 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2447889534402422175}
   - component: {fileID: 2754185766493923246}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player Centered
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,6 +207,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5413358930254261737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1667998520359214539}
+  m_Layer: 0
+  m_Name: CameraParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1667998520359214539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413358930254261737}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7358587844798094018}
+  m_Father: {fileID: 7358587845038202765}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6063352602568941780
 GameObject:
   m_ObjectHideFlags: 0
@@ -4985,10 +5016,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7358587844798094045}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7358587845038202765}
+  m_Father: {fileID: 1667998520359214539}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &7358587844798094019
@@ -5016,7 +5047,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 92
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -5081,7 +5112,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7358587844798094018}
+  - {fileID: 1667998520359214539}
   - {fileID: 2447889534402422175}
   - {fileID: 4444962511968687027}
   - {fileID: 7595712830400502028}
@@ -5194,6 +5225,7 @@ MonoBehaviour:
   pullIcon: {fileID: 21300000, guid: dfb07526d7205f14ab33cfb19d97623d, type: 3}
   swingIcon: {fileID: 21300000, guid: e6dfdcdcaa29bff4ba4a1b5368e64087, type: 3}
   PlayerNumber: 1
+  PlayerViewNumber: 0
   GrapplableMask:
     serializedVersion: 2
     m_Bits: 1
