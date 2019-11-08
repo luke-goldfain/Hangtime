@@ -34,7 +34,11 @@ public class Countdown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.GetComponent<TextMeshProUGUI>().text = countdownText[currentTextIndex];
+        // Make sure this doesn't overwrite FinishedResetDisplay
+        if (GameStats.PlayersFinished < GameStats.NumOfPlayers)
+        {
+            this.gameObject.GetComponent<TextMeshProUGUI>().text = countdownText[currentTextIndex];
+        }
 
         currentTimer += Time.deltaTime;
 
@@ -46,12 +50,10 @@ public class Countdown : MonoBehaviour
             currentTimer = 0f;
 
             AkSoundEngine.PostEvent("Countdown", GameObject.Find("Main Camera"));
-
-            
         }
-        else if (currentTimer >= TimerPerNumber)
+        else if (currentTimer >= TimerPerNumber && GameStats.PlayersFinished < GameStats.NumOfPlayers)
         {
-            this.gameObject.SetActive(false);
+            this.gameObject.GetComponent<TextMeshProUGUI>().text = "";
         }
 
         if (currentTextIndex == (countdownText.Count - 1))

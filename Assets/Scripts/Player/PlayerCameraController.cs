@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlayerCameraController : MonoBehaviour
 {
     private int playerNumber;
+    private int playerViewNumber;
+
+    private PlayerController pController;
 
     private int numberOfPlayers;
 
@@ -30,7 +33,10 @@ public class PlayerCameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerNumber = this.GetComponentInParent<PlayerController>().PlayerNumber;
+        pController = this.GetComponentInParent<PlayerController>();
+
+        playerNumber = pController.PlayerNumber;
+        playerViewNumber = pController.PlayerViewNumber;
 
         numberOfPlayers = GameStats.NumOfPlayers;
 
@@ -42,7 +48,7 @@ public class PlayerCameraController : MonoBehaviour
             HidePlayerLayers(i);
         }
 
-        switch (playerNumber)
+        switch (playerViewNumber)
         {
             case 1:
                 cameraX = 0;
@@ -77,13 +83,13 @@ public class PlayerCameraController : MonoBehaviour
 
         this.GetComponent<Camera>().rect = new Rect(cameraX, cameraY, cameraW, cameraH);
 
-        this.GetComponentInParent<PlayerController>().GetCameraPosition(cameraX, cameraY, cameraW, cameraH);
+        pController.GetCameraPosition(cameraX, cameraY, cameraW, cameraH);
         
-        this.GetComponentInParent<PlayerController>().ResetReticlePosition();
-        this.GetComponentInParent<PlayerController>().StartSetSpeedometerAndIndicatorPositions();
-        this.GetComponentInParent<PlayerController>().StartSetCheckpointMeterPosition();
-        this.GetComponentInParent<PlayerController>().StartSetObjectiveReference();
-        this.GetComponentInParent<PlayerController>().StartSetMinimapReference();
+        pController.ResetReticlePosition();
+        pController.StartSetSpeedometerAndIndicatorPositions();
+        pController.StartSetCheckpointMeterPosition();
+        pController.StartSetObjectiveReference();
+        pController.StartSetMinimapReference();
     }
 
     // Update is called once per frame

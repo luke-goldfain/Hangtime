@@ -15,9 +15,15 @@ public class SpawnManager : MonoBehaviour
     [SerializeField, Tooltip("(Unfunctional) The Y rotation in degrees of the spawn point.")]
     public float SpawnRotation = 0f;
 
+    // The number of players that have been spawned before the currently iterated player.
+    // Used to determine which camera view to assign to the player.
+    private int numOfPlayersSpawned;
+
     // Start is called before the first frame update
     void Start()
     {
+        numOfPlayersSpawned = 0;
+
         if (InitialSpawnPoints.Count < 4)
         {
             InitialSpawnPoints.Add(new Vector3(1 * InitialSpawnPoints.Count, 2, 0));
@@ -43,6 +49,10 @@ public class SpawnManager : MonoBehaviour
                 currentPlayer.GetComponent<PlayerController>().PlayerNumber = i;
 
                 currentPlayer.GetComponent<PlayerController>().HUD = Instantiate(HUDPrefab, Vector3.zero, Quaternion.identity);
+
+                numOfPlayersSpawned++;
+
+                currentPlayer.GetComponent<PlayerController>().PlayerViewNumber = numOfPlayersSpawned; // Assign camera number
             }
 
             /*currentPlayer.GetComponent<PlayerController>().Reticle = Instantiate(ReticlePrefab, FindObjectOfType<Canvas>().transform);

@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\UI\Compass.cs" />
     <Compile Include="Assets\Scripts\UI\Countdown.cs" />
+    <Compile Include="Assets\Scripts\UI\FinishedResetDisplay.cs" />
     <Compile Include="Assets\Scripts\UI\Minimap.cs" />
     <Compile Include="Assets\Scripts\UI\ObjectiveArrowUI.cs" />
     <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
