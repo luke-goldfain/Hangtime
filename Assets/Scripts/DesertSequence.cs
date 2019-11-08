@@ -54,10 +54,10 @@ public class DesertSequence : MonoBehaviour
         MainCanvas.SetActive(true);
         Cam4.SetActive(false);
 
-        yield return new WaitForSeconds(24);
-        SpawnManager.SetActive(true);
+       
 
         yield return new WaitForSeconds(27);
+       SpawnManager.SetActive(true);
         FollowOrb.SetActive(true);
         MainCanvas.SetActive(true);
         Cam5.SetActive(false);
