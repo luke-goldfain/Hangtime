@@ -448,7 +448,7 @@ Camera:
   field of view: 40
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: -2
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 1
@@ -4637,7 +4637,7 @@ Camera:
   field of view: 40
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 1
@@ -9116,11 +9116,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8022391118926077250, guid: 7f252c3014314274b8386e55399ddf7e,
-        type: 3}
-      propertyPath: m_Name
-      value: Worm Spine
-      objectReference: {fileID: 0}
     - target: {fileID: 8022391118926077253, guid: 7f252c3014314274b8386e55399ddf7e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9175,6 +9170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 2.815
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022391118926077250, guid: 7f252c3014314274b8386e55399ddf7e,
+        type: 3}
+      propertyPath: m_Name
+      value: Worm Spine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f252c3014314274b8386e55399ddf7e, type: 3}
@@ -14295,7 +14295,7 @@ Camera:
   field of view: 40
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 1
@@ -15996,7 +15996,7 @@ Camera:
   field of view: 40
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 1
@@ -21634,7 +21634,7 @@ Camera:
   field of view: 40
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 1
