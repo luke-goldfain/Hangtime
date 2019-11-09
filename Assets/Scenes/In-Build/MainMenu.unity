@@ -818,11 +818,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22e8d01a7b2de14199ccad8ac437c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-  bankName: Menu
-  isLocalizedBank: 0
-  ms_bankID: 0
-=======
   m_listeners:
     initialListenerList: []
     useDefaultListeners: 1
@@ -907,7 +902,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914503501}
   m_CullTransparentMesh: 0
->>>>>>> Stashed changes
 --- !u!1 &1975270921
 GameObject:
   m_ObjectHideFlags: 0
