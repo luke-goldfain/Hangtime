@@ -22,8 +22,6 @@ public class PlayerController : MonoBehaviour
     public float GrappleTravelTime = 0.3f;
     [Tooltip("The height at which the player will respawn at their last reached checkpoint.")]
     public float RespawnHeight = -20f;
-    [Tooltip("The ratio used to determine the air control provided by holding a direction. 0.3 is the default."), Range(0, 5)]
-    public float AirControlRatio = 0.3f;
 
     [SerializeField]
     private GameObject grapplingHookPrefab;
@@ -70,8 +68,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool inWindZone = false;
 
-    [SerializeField]
-    private AkAudioListener PlayerListener;
+
 
     private Animator anim;
 
@@ -243,7 +240,7 @@ public class PlayerController : MonoBehaviour
         // required to allow other events to remove input.
         if (!AcceptsInput && inCountdown && countdownObject.GetComponent<Countdown>().IsFinished)
         {
-            AkSoundEngine.PostEvent("Countdown", GameObject.Find("Main Camera"));
+            AkSoundEngine.PostEvent("Countdown", GameObject.Find("AudioBus"));
             inCountdown = false;
             AcceptsInput = true;
         }
@@ -302,7 +299,7 @@ public class PlayerController : MonoBehaviour
                 ModeIndicator.GetComponent<Image>().sprite = pullIcon;
             }
 
-            AkSoundEngine.PostEvent("GrappleSwitch", GameObject.Find("Main Camera"));
+            AkSoundEngine.PostEvent("GrappleSwitch", GameObject.Find("AudioBus"));
         }
 
         if ((Input.GetButtonDown(playerFireButton) || playerFiring) && AcceptsInput)
@@ -485,7 +482,7 @@ public class PlayerController : MonoBehaviour
                 {
                     anim.SetBool("ButtonDown", false);
 
-                    AkSoundEngine.PostEvent("GrappleLatch", GameObject.Find("Main Camera"));
+                    AkSoundEngine.PostEvent("GrappleLatch", GameObject.Find("AudioBus"));
 
                     this.GetComponent<Collider>().material.dynamicFriction = defaultFriction;
 
@@ -617,13 +614,13 @@ public class PlayerController : MonoBehaviour
             float vAxis = Input.GetAxisRaw(playerVerticalAxis);
 
             // Give the player air control, relative to their current velocity so that it is always noticeable.
-            if (Vector3.Angle(new Vector3(rb.velocity.x, 0f, rb.velocity.z), this.transform.TransformDirection(new Vector3(hAxis, 0, vAxis))) > 75)
+            if (Vector3.Angle(new Vector3(rb.velocity.x, 0f, rb.velocity.z), this.transform.TransformDirection(new Vector3(hAxis, 0, vAxis))) > 70)
             {
-                rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * rb.velocity.magnitude * AirControlRatio);
+                rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * rb.velocity.magnitude * 0.3f);
             }
             else
             {
-                rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * rb.velocity.magnitude * AirControlRatio * .06f);
+                rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * rb.velocity.magnitude * 0.02f);
             }
 
             LerpSpeedToLimit();
@@ -643,7 +640,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown(playerJumpButton) && !hasAirDashed)
             {
                 Vector3 airJumpDirection = (transform.forward * vAxis * JumpForce) + (transform.right * hAxis * JumpForce) + (transform.up * JumpForce);
-                AkSoundEngine.PostEvent("JumpGirl", GameObject.Find("Main Camera"));
+                AkSoundEngine.PostEvent("JumpGirl", GameObject.Find("AudioBus"));
 
                 // Weigh the player's current velocity more if they are attempting to jump in a direction < 120 degrees from their current velocity.
                 // Otherwise, clamp the magnitude of velocity as well (unclamped, the player would jump far too strongly).
@@ -702,7 +699,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown(playerSlideButton))
             {
                 slideTimer = 0f;
-                AkSoundEngine.PostEvent("Slide", GameObject.Find("Main Camera"));
+                AkSoundEngine.PostEvent("Slide", GameObject.Find("AudioBus"));
             }
 
             if (Input.GetButton(playerSlideButton) && slideTimer < slideMaxTime) // Sliding behavior
@@ -770,7 +767,7 @@ public class PlayerController : MonoBehaviour
 
                 rb.velocity = Vector3.ClampMagnitude(rb.velocity, currentRunSpeed);
 
-                AkSoundEngine.PostEvent("SlideStop", GameObject.Find("Main Camera"));
+                AkSoundEngine.PostEvent("SlideStop", GameObject.Find("AudioBus"));
 
                 // Move the camera back to give the player feedback that they are finished sliding.
                 //cameraTransform.position = this.transform.position;
@@ -788,7 +785,7 @@ public class PlayerController : MonoBehaviour
                 // This gets set back to true once the player has moved downwards during a jump or grapple, or has otherwise collided with an object.
                 canWalkOnGround = false;
 
-                AkSoundEngine.PostEvent("JumpGirl", GameObject.Find("Main Camera"));
+                AkSoundEngine.PostEvent("JumpGirl", GameObject.Find("AudioBus"));
 
                 // To jump off of a surface based on angle and magnitude of incidence, the angle must be straighter than 75 degrees (which is almost flat to the
                 //  surface), they must have been against the surface for < angleJumpCooldown seconds, and the velocity of the incidence must be high enough.
@@ -832,16 +829,16 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(cameraTransform.position, lastGrapplableRaycastPoint - cameraTransform.position, out hit, GrappleDistance, GrapplableMask) &&
             grapplableTimer < grapplableMaxTime)
         {
-            AkSoundEngine.PostEvent("GrappleLaunch", GameObject.Find("Main Camera"));
+            AkSoundEngine.PostEvent("GrappleLaunch", GameObject.Find("AudioBus"));
 
             if (isPulling)
             {
-                AkSoundEngine.PostEvent("GrappleReel", GameObject.Find("Main Camera"));
+                AkSoundEngine.PostEvent("GrappleReel", GameObject.Find("AudioBus"));
             }
 
             else if (!isPulling)
             {
-                AkSoundEngine.PostEvent("GrappleSwing", GameObject.Find("Main Camera"));
+                AkSoundEngine.PostEvent("GrappleSwing", GameObject.Find("AudioBus"));
             }
 
             currentGrappledObject = hit.collider.gameObject;
