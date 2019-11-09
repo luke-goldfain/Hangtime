@@ -42,7 +42,11 @@
 				</SoundBank>
 				<SoundBank Name="Music" ID="{0BDE3399-A89F-42A5-9B6A-2FBC7DCD9456}">
 					<ObjectInclusionList>
+						<ObjectRef Name="MenuMusicPlay" ID="{D2A87669-14D1-4154-A0DD-DDBB8CF58178}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="IntroMusicPlay" ID="{A8535CCC-6E04-4713-A85B-B09EE7FB162B}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="DesertMusicPlay" ID="{E0C56AC0-B3CB-4725-BD81-1F101BAE2DC8}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="IntroMusicStop" ID="{B83F7B24-FF21-4BAB-A5DC-05B1552E4329}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="MenuMusicStop" ID="{B60F917B-70FC-4DB5-897E-ABE125E1E363}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

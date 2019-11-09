@@ -168,11 +168,23 @@
 			<Path>Music.bnk</Path>
 			<IncludedEvents>
 				<Event Id="3858969937" Name="DesertMusicPlay" ObjectPath="\Events\Default Work Unit\DesertMusicPlay" DurationType="OneShot" DurationMin="181.714264" DurationMax="181.714264"/>
+				<Event Id="2375980536" Name="IntroMusicPlay" ObjectPath="\Events\Default Work Unit\IntroMusicPlay" DurationType="OneShot" DurationMin="6.857146" DurationMax="6.857146"/>
+				<Event Id="453460554" Name="IntroMusicStop" ObjectPath="\Events\Default Work Unit\IntroMusicStop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="3006414291" Name="MenuMusicPlay" ObjectPath="\Events\Default Work Unit\MenuMusicPlay" DurationType="OneShot" DurationMin="41.142853" DurationMax="41.142853"/>
+				<Event Id="2136433081" Name="MenuMusicStop" ObjectPath="\Events\Default Work Unit\MenuMusicStop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
-				<File Id="338133083" Language="SFX">
-					<ShortName>RR Music_Hangtime_Gameplay_v01.wav</ShortName>
-					<Path>SFX\RR Music_Hangtime_Gameplay_v01_10C4C929.wem</Path>
+				<File Id="292356306" Language="SFX">
+					<ShortName>RR Music_Hangtime_Gameplay_v02.wav</ShortName>
+					<Path>SFX\RR Music_Hangtime_Gameplay_v02_10C4C929.wem</Path>
+				</File>
+				<File Id="294607652" Language="SFX">
+					<ShortName>RR Music_Hangtime_Intro_v02.wav</ShortName>
+					<Path>SFX\RR Music_Hangtime_Intro_v02_10C4C929.wem</Path>
+				</File>
+				<File Id="527271565" Language="SFX">
+					<ShortName>RR Music_Hangtime_Start Menu_v02.wav</ShortName>
+					<Path>SFX\RR Music_Hangtime_Start Menu_v02_10C4C929.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>

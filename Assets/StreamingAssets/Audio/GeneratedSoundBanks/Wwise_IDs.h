@@ -27,8 +27,12 @@ namespace AK
         static const AkUniqueID GRAPPLESWING = 1361101372U;
         static const AkUniqueID GRAPPLESWITCH = 3998983238U;
         static const AkUniqueID HIGHLIGHT = 3174665583U;
+        static const AkUniqueID INTROMUSICPLAY = 2375980536U;
+        static const AkUniqueID INTROMUSICSTOP = 453460554U;
         static const AkUniqueID JUMPGIRL = 2340384243U;
         static const AkUniqueID LAND = 674522502U;
+        static const AkUniqueID MENUMUSICPLAY = 3006414291U;
+        static const AkUniqueID MENUMUSICSTOP = 2136433081U;
         static const AkUniqueID ORBHUM = 119923798U;
         static const AkUniqueID SELECT = 1432588725U;
         static const AkUniqueID SLIDE = 3686556480U;
