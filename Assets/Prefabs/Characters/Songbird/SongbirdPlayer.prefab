@@ -5045,7 +5045,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.23
   far clip plane: 1000
   field of view: 92
   orthographic: 0
@@ -5201,7 +5201,7 @@ MonoBehaviour:
   MaxReboundJumpForce: 30
   GrappleTravelTime: 0.3
   RespawnHeight: -20
-  grapplingHookPrefab: {fileID: 1772408175462317669, guid: 6b1745b14708d584caf415149fda3c1f,
+  grapplingHookPrefab: {fileID: 1592073762446353313, guid: 3905effac2295ad49a81e64a062e5476,
     type: 3}
   ropeSectionPrefab: {fileID: 6702158368456008991, guid: 5ced27e9f366695499962e9fa2a86f94,
     type: 3}
@@ -5210,6 +5210,7 @@ MonoBehaviour:
   slidePRight: {fileID: 8356055691355713211}
   slidePLeft: {fileID: 6063352602568941780}
   playerCamera: {fileID: 7358587844798094045}
+  cameraParent: {fileID: 5413358930254261737}
   Reticle: {fileID: 0}
   Speedometer: {fileID: 0}
   SpeedometerText: {fileID: 0}
@@ -5232,7 +5233,6 @@ MonoBehaviour:
   cameraObjToFollow: {fileID: 3473657089682592750}
   AcceptsInput: 1
   inWindZone: 0
-  PlayerListener: {fileID: 0}
 --- !u!114 &2039760664162703492
 MonoBehaviour:
   m_ObjectHideFlags: 0

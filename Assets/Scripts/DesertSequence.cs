@@ -13,6 +13,8 @@ using UnityEngine;
 public class DesertSequence : MonoBehaviour
 {
     [SerializeField]
+    private GameObject SkipText;
+    [SerializeField]
     private GameObject Cam1;
     [SerializeField]
     private GameObject Cam2;
@@ -27,13 +29,50 @@ public class DesertSequence : MonoBehaviour
     [SerializeField]
     private GameObject SpawnManager;
     [SerializeField]
-    private GameObject MainCanvas;
+    private GameObject CountdownText;
+
+    private bool cutsceneIsPlaying;
+
+    private Coroutine sequence;
+
     void Start()
     {
-        StartCoroutine (TheSequence());
+        sequence = StartCoroutine (TheSequence());
     }
+
+
+    private void Update()
+    {
+        if (cutsceneIsPlaying && 
+            (Input.GetButtonDown("P1Start") || 
+             Input.GetButtonDown("P2Start") ||
+             Input.GetButtonDown("P3Start") ||
+             Input.GetButtonDown("P4Start")))
+        {
+            StopCoroutine(sequence);
+
+            cutsceneIsPlaying = false;
+
+            SkipText.SetActive(false);
+
+            // Set any active cameras to inactive, with the exception of Cam1, because it contains an audio listener.
+            if (Cam1.GetComponent<Camera>().enabled) Cam1.GetComponent<Camera>().enabled = false;
+            if (Cam2.activeInHierarchy) Cam2.SetActive(false);
+            if (Cam3.activeInHierarchy) Cam3.SetActive(false);
+            if (Cam4.activeInHierarchy) Cam4.SetActive(false);
+            if (Cam5.activeInHierarchy) Cam5.SetActive(false);
+
+            // Set gameplay-relevant objects active.
+            FollowOrb.SetActive(true);
+            CountdownText.SetActive(true);
+            SpawnManager.SetActive(true);
+        }
+    }
+
     IEnumerator TheSequence () // Plays each section of the animation one at a time.
     {
+        cutsceneIsPlaying = true;
+
         yield return new WaitForSeconds(4);
         Cam2.SetActive(true);
         Cam1.GetComponent<Camera>().enabled = false;
@@ -55,9 +94,12 @@ public class DesertSequence : MonoBehaviour
 
         yield return new WaitForSeconds(27);
         FollowOrb.SetActive(true);
-        MainCanvas.SetActive(true);
+        CountdownText.SetActive(true);
         SpawnManager.SetActive(true);
         Cam5.SetActive(false);
+        SkipText.SetActive(false);
+
+        cutsceneIsPlaying = false;
     }
 
 }

@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704136295498238076}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9042846237791479281}
@@ -233,7 +233,7 @@ MonoBehaviour:
   MaxReboundJumpForce: 30
   GrappleTravelTime: 0.3
   RespawnHeight: -20
-  grapplingHookPrefab: {fileID: 1772408175462317669, guid: 6b1745b14708d584caf415149fda3c1f,
+  grapplingHookPrefab: {fileID: 875403846717168207, guid: 9d04d83a719d34442bc0d699d7216c9a,
     type: 3}
   ropeSectionPrefab: {fileID: 6702158368456008991, guid: 5ced27e9f366695499962e9fa2a86f94,
     type: 3}
@@ -242,6 +242,7 @@ MonoBehaviour:
   slidePRight: {fileID: 2030491159770446874}
   slidePLeft: {fileID: 4322953730369303157}
   playerCamera: {fileID: 704136295498238076}
+  cameraParent: {fileID: 7447112258098733806}
   Reticle: {fileID: 0}
   Speedometer: {fileID: 0}
   SpeedometerText: {fileID: 0}
@@ -264,7 +265,6 @@ MonoBehaviour:
   cameraObjToFollow: {fileID: 1684410019208096794}
   AcceptsInput: 1
   inWindZone: 0
-  PlayerListener: {fileID: 0}
 --- !u!114 &8328777589328497189
 MonoBehaviour:
   m_ObjectHideFlags: 0

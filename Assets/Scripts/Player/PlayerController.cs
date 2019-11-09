@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject playerCamera;
 
+    [SerializeField]
+    private GameObject cameraParent;
+
     [HideInInspector]
     public GameObject Reticle, Speedometer, SpeedometerText,
                       SpeedometerNeedle, PCompass, CheckpointMeter,
@@ -234,7 +237,7 @@ public class PlayerController : MonoBehaviour
     {
         cameraTransform = playerCamera.transform;
 
-        cameraTransform.position = cameraObjToFollow.transform.position;
+        cameraParent.transform.position = cameraObjToFollow.transform.position;
 
         // Restore input once initial countdown is finished. inCountdown variable 
         // required to allow other events to remove input.
@@ -313,6 +316,7 @@ public class PlayerController : MonoBehaviour
 
             // Make the grappling hook travel from the player to the grapple point over the time it takes for the grapple to "travel".
             grapplingHook.transform.position = this.transform.position + (GrappleHitPosition - this.transform.position) * (currentGrappleTravelTime / GrappleTravelTime);
+            grapplingHook.transform.rotation = Quaternion.LookRotation(GrappleHitPosition - this.transform.position);
         }
 
         if (currentGrappleTravelTime >= GrappleTravelTime && (Input.GetButton(playerFireButton) || triggerPressed))
