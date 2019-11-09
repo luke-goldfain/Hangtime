@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     public float GrappleTravelTime = 0.3f;
     [Tooltip("The height at which the player will respawn at their last reached checkpoint.")]
     public float RespawnHeight = -20f;
+    [Tooltip("The ratio used to determine the air control provided by holding a direction. 0.3 is the default."), Range(0, 5)]
+    public float AirControlRatio = 0.3f;
 
     [SerializeField]
     private GameObject grapplingHookPrefab;
@@ -614,13 +616,13 @@ public class PlayerController : MonoBehaviour
             float vAxis = Input.GetAxisRaw(playerVerticalAxis);
 
             // Give the player air control, relative to their current velocity so that it is always noticeable.
-            if (Vector3.Angle(new Vector3(rb.velocity.x, 0f, rb.velocity.z), this.transform.TransformDirection(new Vector3(hAxis, 0, vAxis))) > 70)
+            if (Vector3.Angle(new Vector3(rb.velocity.x, 0f, rb.velocity.z), this.transform.TransformDirection(new Vector3(hAxis, 0, vAxis))) > 75)
             {
-                rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * rb.velocity.magnitude * 0.3f);
+                rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * rb.velocity.magnitude * AirControlRatio);
             }
             else
             {
-                rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * rb.velocity.magnitude * 0.02f);
+                rb.AddRelativeForce(new Vector3(hAxis, 0, vAxis) * rb.velocity.magnitude * AirControlRatio * .06f);
             }
 
             LerpSpeedToLimit();
