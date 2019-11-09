@@ -61,7 +61,7 @@ Camera:
   field of view: 75
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 48951
@@ -233,7 +233,6 @@ MonoBehaviour:
   MaxReboundJumpForce: 30
   GrappleTravelTime: 0.3
   RespawnHeight: -20
-  AirControlRatio: 0.6
   grapplingHookPrefab: {fileID: 1772408175462317669, guid: 6b1745b14708d584caf415149fda3c1f,
     type: 3}
   ropeSectionPrefab: {fileID: 6702158368456008991, guid: 5ced27e9f366695499962e9fa2a86f94,
@@ -10106,11 +10105,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6604876208928569697, guid: 6d04ea7d175ebf7449df2908bd796ee8,
-        type: 3}
-      propertyPath: m_Name
-      value: Pinky
       objectReference: {fileID: 0}
     - target: {fileID: 6604876208928569697, guid: 6d04ea7d175ebf7449df2908bd796ee8,
         type: 3}
