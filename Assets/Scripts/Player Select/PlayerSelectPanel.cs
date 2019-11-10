@@ -19,6 +19,9 @@ public class PlayerSelectPanel : MonoBehaviour
     private GameObject controlsPanel;
 
     [SerializeField]
+    private GameObject startButton;
+
+    [SerializeField]
     private Transform playerLocation;
 
     [SerializeField]
@@ -31,6 +34,9 @@ public class PlayerSelectPanel : MonoBehaviour
     private void Start()
     {
         modelInserted = false;
+
+        startButton = GameObject.FindGameObjectWithTag("StartButton");
+        startButton.GetComponent<Selectable>().interactable = false;
 
         //this.SelectableComponent.GetComponent<Selectable>().interactable = false;
     }
@@ -102,6 +108,8 @@ public class PlayerSelectPanel : MonoBehaviour
         }
 
         playerModel.SetActive(true);
+
+        startButton.GetComponent<Selectable>().interactable = true;
 
         GameStats.PlayersReady[playerNumber - 1] = true;
     }

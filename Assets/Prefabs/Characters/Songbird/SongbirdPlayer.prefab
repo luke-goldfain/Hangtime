@@ -5203,10 +5203,10 @@ MonoBehaviour:
   RespawnHeight: -20
   grapplingHookPrefab: {fileID: 1592073762446353313, guid: 3905effac2295ad49a81e64a062e5476,
     type: 3}
+  characterHookMesh: {fileID: 8161301876326555159}
   ropeSectionPrefab: {fileID: 6702158368456008991, guid: 5ced27e9f366695499962e9fa2a86f94,
     type: 3}
   HUD: {fileID: 0}
-  windZone: {fileID: 0}
   slidePRight: {fileID: 8356055691355713211}
   slidePLeft: {fileID: 6063352602568941780}
   playerCamera: {fileID: 7358587844798094045}
@@ -5232,7 +5232,6 @@ MonoBehaviour:
     m_Bits: 1
   cameraObjToFollow: {fileID: 3473657089682592750}
   AcceptsInput: 1
-  inWindZone: 0
 --- !u!114 &2039760664162703492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10572,6 +10571,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 0.8108976
       objectReference: {fileID: 0}
+    - target: {fileID: 168766327016582825, guid: 11a7b38c3d595b04c935b22975e0d8c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5716681864270162303, guid: 11a7b38c3d595b04c935b22975e0d8c6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 11a7b38c3d595b04c935b22975e0d8c6, type: 3}
@@ -10590,6 +10594,12 @@ Transform:
 --- !u!1 &3473657089682592750 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4386021717638716592, guid: 11a7b38c3d595b04c935b22975e0d8c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8292623093242966206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8161301876326555159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 168766327016582825, guid: 11a7b38c3d595b04c935b22975e0d8c6,
     type: 3}
   m_PrefabInstance: {fileID: 8292623093242966206}
   m_PrefabAsset: {fileID: 0}
