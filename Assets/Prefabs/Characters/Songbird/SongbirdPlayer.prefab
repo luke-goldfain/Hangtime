@@ -5223,8 +5223,8 @@ MonoBehaviour:
   ModeIndicator: {fileID: 0}
   ObjectiveIndicator: {fileID: 0}
   PlayerMinimap: {fileID: 0}
-  pullIcon: {fileID: 21300000, guid: dfb07526d7205f14ab33cfb19d97623d, type: 3}
-  swingIcon: {fileID: 21300000, guid: e6dfdcdcaa29bff4ba4a1b5368e64087, type: 3}
+  pullIcon: {fileID: 21300000, guid: 8af2e0c67936e36438ab3ae61dde6a63, type: 3}
+  swingIcon: {fileID: 21300000, guid: 495acd4526d1b844a8d949976c73bc59, type: 3}
   PlayerNumber: 1
   PlayerViewNumber: 0
   GrapplableMask:
@@ -10106,6 +10106,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 168766327016582825, guid: 11a7b38c3d595b04c935b22975e0d8c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4361457793710065524, guid: 11a7b38c3d595b04c935b22975e0d8c6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -10570,11 +10575,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.8108976
-      objectReference: {fileID: 0}
-    - target: {fileID: 168766327016582825, guid: 11a7b38c3d595b04c935b22975e0d8c6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5716681864270162303, guid: 11a7b38c3d595b04c935b22975e0d8c6, type: 3}

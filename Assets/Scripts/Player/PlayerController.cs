@@ -937,7 +937,12 @@ public class PlayerController : MonoBehaviour
             SpeedometerText.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
         }
 
-        ModeIndicator.transform.position = new Vector2(spedX + (Speedometer.GetComponent<RectTransform>().rect.width * 2), spedY);
+        ModeIndicator.transform.position = new Vector2(spedX + ((Speedometer.GetComponent<RectTransform>().rect.width * Speedometer.transform.localScale.x) * 2 + 10), spedY);
+
+        if (numberOfPlayers > 2)
+        {
+            ModeIndicator.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+        }
 
         ModeIndicator.GetComponent<Image>().sprite = pullIcon;
 
