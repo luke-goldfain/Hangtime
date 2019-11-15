@@ -5045,7 +5045,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.23
   far clip plane: 1000
   field of view: 92
   orthographic: 0
@@ -5201,15 +5201,16 @@ MonoBehaviour:
   MaxReboundJumpForce: 30
   GrappleTravelTime: 0.3
   RespawnHeight: -20
-  grapplingHookPrefab: {fileID: 1772408175462317669, guid: 6b1745b14708d584caf415149fda3c1f,
+  grapplingHookPrefab: {fileID: 1592073762446353313, guid: 3905effac2295ad49a81e64a062e5476,
     type: 3}
+  characterHookMesh: {fileID: 8161301876326555159}
   ropeSectionPrefab: {fileID: 6702158368456008991, guid: 5ced27e9f366695499962e9fa2a86f94,
     type: 3}
   HUD: {fileID: 0}
-  windZone: {fileID: 0}
   slidePRight: {fileID: 8356055691355713211}
   slidePLeft: {fileID: 6063352602568941780}
   playerCamera: {fileID: 7358587844798094045}
+  cameraParent: {fileID: 5413358930254261737}
   Reticle: {fileID: 0}
   Speedometer: {fileID: 0}
   SpeedometerText: {fileID: 0}
@@ -5222,8 +5223,8 @@ MonoBehaviour:
   ModeIndicator: {fileID: 0}
   ObjectiveIndicator: {fileID: 0}
   PlayerMinimap: {fileID: 0}
-  pullIcon: {fileID: 21300000, guid: dfb07526d7205f14ab33cfb19d97623d, type: 3}
-  swingIcon: {fileID: 21300000, guid: e6dfdcdcaa29bff4ba4a1b5368e64087, type: 3}
+  pullIcon: {fileID: 21300000, guid: 8af2e0c67936e36438ab3ae61dde6a63, type: 3}
+  swingIcon: {fileID: 21300000, guid: 495acd4526d1b844a8d949976c73bc59, type: 3}
   PlayerNumber: 1
   PlayerViewNumber: 0
   GrapplableMask:
@@ -5231,8 +5232,6 @@ MonoBehaviour:
     m_Bits: 1
   cameraObjToFollow: {fileID: 3473657089682592750}
   AcceptsInput: 1
-  inWindZone: 0
-  PlayerListener: {fileID: 0}
 --- !u!114 &2039760664162703492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10107,6 +10106,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 168766327016582825, guid: 11a7b38c3d595b04c935b22975e0d8c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4361457793710065524, guid: 11a7b38c3d595b04c935b22975e0d8c6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -10590,6 +10594,12 @@ Transform:
 --- !u!1 &3473657089682592750 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4386021717638716592, guid: 11a7b38c3d595b04c935b22975e0d8c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8292623093242966206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8161301876326555159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 168766327016582825, guid: 11a7b38c3d595b04c935b22975e0d8c6,
     type: 3}
   m_PrefabInstance: {fileID: 8292623093242966206}
   m_PrefabAsset: {fileID: 0}

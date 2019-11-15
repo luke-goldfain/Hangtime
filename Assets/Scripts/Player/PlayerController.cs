@@ -23,24 +23,27 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The height at which the player will respawn at their last reached checkpoint.")]
     public float RespawnHeight = -20f;
 
-    [SerializeField]
+    [SerializeField, Tooltip("The prefab for the character's hook model.")]
     private GameObject grapplingHookPrefab;
 
-    [SerializeField]
+    [SerializeField, Tooltip("The instantiated mesh for the grappling hook currently on the character prefab. This is set inactive when grappling.")]
+    private GameObject characterHookMesh;
+
+    [SerializeField, Tooltip("The prefab for a single section of rope.")]
     private GameObject ropeSectionPrefab;
 
-    [SerializeField]
+    [SerializeField, Tooltip("The instance for the player's HUD. Populated on runtime.")]
     public GameObject HUD;
 
-    [SerializeField]
-    public GameObject windZone;
-
-    [SerializeField]
+    [SerializeField, Tooltip("The instances for the character's slide particle trails.")]
     private GameObject slidePRight, slidePLeft;
     //public GameObject Reticle, Speedometer, CheckpointMeter, CheckpointMeterFill;
 
     [SerializeField]
     private GameObject playerCamera;
+
+    [SerializeField]
+    private GameObject cameraParent;
 
     [HideInInspector]
     public GameObject Reticle, Speedometer, SpeedometerText,
@@ -64,11 +67,6 @@ public class PlayerController : MonoBehaviour
     private GameObject cameraObjToFollow;
 
     public bool AcceptsInput = true;
-
-    [SerializeField]
-    private bool inWindZone = false;
-
-
 
     private Animator anim;
 
@@ -234,7 +232,7 @@ public class PlayerController : MonoBehaviour
     {
         cameraTransform = playerCamera.transform;
 
-        cameraTransform.position = cameraObjToFollow.transform.position;
+        cameraParent.transform.position = cameraObjToFollow.transform.position;
 
         // Restore input once initial countdown is finished. inCountdown variable 
         // required to allow other events to remove input.
@@ -311,8 +309,12 @@ public class PlayerController : MonoBehaviour
         {
             currentGrappleTravelTime += Time.deltaTime;
 
+            // Remove the grappling hook mesh from the character model, since a new one has been created.
+            characterHookMesh.SetActive(false);
+
             // Make the grappling hook travel from the player to the grapple point over the time it takes for the grapple to "travel".
             grapplingHook.transform.position = this.transform.position + (GrappleHitPosition - this.transform.position) * (currentGrappleTravelTime / GrappleTravelTime);
+            grapplingHook.transform.rotation = Quaternion.LookRotation(GrappleHitPosition - this.transform.position);
         }
 
         if (currentGrappleTravelTime >= GrappleTravelTime && (Input.GetButton(playerFireButton) || triggerPressed))
@@ -396,30 +398,6 @@ public class PlayerController : MonoBehaviour
             // Conditional operator: if cursor unlocked, lock cursor, otherwise unlock cursor
             Cursor.lockState = (Cursor.lockState == CursorLockMode.Locked)? CursorLockMode.None : CursorLockMode.Locked;
         }
-
-        // Get ForceField component and allows player to edit the effects of ForceField Colliders
-        if (inWindZone)
-        {
-               rb.AddForce(windZone.GetComponent<ForceField>().ForceDirection * windZone.GetComponent<ForceField>().ForceStrength);
-        }
-
-    }
-
-    void OnTriggerEnter(Collider coll) // start applying force when player enters ForceField's collider
-    {
-        if(coll.gameObject.tag == "ForceField")
-        {
-           windZone = coll.gameObject;
-           inWindZone = true;
-        }
-    }
-
-    void OnTriggerExit(Collider coll) // Stops applying force when player leaves ForceField's collider
-    {
-        if(coll.gameObject.tag == "ForceField")
-        {
-          inWindZone = false;
-        }
     }
 
     private void UpdateSpeedometer()
@@ -438,6 +416,8 @@ public class PlayerController : MonoBehaviour
                 {
                     anim.SetInteger("Condition", 2);
                     anim.SetBool("ButtonDown", false);
+
+                    characterHookMesh.SetActive(true);
 
                     hasAirDashed = false;
 
@@ -461,6 +441,8 @@ public class PlayerController : MonoBehaviour
             case State.onGround:
                 {
                     anim.SetInteger("Condition", 1);
+
+                    characterHookMesh.SetActive(true);
 
                     canWalkOnGround = true;
 
@@ -955,7 +937,12 @@ public class PlayerController : MonoBehaviour
             SpeedometerText.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
         }
 
-        ModeIndicator.transform.position = new Vector2(spedX + (Speedometer.GetComponent<RectTransform>().rect.width * 2), spedY);
+        ModeIndicator.transform.position = new Vector2(spedX + ((Speedometer.GetComponent<RectTransform>().rect.width * Speedometer.transform.localScale.x) * 2 + 10), spedY);
+
+        if (numberOfPlayers > 2)
+        {
+            ModeIndicator.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+        }
 
         ModeIndicator.GetComponent<Image>().sprite = pullIcon;
 

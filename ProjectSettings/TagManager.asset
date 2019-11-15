@@ -12,6 +12,7 @@ TagManager:
   - Power up
   - WindArea
   - Countdown
+  - StartButton
   layers:
   - Default
   - TransparentFX

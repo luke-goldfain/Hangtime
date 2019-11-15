@@ -98,7 +98,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -8302,7 +8302,7 @@ GameObject:
   - component: {fileID: 508210815}
   - component: {fileID: 508210814}
   m_Layer: 0
-  m_Name: Desert Sequence
+  m_Name: Desert Sequence Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8320,6 +8320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9c0ce2d65a63f4a9856960a328c9cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SkipText: {fileID: 1908885381}
   Cam1: {fileID: 37489039}
   Cam2: {fileID: 1724718416}
   Cam3: {fileID: 995362313}
@@ -8327,7 +8328,7 @@ MonoBehaviour:
   Cam5: {fileID: 1197324328}
   FollowOrb: {fileID: 193877204}
   SpawnManager: {fileID: 2116787546}
-  MainCanvas: {fileID: 1908885380}
+  CountdownText: {fileID: 1908885380}
 --- !u!4 &508210815
 Transform:
   m_ObjectHideFlags: 0
@@ -23737,11 +23738,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6606040730226295269, guid: 2dfc82831ba4af2469c1353fffcb2b40,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6606040730226295289, guid: 2dfc82831ba4af2469c1353fffcb2b40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23847,11 +23843,32 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6129766491218027095, guid: 2dfc82831ba4af2469c1353fffcb2b40,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818091490831460536, guid: 2dfc82831ba4af2469c1353fffcb2b40,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 26.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818091490831460536, guid: 2dfc82831ba4af2469c1353fffcb2b40,
+        type: 3}
+      propertyPath: m_fontSizeMax
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dfc82831ba4af2469c1353fffcb2b40, type: 3}
 --- !u!1 &1908885380 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6606040730226295269, guid: 2dfc82831ba4af2469c1353fffcb2b40,
+  m_CorrespondingSourceObject: {fileID: 6606040729819314335, guid: 2dfc82831ba4af2469c1353fffcb2b40,
+    type: 3}
+  m_PrefabInstance: {fileID: 1908885379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1908885381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4717557676181520407, guid: 2dfc82831ba4af2469c1353fffcb2b40,
     type: 3}
   m_PrefabInstance: {fileID: 1908885379}
   m_PrefabAsset: {fileID: 0}
