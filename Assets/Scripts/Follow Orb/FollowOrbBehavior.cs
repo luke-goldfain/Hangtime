@@ -46,6 +46,8 @@ public class FollowOrbBehavior : MonoBehaviour
 
         speed = minSpeed;
         speedToLerp = maxSpeed;
+
+        AkSoundEngine.PostEvent("OrbHum", GameObject.Find("AudioBus"));
     }
 
     // Update is called once per frame
@@ -177,6 +179,7 @@ public class FollowOrbBehavior : MonoBehaviour
         if (Physics.Raycast(this.transform.position + (Vector3.down * 4), Vector3.down, out RaycastHit hit, Mathf.Infinity, CheckpointMask))
         {
             Instantiate(FinishZonePrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+            AkSoundEngine.PostEvent("OrbHummStop", GameObject.Find("AudioBus"));
         }
     }
 }

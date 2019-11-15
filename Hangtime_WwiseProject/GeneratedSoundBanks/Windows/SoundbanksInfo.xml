@@ -108,6 +108,7 @@
 			<IncludedEvents>
 				<Event Id="331740044" Name="CheckpointDrop" ObjectPath="\Events\Default Work Unit\CheckpointDrop" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="1.212813" DurationMax="1.212813"/>
 				<Event Id="119923798" Name="OrbHum" ObjectPath="\Events\Default Work Unit\OrbHum" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="2707520382" Name="OrbHumStop" ObjectPath="\Events\Default Work Unit\OrbHumStop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="912215563" Language="SFX">
@@ -162,21 +163,26 @@
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
+		<SoundBank Id="3930136735" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\Dialogue</ObjectPath>
+			<ShortName>Dialogue</ShortName>
+			<Path>Dialogue.bnk</Path>
+		</SoundBank>
 		<SoundBank Id="3991942870" Language="SFX">
 			<ObjectPath>\SoundBanks\Default Work Unit\Music</ObjectPath>
 			<ShortName>Music</ShortName>
 			<Path>Music.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3858969937" Name="DesertMusicPlay" ObjectPath="\Events\Default Work Unit\DesertMusicPlay" DurationType="OneShot" DurationMin="181.714264" DurationMax="181.714264"/>
+				<Event Id="3858969937" Name="DesertMusicPlay" ObjectPath="\Events\Default Work Unit\DesertMusicPlay" DurationType="Infinite"/>
 				<Event Id="2375980536" Name="IntroMusicPlay" ObjectPath="\Events\Default Work Unit\IntroMusicPlay" DurationType="OneShot" DurationMin="6.857146" DurationMax="6.857146"/>
 				<Event Id="453460554" Name="IntroMusicStop" ObjectPath="\Events\Default Work Unit\IntroMusicStop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="3006414291" Name="MenuMusicPlay" ObjectPath="\Events\Default Work Unit\MenuMusicPlay" DurationType="OneShot" DurationMin="41.142853" DurationMax="41.142853"/>
+				<Event Id="3006414291" Name="MenuMusicPlay" ObjectPath="\Events\Default Work Unit\MenuMusicPlay" DurationType="Infinite"/>
 				<Event Id="2136433081" Name="MenuMusicStop" ObjectPath="\Events\Default Work Unit\MenuMusicStop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="292356306" Language="SFX">
 					<ShortName>RR Music_Hangtime_Gameplay_v02.wav</ShortName>
-					<Path>SFX\RR Music_Hangtime_Gameplay_v02_10C4C929.wem</Path>
+					<Path>SFX\RR Music_Hangtime_Gameplay_v02_D79FB2B7.wem</Path>
 				</File>
 				<File Id="294607652" Language="SFX">
 					<ShortName>RR Music_Hangtime_Intro_v02.wav</ShortName>
@@ -184,7 +190,7 @@
 				</File>
 				<File Id="527271565" Language="SFX">
 					<ShortName>RR Music_Hangtime_Start Menu_v02.wav</ShortName>
-					<Path>SFX\RR Music_Hangtime_Start Menu_v02_10C4C929.wem</Path>
+					<Path>SFX\RR Music_Hangtime_Start Menu_v02_D79FB2B7.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>

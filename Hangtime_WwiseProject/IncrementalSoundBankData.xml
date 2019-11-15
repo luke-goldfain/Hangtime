@@ -4,15 +4,16 @@
 		<Banks>
 			<Language ID="393239870">
 				<File Name="Character" Hash="167394786" Timestamp="1572580115"/>
+				<File Name="Dialogue" Hash="2675539656" Timestamp="1573787875"/>
 				<File Name="Init" Hash="1182415902" Timestamp="1572573640"/>
 				<File Name="Menu" Hash="1038255752" Timestamp="1572575553"/>
-				<File Name="Music" Hash="1350270421" Timestamp="1573259335"/>
-				<File Name="Orb" Hash="3541426158" Timestamp="1572580115"/>
+				<File Name="Music" Hash="2769397334" Timestamp="1573787252"/>
+				<File Name="Orb" Hash="954264682" Timestamp="1573787875"/>
 			</Language>
 		</Banks>
 		<XMLInfo>
 			<Language ID="-1">
-				<File Name="" Hash="3818517549" Timestamp="1573259335"/>
+				<File Name="" Hash="1871271114" Timestamp="1573787875"/>
 			</Language>
 		</XMLInfo>
 	</Platform>
@@ -20,15 +21,16 @@
 		<Banks>
 			<Language ID="393239870">
 				<File Name="Character" Hash="167394786" Timestamp="1572580115"/>
+				<File Name="Dialogue" Hash="2675539656" Timestamp="1573787875"/>
 				<File Name="Init" Hash="2279659568" Timestamp="1572573640"/>
 				<File Name="Menu" Hash="1038255752" Timestamp="1572575553"/>
-				<File Name="Music" Hash="1350270421" Timestamp="1573259335"/>
-				<File Name="Orb" Hash="3541426158" Timestamp="1572580115"/>
+				<File Name="Music" Hash="2769397334" Timestamp="1573787252"/>
+				<File Name="Orb" Hash="954264682" Timestamp="1573787875"/>
 			</Language>
 		</Banks>
 		<XMLInfo>
 			<Language ID="-1">
-				<File Name="" Hash="2868511043" Timestamp="1573259335"/>
+				<File Name="" Hash="2661776492" Timestamp="1573787875"/>
 			</Language>
 		</XMLInfo>
 	</Platform>
