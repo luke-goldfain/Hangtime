@@ -884,6 +884,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<Sound Name="RR Music_Hangtime_Start Menu_v02" ID="{DF90EB26-C75F-4B66-B01D-A468684B5BDF}" ShortID="138496271">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2459D1A1-07E4-4666-85A0-33DBE3CD4699}"/>
@@ -922,6 +925,9 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="RR Music_Hangtime_Gameplay_v02" ID="{B8CEE872-CD54-4BCF-8A6D-97CBA4B7FD90}" ShortID="45399052">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2459D1A1-07E4-4666-85A0-33DBE3CD4699}"/>
@@ -945,6 +951,17 @@
 						</Sound>
 					</ChildrenList>
 				</ActorMixer>
+				<SwitchContainer Name="Dialogue" ID="{D932A56E-6F89-408C-8896-AA97734456F0}" ShortID="619401587">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2459D1A1-07E4-4666-85A0-33DBE3CD4699}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3141388D-573E-4786-9D6B-C9808951A324}"/>
+						</Reference>
+					</ReferenceList>
+					<GroupingInfo/>
+				</SwitchContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

@@ -43,6 +43,7 @@ public class SetupManager : MonoBehaviour
     public void LoadScene(string sceneString)
     {
         SceneManager.LoadScene(sceneString);
+
     }
 
     // Closes the game.

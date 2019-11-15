@@ -36,6 +36,7 @@
 					<ObjectInclusionList>
 						<ObjectRef Name="OrbHum" ID="{210979B3-93ED-4A48-8EE7-2DC0B00C1821}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="CheckpointDrop" ID="{DFD51FE5-2463-4E89-B9CD-8F5937DB5800}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="OrbHumStop" ID="{3C4C2C4C-14E1-4F7A-95F8-BA9A6D62907A}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
@@ -48,6 +49,11 @@
 						<ObjectRef Name="IntroMusicStop" ID="{B83F7B24-FF21-4BAB-A5DC-05B1552E4329}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="MenuMusicStop" ID="{B60F917B-70FC-4DB5-897E-ABE125E1E363}" WorkUnitID="{13C548C9-2953-42A2-A8B2-D429744F047D}" Filter="7" Origin="Manual"/>
 					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Dialogue" ID="{6874DAA1-1DF6-4CAA-A1CA-F64CDEAB55B1}">
+					<ObjectInclusionList/>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>

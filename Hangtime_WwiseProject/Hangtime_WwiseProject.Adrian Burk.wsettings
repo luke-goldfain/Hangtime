@@ -6,6 +6,7 @@
 				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\Adrian Burk\Downloads"/>
 				<Property Name="Event Action List\{210979B3-93ED-4A48-8EE7-2DC0B00C1821}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{2F6D683E-3793-4D21-8036-A31A8B697A93}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{3C4C2C4C-14E1-4F7A-95F8-BA9A6D62907A}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{3D5B4BF2-08D3-415B-9885-52097B40DCFA}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{4488E2D5-35FC-4214-9424-A4DE4DD27061}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{4A395BE9-1D01-44B9-9531-AF81CE104B8A}\x64_Expand States" Type="string" Value=""/>
@@ -48,7 +49,7 @@
 				<Property Name="General\LatestPlatform" Type="string" Value="Mac"/>
 				<Property Name="GenerateSoundBanks\x64_SelectedLanguages" Type="string" Value=""/>
 				<Property Name="GenerateSoundBanks\x64_SelectedPlatforms" Type="string" Value=""/>
-				<Property Name="GenerateSoundBanks\x64_SelectedSoundBanks" Type="string" Value="8FlJ1EhYDECaNpguGfosZicvZbzPXVhNrdRktsTRI7OZM94Ln6ilQptqL7x9zZRWLs6g0LKgeUiF0oM0fN9xCQ=="/>
+				<Property Name="GenerateSoundBanks\x64_SelectedSoundBanks" Type="string" Value="8FlJ1EhYDECaNpguGfosZicvZbzPXVhNrdRktsTRI7OZM94Ln6ilQptqL7x9zZRWLs6g0LKgeUiF0oM0fN9xCaHadGj2HapMocr2TN6rVbE="/>
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}"/>
 				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups" Type="string" Value="L0ViX+/YTUufl4KQDXC+ZgH/////////GHqBX/N1ZU+SRAiVkTcqYQH/////////"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
@@ -64,8 +65,8 @@
 				<Property Name="PluginUserAcknowledge\SoundSeedAir" Type="bool" Value="True"/>
 				<Property Name="ProjectExplorer\FirstVisible_10_1" Type="string" Value="{4C96B38B-3DB4-40C7-91C9-665510E38993}"/>
 				<Property Name="ProjectExplorer\FirstVisible_11_1" Type="string" Value="{23EC2DE3-3ED8-4B82-AC99-92E25F2E4C6B}"/>
-				<Property Name="ProjectExplorer\FirstVisible_1_1" Type="string" Value="{882AEADD-BB89-4849-B35A-A626971D1F2C}"/>
-				<Property Name="ProjectExplorer\FirstVisible_3_1" Type="string" Value="{502D5234-703D-462C-94D4-8CD5A9D9CCC8}"/>
+				<Property Name="ProjectExplorer\FirstVisible_1_1" Type="string" Value="{6E496468-373D-4168-9DB7-96DBDCE49680}"/>
+				<Property Name="ProjectExplorer\FirstVisible_3_1" Type="string" Value="{CE3B631F-60EE-4A2A-9CB4-C96696B2B54E}"/>
 				<Property Name="ProjectExplorer\FirstVisible_4_1" Type="string" Value="{CB6175F1-6080-4A23-92EF-0807E304D0C1}"/>
 				<Property Name="ProjectExplorer\FirstVisible_6_1" Type="string" Value="{C98E673F-A24C-48A8-960F-10565FFE70A0}"/>
 				<Property Name="ProjectExplorer\FirstVisible_8_1" Type="string" Value="{41093F77-829F-4D88-8601-E8B25F3D4781}"/>
