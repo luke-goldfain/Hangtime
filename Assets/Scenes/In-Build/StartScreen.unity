@@ -620,8 +620,9 @@ RectTransform:
   - {fileID: 2071922825}
   - {fileID: 1251668896}
   - {fileID: 1502897143}
-  - {fileID: 2128368329}
+  - {fileID: 1152833985}
   - {fileID: 915932434}
+  - {fileID: 2128368329}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1136,7 +1137,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1218025318}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1330,6 +1331,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hangtime Logo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2252287849509430769, guid: 2f5bda8b1769035409b600be5f4132bd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2252287849509430770, guid: 2f5bda8b1769035409b600be5f4132bd,
         type: 3}
