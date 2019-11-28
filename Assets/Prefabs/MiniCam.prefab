@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 871764896145179288}
   - component: {fileID: 871764896145179290}
-  - component: {fileID: 871764896145179289}
   - component: {fileID: 3998644763881853883}
   m_Layer: 0
   m_Name: MiniCam
@@ -56,11 +55,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.6
   far clip plane: 1000
   field of view: 33.059917
   orthographic: 1
-  orthographic size: 99
+  orthographic size: 110
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -76,14 +75,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &871764896145179289
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 871764896145179295}
-  m_Enabled: 1
 --- !u!114 &3998644763881853883
 MonoBehaviour:
   m_ObjectHideFlags: 0
