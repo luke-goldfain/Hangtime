@@ -27049,11 +27049,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3191123198677519236, guid: 3e1fe07f54ede3340b27acea5b5348cf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3191123198677519238, guid: 3e1fe07f54ede3340b27acea5b5348cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27109,18 +27104,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
-        type: 3}
-      propertyPath: PinkyPrefab
-      value: 
-      objectReference: {fileID: 704136295773965611, guid: cf1705cd80a168a40920a531e1f5d8f2,
-        type: 3}
-    - target: {fileID: 3191123198677519239, guid: 3e1fe07f54ede3340b27acea5b5348cf,
-        type: 3}
-      propertyPath: SongbirdPrefab
-      value: 
-      objectReference: {fileID: 7358587845038202762, guid: af60a57179921004a8d6511649191295,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e1fe07f54ede3340b27acea5b5348cf, type: 3}
 --- !u!1 &2116787546 stripped

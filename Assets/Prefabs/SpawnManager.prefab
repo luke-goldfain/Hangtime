@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3191123198677519238
 Transform:
   m_ObjectHideFlags: 0
@@ -47,13 +47,13 @@ MonoBehaviour:
     type: 3}
   HUDPrefab: {fileID: 1780708271061067862, guid: c95830fe6ace4f5489f6877dd0a326af,
     type: 3}
-  PinkyPrefab: {fileID: 6604876208928569697, guid: 6d04ea7d175ebf7449df2908bd796ee8,
+  PinkyPrefab: {fileID: 704136295773965611, guid: cf1705cd80a168a40920a531e1f5d8f2,
     type: 3}
-  SongbirdPrefab: {fileID: 630226737003330634, guid: cd842f63ea7ddaf4cab454a19ec1b6a8,
+  SongbirdPrefab: {fileID: 7358587845038202762, guid: af60a57179921004a8d6511649191295,
     type: 3}
   InitialSpawnPoints:
-  - {x: 376, y: 48, z: -30}
-  - {x: 374, y: 48, z: -30}
   - {x: 372, y: 48, z: -30}
+  - {x: 374, y: 48, z: -30}
+  - {x: 376, y: 48, z: -30}
   - {x: 370, y: 48, z: -30}
   SpawnRotation: 180
