@@ -1308,11 +1308,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SetupManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2194367023590213058, guid: 7af622a5b4f015d45be205158bddcd37,
-        type: 3}
-      propertyPath: SelectOnStartup
-      value: 
-      objectReference: {fileID: 1251668895}
     - target: {fileID: 7095219286627573353, guid: 7af622a5b4f015d45be205158bddcd37,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1368,6 +1363,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2194367023590213058, guid: 7af622a5b4f015d45be205158bddcd37,
+        type: 3}
+      propertyPath: SelectOnStartup
+      value: 
+      objectReference: {fileID: 1251668895}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7af622a5b4f015d45be205158bddcd37, type: 3}
 --- !u!1 &2062725918
@@ -1703,6 +1703,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Work in Progress Label
+      objectReference: {fileID: 0}
+    - target: {fileID: 297480073923027433, guid: e5e9392fd74b32545862cbccf4dd0d9e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 297480073923027432, guid: e5e9392fd74b32545862cbccf4dd0d9e,
         type: 3}

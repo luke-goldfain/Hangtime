@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4292453, g: 0.84332216, b: 1, a: 0.92941177}
+  m_Color: {r: 0.4292453, g: 0.84332216, b: 1, a: 0.6}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -765,11 +765,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SetupManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2194367023590213058, guid: 7af622a5b4f015d45be205158bddcd37,
-        type: 3}
-      propertyPath: SelectOnStartup
-      value: 
-      objectReference: {fileID: 1789750943}
     - target: {fileID: 7095219286627573353, guid: 7af622a5b4f015d45be205158bddcd37,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -825,6 +820,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2194367023590213058, guid: 7af622a5b4f015d45be205158bddcd37,
+        type: 3}
+      propertyPath: SelectOnStartup
+      value: 
+      objectReference: {fileID: 1789750943}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7af622a5b4f015d45be205158bddcd37, type: 3}
 --- !u!114 &1821188349 stripped
@@ -890,7 +890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.76862746}
-  m_EffectDistance: {x: 2, y: -2}
+  m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
 --- !u!114 &1893597725
 MonoBehaviour:
@@ -928,7 +928,7 @@ MonoBehaviour:
   m_Text: 'Project Manager
 
 
-    Designer
+    Designed by
 
 
     Programmer
@@ -938,6 +938,9 @@ MonoBehaviour:
 
 
     Environment Artist
+
+
+    Music by
 
 '
 --- !u!222 &1893597726
@@ -999,7 +1002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.76862746}
-  m_EffectDistance: {x: 2, y: -2}
+  m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
 --- !u!114 &1982223869
 MonoBehaviour:
@@ -1037,7 +1040,7 @@ MonoBehaviour:
   m_Text: 'Timothy Chatman
 
 
-    Eric Lovelock
+    Timothy Chatman, Luke Goldfain, & Eric Lovelock
 
 
     Luke Goldfain
@@ -1047,6 +1050,9 @@ MonoBehaviour:
 
 
     Kyler Fleming
+
+
+    Ryan Redebaugh
 
 '
 --- !u!222 &1982223870
