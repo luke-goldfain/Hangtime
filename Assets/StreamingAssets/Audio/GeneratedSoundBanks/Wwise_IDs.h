@@ -34,6 +34,7 @@ namespace AK
         static const AkUniqueID MENUMUSICPLAY = 3006414291U;
         static const AkUniqueID MENUMUSICSTOP = 2136433081U;
         static const AkUniqueID ORBHUM = 119923798U;
+        static const AkUniqueID ORBHUMSTOP = 2707520382U;
         static const AkUniqueID SELECT = 1432588725U;
         static const AkUniqueID SLIDE = 3686556480U;
         static const AkUniqueID SLIDESTOP = 1780160584U;
@@ -43,6 +44,7 @@ namespace AK
     {
         static const AkUniqueID INIT = 1355168291U;
         static const AkUniqueID CHARACTER = 436743010U;
+        static const AkUniqueID DIALOGUE = 3930136735U;
         static const AkUniqueID MENU = 2607556080U;
         static const AkUniqueID MUSIC = 3991942870U;
         static const AkUniqueID ORB = 595159780U;

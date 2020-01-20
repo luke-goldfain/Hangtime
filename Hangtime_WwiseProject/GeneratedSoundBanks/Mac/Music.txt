@@ -6,7 +6,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	3858969937	DesertMusicPlay			\Default Work Unit\DesertMusicPlay	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	292356306	RR Music_Hangtime_Gameplay_v02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Mac\SFX\RR Music_Hangtime_Gameplay_v02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\RR Music_Hangtime_Gameplay_v02		34889284
+	292356306	RR Music_Hangtime_Gameplay_v02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Mac\SFX\RR Music_Hangtime_Gameplay_v02_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\RR Music_Hangtime_Gameplay_v02		34889284
 	294607652	RR Music_Hangtime_Intro_v02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Mac\SFX\RR Music_Hangtime_Intro_v02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\RR Music_Hangtime_Intro_v02		1316764
-	527271565	RR Music_Hangtime_Start Menu_v02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Mac\SFX\RR Music_Hangtime_Start Menu_v02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\RR Music_Hangtime_Start Menu_v02		7899620
+	527271565	RR Music_Hangtime_Start Menu_v02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Mac\SFX\RR Music_Hangtime_Start Menu_v02_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\RR Music_Hangtime_Start Menu_v02		7899620
 

@@ -38,6 +38,8 @@ public class DesertSequence : MonoBehaviour
     void Start()
     {
         sequence = StartCoroutine (TheSequence());
+
+        AkSoundEngine.PostEvent("MenuMusicStop", GameObject.Find("Music Sound Bank"));
     }
 
 

@@ -1,6 +1,7 @@
 Event	ID	Name			Wwise Object Path	Notes
 	119923798	OrbHum			\Default Work Unit\OrbHum	
 	331740044	CheckpointDrop			\Default Work Unit\CheckpointDrop	
+	2707520382	OrbHumStop			\Default Work Unit\OrbHumStop	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	912215563	ht_sx_game_env_checkpoint_drop_02	C:\Users\Adrian Burk\Documents\GitHub\Hangtime\Hangtime_WwiseProject\.cache\Windows\SFX\Bounced Files\ht_sx_game_env_checkpoint_drop_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Orb\ht_sx_game_env_checkpoint_drop_02		232924

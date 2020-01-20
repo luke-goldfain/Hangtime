@@ -5576,8 +5576,8 @@ MonoBehaviour:
   triggerList: f7e1664c
   useOtherObject: 0
   actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
+  curveInterpolation: 0
+  enableActionOnEvent: 1
   data:
     idInternal: 0
     valueGuidInternal: 

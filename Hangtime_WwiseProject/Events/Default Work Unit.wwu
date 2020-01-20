@@ -268,6 +268,7 @@
 						<Action Name="" ID="{C4FA646A-9C82-4177-AB4F-C10787404BE2}" ShortID="983044247">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="0"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
@@ -277,6 +278,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="OrbHumStop" ID="{3C4C2C4C-14E1-4F7A-95F8-BA9A6D62907A}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
