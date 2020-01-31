@@ -47,6 +47,8 @@ MonoBehaviour:
     type: 3}
   HUDPrefab: {fileID: 1780708271061067862, guid: c95830fe6ace4f5489f6877dd0a326af,
     type: 3}
+  PauseMenuPrefab: {fileID: 6316936273592331775, guid: 767f3104c74ac6c4784258a4379b17f0,
+    type: 3}
   PinkyPrefab: {fileID: 704136295773965611, guid: cf1705cd80a168a40920a531e1f5d8f2,
     type: 3}
   SongbirdPrefab: {fileID: 7358587845038202762, guid: af60a57179921004a8d6511649191295,

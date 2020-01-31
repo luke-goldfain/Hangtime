@@ -49,7 +49,8 @@ public class PlayerController : MonoBehaviour
     public GameObject Reticle, Speedometer, SpeedometerText,
                       SpeedometerNeedle, PCompass, CheckpointMeter,
                       CheckpointMeterFill, PlacementText, CheckpointText,
-                      ModeIndicator, ObjectiveIndicator, PlayerMinimap;
+                      ModeIndicator, ObjectiveIndicator, PlayerMinimap,
+                      PauseMenu;
 
     [SerializeField]
     private Sprite pullIcon, swingIcon;
@@ -205,6 +206,8 @@ public class PlayerController : MonoBehaviour
         ModeIndicator = HUD.transform.Find("ModeIndicator").gameObject;
         ObjectiveIndicator = HUD.transform.Find("ObjectiveParent").gameObject;
         PlayerMinimap = HUD.transform.Find("MiniCam").gameObject;
+
+        PauseMenu = this.gameObject.GetComponent<PauseManager>().PauseMenu;
 
         countdownObject = GameObject.FindGameObjectWithTag("Countdown");
     }
@@ -975,6 +978,31 @@ public class PlayerController : MonoBehaviour
 
         CheckpointMeter.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         CheckpointMeterFill.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+    }
+
+    internal void StartSetPauseMenuPosition()
+    {
+        float pauseX = Screen.width * (cameraW / 2);
+        float pauseY = Screen.height * (cameraH / 2);
+
+        switch (PlayerViewNumber)
+        {
+            case 1:
+                if (numberOfPlayers > 2) pauseY += (Screen.height / 2);
+                break;
+            case 2:
+                pauseX += (Screen.width / 2);
+                if (numberOfPlayers > 2) pauseY += (Screen.height / 2);
+                break;
+            case 3:
+
+                break;
+            case 4:
+                pauseX += (Screen.width / 2);
+                break;
+        }
+
+        PauseMenu.transform.position = new Vector2(pauseX, pauseY);
     }
 
     /*internal void StartSetCompassPosition()

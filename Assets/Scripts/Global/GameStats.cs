@@ -15,4 +15,8 @@ public static class GameStats
     public static charChoices[] chosenChars = { charChoices.pinky, charChoices.songbird, charChoices.pinky, charChoices.songbird };
 
     public static int PlayersFinished { get; set; } = 0;
+
+    public static bool GamePaused = false;
+
+    public static int PlayerPaused = 1;
 }

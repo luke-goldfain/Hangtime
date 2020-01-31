@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
-    public GameObject PlayerPrefab, HUDPrefab,
+    public GameObject PlayerPrefab, HUDPrefab, PauseMenuPrefab,
                       PinkyPrefab, SongbirdPrefab;
     //public GameObject PlayerPrefab, ReticlePrefab, SpeedometerPrefab, CheckpointMeterPrefab, CheckpointMeterFillPrefab;
 
@@ -49,6 +49,11 @@ public class SpawnManager : MonoBehaviour
                 currentPlayer.GetComponent<PlayerController>().PlayerNumber = i;
 
                 currentPlayer.GetComponent<PlayerController>().HUD = Instantiate(HUDPrefab, Vector3.zero, Quaternion.identity);
+
+                // TODO: Pause menu not currently functional. View PauseManager.cs for more detail
+                //currentPlayer.GetComponent<PauseManager>().PauseMenu = Instantiate(PauseMenuPrefab, Vector3.zero, Quaternion.identity);
+                //currentPlayer.GetComponent<PauseManager>().PauseMenu.SetActive(false);
+
 
                 numOfPlayersSpawned++;
 

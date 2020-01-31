@@ -90,6 +90,7 @@ public class PlayerCameraController : MonoBehaviour
         pController.StartSetCheckpointMeterPosition();
         pController.StartSetObjectiveReference();
         pController.StartSetMinimapReference();
+        pController.StartSetPauseMenuPosition();
     }
 
     // Update is called once per frame

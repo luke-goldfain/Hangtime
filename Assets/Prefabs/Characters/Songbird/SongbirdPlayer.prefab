@@ -5031,6 +5031,7 @@ GameObject:
   - component: {fileID: 2039760664162703492}
   - component: {fileID: 5983572543385384867}
   - component: {fileID: 4303015885419909409}
+  - component: {fileID: 3304404119117934618}
   m_Layer: 0
   m_Name: SongbirdPlayer
   m_TagString: Player
@@ -5208,6 +5209,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetLocation: {x: 0, y: -2.5, z: 0}
+--- !u!114 &3304404119117934618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358587845038202762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae9c05183fd3fed468669d3ca353b7f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseMenu: {fileID: 0}
 --- !u!1 &8356055691355713211
 GameObject:
   m_ObjectHideFlags: 0
@@ -9967,16 +9981,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7358587845038202765}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 11a7b38c3d595b04c935b22975e0d8c6,
-        type: 3}
-      propertyPath: m_Name
-      value: Hawkman_Rig
-      objectReference: {fileID: 0}
-    - target: {fileID: 168766327016582825, guid: 11a7b38c3d595b04c935b22975e0d8c6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 11a7b38c3d595b04c935b22975e0d8c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10046,6 +10050,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 168766327016582825, guid: 11a7b38c3d595b04c935b22975e0d8c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 11a7b38c3d595b04c935b22975e0d8c6,
+        type: 3}
+      propertyPath: m_Name
+      value: Hawkman_Rig
       objectReference: {fileID: 0}
     - target: {fileID: -4361457793710065524, guid: 11a7b38c3d595b04c935b22975e0d8c6,
         type: 3}

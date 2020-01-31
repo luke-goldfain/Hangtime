@@ -31,7 +31,7 @@ public class DesertSequence : MonoBehaviour
     [SerializeField]
     private GameObject CountdownText;
 
-    private bool cutsceneIsPlaying;
+    public bool CutsceneIsPlaying;
 
     private Coroutine sequence;
 
@@ -45,7 +45,7 @@ public class DesertSequence : MonoBehaviour
 
     private void Update()
     {
-        if (cutsceneIsPlaying && 
+        if (CutsceneIsPlaying && 
             (Input.GetButtonDown("P1Start") || 
              Input.GetButtonDown("P2Start") ||
              Input.GetButtonDown("P3Start") ||
@@ -53,7 +53,7 @@ public class DesertSequence : MonoBehaviour
         {
             StopCoroutine(sequence);
 
-            cutsceneIsPlaying = false;
+            CutsceneIsPlaying = false;
 
             SkipText.SetActive(false);
 
@@ -73,7 +73,7 @@ public class DesertSequence : MonoBehaviour
 
     IEnumerator TheSequence () // Plays each section of the animation one at a time.
     {
-        cutsceneIsPlaying = true;
+        CutsceneIsPlaying = true;
 
         yield return new WaitForSeconds(4);
         Cam2.SetActive(true);
@@ -101,7 +101,7 @@ public class DesertSequence : MonoBehaviour
         Cam5.SetActive(false);
         SkipText.SetActive(false);
 
-        cutsceneIsPlaying = false;
+        CutsceneIsPlaying = false;
     }
 
 }
